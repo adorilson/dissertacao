@@ -1,5 +1,5 @@
-Modelo LaTex para Trabalho de Conclusão de Curso (TCC) no IFRN
-==============================================================
+Implementação de Variabilidades na Plataforma Android
+=====================================================
 
 Pacotes necessários
 -------------------
