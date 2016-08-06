@@ -4,9 +4,53 @@ gerência de variabilidades na plataforma Android, padrões de projeto e orienta
 a objetos e um \textit{framework} para comparação de técnicas de implementação
 de variabilidades.
 
-\section{Referencial Teórico}
+\section{Linha de Produto de Software}
 
-Texto
+Linha de produto de \textit{software} é uma família de \textit{softwares} que possuem um núcleo
+comum e que possibilita personalizações para cada produto específico \cite{Clements2001}.
+Cada produto é criado a partir das variabilidades permitidas para a linha de produto.
+Podendo ser de dois tipos: (i) variabilidades de negócio e (ii) variabilidades de
+plataforma.
+As primeiras são adaptações em requisitos de negócios da aplicação requeridas pelo
+usuário final.
+As últimas dizem respeito às variações no ambiente de hardware e software em que
+uma aplicação será executada. Está intrinsecamente ligada a aspectos técnicos
+relacionados ao dispositivo no qual a aplicação está instalada. Assim, uma
+importante disciplina na engenharia de linha de produto de \textit{software} é a
+gerencia de variabilidades.
+
+\subsection{Gerência de Variabilidades}
+
+Gerência de variabilidades está relacionado às atividades de suporte a variabilidades
+no ciclo de vida do software, permitindo o gerenciamento de dependências e interações
+entre variabilidades. Técnicas de gerência de variabilidades permitem sistematicamente
+desenvolver e evoluir artefatos comuns e variáveis pertencentes a uma LPS.
+
+\subsubsection{Variabilidades de Negócios}
+Variabilidades de negócio são adaptações em requisitos de negócio da aplicação
+requerida pelo usuário final. Em geral, gerentes de produto de aplicações são
+responsáveis por decidir quais variabilidades de negócio uma LPS pretende oferecer
+suporte. O usuário final é responsável por escolher quais variabilidades estarão
+presentes nos produtos desejados. Existem diferentes soluções para implementar
+variabilidades de negócio. Variabilidades alternativas que podem funcionar com
+determinados produtos, por exemplo, podem ser implementadas através do uso dos
+mecanismos de herança e polimorfismo de orientação a objetos, permitindo que
+classes abstratas sejam estendidas para oferecer implementações específicas para
+um dado produto. Padrões de projeto orientados a objetos \cite{Gamma1994} podem ser
+aplicados dentro deste contexto, oferecendo implementações modularizadas para
+cada uma das variantes de uma variabilidade específica. Em tais soluções, a escolha
+de quais variantes serão selecionadas é delegada para uma ferramenta de derivação
+de produto, a qual se responsabiliza pela inclusão das subclasses específicas
+responsáveis pela inclusão no produto final.
+
+\subsubsection{Variabilidades de Plataforma}
+Plataforma refere-se ao ambiente de hardware e software em que uma aplicação irá
+ser executada \cite{Preuveneers2004}. Assim, variabilidades de plataforma dizem
+respeito a variações
+de elementos desse conjunto. Ela está intrinsecamente ligada a aspectos técnicos
+relacionados ao dispositivo no qual a aplicação é instalada, tais como:
+implementações alternativas para versões que utilizam diferentes bibliotecas de classes
+(APIs) e ajuste de \textit{layout} de telas para diferentes dispositivos.
 
 \section{Metodologia}
 
