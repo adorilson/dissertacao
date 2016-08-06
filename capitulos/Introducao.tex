@@ -44,7 +44,7 @@ Apesar da ampla adoção da plataforma Android e sua fragmentação, há uma car
 de estudos que indiquem de que forma as aplicações de tal plataforma lidam com
 variabilidades relacionadas a customização da mesma para diferentes dispositivos. 
 
-\cite{FalvoJunior2015} conduziu uma revisão sistemática da literatura tendo como
+\citeonline{FalvoJunior2015} conduziu uma revisão sistemática da literatura tendo como
 principal objetivo identificar estudos que integrassem os conceitos de linha de
 produtos de \textit{software} (LPS) e dispositivos móveis. Após a seleção final
 dos trabalhos, os autores chegaram em um conjunto de 31 artigos que foram lidos
@@ -54,6 +54,82 @@ plataforma Android, o qual relata uma experiência prática da implementação d
 linha de produto de \textit{software} para monitoramento remoto de pessoas com
 algum tipo de cuidado especial. Porém, tal trabalho aborda uma proposta do uso de
 diagramas UML (\textit{Unified Modeling Language}) para representar variações arquiteturais.
+
+A carência de estudos sistemáticos que identifiquem e analisem técnicas para
+implementação de variabilidades ao longo das evolução de tais aplicações e da
+própria plataforma Android pode trazer dificuldades para a evolução do código de
+tais aplicações ou até mesmo erros durante a execução.
+
+\section{Limitação de Trabalhos Existentes}
+
+Vários estudos já foram conduzidos relacionando linha de produtos de software e
+tecnologias móveis. \citeonline{Alves2007} propôs um método para extrair e evoluir LPSs
+no nível de implementação e modelo de \textit{features}.  Nesse estudo, inicialmente
+foi criado uma LPS, posteriormente evoluída com uma abordagem reativa \cite{Krueger2002}.
+Em seguida, a LPS foi evoluída através de refatorações que modularizavam suas
+variabilidades usando programação orientada a aspectos. \citeonline{Cirilo2012} mostram
+como uma ferramenta dirigida a modelos pode ajudar na gerência de variabilidades
+e instanciação automática de produtos de uma linha de produtos móveis. O trabalho
+compara o impacto de duas técnicas de modularização - programação orientada a aspectos
+e compilação condicional - para a derivação automática de produtos. No entanto,
+tais trabalhos foram desenvolvidos no contexto da plataforma Java ME \cite{oraclejme}.
+
+Trabalhos recentes abordam o uso da plataforma Android. Reuso de software é uma
+importante motivação para desenvolvimento de linhas de produto de software, sendo
+herança de classes uma das formas mais comuns. \citeonline{Mojica2014} analisam como
+reuso de software ocorre nas aplicações disponíveis na Google Play. Os três principais
+tipos de reuso identificados foram: (i) 18,75\% das classes herdam de uma classe
+base da API Android, e 35,78\% de uma classe específica de domínio; (ii) 84,23\%
+das classes aparecem em duas ou mais aplicações; (iii) 17.109 aplicações móveis
+são cópias diretas de outras aplicações.
+
+\citeonline{Laguna2011} apresentam uma LPS para monitoramento remoto de pessoas
+com necessidades especiais, no entanto não são fornecidas maiores detalhes das
+técnicas utilizadas para derivação de produto ou gerência de variabilidades.
+\cite{Pavlic2013} relata o desenvolvimento de uma LPS capaz de produzir seis
+versões de uma mesma aplicação, com diferentes funcionalidades, além de oferecer
+suporte a seis idiomas. Os produtos finais são derivados utilizando as ferramentas
+padrões e scripts Ant. Para gerenciamento de variabilidades foram utilizadas
+mecanismos de orientação a objetos, tais como, uso de herança, especialização e
+parametrização de componentes, em muitos casos através do uso de padrões de projetos.
+Contudo, não são apresentados impactos do uso de tais técnicas e motivos da escolha
+de uma ou outra.
+
+\citeonline{FalvoJunior2015} apresenta uma LPS para aplicações educacionais.
+A LPS e seu processo de construção, baseado em uma estratégia de adoção proativa
+\cite{Krueger2002}, são detalhados no trabalho. Também é realizada uma avaliação
+empírica com o objetivo de avaliar os produtos gerados. Nessa avaliação, foram
+comparadas produtos gerados pela LPS e produtos criados por meio do desenvolvimento
+singular de software (DSS), em que foram avaliados principalmente dois critérios:
+número de defeitos e \textit{time-to-market}. Os resultados alcançados foram: (i)
+o produto da LPS contém, em média, apenas um defeito, contra sete da versão DSS;
+(ii) o produto da LPS é criado em menos de cinco minutos, enquanto a versão DSS
+leva mais de 113. Também foram observados melhores resultados na interface gráfica
+do produto LPS. Contudo, não são discutidos como as variabilidades foram
+implementadas ou quais técnicas foram utilizadas.
+
+\citeonline{Berger2014} aborda mecanismos de variabilidades em ecossistemas de
+\textit{software},
+incluindo
+Android, Eclipse e o kernel Linux. Porém, o enfoque é na construção do ambiente e
+em como tais plataformas são configuradas para atender ás demandas específicas
+dos usuários, e não em suas aplicações.
+
+\citeonline{Campos2015} realizou um estudo exploratório em doze aplicações Android
+\textit{open-source}
+populares com o objetivo de investigar características arquiteturais. Os três
+principais aspectos investigadas foram: (i) arquitetura das aplicações;
+(ii) uso de padrões de projetos; e (iii) política de tratamento de exceção.
+Os principais resultados apresentados incluem: (i) estilo arquitetural MVC
+(modelo-visão-controle) foi adotado pela maioria das aplicações,
+mesmo que parcialmente; (ii) análise qualitativa acerca das arquiteturas encontradas;
+e (iii) uma diagrama de arquitetura conceitual que sintetiza os principais achados do estudo.
+
+Diante disso, ainda existe uma carência de estudos que abordem como as variabilidades
+são implementadas em aplicações na plataforma Android, e que indiquem quais os
+benefícios e pontos negativos do uso das diversas técnicas conhecidas. Em especial,
+nas variabilidades oriundas de portabilidade para diferentes dispositivos e das
+mudanças de bibliotecas na plataforma.
 
 \section{Objetivos da Pesquisa}
 
