@@ -6,19 +6,113 @@ com o objetivo de identificar e caracterizar as técnicas de implementação de
 variabilidades utilizadas em tais aplicações.
 
 O restante desse capítulo está organizado da seguinte maneira: a seção \ref{sec:aplicacoes}
-apresenta as aplicações algo do estudo;  a seção \ref{sec:procedimentos} descreve
+apresenta as aplicações alvo do estudo;  a seção \ref{sec:procedimentos} descreve
 os procedimentos adotados na análise; a seção \ref{sec:resultados} mostra os resultados alcançados. 
 
 
 \section{Aplicações Alvo do Estudo}
 \label{sec:aplicacoes}
 
-Texto
+Nessa fase preliminar, selecionamos um total de 8 aplicações \textit{open-source}
+e populares, cada uma com pelo menos 10 mil downloads. Dentro desses critérios,
+sete aplicações foram escolhidas de forma aleatória e então foi incluída a
+Google I/O\footnote{Aplicação oficial do evento Google I/O. Repositório: https://github.com/google/iosched},
+por ser uma aplicação de referência da Google. As demais são aplicações de tamanhos
+e categorias variados, possuindo um grande número de usuários. São elas:
+Telegram\footnote{Uma aplicação de mensagem. Repositório: https://github.com/DrKLO/Telegram},
+AntennaPod\footnote{Um gestor de podcast. Repositório: https://github.com/danieloeh/AntennaPod},
+Firefox\footnote{Um navegador web. Repositório: http://hg.mozilla.org/mozilla-central},
+Ankidroid\footnote{Um software educativo. Repositório: https://github.com:ankidroid/Anki-Android},
+K-9 Mail\footnote{Um cliente de email. Repositório: https://github.com:k9mail/k-9},
+C:Geo\footnote{Uma aplicação de geocaching. Repositório: https://github.com:cgeo/cgeo}
+e Zmanim\footnote{Um relógio utilizado pelos judeus. Repositório: https://bitbucket.org/jgindin/zmanim}. 
+
+A tabela \ref{tab:aplicacoes}
+apresenta maiores informações sobre tais aplicações.
+A coluna ID será utilizada para identificar a aplicação em outras tabelas, se necessário.
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+\centering
+\caption{Aplicações analisadas no estudo}
+\label{tab:aplicacoes}
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+\textbf{ID} & \multicolumn{4}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{Aplicação}} & \multicolumn{4}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{Categoria}}   & \multicolumn{4}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{Downloads}}                                                   & \multicolumn{4}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}c@{}}Nº de linhas\\ de código\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}c@{}}API\\ Mínima\end{tabular}}} & \textbf{\begin{tabular}[c]{@{}l@{}}API\\ Alvo\end{tabular}} \\ \hline
+\#1         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Telegram}           & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Comunicação}          & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}100.000.000 - \\ 500.000.000\end{tabular}} & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}576 mil}                                                                   & 9                                                                                                          & 23                                                          \\ \hline
+\#2         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}AntennaPod}         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Mídia e Vídeo}        & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}100.000 -\\ 500.000\end{tabular}}          & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}72 mil}                                                                    & 10                                                                                                         & 23                                                          \\ \hline
+\#3         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Google I/O}         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Livros e Referências} & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}500.000 -\\ 1.000.000\end{tabular}}        & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}66 mil}                                                                    & 14                                                                                                         & 22                                                          \\ \hline
+\#4         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Firefox}            & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Comunicação}          & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}100.000.000 -\\ 500.000.000\end{tabular}}  & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}279 mil}                                                                   & 15                                                                                                         & 22                                                          \\ \hline
+\#5         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}AnkiDroid}          & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Educação}             & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}1.000.000 - \\ 5.000.000\end{tabular}}     & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}93 mil}                                                                    & 10                                                                                                         & 22                                                          \\ \hline
+\#6         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}K-9 Mail}           & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Comunicação}          & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}5.000.000 -\\ 10.000.000\end{tabular}}     & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}123 mil}                                                                   & 15                                                                                                         & 22                                                          \\ \hline
+\#7         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}C:Geo}              & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Entretenimento}       & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}1.000.000 - \\ 5.000.000\end{tabular}}     & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}149 mil}                                                                   & 9                                                                                                          & 21                                                          \\ \hline
+\#8         & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Zmanim}             & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}Estilo de Vida}       & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}\begin{tabular}[c]{@{}l@{}}10.000 -\\ 50.000\end{tabular}}            & \multicolumn{4}{l|}{\cellcolor[HTML]{FFFFFF}48 mil}                                                                    & 10                                                                                                         & 22                                                          \\ \hline
+\end{tabular}
+\end{table}
+
+Nos arquivos de configuração das aplicações, são definidas as versões mínima e
+alvo da API necessária para o execução da aplicação. Se por um lado, os desenvolvedores
+desejam utilizar os recursos mais modernos da plataforma, por outro desejam ter
+suas aplicações instaladas na maior quantidade possível de dispositivos. Dessa
+forma, a aplicação pode estar preparada para funcionar em versões antigas da
+API, sem abrir mão de usar os últimas novidades. As versões mínimas encontradas
+nas 8 aplicações variaram de 9 (Telegram e C:geo) a 15 (Firefox e K-9 Mail),
+enquanto que apenas uma aplicação estava otimizada para a versão 21, duas
+aplicações para versão mais recente (23 - Telegram e AntennadPod) e as demais
+para versão 22.
+
 
 \section{Procedimentos}
 \label{sec:procedimentos}
-Texto
+
 
 
 \section{Resultados do Estudo}
 \label{sec:resultados}
+
+Essa seção apresenta e discute os resultados do estudo. Inicialmente, na seção 
+\ref{sec:tecnicas} são discutidos as técnicas de implementação para lidar com
+diferentes versçoes da API. A seção \ref{sec:mudancas} discute mudanças na API
+com maior impacto no desenvolvimento das aplições.
+Na seção \ref{sec:multiplas_telas} são apresentados os
+resultados para o tratamento de múltiplas telas. Na seção \ref{sec:multiplos_pacotes}
+é discutido o recurso provido pela plataforma de múltiplos pacotes para instalação.
+Por fim, a seção \ref{sec:ferramentas} apresenta ferramentas úteis para tratar variabilidades. 
+
+\subsection{Técnicas de Implementação de Variabilidades na API}
+\label{sec:tecnicas}
+
+\subsection{Mudanças na API com Maior Impacto no Desenvolvimento}
+\label{sec:mudancas}
+
+\subsection{Tratamento de  Múltiplas Telas}
+\label{sec:multiplas_telas}
+
+\subsection{Múltiplos Pacotes para Instalação}
+\label{sec:multiplos_pacotes}
+
+\subsection{Ferramentas Úteis para Tratar Variabilidades}
+\label{sec:ferramentas}
+
+
