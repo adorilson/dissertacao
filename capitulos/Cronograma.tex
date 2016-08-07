@@ -1,7 +1,83 @@
-\chapter{Considerações Finais}
+\chapter{Cronograma de Atividades}
 
-Texto
+A Tabela \ref{tab:cronograma} apresenta um cronograma de atividades para a continuidade do trabalho
+durante os próximos 4 a 5 meses.
 
-\section{Trabalhos Futuros}
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+\centering
+\caption{Cronograma de atividades}
+\label{tab:cronograma}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Atividade}     & \multicolumn{4}{c|}{\textbf{Agosto}}                                                                     & \multicolumn{4}{c|}{\textbf{Setembro}}                                                                    & \multicolumn{4}{c|}{\textbf{Outubro}}                                                                     & \multicolumn{4}{c|}{\textbf{Novembro}}                                                                    & \multicolumn{4}{c|}{\textbf{Dezembro}}                                                                    \\ \hline
+Qualificação           &  & \cellcolor[HTML]{C0C0C0}{\color[HTML]{EFEFEF} } &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          \\ \hline
+Seleção das aplicações &  &                                                 & \cellcolor[HTML]{C0C0C0} &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          \\ \hline
+Análise das aplicações &  &                                                 &                          & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          \\ \hline
+Escrita da dissertação &  &                                                 &                          &                          &                          &                          &                          &                          & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} &                          &                          &                          &                          &                          &                          &                          \\ \hline
+Entrega para banca     &  &                                                 &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          & \cellcolor[HTML]{C0C0C0} &                          &                          &                          &                          &                          &                          \\ \hline
+Preparação para defesa &  &                                                 &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} &                          &                          &                          \\ \hline
+Defesa                 &  &                                                 &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          & \cellcolor[HTML]{C0C0C0} &                          &                          \\ \hline
+Finalização pós-banca  &  &                                                 &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          &                          & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} \\ \hline
+\end{tabular}
+\end{table}
 
-Texto
+A qualificação é a atividade atual, sendo realizada na 2ª semana de agosto.
+Na semana seguinte faremos a seleção das aplicação que serão utilizadas. A partir
+do aprendizado durante a fase inicial, os critérios de seleção das aplicações foram definidos:
+\begin{enumerate}
+    \item Aplicação presente no F-Froid\footnote{Disponível em https://f-droid.org/},
+        um catálogo de aplicações Android open-source;
+    \item Versão mínima da API necessária para instalação da aplicação menor ou
+        igual a 8,
+        o que garante um grande intervalo de versões suportada pela aplicação;
+    \item Mais de 100.000 instalações segundo o Google Play, o que garante
+        popularidade à aplicação;
+    \item Exclusão de aplicações projetadas específicamente para determinados
+        tamanhos de telas.
+\end{enumerate}
+
+A análise das aplicações selecionadas será feita durante o mês de setembro. Nessa
+etapa preliminar do trabalho, a análise foi feita de forma manual. Para a sequência,
+objetivamos  tornar a análise semi ou totalmente automática. Uma ferramenta candidata
+para auxiliar nessa tarefa é o Android Lint \cite{Lint}, uma ferramenta do ambiente oficial
+de desenvolvimento de aplicações Android capaz de analisar o código-fonte de uma
+aplicação para identificar problemas estruturais, sem a necessidade de executá-la
+ou mesmo escrever testes.
+
+Dentre as muitas verificações realizadas pelo Lint, alguns tipos são particularmente
+úteis para gerencia de variabilidades. Destacamos aqui:
+\begin{itemize}
+    \item Traduções ausentes ou não-utilizadas
+        \begin{itemize}
+            \item Indicam strings da aplicação que não foram traduzidas, auxiliando
+                a evitar que uma aplicação seja distribuida com tradução incompleta,
+                ou conteúdo nos arquivos de strings mas que nunca serão utilizado.
+        \end{itemize}
+    \item Recursos não-utilizados
+        \begin{itemize}
+            \item Indicam sobretudo artefatos extra-código presentes no projeto
+                mas que não são utilizados, auxiliando a diminuir o tamanho total das aplicações 
+        \end{itemize}
+    \item Inconsistencia entre elementos de configuração distintas
+        \begin{itemize}
+            \item Alguns elementos precisam ser definidos em vários locais, em função
+                de configurações distintas dos dispositivos, sendo necessários haver
+                consistência entre eles. Por exemplo, um array definido em múltiplas
+                configuração precisar ter  a mesma dimensão em todas elas.
+        \end{itemize}
+\end{itemize}
+
+De um total de 191 checagens do Lint, 59 estão relacionadas de alguma forma com
+variabilidades.
+
+Após análise das aplicações, a versão pré-banca da dissertação será escrita durante
+o mês de
+outubro, para ser entregue aos membros da banca na 2ª semana de novembro. A banca
+deverá ocorrer na 2ª semana de dezembro, sendo as 3 semanas anteriores dedicadas
+à preparação da apresentação. Após a banca, trabalharemos durante 2 semanas para
+finalizar a dissertação com as sugestões de melhores propostas pelos membros da
+banca. 
+
