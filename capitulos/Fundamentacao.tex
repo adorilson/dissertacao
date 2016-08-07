@@ -99,7 +99,7 @@ versões com uso interior a 0,1\% não são exibidos.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{imagens/platform_versions.png}
-\caption{Distribuição do uso de configuração de telas \cite{Dashboard}}
+\caption{Distribuição por versão da plataforma \cite{Dashboard}}
 \label{fig:platform_versions}
 \end{figure}
 
@@ -160,10 +160,59 @@ variabilidade de hardware, como a presença ou não de um sensor; (ii) variabili
 de software, como um widget específico. A plataforma provê mecanismos para detectar
 em tempo de execução a presença ou ausência desses elementos.
 
-\subsection{Padrões de Projeto e Orientação a Objetos}
+\section{Padrões de Projeto e Orientação a Objetos}
+Padrões de projeto \cite{Gamma1994} e técnicas de orientação a objetos – polimorfismo,
+herança, composição, agregação/delegação – são abordagens utilizadas para implementação
+de variabilidades de uma forma geral. Padrões de projeto identificam aspectos do sistema
+que podem variar e fornecem soluções para gerenciar a variação. Técnicas de OO
+são utilizadas para a implementação dos padrões de projeto \cite{Gacek2001}.
+Com efeito, há relatos do uso de tal abordagem em linhas de produto de software Android \cite{Pavlic2013}.
 
+\section{Framework para comparação de técnicas de implementação de variabilidades}
+Existem diversas técnicas para implementação de variabilidades, de forma que se
+faz necessários critérios de comparação e seleção de qual utilizar em uma determinada
+situação. \citeonline{Alves2007} propôs um \textit{framework} para comparação de tais técnicas.
+O \textit{framework} é uma extenção de outros trabalhos \cite{Gacek2001} \cite{Coplien1999},
+cujos critérios de avaliação e valores possíveis estão apresentados na Tabela \ref{tab:framework}.
 
-\subsection{Framework para comparação de técnicas de implementação de variabilidades}
+\begin{table}[h]
+  \caption{Framework para comparação de técnicas de implementação de variabilidades}
+  \begin{tabular}{ | l | l |}
+    \hline
+    \textbf{Critério de avaliação} & \textbf{Valores possíveis}  \\ \hline
+    Tipo de variabilidade & Positivo, negativo ou ambos  \\ \hline
+    Variabilidade na estrutura & Oferece suporte ou não oferece suporte \\ \hline
+    Variabilidade no comportamento & Oferece suporte ou não oferece suporte \\ \hline
+    Granularidade & Fina ou grossa \\ \hline
+    Tempo de ligação & Pré-processamento, compilação, implantação, execução \\ \hline
+    Reusabilidade & Alta, média, ou baixa \\ \hline
+    Legibilidade & Alta, média, ou baixa \\ \hline
+    Desempenho & Alta, média, ou baixa \\ \hline
+    Tamanho da aplicação & Alto impacto ou baixo impacto \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  & Oferece suporte ou não oferece suporte \\ \hline
+  \end{tabular}
+  \label{tab:framework}
+\end{table}
+
+\textbf{Tipo de variabilidade} indica a adição ou remoção de comportamento ou
+estrutura quando comparada com uma implementação base. \textbf{Variabilidade na estrutura}
+indica a possibilidade de estaticamente organizar elementos do programa, como adição
+de métodos ou atributos em, enquanto
+\textbf{variabilidade no comportamento} diz respeito a diferentes semânticas de execução.
+\textbf{Granularidade fina} refere-se a variações em nível de métodos de classe,
+incluindo trechos no corpo dos metodos, ao passo que \textbf{granularidade grossa}
+é uma variação em nível de classes. \textbf{Tempo de ligação} indica o momento
+durante o desenvolvimento em que as decisões acerca da variação tem que ser tomada,
+por exemplo, uma variação pode ser tratada durante a compilação ou somente no momento da execução.
+
+Outros parâmetros importantes para avaliação são \textbf{reusabilidade}, \textbf{legibilidade}, 
+\textbf{tamanho da aplicação} e \textbf{desempenho}, esses dois últimos dizem
+respeito a um produto executável da LPS. 
+
+Também é considerado o \textbf{suporte para implementação modular de requisitos transversais}.
+Esse suporte é importante porque muitas variabilidades de LPS podem ser requisitos transversais,
+como apontado por diversas pesquisas \cite{Gacek2001} \cite{Batory2004} \cite{Liu2006}
+\cite{Lopez2005} \cite{mezini2004}.
 
 \section{Análise dos Resultados}
 
