@@ -85,8 +85,64 @@ para versão 22.
 
 \section{Procedimentos}
 \label{sec:procedimentos}
+Uma vez selecionadas as aplicações alvos do nosso estudo, foi realizada a atividade
+de análise das aplicações para entender as soluções adotadas tanto em relação
+as versões da API, quanto em relação a diferentes tamanhos de telas.
 
+Para análise do tratamento das diferentes versões da API foram realizados os seguintes passos: 
+\begin{enumerate}
+    \item Pesquisa textual por \texttt{VERSION.SDK\_INT} em todos os arquivos da
+        aplicação.
+        Essa constante indica a versão da API do dispositivo e normalmente está
+        em uma instrução condicional;
+    \item Análise do contexto dos resultados de 1 para determinar se:
+        \begin{enumerate}
+            \item Trata-se da implementação do padrão Execução Condicional \cite{Santos2012};
+            \item Ou a implementação é baseada em padrões de projeto \cite{Gamma1994}. 
+        \end{enumerate}
+    \item Pesquisa por referencias ao pacote android.support, indicando que a aplicação 
+        faz uso do pacote de compatibilidade oficial.
+\end{enumerate}
 
+Para uma aplicação prover suporte a dispositivos com diferentes tamanhos de tela,
+de acordo com o guia oficial para desenvolvedores \cite{supporting_tablets},
+são necessários seguir alguns passos:
+\begin{enumerate}
+    \item Construir as telas usando a API de fragmentos;
+    \item Utilizar \textit{action bar}, um componente visual que substitui a barra
+        superior
+        das aplicações e, por padrão, inclui o logo no lado esquerdo, seguido pelo
+        título da \textit{activity},  e o menu da aplicação no lado direito.
+    \item Implementação de layouts flexíveis, que permitirão às aplicações
+        adaptarem-se a variações de telas diferentes. Não só em relção a dimensões,
+        mas também em relação a densidade - a quantidade de pixels por área física
+        da tela.    
+\end{enumerate}
+
+Os itens 1 e 2 acima implicam na necessidade da versão 11 da API ou do uso do
+pacote de compatibilidade e estensão das classes \texttt{FragmentActivity} para
+uso de fragmentos ou \texttt{AppCompatActivity} e uso tema \texttt{Theme.AppCompat}
+para \textit{action bar}. Além disso, em tempo de execução a interface do aplicativo
+deve ser composta de acordo com o tamanho da tela do dispositivo e fragmentos disponíveis.
+
+Dessa forma, os passos para análise da variabilidade de tratamento de tamanhos
+de telas diferentes foram os seguintes: 
+\begin{enumerate}
+    \item Verificação se a \textit{activity} principal da aplicação estende da
+        classe \textit{FragmentActivity}. Se essa estensão é identificada, os
+        passos 2 a 4 são realizados, caso contrário pula-se para o passo 5;
+    \item Verificação se no método \texttt{onCreate()} da \textit{activity}
+        principal ocorre composição de telas com uso de fragmentos;
+    \item Verificação se a \textit{activity} principal da aplicação estende as
+        classes \texttt{AppCompatActivity} ou \texttt{ActionBarActivity}.
+        A segunda classe foi depreciada em favor da primeira, por isso optou-se
+        por verificar uma ou outra;
+    \item Verificação se a \textit{activity} utiliza o tema \texttt{Theme.AppCompat} ou um compatível;
+    \item Verificar na diretório de recursos das aplicação (\texttt{res}) a existência
+        de recursos específicos para diferentes telas;
+    \item Instalação e da aplicação em dispositivos com tamanhos de telas e versão
+        da API diferentes.
+\end{enumerate}
 
 \section{Resultados do Estudo}
 \label{sec:resultados}
