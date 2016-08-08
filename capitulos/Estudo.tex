@@ -541,21 +541,13 @@ O padrão \textit{Decorator} é utilizado para permitir a alteração do tema de
 \texttt{ContextThemeWrapper} é fornecida pela própria API. Nas versões superiores
 ou igual a 11, essa modificação de tema já é disponível nativamente.
 A figura \ref{fig:decorator} mostra uma adaptação desse código.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{imagens/decorator.png}
 \caption{Utilização do padrão Decorator}
 \label{fig:decorator}
 \end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.6, angle=90]{imagens/null_object.png}
-\caption{Digrama de classes do padrão Null Object no c:geo}
-\label{fig:null_object}
-\end{figure}
-
 
 A tabela \ref{tab:criterios_padroes} sintetiza os valores obtidos para os padrões
 de projeto segundo o framework de comparação. 
@@ -611,6 +603,14 @@ Por fim, o padrão \textit{Decorator} utilizado pela aplicação c:geo foi benef
 pelo fato da classe decoradora ser da própria biblioteca padrão do Android,
 sendo necesário apenas o acréscimo no código da verificação se será ou não
 necessário fazer a decoração.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6, angle=90]{imagens/null_object.png}
+\caption{Digrama de classes do padrão Null Object no c:geo}
+\label{fig:null_object}
+\end{figure}
+
 
 \subsection{Mudanças na API com Maior Impacto no Desenvolvimento}
 \label{sec:mudancas}
