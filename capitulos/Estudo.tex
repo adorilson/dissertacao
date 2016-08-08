@@ -103,6 +103,457 @@ Por fim, a seção \ref{sec:ferramentas} apresenta ferramentas úteis para trata
 \subsection{Técnicas de Implementação de Variabilidades na API}
 \label{sec:tecnicas}
 
+De forma a permitir a implementação das aplicações contemplando as diferentes versões,
+diferentes técnicas de implementação foram identificadas para lidar com esse problema.
+A Tabela \ref{tab:tecnicas} apresenta essas diferentes alternativas de projeto
+encontradas nas aplicações analisadas.
+
+\begin{table}[ht]
+\centering
+\caption{Técnicas de implementação de variabilidades na API encontrados nas aplicações}
+\label{tab:tecnicas}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|l|l|l|c|l|l|l|c|l|l|l|c|l|l|l|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Pacote de\\ compatibilidade\end{tabular}} & \multicolumn{4}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Execução\\ Condicional\end{tabular}}} & \multicolumn{4}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Reimplementação\\ de Recursos\end{tabular}}} & \multicolumn{4}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}PP\\ Proxy\end{tabular}}} & \multicolumn{4}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}PP\\ Strategy\end{tabular}}} & \textbf{\begin{tabular}[c]{@{}c@{}}PP\\ Null Object\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}PP\\ Decorator\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Todas as \\ aplicações\end{tabular}               & \multicolumn{4}{c|}{\begin{tabular}[c]{@{}c@{}}Todas as\\ aplicações\end{tabular}}           & \multicolumn{4}{c|}{Telegram}                                                                       & \multicolumn{4}{c|}{\begin{tabular}[c]{@{}c@{}}Telegram\\ c:geo\end{tabular}}    & \multicolumn{4}{c|}{\begin{tabular}[c]{@{}c@{}}AnkiDroid\\ K-9 Mail\end{tabular}}   & c:geo                                                             & c:geo                                                           \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\subsubsection{Pacote de Compatibilidade}
+Pacotes de compatibilidade permitem que aplicações em execução sob versão antigas
+da plataforma utilizem recursos que foram disponibilizados em versões mais novas.
+Por exemplo, uma aplicação instalada em um celular com versão 8 pode usar a API
+de fragmentos, disponibilizada apenas na versão 11.
+
+Esses pacotes são tradicionais arquivos JAR com classes, interfaces e outros
+artefatos de recursos que poderão ser adicionados na aplicação. Assim, quando se
+deseja usar a classe \texttt{Fragment}, por exemplo, em vez da importação ser da API padrão
+do Android, como mostra a Figura \ref{fig:import_fragment_API}, deverá ser desse pacote que
+está junto da aplicação, como mostrado na Figura \ref{fig:import_fragment_compat}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics{imagens/import_fragment_api.png}
+\caption{ Importando classes relacionadas a fragmentos da API padrão}
+\label{fig:import_fragment_API}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics{imagens/import_fragment_compat.png}
+\caption{Importando classes relacionadas a fragmentos do pacote de compatibilidde}
+\label{fig:import_fragment_compat}
+\end{figure}
+
+Como resultado, a aplicação será distribuída com uma experiência de uso mais
+consistente através de uma grande número de versões da plataforma.
+
+Uso do pacote de compatibilidade oficial foi a forma mais comum para prover
+suporte aos dispositivos com versões antigas, sendo utilizada por todos os
+aplicativos analisados.
+
+A tabela \ref{tab:criterios_pacote} descreve o pacote de compatibilidade
+segundo o framework de comparação apresentado na seção \ref{sec:framework}
+
+\begin{table}[ht]
+\centering
+\caption{Descrição do pacote de compatibilidade segundo o framework de comparação}
+\label{tab:criterios_pacote}
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Critério de Avaliação}}                                                    & \multicolumn{1}{c|}{\textbf{Valor obtido}} \\ \hline
+Tipo de Variabilidade                                                                                   & Ambos                                      \\ \hline
+Variabilidade na estrutura                                                                              & Oferece suporte                            \\ \hline
+Variabilidade no comportamento                                                                          & Oferece suporte                            \\ \hline
+Granularidade                                                                                           & Grossa                                     \\ \hline
+Tempo de ligação                                                                                        & Compilação                                 \\ \hline
+Reusabilidade                                                                                           & Alta                                       \\ \hline
+Legibilidade                                                                                            & Baixo impacto                              \\ \hline
+Desempenho                                                                                              & Baixo impacto                              \\ \hline
+Tamanho da aplicação                                                                                    & Médio impacto                              \\ \hline
+\begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular} & Não oferece suporte                        \\ \hline
+\end{tabular}
+\end{table}
+
+Pacotes de compatibilidade substituem de forma estática componentes de versões anteriores
+da API por componentes de novas versões, de forma que oferece suporte para o tipo
+de variabilidades positivas e negativas. Também oferece suporte à granularidade grossa,
+já que os componentes são substuídos por completo. Tal substituição equivale tanto
+a adicionar
+quanto a remover métodos e atributos nas classes, ou sobrescrever os existentes,
+portanto essa técnica oferece suporte para variabilidade na estrutura e no comportamento.
+Essa técnica também exerce um baixo impacto na legibilidade do código e no desempenho da aplicação. 
+Uma vez que, na maioria dos casos, basta alterar a importação das classes, como
+mostramos nas figuras \ref{fig:import_fragment_API} e \ref{fig:import_fragment_compat}.
+No entanto, pode resultar em um aumento no tamanho da aplicação, ou no caso particular
+do Android, um estouro no limite de métodos das aplicações \cite{multidex},
+já que o tempo de ligação dessa técnica é durante a compilação e mais elementos
+serão empacotados juntamente com a aplicação. Não oferece suporte para implementação
+modular de requisitos transversais.
+
+\subsubsection{Execução Condicional}
+Execução condicional (EC) é um padrão para tratar variabilidades em granularidade
+fina em linhas de produto de software \cite{Santos2012}. O padrão é composto
+por 4 elementos principais, ilustrados na Figura \ref{fig:EC}:
+\begin{itemize}
+    \item Classe alvo: componentes do sistema onde ocorre a variabilidade acontece; 
+    \item Implementação da variabilidade: o código que representa a variabilidade,
+        podendo ser um trecho diretamente na classe algo ou uma chamada para um
+        componente que implementa a variabilidade; 
+    \item Gerenciador da execução: é um elemento central do padrão, responsável
+        por decidir qual implementação da variabilidade será executada. 
+    \item Repositório de parâmetros:  responsável por armazenar os valores dos
+        parâmetros que será utilizado durante a execução condicional. É fundamental
+        que a recuperação desses parâmetros não prejudique o desempenho das aplicações.
+\end{itemize}
+
+\begin{figure}[ht]
+\centering
+\includegraphics{imagens/execucao_condicional.png}
+\caption{Componentes principais do padrão execução condicional}
+\label{fig:EC}
+\end{figure}
+
+Em aplicações Android, as classes alvo podem ser qualquer classe da aplicação.
+Gerenciador de execução é uma instrução \texttt{if} que compara a versão da API
+no dispositivo à uma versão cujo valor tem alguma importância para a variabilidade
+em questão. Por exemplo, a versão em que um recurso surgiu ou mudou de comportamento.
+Implementação da variabilidade costuma ser uma sequência de código para quando o
+resultado dessa comparação é verdadeiro e outra sequência para quando ele é falso.
+O repositório de parâmetros que armazenar os valores utilizados nesse contexto é a
+classe \texttt{android.os.Build}, que contém diversas sobre o sistema instalado
+no aparelho, e suas classes aninhadas \texttt{VERSION} e \texttt{VERSION\_CODES}.
+Em particular, a versão da API é obtida no atributo \texttt{Build.VERSION\_CODES.SDK\_INT},
+já o outro valor da comparação é normalmente definida diretamente no código ou obtido de
+\texttt{VERSION\_CODES}.  
+
+A figura \ref{fig:exemploEC} apresenta um exemplo do uso de EC na aplicação c:geo. 
+Nesse exemplo, a classe alvo definida no padrão é a classe \texttt{AbstractDialogFragment}
+, do repositório
+de parâmetros são obtidos os valores de \texttt{Build.VERSION.SDK\_INT} e
+\texttt{Build.VERSION\_CODES.HONEYCOMB}, para serem utilizados na condição do \texttt{if...else}, 
+que faz o papel de gerenciador de execução. Também vemos que existem duas
+implementação de variabilidade: i) uma composta apenas por uma linha de código
+(\texttt{view.showContextMenu()}); e ii) a outra composta por várias linhas e
+encapsulada no método \texttt{showPopupHoneycomb(View view)}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{imagens/EC_in_cgeo2.png}
+\caption{Exemplo do padrão EC no cgeo}
+\label{fig:exemploEC}
+\end{figure}
+
+Assim como uso do pacote de compatibilidade, EC foi observado em todas as aplicações.
+A tabela \ref{tab:criterios_EC} descreve essa técnica
+segundo o framework de comparação apresentado na seção \ref{sec:framework}
+
+\begin{table}[ht]
+\centering
+\caption{Descrição do padrão execução condicional segundo o framework de comparação}
+\label{tab:criterios_EC}
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Critério de Avaliação}}                                                    & \multicolumn{1}{c|}{\textbf{Valor obtido}} \\ \hline
+Tipo de Variabilidade                                                                                   & Ambos                                      \\ \hline
+Variabilidade na estrutura                                                                              & Não oferece suporte                        \\ \hline
+Variabilidade no comportamento                                                                          & Oferece suporte                            \\ \hline
+Granularidade                                                                                           & Fina, grossa                               \\ \hline
+Tempo de ligação                                                                                        & Execução                                   \\ \hline
+Reusabilidade                                                                                           & Baixa                                      \\ \hline
+Legibilidade                                                                                            & Médio impacto                              \\ \hline
+Desempenho                                                                                              & Baixo impacto                              \\ \hline
+Tamanho da aplicação                                                                                    & Baixo impacto                              \\ \hline
+\begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular} & Não oferece suporte                        \\ \hline
+\end{tabular}
+\end{table}
+
+EC oferece suporte para ambos os tipos de variabilidade, positiva e negativa,
+dado que o gerenciador de execução pode executar algo a mais do núcleo da aplicação
+(positiva) ou deixar de executar algo desse núcleo (negativa).
+
+Uma vez que o tempo de ligação é durante a  execução, essa técnica não oferece
+suporte para variabilidade na estrutura, apenas no comportamento. No entanto,
+isso pode ser alcançado combinado com o uso de pacote de compatibilidade pela
+implementação de variabilidades. E, apesar do tempo de ligação ser na execução,
+o que pode implicar em repetidos desvios condicionais, a impacto no desempenho é
+baixo, graças ao mecanismo do repositório de parâmentros, que apenas obtém o valor
+de um atributo estático de uma classe.
+
+EC pode definir o tipo dos objetos a serem criados, oferecendo suporte à granularidade
+grossa, ou apenas a execução ou não de uma linha de código qualque, suporte à
+granularidade fina. No último caso, que é mais comum,  reusabilidade e
+legibilidade são prejudicadas.
+
+Para verificar o impacto no tamanho da aplicação, realizamos uma grande refatoração
+em uma das aplicações, o Telegram. Eliminamos todas as EC condicionadas a versão da
+API, deixando o mesmo com suporte apenas para versão 23 da plataforma. Um total
+de 145 arquivos foram editados ou apagados. Comparando os tamanhos dos arquivos
+APK dessa versão e da versão com suporte a partir da API 9 não foi verificada
+diferença alguma. Portanto, essa técnica tem baixo impacto no tamanho das aplicações.
+
+EC não oferece suporte para implementação modular de requisitos transversais.
+
+Apesar de execução condicional trazer uma baixa legibilidade no código, seu uso
+é bastante simples e comum, não exigindo conhecimentos avançados e nem uso de
+ferramentas externas, como exige a técnica de compilação condicional (CC) \cite{Medeiros2015}.
+A técnica de CC é bastante utilizada em outras plataformas para gerencia de
+variabilidades \cite{Liebig2010}, entretanto não foi observado seu uso em
+nenhuma das aplicações analisadas no nosso estudo. Dois fatores podem contribuir
+para a baixa legibilidade: (i) o código de todas as variabilidades estarão presentes
+em todos produtos da LPS; (ii) uso de \texttt{Build.VERSION\_CODES}. O primeiro é 
+intriseco ao padrão, já o segundo é específico da plataforma Android. A classe
+\texttt{Build.VERSION\_CODES} contém atributos que mapeiam a versão da API. Quando
+eles são utilizados no código, frequentemente é necessário recorrer à tabela presente
+na figura \ref{fig:platform_versions}.
+
+\subsubsection{Reimplementação de recursos}
+\label{sec:reimplementacao}
+Reimplementação de recursos ocorre quando se deseja um comportamento já provido
+por versões mais recentes ou outra biblioteca, mas opta-se por reimplementar tal
+recurso. Foi verificado que apenas o Telegram optou por essa abordagem, quando
+reimplementou algumas classes relacionadas a animações gráficas, quando poderia
+ter utilizado um pacote de compatibilidade  com o recurso pronto. A figura \ref{fig:telegram_diretorio}
+apresente a estrutura de pacotes do Telegram, com destaque para as classes que 
+reimplementam o pacote \texttt{android.animation} da plataforma, provendo funcionalidades
+de animação para a aplicação, mesmo em dispositivos com versão da API inferior a 
+11, quando esse pacote foi disponibilizado.
+
+\begin{figure}[ht]
+\centering
+\includegraphics{imagens/telegram_diretorio.png}
+\caption{Estrutura parcial dos pacotes do Telegram}
+\label{fig:telegram_diretorio}
+\end{figure}
+
+Os resultados dos critérios de avaliação dessa técnica, apresentados na tabela 
+\ref{tab:criterios_reimplementacao}, são semelhantes aos do pacote de
+compatibilidade. Diferenciando em três critérios apenas: i) reusabilidade;
+ii) legibilidade e; iii) tamanho da aplicação. A reusabilidade é alta em relação
+à própria aplicação, mas baixa em relação a outras aplicações. Legibilidade é
+prejudicada por aumentar a quantidade de pacotes e classes na aplicação. Esses
+dois aspectos podem ser melhorados convertendo esse conjunto de classes em uma
+projeto separado, sendo integrado a aplicação da mesma forma que pacotes de
+compatibilidade. No entanto, como a reimplementação é feita apenas do que será
+utilizado, o impacto no tamanho da aplicação é menor, em relação ao pacote de
+compatibilidade.
+
+\begin{table}[ht]
+\centering
+\caption{Descrição de reimplementação de recurso segundo o framework de comparação}
+\label{fig:criterios_reimplementacao}
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Critério de Avaliação}}                                                    & \multicolumn{1}{c|}{\textbf{Valor obtido}} \\ \hline
+Tipo de Variabilidade                                                                                   & Positivo                                   \\ \hline
+Variabilidade na estrutura                                                                              & Oferece suporte                            \\ \hline
+Variabilidade no comportamento                                                                          & Oferece suporte                            \\ \hline
+Granularidade                                                                                           & Grossa                                     \\ \hline
+Tempo de ligação                                                                                        & Compilação                                 \\ \hline
+Reusabilidade                                                                                           & Médio                                      \\ \hline
+Legibilidade                                                                                            & Médio impacto                              \\ \hline
+Desempenho                                                                                              & Baixo impacto                              \\ \hline
+Tamanho da aplicação                                                                                    & Baixo impacto                              \\ \hline
+\begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular} & Não oferece suporte                        \\ \hline
+\end{tabular}
+\end{table}
+
+A recomendação é evitar o uso de pacotes de compatibilidades quando o que será
+utilizado é muito pouco \cite{multidex}. O que pode ser seguido por meio da
+reimplementação do recurso desejado,
+como feito pelo Telegram. Além
+de evitar o aumento de métodos da aplicação que não serão utilizados, será possível
+uma maior personalização do comportamento dos componentes, no entanto, é um elemento
+a mais que os desenvolvedores deverão se preocupar em evoluir juntamente com o restante
+da aplicação. Diferentemente dos pacotes de compatibilidade, cuja evolução é feita por
+equipes dedicadas e externas ao projeto.
+
+\subsubsection{Padrões de Projeto}
+Foram ainda identificados alguns padrões de projeto para tratar variabilidades na API.
+
+AnkiDroid e K-9 Mail aplicaram o padrão \textit{Strategy}. A primeira definiu uma
+interface (\texttt{Compat}) com um conjunto de funções que não estão presentes em
+todas as versões, e um conjunto de implementações dessa interface que irá prover
+o suporte. Cada implementação deve terminar com um sufixo identificando a versão
+mínima para essa implementação, ex. \texttt{CompatV12}. Existe uma implementação
+\textit{default}, \texttt{CompatV10}, que provê suporte para API versão 10.
+Nessa classe, os métodos da interface \texttt{Compat} relacionado à versão 10
+da API realizam algum trabalho, enquanto os demais estão vazios, nada fazem ou
+execução alguma ação secundária, como registrar (log) a chamada ou exibir alguma
+informação para o usuário. As demais implementações
+devem estender a implementação relacionado à versão anterior e implementar a
+interface \texttt{Compat}. Cada implementação deverá sobrescrever somente os
+métodos que surgiram na versão da classe. Métodos não suportados pela API
+deverão manter a implementação padrão vazia.
+
+O diagrama de classes parcial dessa
+solução é apresentado na figura \ref{fig:strategy_uml}. Nesse diagrama, além
+das classes já citadas, \texttt{CompatHelper} é uma classe auxiliar responsável,
+entre outre coisas, por criar a estratégia concreta de acordo com a versão da API
+do dispositivo, conforme mostra a figura \ref{fig:strategy}. \texttt{Cliente} representa um objeto qualquer
+que necessite usar os serviços providos por uma das estratégias. Existem também outras
+6 implementações concretas de \texttt{Compat}, genericamente representados no diagrama por
+\texttt{CompatV\_N}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{imagens/strategy_uml.png}
+\caption{Diagrama de classes parcial da solução adotada por AnkiDroid}
+\label{fig:strategy_uml}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{imagens/strategy.png}
+\caption{Criação de objetos concretos no padrão Strategy definida pela versão da API}
+\label{fig:strategy}
+\end{figure}
+
+K-9 Mail especificou duas subclasses de \texttt{WebViewCompat}, uma que será instanciada com API’s inferiores a 21 e a outra para as demais.
+
+Um aspecto chave no padrão \textit{Strategy} é a seleção do objeto concreto.
+No exemplo apresentado, tal seleção ocorre em tempo de execução e no momento da
+criação do objeto. Para uso dessa solução é necessário, de alguma forma, que a
+aplicação seja capaz de pelo menos indicar o objeto a ser criado. Em alguns situações,
+isso não é possível, impedindo o  tratamento da variabilidade na criação do objeto,
+sendo necessário utilizar outra técnica. Na plataforma Android, isso geralmente
+ocorre com elementos de interface gráfica, que herdam da classe \texttt{View} e
+são instanciados pela própria plataforma.
+
+Para essa situação, Telegram e c:geo utilizaram o padrão de projeto \texttt{Proxy}.
+A figura \ref{fig:proxy_package_uml} apresenta um diagrama parcial de pacote e
+classe da implementação do Telegram.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.75\textwidth]{imagens/proxy_package_uml.png}
+\caption{Diagrama de pacote e classes do padrão Proxy no Telegram}
+\label{fig:proxy_package_uml}
+\end{figure}
+
+
+Telegram definiu 4 classes \textit{proxies}, organizadas no pacote \texttt{AnimationCompat}.
+Essas 4 classes são equivalente à classe \texttt{android.view.View}, que teve
+métodos e comportamentos adicionados na versão 11 da biblioteca, e outras 3 classes
+do pacote \texttt{android.animator}, que também só existe a partir da versão 11 da API.
+O objetivo desse conjunto de classes é prover animações para objetos. Quando em
+execução em um dispositivo com versão da API igual ou superior a 11, as classes
+\textit{proxies} farão chamadas às classes do próprio sistema, caso contrário,
+serão chamadas classes do pacote \texttt{animation}, do próprio Telegram. 
+
+Tomando como exemplo objetos da classe \texttt{View}, a figura \ref{fig:exemplo_view_proxy}
+apresenta uma sequencia de chamadas de métodos. Quando é necessário acessar um
+método qualquer a classe cliente deverá acessar \texttt{ViewProxy} (1),  que
+verificará a versão da API e fará a chamada adequada, seja para classe
+\texttt{View10} ou para o próprio objeto alvo (2.a ou 2.b).
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{imagens/exemplo_view_proxy.png}
+\caption{Diagrama de pacote e classes do padrão Proxy no Telegram}
+\label{fig:exemplo_view_proxy}
+\end{figure}
+
+Nessa aplicação do padrão \textit{Proxy}, existem duas importantes alterações em
+relação ao seu uso mais comum:
+\begin{itemize}
+    \item A classe cliente é responsável por fornecer ao \textit{proxy} o objeto
+        que será encapsulado (no exemplo, \texttt{cell.photoimage});
+    \item Embora os \textit{proxies} possuam os mesmos métodos que o objeto real,
+    eles não implementam a mesma interface Java, no sentido do uso da palavra-chave \texttt{extends}.
+\end{itemize}
+
+Esse solução também se fez necessário pelo fato do Telegram ter reimplementado os
+recursos de animação, como foi detalhado na seção \ref{sec:reimplementacao},
+e não estar usando pacotes de compatibilidade.
+
+c:geo utilizou dois padrões de projeto: \textit{Null Object} e \textit{Decorator}.
+Para o \textit{Null Object} foram definidos 3 elementos para cada versão da API
+a qual se deseja oferecer suporte: (i) uma interface com os métodos; (ii) uma
+classe que implementa essa interface e; (iii) uma outra que também implementa mas
+os seus metodos nada fazem, é o “null object”.
+
+Essa estrutura é encapsulada para as classes clientes em uma classe \texttt{Compatibility},
+responsável por instanciar os objetos, receber a chamada do cliente e delegar para
+o objeto. O diagrama de classe dessa solução é apresentado na figura \ref{fig:null_object}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.6, angle=90]{imagens/null_object.png}
+\caption{Digrama de classes do padrão Null Object no c:geo}
+\label{fig:null_object}
+\end{figure}
+
+O padrão \textit{Decorator} é utilizado para permitir a alteração do tema de
+\textit{activities} em versões da API anteriores a 11. Neste caso, a classe decoradora
+\texttt{ContextThemeWrapper} é fornecida pela própria API. Nas versões superiores
+ou igual a 11, essa modificação de tema já é disponível nativamente.
+A figura \ref{fig:decorator} mostra uma adaptação desse código.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{imagens/decorator.png}
+\caption{Utilização do padrão Decorator}
+\label{fig:decorator}
+\end{figure}
+
+A tabela \ref{tab:criterios_padroes} sintetiza os valores obtidos para os padrçoes de projeto segundo o 
+framework de comparação. 
+
+\begin{table}[ht]
+\centering
+\caption{Síntese dos padrões de projeto segundo o framework de comparação}
+\label{tab:criterios_padroes}
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Critério de Avaliação}}                                                    & \multicolumn{1}{c|}{\textbf{Valor obtido}}                                                                                         \\ \hline
+Tipo de Variabilidade                                                                                   & \begin{tabular}[c]{@{}l@{}}Positivo (Decorator),\\ Ambos(Strategy, Null Object, Proxy)\end{tabular}                                \\ \hline
+Variabilidade na estrutura                                                                              & Oferece suporte (Decorator)                                                                                                        \\ \hline
+Variabilidade no comportamento                                                                          & Oferece suportada (Decorator, Strategy, Null Object, Proxy)                                                                        \\ \hline
+Granularidade                                                                                           & \begin{tabular}[c]{@{}l@{}}Grossa(Decorator, Strategy, Proxy),\\ Fina (Null Object)\end{tabular}                                   \\ \hline
+Tempo de ligação                                                                                        & \begin{tabular}[c]{@{}l@{}}Execução (Decorator, Strategy, Null Object),\\ Compilação (Proxy)\end{tabular}                          \\ \hline
+Reusabilidade                                                                                           & Alta (Decorator, Strategy, Null Object)                                                                                          \\ \hline
+Legibilidade                                                                                            & \begin{tabular}[c]{@{}l@{}}Baixo impacto(Decorator, Strategy),\\ Médio impacto (Proxy),\\ Alto impacto (Null Object)\end{tabular} \\ \hline
+Desempenho                                                                                              & \begin{tabular}[c]{@{}l@{}}Baixo impacto(Decorator, Strategy, Null Object),\\ Médio Impacto (Proxy)\end{tabular}                   \\ \hline
+Tamanho da aplicação                                                                                    & \begin{tabular}[c]{@{}l@{}}Baixo impacto(Decorator),\\ Médio impacto (Strategy, Null Object, Proxy)\end{tabular}                   \\ \hline
+\begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular} & Não oferece suporte                                                                                                                \\ \hline
+\end{tabular}
+\end{table}
+
+Como alguns padrões de projeto foram identificados, é necessário que a avaliação
+seja feita separadamente. Cada padrão possui suas propriedades. O padrão \textit{Proxy}
+utilizado levou a uma grande dispersão do código verificador da necessidade do \textit{proxy},
+ocorrendo dentro de todos os métodos do próprio \textit{proxy}. Também houve um
+detalhe importante na forma implementação entre as duas aplicações que o utilizaram:
+no Telegram, essa implementação está no código da própria aplicação, enquanto no
+c:geo em uma biblioteca de terceiros, estaticamente incorporada através do código
+fonte. As demais aplicações não tiveram necessidade dessa solução porque ela é
+usada para prover suporte às aplicações em execução sob a versão 9 da API.
+
+A solução adotada pela aplicação AnkiDroid ao utilizar o padrão \textit{Strategy}
+mostrou-se bastante efetiva, onde cada classe  que representa uma “estratégia concreta”
+implementa especificamente os métodos que sofreram alteração entre as versões,
+herdando os demais métodos das versões imediatamente anterior.
+A aplicação K-9 Mail também utilizou \textit{Strategy}, mas não há relação de
+herança entre as classes “estratégia” e elas são somente duas.
+
+O padrão \textit{Strategy} também poderia ter sido utilizado na aplicação c:geo,
+no entanto, foi escolhido o padrão \textit{Null Object}. Essa solução é de baixa
+legibilidade, sendo necessária a implementação de 3 elementos para cada versão da
+API a ser oferecido suporte: (i) uma interface com os métodos; (iii) uma classe
+que implementa essa interface e; (iii) outra classe que também implementa essa interface
+mas os seus metodos nada fazem, é o “null object”.
+Além disso, como as interfaces são diferentes, não é possível usar polimorfismo,
+e a programação é específica para cada implementação, demonstrando assim ser uma
+solução dificil de manter. Atualmente, 3 versões foram suportadas: 11, 13 e 19.
+
+Por fim, o padrão \textit{Decorator} utilizado pela aplicação c:geo foi beneficiado
+pelo fato da classe decoradora ser da própria biblioteca padrão do Android,
+sendo necesário apenas o acréscimo no código da verificação se será ou não
+necessário fazer a decoração.
+
 \subsection{Mudanças na API com Maior Impacto no Desenvolvimento}
 \label{sec:mudancas}
 
