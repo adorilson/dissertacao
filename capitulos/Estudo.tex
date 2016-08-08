@@ -291,7 +291,7 @@ Para verificar o impacto no tamanho da aplicação, realizamos uma grande refato
 em uma das aplicações, o Telegram. Eliminamos todas as EC condicionadas a versão da
 API, deixando o mesmo com suporte apenas para versão 23 da plataforma. Um total
 de 145 arquivos foram editados ou apagados. Comparando os tamanhos dos arquivos
-APK dessa versão e da versão com suporte a partir da API 9 não foi verificada
+APK (Android Package) dessa versão e da versão com suporte a partir da API 9 não foi verificada
 diferença alguma. Portanto, essa técnica tem baixo impacto no tamanho das aplicações.
 
 EC não oferece suporte para implementação modular de requisitos transversais.
@@ -480,13 +480,6 @@ Essa estrutura é encapsulada para as classes clientes em uma classe \texttt{Com
 responsável por instanciar os objetos, receber a chamada do cliente e delegar para
 o objeto. O diagrama de classe dessa solução é apresentado na figura \ref{fig:null_object}.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.6, angle=90]{imagens/null_object.png}
-\caption{Digrama de classes do padrão Null Object no c:geo}
-\label{fig:null_object}
-\end{figure}
-
 O padrão \textit{Decorator} é utilizado para permitir a alteração do tema de
 \textit{activities} em versões da API anteriores a 11. Neste caso, a classe decoradora
 \texttt{ContextThemeWrapper} é fornecida pela própria API. Nas versões superiores
@@ -499,8 +492,17 @@ A figura \ref{fig:decorator} mostra uma adaptação desse código.
 \label{fig:decorator}
 \end{figure}
 
-A tabela \ref{tab:criterios_padroes} sintetiza os valores obtidos para os padrçoes de projeto segundo o 
-framework de comparação. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6, angle=90]{imagens/null_object.png}
+\caption{Digrama de classes do padrão Null Object no c:geo}
+\label{fig:null_object}
+\end{figure}
+
+
+A tabela \ref{tab:criterios_padroes} sintetiza os valores obtidos para os padrões
+de projeto segundo o framework de comparação. 
 
 \begin{table}[ht]
 \centering
@@ -557,13 +559,247 @@ necessário fazer a decoração.
 \subsection{Mudanças na API com Maior Impacto no Desenvolvimento}
 \label{sec:mudancas}
 
-\subsection{Tratamento de  Múltiplas Telas}
+A maioria das variações ocorridas ao longo da evolução da API e que sofreram algum
+tipo de tratamento pelas aplicações analisadas dizem respeito à interface gráfica.
+Tanto em relação a animações \texttt{pacote android.animator} durante alguma ação
+quanto para utilizar a API de fragmentos, que foram adicionados ao Android apenas
+na versão 11. Para esses casos, o mais comum é o uso do pacote de compatibilidade.
+
+O pacote \texttt{android.animator} foi o recurso implementado pelo Telegram citado
+na seção \ref{sec:reimplementacao}. Além disso, um dos elementos utilizados por
+Telegram e somente por ele foi a \textit{tag} XML (EXtensible Markup Language) \texttt<vector>,
+disponibilizada
+na versão 21 e que permite a definição de uma imagem vetorial, que será renderizada
+em tempo de execução pela plataforma em adequação às dimensões da tela. O uso desse
+recurso, simplifica o desenvolvimento, já que não será necessário criar diversas
+imagens repetidas em função das diferentes telas, e na diminuição do tamanho dos
+arquivos APKs, já que essas imagens serão criadas em tempo de execução.
+
+Firefox utilizou dois pacotes que só foram adicionados em versões da plataforma
+superiores a versão mínima do aplicativo: \texttt{android.hardware.input} e
+\texttt{android.print}. Firefox é também a aplicação que mais utiliza recursos
+de versões posteriores à mínima necessária, apesar de, juntamente com K-9 Mail,
+possuir a maior versão mínima (15) dentre as aplicações analisadas.
+
+O elemento mais utilizado por aplicações é uma tag XML para definição da família
+da fonte de objetos da classe \texttt{TextView}: \texttt{<android:fontFamily>}.
+Ela ocorreu em 3 aplicações. Um outro que ocorreu em mais de uma aplicação é o
+método \texttt{android.app.AlarmManager \#setExact} que foi adicionado na versão
+19 para tratar um comportamento do sistema de relógio do Android que sofreu
+alterações nessa versão. É utilizado por Firefox e Zmanim, este último muito
+dependente do relógio do dispositivo.
+
+Foi identificada uma grande granularidade de recursos tratados entre as aplicações,
+ou seja, muitas classes e métodos por aplicação e pouca repetição de uma aplicação
+para outra.
+ 
+Dois motivos podem ter contribuído para isso:
+\begin{itemize}
+    \item A versão mínima das aplicações: metade das aplicações analisadas possuem
+        versao mínima superior a 11, quando foi introduzida a API de fragmentos e
+        vários outros novos recursos comuns. Além disso, elementos dos pacotes
+        de compatibilidade não foram identificados nessa análise;
+   \item Uso da regra Lint NewAPI para análise: ao usar essa regra, elementos
+        mais recentes e comuns, mas ainda assim inferiores a versão mínima da
+        aplicação não foram identificados. Por exemplo, a API de fragmentos em
+        aplicações com versão mínima igual ou superior a 11.
+\end{itemize}
+
+
+Para uma análise mais precisa é necessário considerar as alterações da API
+utilizada pelas aplicações e que sejam anteriores a sua versão mínima e os
+elementos do pacote de compatibilidade utilizados. Outro possível fator dessa
+diversidade é a variedade de categorias das aplicações analisadas. Foram 8
+aplicações de 6 categorias.
+
+\subsection{Tratamento de Múltiplas Telas}
 \label{sec:multiplas_telas}
+
+Para oferecer um suporte adequados para diferentes dispositivos, as aplicações
+devem: (i) desenhar layouts otimizando o espaço disponível; e (ii) disponibilizar
+imagens de tamanhos diferentes, de forma que não necessitam ser redimensionadas
+pela plataforma em tempo de execução.
+
+Das aplicações analisadas, duas delas - c:geo e Zmanim - estão disponíveis apenas
+para celulares, sendo desnecessários \textit{layouts} otimizados e outras duas - Firefox
+e K-9 Mail - não possuem tal recurso. No entanto, apenas Zmanim não disponibilizou
+imagens de tamanhos diversos.
+
+Embora o arquivo contendo a descrição do \textit{layout} seja carregada pela própria
+plataforma, sendo transparente para a aplicação, em algumas situações pode ser
+necessário a verificação explícita do tipo de dispositivo, em especial para
+distinguir entre celular e \textit{tablet}. Essa verificação foi detectada no Firefox
+e no Telegram.
+
+Foi possível executar quatro aplicações em dois aparelhos reais diferentes,
+um celular de tela pequena com versão 2.3.4 do Android (API 10) e um \textit{tablet} com
+versão Android 4.1.1 (API 16). Em duas aplicações - AnkiDroid e Telegram  - foi perceptível
+o layout diferente em função dos espaços disponíveis. AntennaPod e K-9 Mail possuem
+o mesmo layout em ambos aparelhos. Não foi possível fazer essa análise com mais
+aplicações porque ou não eram compativeis com o tipo de aparelho, ou com a versão
+do Android. Tal tipo de restrição oferecida pela plataforma, ajuda a evitar
+interrupções no uso da aplicação, no caso de versões da API, ou que o usuário
+tenha uma experiência de uso não desejada para o caso dos dispositivos.
+
+A tabela \ref{tab:multiplos_pacotes} resume o descrito acima.
+
+\begin{table}[ht]
+\centering
+\caption{Resumos do tratamento das aplicações em relação a telas de tamanhos diferentes}
+\label{tab:multiplos_pacotes}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Aplicação} & \textbf{\begin{tabular}[c]{@{}c@{}}Aparelhos\\ Alvo\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Layouts\\ Especializados\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Imagens\\ Especializadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Verificação\\ Explicita\end{tabular}} \\ \hline
+AnkiDroid          & Ambos                                                             & X                                                                         & X                                                                         &                                                                          \\ \hline
+AntennaPod         & Ambos                                                             &                                                                           & X                                                                         &                                                                          \\ \hline
+c:geo              & Celular                                                           & Não aplicável                                                             & X                                                                         & Não aplicável                                                            \\ \hline
+Firefox            & Ambos                                                             &                                                                           & X                                                                         & X                                                                        \\ \hline
+Google I/O         & Ambos                                                             & X                                                                         & X                                                                         &                                                                          \\ \hline
+K-9 Mail           & Ambos                                                             &                                                                           & X                                                                         &                                                                          \\ \hline
+Telegram           & Ambos                                                             & X                                                                         & X                                                                         & X                                                                        \\ \hline
+Zmamin             & Celular                                                           & Não aplicável                                                             &                                                                           & Não Aplicável                                                            \\ \hline
+\end{tabular}
+\end{table}
+
+Duas aplicações, c:geo e Zmanim, sempre serão instaladas em dispositivos de telas
+com tamanhos bem parecidos, portanto, não há tratamento em relação a esse quesito.
+Para a aplicação c:geo isso é da natureza de  aplicações de \textit{geocaching} \cite{Ohara2008},
+que pressupõe uma maior mobilidade. O que não acontece com a aplicação Zmanim,
+que poderia ser beneficiada com uma maior base de usuários caso fosse possível
+a instalação em \textit{tablets}.
+
+Três aplicações - AnkiDroid, AntennaPod e Google I/O -  compõem o \textit{layout}
+da aplicação por meio do arranjo de fragmentos. No entanto, apenas em AnkiDroid
+e Google I/O esse arranjo é baseado no tamanho da tela. Em AntennaPod, os
+fragmentos são apenas subsituídos quando o usuário acessa funções diferentes do
+aplicativo, não se beneficiando de telas maiores.
+
+Firefox e K-9 Mail não utilizam fragmentos. No Firefox isso pode ser explicado
+também pelo objetivo da aplicação. Um navegador contém apenas uma região de
+conteúdo ocupando toda a tela é o comportamento padrão e já esperando pelos
+usuários. A aplicação K-9 Mail, assim como AntennaPod, poderia se beneficiar de
+telas de tamanhos diferentes e propiciar uma melhor experiência para seus usuários.
 
 \subsection{Múltiplos Pacotes para Instalação}
 \label{sec:multiplos_pacotes}
 
+Embora seja possível um único pacote de instalação prover suporte para diversos
+dispositivos, e esse seja o recomendado \cite{multiple_apks}, a Play Store
+permite que os distribuidores das aplicações enviem pacote customizados e especializados.
+
+Quando o usuário faz uma busca diretamente do aparelho, a Play Store identifica as
+configurações do dispositivo e disponibiliza para instalação o pacote apropriado.
+As configurações atualmente possíveis para customização dos APKs são:
+\begin{itemize}
+    \item diferentes formatos de compressão para textura OpenGL;
+    \item diferentes tamanhos e densidades de telas;
+    \item diferentes recursos de hardware dos aparelhos;
+    \item diferentes versões da plataforma;
+    \item diferentes arquiteturas da CPU (ARM, x86 e MIPS, entre outras)
+\end{itemize}
+
+Somente 4 aplicações disponibilizam múltiplos pacotes para instalação: AntennaPod,
+Firefox, K-9 Mail e Telegram. No entanto, analisando o código fonte e o processo
+de compilação de tais aplicações não foram encontradas estruturas que levassem 
+criação de diferentes pacotes. Possivelmente, os desenvolvedores optaram por
+atualizar a versão mínima da plataforma, evitando ter que manter compatibilidade
+com dispositivos mais antigos, mas deixaram esses pacotes como forma de ainda
+atender tais dispositivos.
+
+Um possível fator para o baixo uso de múltiplos pacotes é sua complexidade de
+desenvolvimento e publicação, sendo preferível um único pacote que ofereça suporte
+para todos os dispositivos. Uso de múltiplos pacotes é indicado quando um único
+APK fica maior que 100MB.
+
 \subsection{Ferramentas Úteis para Tratar Variabilidades}
 \label{sec:ferramentas}
+
+Algumas ferramentas oficiais, integradas ao Android Studio, podem ser bastante úteis
+para gerencia de variabilidades.
+
+\subsubsection{Android Library}
+Android Library é um projeto Android que possui a mesma estrutura de uma aplicação,
+incluindo código-fonte, arquivos de recursos, e um arquivo manifesto. No entanto,
+é compilado para um Android Archive (AAR) e não um Android Package (APK),
+e que será utilizado como uma dependência para uma aplicação Android.
+
+Isto é útil quando se deseja:
+\begin{itemize}
+    \item construir diversas aplicações que usem alguns dos mesmos componentes,
+        como atividades, serviços ou layouts;
+    \item construir aplicações que serão distribuídas em múltiplas APK com
+        funcionalidade diferentes mais que utilizam os mesmos componentes básicos.
+\end{itemize}
+
+\subsubsection{Build Variant}
+\textit{Build Variant} é um recurso do sistema de construção de aplicações Android
+que permite a criação de diferentes versões de uma mesma aplicação. Existe dois
+tipos motivos principais para uso desse recurso:
+\begin{enumerate}
+    \item Diferentes versões da mesma aplicação. Por exemplo, uma versão paga e
+        outra gratuita.
+    \item Mesma aplicação distribuída em múltiplos APK no Play Store.
+    \item Uma combinação de 1 e 2.
+\end{enumerate}
+
+Cada build variant é composto de dois elementos: \textit{product flavor} e
+\textit{build type}. Enquanto \textit{build type} está associado a configurações
+de compilação e empacotamento e opções de depuração, um \textit{product flavor}
+define uma versão customizada da aplicação. Um único projeto pode conter
+diferentes \textit{product flavors}.
+
+Tipicamente, são definidos dois \textit{build types} por projetos (\textit{debug}
+e \textit{release}) e
+considerando uma aplicação com 2 \textit{product flavor} (Flavor1 e Flavor2),
+4 \textit{build variants} seriam criadas:
+\begin{enumerate}
+    \item Flavor1 - debug
+    \item Flavor1 - release
+    \item Flavor2 - debug
+    \item Flavor2 - release
+\end{enumerate}
+
+O objetivo primário do \textit{build variant} é a criação de diferentes APKs
+para o mesmo projeto, em oposição a dois projetos compartilhando a mesma Android Library.
+
+\subsubsection{Análise do uso pelas aplicações}
+A tabela \ref{tab:uso_ferramentas} indica quais ferramentas são utilizadas pelas
+aplicações analisadas. Para Android Library, foi considerado a existência de qualquer
+módulo do projeto configurado como library. Para Build Variant, foi verificada a
+existência da opção \texttt{productFlavors} no arquivo \texttt{build.gradle} da
+aplicação configurado com algum \textit{product flavor} definido.
+
+\begin{table}[ht]
+\centering
+\caption{Uso das ferramentas por aplicação}
+\label{tab:uso_ferramentas}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Aplicação} & \textbf{Android Library} & \textbf{Build Variant} \\ \hline
+AnkiDroid          & X                        &                        \\ \hline
+AntennaPod         & X                        &                        \\ \hline
+c:geo              & X                        & X                      \\ \hline
+Firefox            &                          & X                      \\ \hline
+Google I/O         &                          &                        \\ \hline
+K-9 Mail           & X                        &                        \\ \hline
+Telegram           &                          &                        \\ \hline
+Zmamin             &                          & X                      \\ \hline
+\end{tabular}
+\end{table}
+
+O conceito por trás de Android Library, uso de bibliotecas de código, é comum na
+engenharia de software. Encontramos módulos do tipo Android Library em 4 aplicações:
+AnkiDroid, AntennaPod, c:geo e K-9 Mail.
+A aplicação Zmanim não utiliza esse tipo de módulo mas utiliza outras bibliotecas
+Java de propósito mais geral, não específica para Android.
+
+Build Variant é uma tecnologia relativamente nova, e para estruturar uma aplicação
+com esse recurso é necessário experiencia do engenheiro de software. Motivos pelo
+qual apenas 3 aplicações utilizam tal recurso: c:geo, Firefox e Zmanim.
+Ainda assim, Firefox utiliza apenas
+para se beneficiar de um recurso existente na versão 21 do Android que permite
+uma compilação mais rápida. Além disso, como foram avaliadas apenas aplicações
+\textit{open-source} e gratuitas, não faz sentidos versões “demo” e “premium”,
+o que justificaria um maior uso de \textit{build variants}.
 
 
