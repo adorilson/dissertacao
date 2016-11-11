@@ -399,7 +399,7 @@ compatibilidade.
 \begin{table}[ht]
 \centering
 \caption{Descrição de reimplementação de recurso segundo o framework de comparação}
-\label{fig:criterios_reimplementacao}
+\label{tab:criterios_reimplementacao                                                                                                                                                	}
 \begin{tabular}{|l|l|}
 \hline
 \multicolumn{1}{|c|}{\textbf{Critério de Avaliação}}                                                    & \multicolumn{1}{c|}{\textbf{Valor obtido}} \\ \hline
@@ -559,15 +559,15 @@ de projeto segundo o framework de comparação.
 \begin{tabular}{|l|l|}
 \hline
 \multicolumn{1}{|c|}{\textbf{Critério de Avaliação}}                                                    & \multicolumn{1}{c|}{\textbf{Valor obtido}}                                                                                         \\ \hline
-Tipo de Variabilidade                                                                                   & \begin{tabular}[c]{@{}l@{}}Positivo (Decorator),\\ Ambos(Strategy, Null Object, Proxy)\end{tabular}                                \\ \hline
+Tipo de Variabilidade                                                                                   & \begin{tabular}[c]{@{}l@{}}Positivo (Decorator),\\ Ambos (Strategy, Null Object, Proxy)\end{tabular}                                \\ \hline
 Variabilidade na estrutura                                                                              & Oferece suporte (Decorator)                                                                                                        \\ \hline
-Variabilidade no comportamento                                                                          & Oferece suportada (Decorator, Strategy, Null Object, Proxy)                                                                        \\ \hline
-Granularidade                                                                                           & \begin{tabular}[c]{@{}l@{}}Grossa(Decorator, Strategy, Proxy),\\ Fina (Null Object)\end{tabular}                                   \\ \hline
+Variabilidade no comportamento                                                                          & Oferece suporte (Decorator, Strategy, Null Object, Proxy)                                                                        \\ \hline
+Granularidade                                                                                           & \begin{tabular}[c]{@{}l@{}}Grossa (Decorator, Strategy, Proxy),\\ Fina (Null Object)\end{tabular}                                   \\ \hline
 Tempo de ligação                                                                                        & \begin{tabular}[c]{@{}l@{}}Execução (Decorator, Strategy, Null Object),\\ Compilação (Proxy)\end{tabular}                          \\ \hline
 Reusabilidade                                                                                           & Alta (Decorator, Strategy, Null Object)                                                                                          \\ \hline
-Legibilidade                                                                                            & \begin{tabular}[c]{@{}l@{}}Baixo impacto(Decorator, Strategy),\\ Médio impacto (Proxy),\\ Alto impacto (Null Object)\end{tabular} \\ \hline
-Desempenho                                                                                              & \begin{tabular}[c]{@{}l@{}}Baixo impacto(Decorator, Strategy, Null Object),\\ Médio Impacto (Proxy)\end{tabular}                   \\ \hline
-Tamanho da aplicação                                                                                    & \begin{tabular}[c]{@{}l@{}}Baixo impacto(Decorator),\\ Médio impacto (Strategy, Null Object, Proxy)\end{tabular}                   \\ \hline
+Legibilidade                                                                                            & \begin{tabular}[c]{@{}l@{}}Baixo impacto (Decorator, Strategy),\\ Médio impacto (Proxy),\\ Alto impacto (Null Object)\end{tabular} \\ \hline
+Desempenho                                                                                              & \begin{tabular}[c]{@{}l@{}}Baixo impacto (Decorator, Strategy, Null Object),\\ Médio Impacto (Proxy)\end{tabular}                   \\ \hline
+Tamanho da aplicação                                                                                    & \begin{tabular}[c]{@{}l@{}}Baixo impacto (Decorator),\\ Médio impacto (Strategy, Null Object, Proxy)\end{tabular}                   \\ \hline
 \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular} & Não oferece suporte                                                                                                                \\ \hline
 \end{tabular}
 \end{table}
@@ -617,11 +617,11 @@ necessário fazer a decoração.
 
 A maioria das variações ocorridas ao longo da evolução da API e que sofreram algum
 tipo de tratamento pelas aplicações analisadas dizem respeito à interface gráfica.
-Tanto em relação a animações \texttt{pacote android.animator} durante alguma ação
+Tanto em relação a animações pacote \texttt{android.animation} durante alguma ação
 quanto para utilizar a API de fragmentos, que foram adicionados ao Android apenas
 na versão 11. Para esses casos, o mais comum é o uso do pacote de compatibilidade.
 
-O pacote \texttt{android.animator} foi o recurso implementado pelo Telegram citado
+O pacote \texttt{android.animation} foi o recurso implementado pelo Telegram citado
 na seção \ref{sec:reimplementacao}. Além disso, um dos elementos utilizados por
 Telegram e somente por ele foi a \textit{tag} XML (EXtensible Markup Language) \texttt<vector>,
 disponibilizada
@@ -652,7 +652,7 @@ para outra.
 Dois motivos podem ter contribuído para isso:
 \begin{itemize}
     \item A versão mínima das aplicações: metade das aplicações analisadas possuem
-        versao mínima superior a 11, quando foi introduzida a API de fragmentos e
+        versão mínima superior a 11, quando foi introduzida a API de fragmentos e
         vários outros novos recursos comuns. Além disso, elementos dos pacotes
         de compatibilidade não foram identificados nessa análise;
    \item Uso da regra Lint NewAPI para análise: ao usar essa regra, elementos
@@ -671,7 +671,7 @@ aplicações de 6 categorias.
 \subsection{Tratamento de Múltiplas Telas}
 \label{sec:multiplas_telas}
 
-Para oferecer um suporte adequados para diferentes dispositivos, as aplicações
+Para oferecer um suporte adequado para diferentes dispositivos, as aplicações
 devem: (i) desenhar layouts otimizando o espaço disponível; e (ii) disponibilizar
 imagens de tamanhos diferentes, de forma que não necessitam ser redimensionadas
 pela plataforma em tempo de execução.
@@ -701,7 +701,7 @@ A tabela \ref{tab:multiplos_pacotes} resume o descrito acima.
 
 \begin{table}[ht]
 \centering
-\caption{Resumos do tratamento das aplicações em relação a telas de tamanhos diferentes}
+\caption{Resumo do tratamento das aplicações em relação a telas de tamanhos diferentes}
 \label{tab:multiplos_pacotes}
 \begin{tabular}{|l|c|c|c|c|}
 \hline
@@ -784,7 +784,7 @@ Isto é útil quando se deseja:
     \item construir diversas aplicações que usem alguns dos mesmos componentes,
         como atividades, serviços ou layouts;
     \item construir aplicações que serão distribuídas em múltiplas APK com
-        funcionalidade diferentes mais que utilizam os mesmos componentes básicos.
+        funcionalidade diferentes mas que utilizam os mesmos componentes básicos.
 \end{itemize}
 
 \subsubsection{Build Variant}
@@ -821,12 +821,12 @@ para o mesmo projeto, em oposição a dois projetos compartilhando a mesma Andro
 \subsubsection{Análise do uso pelas aplicações}
 A tabela \ref{tab:uso_ferramentas} indica quais ferramentas são utilizadas pelas
 aplicações analisadas. Para Android Library, foi considerado a existência de qualquer
-módulo do projeto configurado como library. Para Build Variant, foi verificada a
+módulo do projeto configurado como \texttt{library}. Para Build Variant, foi verificada a
 existência da opção \texttt{productFlavors} no arquivo \texttt{build.gradle} da
 aplicação configurado com algum \textit{product flavor} definido.
 
 \begin{table}[ht]
-\centering
+\centeringx
 \caption{Uso das ferramentas por aplicação}
 \label{tab:uso_ferramentas}
 \begin{tabular}{|l|c|c|}
@@ -850,12 +850,12 @@ A aplicação Zmanim não utiliza esse tipo de módulo mas utiliza outras biblio
 Java de propósito mais geral, não específica para Android.
 
 Build Variant é uma tecnologia relativamente nova, e para estruturar uma aplicação
-com esse recurso é necessário experiencia do engenheiro de software. Motivos pelo
+com esse recurso é necessário experiência do engenheiro de software. Motivos pelo
 qual apenas 3 aplicações utilizam tal recurso: c:geo, Firefox e Zmanim.
 Ainda assim, Firefox utiliza apenas
 para se beneficiar de um recurso existente na versão 21 do Android que permite
 uma compilação mais rápida. Além disso, como foram avaliadas apenas aplicações
-\textit{open-source} e gratuitas, não faz sentidos versões “demo” e “premium”,
+\textit{open-source} e gratuitas, não faz sentido versões “demo” e “premium”,
 o que justificaria um maior uso de \textit{build variants}.
 
 
