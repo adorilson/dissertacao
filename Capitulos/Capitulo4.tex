@@ -1,0 +1,27 @@
+% Capíulo 4
+\chapter{Estudo Empírico} \label{ch:estudo-empirico}
+
+Este capítulo descreve o estudo empírico a ser realizado, que visa avaliar o conjunto de visualizações aplicando a abordagem em softwares \textit{open source}. As próximas subseções apresentam os objetivos, questões de pesquisa, uma breve descrição das aplicações e os procedimentos a serem adotados.
+
+\section{Objetivos e Questões de Pesquisa} \label{sec:objetivos-questoes-pesquisa}
+
+O objetivo do estudo empírico é obter retorno sobre a capacidade da ferramenta de representar visualmente as evoluções do desempenho dos cenários e métodos identificados pelo \textit{PerfMiner}, e coletar \textit{feedback} da equipe de desenvolvimento dos sistemas envolvidos com relação à utilidade das visualizações em seu processo de desenvolvimento. Além disso, caso a equipe utilize alguma ferramenta de medição de desempenho existente no mercado, um \textit{feedback} sobre a comparação entre as duas ferramentas também será coletado. As questões de pesquisa \abrv[QP -- Questões de Pesquisa]{(QP)}que guiam este estudo são:
+
+\textbf{QP1. As visualizações propostas conseguem exibir adequadamente as degradações de desempenho encontradas nas aplicações open source analisadas?} A partir das análises realizadas nas versões dos sistemas apresentados adiante, a expectativa é que o conjunto de visualizações seja capaz de mostrar os métodos responsáveis pela degradação de desempenho dos cenários entre essas versões. A visualização será considerada adequada se possuir baixa complexidade, possuir diferentes níveis de detalhes e fizer bom uso de interações e metáforas visuais para ajudar na identificação da degradação. É esperado que o usuário encontre, de maneira clara e direta, o desvio e, caso deseje, obtenha mais informações sobre ele.
+
+\textbf{QP2. Os desenvolvedores estão cientes das degradações apresentadas pelas visualizações?} Para responder a essa questão de pesquisa, serão elaborados questionários a serem aplicados com os desenvolvedores e arquitetos dos sistemas analisados. Para tanto, a abordagem será disponibilizada na nuvem com dados dos sistemas que foram analisados, os quais estarão disponíveis para acesso. Os questionários serão elaborados com o intuito de não induzir nenhum viés aos participantes. Dessa forma, pretende-se elaborar questionários imparciais de modo a não comprometer os resultados das respostas.
+
+\section{Sistemas e Procedimentos} \label{sec:sistemas-procedimentos}
+
+Neste estudo de caso serão usados três sistemas \textit{open source}: (i) o Jetty \cite{Jetty2016} é um \textit{framework} que provê um servidor web e contêiner servlet Java. É parte do Eclipse Project; (ii) o Wicket \cite{ApacheWi} é um \textit{framework} para aplicações web desenvolvido pela Apache Foundation; (iii) o Netty \cite{Netty2016} é um \textit{framework} de aplicações de rede assíncrono orientado a eventos.
+
+Uma vez escolhidos os sistemas e as versões de cada um, os procedimentos adotados são os seguintes:
+\begin{enumerate}[(i)]
+	\item Os códigos-fonte dos sistemas a serem analisados são obtidos do repositório, para cada uma das versões a serem analisadas. Todos os testes de sistema são considerados como pontos de entrada de cenários. Para o cálculo do desvio de desempenho, o \textit{PerfMiner} não considera quaisquer desvios a partir de classes de teste, somente de classes do código-fonte da aplicação;
+	\item Os sistemas são configurados para dar suporte ao \textit{AspectJ} e são incluídas as bibliotecas do \textit{PerfMiner}, no entanto, sem qualquer alteração no código-fonte. Dessa forma, a análise dinâmica será executada no mesmo computador, sob as mesmas condições, para todos os sistemas. Para minimizar o impacto no resultado da análise, serviços essenciais do sistema operacional serão desativados;
+	\item Após a execução da análise dinâmica, o \textit{PerfMiner} executa testes estatísticos para determinar a relevância dos resultados obtidos para, então, criar e armazenar os artefatos de saída;
+	\item De posse dos artefatos de saída, é realizado um processamento em lote pertencente à extensão implementada. O processamento se assemelha ao descrito na figura \ref{fig:passos-2-3-grafo-chamadas}, no entanto, sem a atividade de enviar a resposta com o arquivo JSON. Após isso, todos os dados que dão suporte às três visualizações propostas estarão salvos no banco de dados QAV (figura \ref{fig:funcionamento-geral-visualizacoes});
+	\item Por fim, as visualizações serão acessadas a partir de um navegador web e serão verificados os resultados gerados.
+\end{enumerate}
+
+Nesse primeiro momento do estudo, a avaliação dos resultados é feita sem a participação dos desenvolvedores e arquitetos dos sistemas analisados. Em um segundo momento, as visualizações serão disponibilizadas em um serviço web na nuvem, como o Heroku\footnote{https://www.heroku.com/} ou OpenShift\footnote{https://www.openshift.com/}, para que os desenvolvedores e arquitetos possam acessar as visualizações através do navegador. A partir do uso da ferramenta por esses usuários, será possível coletar o \textit{feedback} através de questionários.

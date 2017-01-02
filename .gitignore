@@ -10,6 +10,7 @@
 *.fot
 *.cb
 *.cb2
+*.loab
 
 ## Intermediate documents:
 *.dvi
@@ -195,5 +196,6 @@ TSWLatexianTemp*
 
 # General files
 *~
+.DS_Store
 
 README.html
