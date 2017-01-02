@@ -1,82 +1,131 @@
 % Introdução
 \chapter{Introdução} \label{ch:introducao}
 
-Quando um avião decola do solo a partir de uma cidade de origem para uma cidade de destino, vários softwares presentes na aeronave auxiliam a tripulação durante o trajeto. Um deles é o \abrv[TCAS -- \textit{Traffic Collision Avoidance System}]{TCAS}II (\textit{Traffic Collision Avoidance System}), um sistema anticolisão que, através de dados obtidos das aeronaves presentes nas imediações, calcula o nível de ameaça de cada uma delas. O software, inclusive, pode realizar manobras alternativas se o risco de colisão for iminente \cite{Williamson1989}.
+Dispositivos móveis estão ficando cada vez mais populares e acessíveis para pessoas
+de diferentes poder aquisitivo ao redor do mundo \cite{Lhamas2014}. A plataforma
+Android é atualmente a mais popular para o desenvolvimento de aplicações móveis,
+ocupando mais de 80\% do mercado de sistemas operacionais para aplicações de
+dispositivos móveis \cite{jim2014}. Tal realidade cria uma demanda por customizações
+de aplicações para lidar com diferentes dispositivos, tais como tamanho de tela,
+bibliotecas de classes \abrv[API -- \textit{Application Programming Interface}]
+{API}(\textit{Application Programming Interface}), disponibilidade de poder de
+processamento e memória disponível, idiomas e necessidades específicas dos usuários.
+O Facebook, por exemplo, disponibiliza duas versões do seu aplicativo. A versão
+padrão é direcionada para os dispositivos mais modernos e a alternativa, chamada
+de Facebook Lite\footnote{Disponível em: https://play.google.com/store/apps/details?id=com.facebook.lite},
+para dispositivos mais antigos (que utilizam a versão 2.2 do Android.), que ocupa
+bem menos espaço de armazenamento, é mais eficiente no uso de dados móveis, pode
+ser carregada na memória do dispositivo mais rapidamente e funciona com conexões
+de Internet instáveis ou lentas. A existência de diferentes dispositivos para os
+quais a plataforma Android oferece suporte é conhecido como fragmentação, e isso
+se apresenta como um grande desafio para o Android, em relação a outras plataformas.
+Há um número considerável de dispositivos com versões antigas da API \cite{Gronli2014}.
+Diferentes versões da API é uma das variabilidades mais comuns na plataforma Android.
+Esse cenário leva os desenvolvedores de aplicações Android buscarem técnicas e
+metodologias que otimizem o desenvolvimento de versões da aplicação que melhor
+atendam às restrições e características de cada dispositivo.
 
-Existem também softwares para automóveis. Destes, pode ser citado o \abrv[ABS -- \textit{Anti-Lock Break System}]{ABS}(\textit{Anti-Lock Break System}), que calcula a maior força de frenagem possível a ser aplicada nas rodas, no entanto, sem deixa-las travar. O ABS melhora a eficiência dos freios, reduzindo a distância de parada do automóvel e evitando que a dirigibilidade seja perdida durante a frenagem \cite{burckhardt1989anti}.
+De fato, customizações em larga escala de aplicações são um requisito fundamental
+que vem sendo considerado por abordagens de engenharia de linhas de produtos de
+software  \cite{Alves2007} \cite{Alves2005}, direcionando esforços para a
+gerência de variabilidade no contexto de aplicações móveis. Estudos \cite{Dehlinger2011}
+indicam que o desenvolvimento de linhas de produtos de software para aplicações
+móveis é um desafio atual da engenharia de software, enquanto outros
+\cite{Linares-Vasquez2013} apontam que fazer uso de API propensas a mudanças e
+falhas pode ter um impacto negativo no sucesso de aplicações. A documentação oficial
+do Android \cite{GuiaAndroid} é rica em propor soluções para tais variabilidades,
+no entanto, a implementação dessas soluções pode sofrer variações. Cada equipe
+de desenvolvimento pode tomar decisões de projeto diferentes.
 
-Além de estar presente em aeronaves e automóveis, os softwares também podem ser encontrados em televisores, celulares, \textit{tablets}, computadores, \textit{smart} TVs e em outros dispositivos. Ademais, os softwares estão presentes nas mais diversas áreas, como medicina, educação física e direito. Tais exemplos reforçam e justificam a importância que as aplicações estão atualmente presentes no dia a dia da população, nas mais variadas atividades.
+Existe atualmente uma carência de estudos específicos sobre gerência de variabilidades
+em aplicações para plataforma Android. Sobretudo em relação ao suporte à múltiplas
+versões da API. Neste contexto, este trabalho apresenta uma caracterização de com
+o suporte a múltiplas versões da API é implementado por aplicações atuais e qual
+o impacto de tais soluções no desenvolvimento de aplicações reais na plataforma
+Android.
 
-Os sistemas podem ser desde os mais simples, como aplicativos de calculadora para \textit{smartphones}, até mais complexos, como sistemas de tempo real que monitoram pacientes em uma Unidade de Terapia Intensiva \abrv[UTI -- Unidade de Terapira Intensiva]{(UTI)}de um hospital. Todos eles, no entanto, possuem uma arquitetura que serve como base para o seu desenvolvimento.
-
-Como parte integrante da descrição de uma arquitetura, os softwares podem possuir requisitos de qualidade críticos. O TCAS II, por exemplo, requer que o cálculo das ameaças seja realizado com o maior \textit{desempenho} possível. Por sua vez, o ABS necessita que o cálculo da força de frenagem aplicada nas rodas tenha um alto grau de \textit{confiabilidade}, ou seja, quanto mais os freios funcionarem em relação ao número de tentativas, mais confiável ele será. Além de desempenho e confiabilidade, outros exemplos de requisitos de qualidade comuns são segurança, portabilidade, robustez e escalabilidade.
-
-As áreas de arquitetura dos softwares e de requisitos de qualidade são bem abordadas pela disciplina de Engenharia de Software. Não obstante, apesar dessa adequada abordagem, há um entendimento ainda deficiente devido a intrínseca característica que difere os programas de computador da maioria dos produtos industriais: um software é um artefato inerentemente intelectual. É invisível, imaterial \cite{Steinbruckner2010}. Como menciona Ball e Eick \cite{Ball1996}, software é intangível, não tem forma física ou tamanho. Depois que é escrito, o código “desaparece” em arquivos armazenados em discos.
-
-Presentes nos mais variados domínios, os softwares vêm sendo utilizados por usuários com diferentes características e executando em dispositivos distintos, fazendo com que seja alta a demanda por novas funcionalidades e tecnologias ou para reparação de erros. Caserta e Zendra \cite{Caserta2011} mencionam que um software se torna rapidamente complexo quando o seu tamanho aumenta, trazendo dificuldades para o seu entendimento, manutenção e evolução. Nesse sentido, a manutenção e evolução de sistemas de software tem se tornado uma tarefa difícil e crítica com o passar dos anos.
-
-O processo de manutenção é conhecido como o mais caro e o que mais consome tempo dentro do ciclo de vida de um software \cite{Abreu1995}. A maior parte do tempo gasto nesse processo é dedicada a compreender o sistema, especialmente se os desenvolvedores não estiverem envolvidos desde o início do desenvolvimento.
-
-Nesse contexto, a Visualização de Software é uma área da Engenharia de Software que objetiva usar representações visuais para melhorar o entendimento e compreensão de diferentes aspectos de um sistema de software. Alguns desses aspectos incluem padrões de projeto, arquitetura, processo de desenvolvimento, histórico de código-fonte, esquemas de banco de dados, interações de rede, processamento paralelo, execução de processos, dentre outros \cite{Ghanam2008}.
-
-Este capítulo introduz este trabalho. A seção \ref{sec:apresentacao-do-problema} exibe o contexto do trabalho e apresenta o problema a ser tratado. A seção \ref{sec:limitacao-abordagens-atuais} apresenta as principais limitações das abordagens atuais. A seção \ref{sec:abordagem-proposta} apresenta a abordagem proposta, ao passo que a seção \ref{sec:objetivos-gerais-especificos} discute os objetivos gerais e específicos. Por fim, a organização do trabalho é mostrada na seção \ref{sec:organizacao-trabalho}.
+Este capítulo introduz este trabalho. A seção \ref{sec:apresentacao-do-problema}
+exibe o contexto do trabalho e apresenta o problema a ser tratado. A seção \ref{sec:limitacao-abordagens-atuais}
+apresenta as principais limitações das trabalhos atuais. A seção \ref{sec:objetivos-gerais-especificos}
+discute os objetivos gerais e específicos, e a metodologia adotada para o desenvolvimento
+do trabalho é apresentada na seção \ref{sec:metodologia}. Por fim, a organização do trabalho
+é mostrada na seção \ref{sec:organizacao-trabalho}.
 
 \section{Apresentação do Problema} \label{sec:apresentacao-do-problema}
 
-Com o intuito de tornar o software mais compreensível, a área de Visualização de Software lança mão de representações visuais para essa finalidade. Essas representações se fazem necessárias para os analistas, arquitetos e desenvolvedores examinarem os softwares devido a sua natureza complexa, abstrata e difícil de ser observada \cite{Petre2006}. Essa área pode focar em vários aspectos de sistemas de software, como mencionado anteriormente, entretanto, um dos componentes essenciais é a visualização da arquitetura de um software.
+Apesar da ampla adoção da plataforma Android e sua fragmentação, há uma carência
+de estudos que indiquem de que forma as aplicações de tal plataforma lidam com
+variabilidades relacionadas à diversas versões da API.
 
-Ghanam e Carpendale \cite{Ghanam2008} afirmam que não apenas os arquitetos estão interessados em visualizar arquiteturas de software, mas também os desenvolvedores, testadores, gerentes de projetos e até mesmo os clientes. Um dos principais desafios dessas visualizações é descobrir representações visuais eficientes e eficazes para exibir a arquitetura de um software juntamente com as métricas de código envolvidas.
+Oferecer suporte a múltiplas versões da API, de forma a atender clientes com
+versões antigas ao mesmo tempo usar os recursos mais modernos quando disponíveis,
+é primordial para o sucesso das aplicações.
 
-No entanto, a visualização da arquitetura de um software se torna especialmente difícil quando é adicionada a variável tempo, passando a ser necessária a representação de sua evolução. Desse modo, a quantidade de dados envolvidos aumenta uma vez que todas as versões do software passam a ser consideradas \cite{Caserta2011}\cite{Khan2012}.
+No entanto, a carência de estudos sistemáticos que identifiquem e analisem técnicas
+para implementação de variabilidades ao longo da evolução de tais aplicações e da
+própria plataforma Android pode trazer dificuldades para a evolução do código de
+tais aplicações ou até mesmo erros durante a execução.
 
-Durante o processo de manutenção, a inexistência de atividades para que os desenvolvedores possam entender a evolução arquitetural pode levar a sua degradação \cite{DAmbros2009}, fazendo com que os atributos de qualidade inicialmente definidos, a partir de decisões arquiteturais e de \textit{design} tomadas durante o processo de desenvolvimento, deixem de ser atendidos.
-
-Diante disso, é importante que alguma abordagem de visualização da evolução arquitetural de um software, em especial quando se trata de um importante atributo de qualidade como o desempenho, auxilie os arquitetos, desenvolvedores e analistas no processo de desenvolvimento, diminuindo a probabilidade de ocorrer a degradação da arquitetura durante o processo de manutenção.
-
-\section{Limitações das Abordagens Atuais} \label{sec:limitacao-abordagens-atuais}
-
-De acordo com a literatura, existem várias ferramentas que tratam da visualização da evolução arquitetural de softwares, inclusive com monitoramento de desempenho, cada uma com suas particularidades. Caserta e Zendra \cite{Caserta2011} apontam que essas ferramentas apresentam a evolução arquitetural a partir de: (i) como a arquitetura global é alterada a cada versão, incluindo mudanças no código fonte; (ii) como os relacionamentos entre os componentes evoluem; e (iii) como as métricas evoluem a cada \textit{release}. Este trabalho está relacionado com o último item dessa relação, especificamente com o atributo de qualidade de desempenho.
-
-As ferramentas de \textit{profiling} realizam análise desse atributo de qualidade no software, porém com características diferentes. A \textit{VisualVM} \cite{Vis}, distribuída gratuitamente com o \textit{Java Development Kit} \abrv[JDK -- \textit{Java Development Kit}]{(JDK),}exibe o tempo de execução de cada método em tempo real e o usuário pode, à medida que deseja, tirar fotografias instantâneas da execução do software, os chamados \textit{snapshots}. Essa ferramenta, no entanto, não oferece a comparação entre eles ou de versões anteriores do software, tornando difícil a visualização da evolução do atributo de qualidade desempenho, uma vez que teria que ser feita manualmente para cada método desejado.
-
-Já o \textit{JProfiler} \cite{JProfiler}, ferramenta paga, pode exibir o \textit{call graph} de chamadas dos métodos em tempo real, com seus respectivos tempos de execução. Assim como o \textit{VisualVM}, a ferramenta oferece a possibilidade de guardar snapshots de determinados momentos da execução. Contudo, os \textit{snapshots} não são automáticos, o usuário precisa, deliberadamente, informar à ferramenta quando ele deve ser acionado. Uma maneira de contornar esse problema é fazendo o uso de \textit{triggers}, onde o usuário pode configurar a ferramenta para responder a determinados eventos da \textit{Java Virtual Machine} \abrv[JVM -- \textit{Java Virtual Machine}]{(JVM)} e, assim, executar algumas ações. Apesar da funcionalidade ser interessante e poderosa, dependendo do que o usuário deseja, a configuração das \textit{triggers} pode se tornar maçante. A ferramenta oferece a comparação entre os \textit{snapshots}, porém, não é automática e necessita da ação do usuário para escolher quais \textit{snapshots} serão comparados. A ferramenta \textit{YoutKit Java Profiler} \cite{Profiler2016} possui funcionalidades semelhantes às comentadas para o \textit{JProfiler}. Entretanto, é uma ferramenta paga e a comparação entre os \textit{snapshots} também não é automática.
-
-Com exceção do \textit{VisualVM}, as ferramentas de \textit{profiling} mencionadas possuem uma característica em comum: a forma com que apresentam a evolução do atributo de qualidade de desempenho não é automática e tampouco é direcionada ao(s) método(s) desejado(s) pelo usuário. É necessário selecionar manualmente os \textit{snapshots} que se deseja comparar e as ferramentas exibem duas formas de visualização da evolução do desempenho, em geral: \textit{call tree} e \textit{hot spot}. Em ambas, as visualizações são apresentados todos os métodos monitorados, cabendo ao usuário procurar o método desejado para, então, verificar qual a sua evolução.
-
-Corroborando com o exposto para o \textit{JProfiler} e o \textit{YourKit Java Profiler}, \citeauthor{SandovalAlcocer2013} menciona que essas duas ferramentas, apesar de serem úteis para acompanhar o desempenho geral, saber a diferença dos tempos dos métodos é muitas vezes insuficiente para compreender as razões para a variação de desempenho. Os autores listam algumas limitações dessas duas ferramentas, tais como: as variações de desempenho têm que ser manualmente rastreadas e as visualizações utilizadas são ineficientes. Essas ferramentas também não oferecem maiores detalhes sobre os desvios, tais como: código-fonte dos métodos, possíveis commits que introduziram o desvio e quais tarefas estariam relacionadas com a degradação ou melhoria encontrada. Novamente, caso o usuário queira identificar tais características para determinado método com desvio terá que pesquisar manualmente diretamente na fonte dos dados: repositório de código-fonte e sistema de gerenciamento de tarefas.
-
-\citeauthor{Ahmed2016} realizaram um estudo para verificar se as ferramentas de gerenciamento de desempenho de aplicações\abrv[APM -- \textit{Application Performance Management}]{}(APM, do inglês \textit{Application Performance Management}) são eficazes na identificação de regressões de desempenho. Os autores definem regressão de desempenho quando as atualizações em um software provocam uma degradação no seu desempenho \cite{Ahmed2016}. As ferramentas utilizadas no estudo foram \textit{New Relic} \cite{Relic2016}, \textit{AppDynamics} \cite{Appdynamics}, \textit{Dynatrace} \cite{Dynatrace2016} e \textit{Pinpoint} \cite{Pinpoint2016}. Como resultado, eles mostram que a maioria das regressões inseridas no código-fonte foram detectadas pelas ferramentas. Contudo, o processo de identificação da causa da regressão, ou seja, o método exato cujo código foi inserido, foi mais complicado, sendo necessário bastante trabalho manual: os autores inspecionavam as transações (requisições) marcadas como lentas e, manualmente, comparavam os respectivos \textit{stacktraces} para verificar se a ferramenta indicava corretamente a regressão de desempenho. O processo, mais uma vez, não é automático e não existem visualizações adequadas que esclareçam a regressão de desempenho.
-
-As abordagens existentes trazem melhorias no tocante à necessidade de novas visualizações da evolução da arquitetura, com foco no atributo de qualidade de desempenho, bem como a automação completa (ou parcial) do processo de análise, uma vez que ainda é necessária considerável intervenção manual do usuário nas ferramentas existentes para visualizar a evolução de diferentes versões do sistema. Além da necessidade de novas visualizações, outros requisitos de uma abordagem para análise de desvios de desempenho na evolução de sistemas são mencionados por Pinto \cite{Pinto2015}:
-\begin{itemize}
-	\item Deveria automatizar o processo ao máximo. Técnicas manuais consomem tempo e são custosas, além de não se mostrarem adequadas se o processo de avaliação requerer a análise de sucessivas evoluções;
-	\item Os softwares podem ser muitos grandes para uma análise completa. Dessa forma, a ferramenta deveria focar em partes selecionadas do sistema;
-	\item A ferramenta deveria ser capaz de medir o desempenho de determinados cenários e seus métodos a fim de identificar onde ocorreu o desvio;
-	\item Deveria prover suporte para análise do código-fonte com o intuito de oferecer \textit{feedback} detalhado sobre o código relacionado com o desvio detectado;
-	\item Deveria ser capaz de acessar dados dos repositórios do software, como ferramentas de controle de versão e sistemas de gerenciamento de tarefas, com a finalidade de exibir as mudanças relacionadas ao código com desvio de desempenho.
-\end{itemize}
-
-A análise arquitetural dos atributos de qualidade pode ser feita baseada em cenários, conforme mencionados acima, no terceiro ponto. Nesse contexto, um cenário é definido como uma ação de alto nível que representa a maneira como os \textit{stakeholders} interagem com o sistema.
-
-\section{Abordagem Proposta} \label{sec:abordagem-proposta}
-
-Este trabalho visa aplicar técnicas de visualização de software para acompanhar a evolução arquitetural do atributo de qualidade de desempenho. Pretende-se que as visualizações sejam capazes de exibir os cenários e métodos relacionados que tiveram desvios de desempenho durante a avaliação de diferentes versões do sistema, de forma direta e fácil.
-
-As visualizações foram implementadas como extensão à uma ferramenta existente, chamada \textit{PerfMiner} \cite{Pinto2015}. Essa ferramenta busca apontar quais cenários degradaram ou otimizaram o atributo de qualidade de desempenho. A escolha desse atributo de qualidade se deu pelo fato de ser uma propriedade crítica para a maioria dos sistemas de software atuais.
-
-A extensão proposta visa fazer com que a ferramenta ofereça um melhor entendimento da evolução desse atributo de qualidade na arquitetura de um software por parte dos arquitetos e desenvolvedores, auxiliando-os a: (i) perceber quais cenários de casos de uso degradaram ou melhoraram o seu desempenho; (ii) identificar qual trecho de código-fonte foi o responsável por uma dada degradação; e (iii) identificar questões de desenvolvimento associadas, como quando e qual desenvolvedor realizou mudanças relacionadas à degradação, e qual tarefa está relacionada a alteração no sistema de gerenciamento de tarefas.
+\section{Limitações das Trabalhos Existentes} \label{sec:limitacao-abordagens-atuais}
+Diversos trabalhos têm sido realizados sobre a API Android. Sobretudo, no sentido
+de identificar os elementos mais comuns e padrões de uso. Mojica \cite{Mojica2014}
+analisa como reuso de software ocorre nas aplicações disponíveis na Google Play.
+Os três principais tipos de reuso identificados foram: (i) 18,75\% das classes
+herdam de uma classe base da API Android, e 35,78\% de uma classe específica de
+domínio; (ii) 84,23\% das classes aparecem em duas ou mais aplicações; (iii)
+17.109 aplicações móveis são cópias diretas de outras aplicações. Lambda et al. \cite{Lamba2015}
+apresentou resultados de um estudo em larga escala, consistindo de 1.120 aplicações
+open-source e 17,4 milhões de linha de código, de análise do uso da API em aplicações
+Android. Foram identificados os métodos mais frequentemente invocados, os pacotes da
+API e padrões de chamadas mais populares. McDonnell et al. \cite{McDonnell2013}
+realizou um estudo empírico da adoção de atualização da API pelas aplicações,
+onde foi confirmado que, apesar dos benefícios de novas ou atualização de API,
+desenvolvedores são frequentemente lentos na adoção das novas API’s.
+ 
+No entanto, nenhum desses trabalhos considerou o suporte a múltiplas versões da API.
+Todas as análises foram feitas sem nenhum tipo de discussão sobre a versão mínima da
+API para a aplicação e a versão da API em que os elementos foram disponibilizados
+pela plataforma.
 
 \section{Objetivos Gerais e Específicos} \label{sec:objetivos-gerais-especificos}
 
-O objetivo principal deste trabalho é prover um conjunto de visualizações de modo a aprimorar o entendimento da evolução do atributo de qualidade de desempenho. A implementação dessas visualizações foi feita estendendo uma ferramenta desenvolvida pelo grupo de pesquisa \textit{Automated Software Engineering}, do Departamento de Informática e Matemática Aplicada \abrv[DIMAp -- Departamento de Informática e Matemática Aplicada]{(DIMAp)}da \abrv[UFRN -- Universidade Federal do Rio Grande do Norte]{UFRN.}
+O objetivo geral desta dissertação de mestrado é analisar, caracterizar e comparar
+técnicas de implementação de suporte a múltiplas versões da API da plataforma
+Android por aplicações.
 
-Essa ferramenta, chamada de \textit{PerfMiner} \cite{Pinto2015}, pode ser definida como uma abordagem automatizada baseada em cenários para identificar desvios de desempenho em tempo de execução. A ferramenta indica, também, quais trechos de código-fonte podem ter causado a variação de desempenho baseado na mineração de \textit{commits} e questões de desenvolvimento responsáveis por alterá-los. Técnicas de análise dinâmica e mineração de dados são usadas pela ferramenta para atingir os seus objetivos. Estendê-la, adicionando visualizações, irá permitir aos usuários identificar adequadamente os cenários e métodos com desvio de desempenho ocorridos durante a evolução do sistema. As visualizações podem apontar os pontos onde o software degradou e, a partir de então, os usuários podem estabelecer formas de otimizar o desempenho da aplicação. Nesse contexto, os objetivos específicos deste trabalho são:
+Os objetivos específicos são:
 \begin{itemize}
-	\item Pesquisar as principais abordagens de visualização da evolução de arquiteturas de software, em especial do atributo de qualidade de desempenho, a fim de conhecer quais técnicas são utilizadas atualmente, e identificar lacunas que servem como motivação para o desenvolvimento do trabalho;
-	\item Projetar e implementar as visualizações no \textit{PerfMiner}. A ferramenta é desenvolvida na linguagem de programação Java, de modo que a análise de desempenho é oferecida para sistemas desenvolvidos nessa linguagem;
-	\item Realizar estudos empíricos para avaliar a utilização da abordagem das visualizações em sistemas reais de diferentes domínios.
+	\item Identificar na literatura quais as técnicas indicadas para suporte a
+	múltiplas versões da API Android;
+	\item Analisar aplicações reais para quantificar o uso dessas técnicas
+	indicadas; e
+	\item Comparar as características e consequências do uso de tais técnicas.
 \end{itemize}
 
-\section{Organização do trabalho} \label{sec:organizacao-trabalho}
+\section{Metodologia} \label{sec:metodologia}
 
-Este trabalho está organizado como segue: o capítulo \ref{ch:fundamentacao-teorica} reúne os principais conceitos necessários para o entendimento do trabalho, tais como arquitetura de software, visualização de software e ferramentas de análise de desempenho. O capítulo \ref{ch:visualizacoes} apresenta a solução proposta, mostrando as visualizações definidas e implementadas para melhorar o entendimento das análises, além de explicar o funcionamento do PerfMiner integrado com o conjunto de visualizações proposto. O capítulo \ref{ch:estudo-empirico} explica o estudo empírico a ser conduzido para avaliação do trabalho. O capítulo \ref{ch:trabalhos-relacionados} exibe trabalhos relacionados, mencionando as suas limitações e comparando-os com este trabalho. Finalmente, o capítulo \ref{ch:conclusao} mostra o cronograma planejado para a conclusão do trabalho e discute as limitações percebidas até o momento.
+Visando atingir os objetivos dessa dissertação de mestrado, foi definido uma
+metodologia de trabalhos composta das seguintes etapas:
+\begin{itemize}
+	\item Revisão da literatura: nessa fase, identificamos quais as técnicas
+	indicadas para suporte a múltiplas versões da API;
+	\item Estudo empírico: a partir dos resultados da fase anterior, foi realizado
+	um empírico com o objetivo de identificar a adoção dessas técnicas por aplicações reais.
+\end{itemize}
+
+
+\section{Organização do Documento} \label{sec:organizacao-trabalho}
+
+O restante deste documento está organizado da seguinte forma:
+\begin{itemize}
+    \item O capítulo \ref{ch:fundamentacao-teorica} apresenta os principais
+    referenciais teóricos que serviram de arcabouço para o desenvolvimento  deste trabalho;
+    \item O capítulo \ref{ch:estudo-empirico} traz o estudo sobre a compatibilidade
+    de aplicações Android com as diferentes versões da API da plataforma. São
+    apresentados resultados do estudo e discussão de tais resultados;
+    \item No capítulo \ref{ch:trabalhos-relacionados} são discutidos trabalhos
+    relacionados;
+    \item Por fim, o capítulo \ref{ch:conclusao} apresenta as considerações finais,
+    principais contribuições e limitações do trabalho, bem como trabalhos futuros
+    de pesquisa que podem ser desenvolvidos como continuidade desta dissertação.
+\end{itemize}
