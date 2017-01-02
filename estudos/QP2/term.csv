@@ -1,0 +1,9 @@
+8 ; Metodo ; android.text.AndroidCharacter#getEastAsianWidth ; 1
+11 ; Metodo ; android.content.ClipboardManager#setPrimaryClip ; 1
+11 ; Metodo ; android.content.ClipboardManager#getPrimaryClip ; 1
+11 ; Metodo ; android.content.ClipboardManager#getPrimaryClipDescription ; 1
+11 ; Metodo ; android.content.ClipDescription#hasMimeType ; 1
+11 ; Metodo ; android.content.ClipboardManager#hasPrimaryClip ; 1
+11 ; Metodo ; android.content.ClipData#newPlainText ; 1
+11 ; Metodo ; android.view.KeyCharacterMap#getModifierBehavior ; 1
+11 ; Metodo ; android.content.ClipData#getItemAt ; 1

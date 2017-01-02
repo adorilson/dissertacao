@@ -1,0 +1,10 @@
+8 ; Casting ; from SharedPreferencesBackupHelper to BackupHelper ; 1
+11 ; Classe ; android.preference.PreferenceFragment ; 12
+8 ; Classe ; android.app.backup.BackupAgentHelper ; 4
+9 ; Classe ; android.os.StrictMode.ThreadPolicy.Builder ; 4
+8 ; Classe ; android.app.backup.SharedPreferencesBackupHelper ; 1
+9 ; Metodo ; android.os.StrictMode#setThreadPolicy ; 1
+9 ; Metodo ; android.content.SharedPreferences.Editor#apply ; 1
+11 ; Metodo ; android.preference.PreferenceActivity#loadHeadersFromResource ; 1
+17 ; Metodo ; android.provider.Settings.Global#getInt ; 1
+8 ; Metodo ; android.content.Context#getExternalFilesDir ; 1

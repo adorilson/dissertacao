@@ -1,0 +1,49 @@
+ == casting ==
+
+ == classes ==
+11 ; Classe ; android.view.View.OnLayoutChangeListener ; 1
+11 ; Classe ; android.animation.AnimatorListenerAdapter ; 2
+14 ; Classe ; android.util.Property ; 4
+9 ; Classe ; android.os.StrictMode.ThreadPolicy.Builder ; 3
+21 ; Classe ; android.widget.ScrollView ; 1
+
+== metodos ==
+11 ; Metodo ; android.animation.ObjectAnimator#ofInt ; 2
+8 ; Metodo ; android.net.http.AndroidHttpClient#modifyRequestToAcceptGzipResponse ; 1
+11 ; Metodo ; android.animation.Animator#setInterpolator ; 2
+11 ; Metodo ; android.animation.Animator#start ; 2
+8 ; Metodo ; android.webkit.ConsoleMessage#message ; 1
+11 ; Metodo ; android.animation.Animator#setDuration ; 2
+11 ; Metodo ; android.animation.ObjectAnimator#ofFloat ; 2
+8 ; Metodo ; android.net.http.AndroidHttpClient#getUngzippedContent ; 1
+19 ; Metodo ; android.provider.DocumentsContract#isDocumentUri ; 1
+9 ; Metodo ; java.net.NetworkInterface#isUp ; 2
+8 ; Metodo ; android.os.Environment#getExternalStoragePublicDirectory ; 1
+9 ; Metodo ; java.net.NetworkInterface#isLoopback ; 1
+8 ; Metodo ; android.webkit.ConsoleMessage#lineNumber ; 1
+11 ; Metodo ; android.webkit.WebSettings#setDisplayZoomControls ; 1
+8 ; Metodo ; android.app.SearchManager#getSearchableInfo ; 1
+9 ; Metodo ; java.net.NetworkInterface#isVirtual ; 1
+19 ; Metodo ; android.provider.DocumentsContract#getDocumentId ; 4
+9 ; Metodo ; android.os.StrictMode#setThreadPolicy ; 2
+9 ; Metodo ; android.os.StrictMode#getThreadPolicy ; 1
+9 ; Metodo ; java.net.NetworkInterface#isPointToPoint ; 1
+11 ; Metodo ; android.animation.ObjectAnimator#start ; 1
+11 ; Metodo ; android.animation.Animator#addListener ; 1
+11 ; Metodo ; android.animation.ObjectAnimator#setDuration ; 1
+11 ; Metodo ; android.view.View#addOnLayoutChangeListener ; 1
+8 ; Metodo ; android.net.http.AndroidHttpClient#getCompressedEntity ; 1
+11 ; Metodo ; android.animation.ObjectAnimator#cancel ; 1
+8 ; Metodo ; android.webkit.ConsoleMessage#sourceId ; 1
+11 ; Metodo ; android.animation.Animator#cancel ; 2
+11 ; Metodo ; android.view.ActionMode#invalidate ; 1
+
+== campos ==
+19 ; Campo ; android.content.pm.ResolveInfo#providerInfo ; 2
+9 ; Campo ; android.content.pm.PackageInfo#lastUpdateTime ; 1
+9 ; Campo ; android.content.pm.PackageInfo#firstInstallTime ; 1
+8 ; Campo ; android.content.res.Configuration#uiMode ; 2
+8 ; Campo ; android.os.Environment#DIRECTORY_DOWNLOADS ; 1
+
+== xml ==
+

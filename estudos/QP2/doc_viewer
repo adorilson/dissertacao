@@ -1,0 +1,62 @@
+Call requires API level 11 (current min is 8): `new android.app.Notification.Builder`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setSmallIcon`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setAutoCancel`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setWhen`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setDefaults`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setContentIntent`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setContentTitle`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setTicker`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#setContentText`
+Call requires API level 11 (current min is 8): `android.app.Notification.Builder#getNotification`
+Call requires API level 11 (current min is 8): `android.preference.PreferenceActivity#loadHeadersFromResource`
+Class requires API level 11 (current min is 8): `android.preference.PreferenceFragment`
+Call requires API level 11 (current min is 8): `new android.preference.PreferenceFragment`
+Call requires API level 11 (current min is 8): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 8): `android.preference.PreferenceFragment#getPreferenceScreen`
+Call requires API level 11 (current min is 8): `android.app.Activity#getActionBar`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#setDisplayHomeAsUpEnabled`
+Class requires API level 14 (current min is 8): `android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#callChangeListener`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#access$100`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#setChecked`
+Call requires API level 14 (current min is 8): `new android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `new android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#getKey`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#setKey`
+Call requires API level 14 (current min is 8): `new android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#getKey`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#setKey`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#getSharedPreferences`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#getPreferenceManager`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#getPreferenceManager`
+Class requires API level 14 (current min is 8): `android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#callChangeListener`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#access$100`
+Call requires API level 14 (current min is 8): `android.preference.SwitchPreference#setChecked`
+Call requires API level 14 (current min is 8): `new android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `new android.preference.SwitchPreference`
+Call requires API level 14 (current min is 8): `new android.preference.SwitchPreference`
+Call requires API level 11 (current min is 8): `android.app.Activity#getActionBar`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#show`
+Call requires API level 11 (current min is 8): `android.app.Activity#getActionBar`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#hide`
+Call requires API level 11 (current min is 8): `android.app.Activity#invalidateOptionsMenu`
+Call requires API level 9 (current min is 8): `java.io.File#canExecute`
+Call requires API level 9 (current min is 8): `java.io.File#canExecute`
+Call requires API level 11 (current min is 8): `android.app.Activity#getActionBar`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#show`
+Call requires API level 11 (current min is 8): `android.app.Activity#getActionBar`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#hide`
+Call requires API level 11 (current min is 8): `android.app.Activity#invalidateOptionsMenu`
+Call requires API level 11 (current min is 8): `android.app.Activity#getActionBar`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#getCustomView`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#setCustomView`
+Call requires API level 11 (current min is 8): `android.app.ActionBar#setDisplayShowCustomEnabled`
+Call requires API level 11 (current min is 8): `android.view.View#setSystemUiVisibility`
+Call requires API level 11 (current min is 8): `android.view.View#setSystemUiVisibility`
+Call requires API level 11 (current min is 8): `android.app.Activity#invalidateOptionsMenu`
+`@android:style/Theme.Holo` requires API level 11 (current min is 8)
+`android:actionBarStyle` requires API level 11 (current min is 8)
+`@android:style/Widget.Holo.Light.ActionBar` requires API level 11 (current min is 8)
+`android:titleTextStyle` requires API level 11 (current min is 8)
+`@android:style/TextAppearance.Holo.Widget.ActionBar.Title` requires API level 13 (current min is 8)

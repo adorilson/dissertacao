@@ -1,0 +1,24 @@
+Call requires API level 11 (current min is 8): `android.view.ActionMode#finish`
+Call requires API level 11 (current min is 8): `android.view.ActionMode#finish`
+Call requires API level 11 (current min is 8): `android.view.ActionMode#getMenu`
+Call requires API level 11 (current min is 8): `android.view.ActionMode#invalidate`
+Call requires API level 11 (current min is 8): `android.view.ActionMode#setTitle`
+Call requires API level 11 (current min is 8): `android.view.ActionMode#setTitle`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemCount`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemCount`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemCount`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemIds`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemPositions`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemPositions`
+Call requires API level 11 (current min is 8): `android.widget.AbsListView#getCheckedItemPositions`
+Call requires API level 16 (current min is 8): `new android.database.sqlite.SQLiteException`
+Call requires API level 19 (current min is 8): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 8): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 8): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 8): `android.provider.DocumentsContract#isDocumentUri`
+Call requires API level 19 (current min is 8): `java.util.Currency#getDisplayName`
+Class requires API level 11 (current min is 8): `android.widget.AbsListView.MultiChoiceModeListener`
+Field requires API level 14 (current min is 8): `android.provider.CalendarContract.Calendars#CONTENT_URI`
+Field requires API level 14 (current min is 8): `android.provider.CalendarContract.Events#CONTENT_URI`
+Field requires API level 14 (current min is 8): `android.provider.CalendarContract.Instances#CONTENT_URI`
+Field requires API level 14 (current min is 8): `android.provider.CalendarContract#CONTENT_URI`

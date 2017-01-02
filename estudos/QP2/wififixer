@@ -1,0 +1,27 @@
+Call requires API level 8 (current min is 7): `android.content.Context#getExternalFilesDir`
+Call requires API level 9 (current min is 7): `android.content.SharedPreferences.Editor#apply`
+Call requires API level 17 (current min is 7): `android.provider.Settings.Global#getInt`
+Call requires API level 9 (current min is 7): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 7): `new android.os.StrictMode.ThreadPolicy.Builder`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#detectAll`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#build`
+Call requires API level 8 (current min is 7): `new android.app.backup.BackupAgentHelper`
+Class requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getPackageName`
+Call requires API level 8 (current min is 7): `new android.app.backup.SharedPreferencesBackupHelper`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#addHelper`
+Cast from SharedPreferencesBackupHelper to BackupHelper requires API level 8 (current min is 7)
+Call requires API level 11 (current min is 7): `new android.preference.PreferenceFragment`
+Class requires API level 11 (current min is 7): `android.preference.PreferenceFragment`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#getPreferenceScreen`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#getPreferenceScreen`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#getArguments`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceFragment#getPreferenceScreen`
+Call requires API level 11 (current min is 7): `android.preference.PreferenceActivity#loadHeadersFromResource`

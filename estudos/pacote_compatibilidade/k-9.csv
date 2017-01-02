@@ -1,0 +1,12 @@
+android.support.v4.app.NotificationCompat.WearableExtender=2
+android.support.v4.app.NotificationCompat.Action=1
+android.support.v4.app.NotificationCompat.Extender=1
+android.support.v4.app.NotificationCompat=13
+android.support.v4.app.TaskStackBuilder=1
+android.support.v4.app.NotificationCompat.InboxStyle=2
+android.support.v4.content.LocalBroadcastManager=4
+android.support.v4.app.NotificationManagerCompat=9
+android.support.v4.app.NotificationCompat.BigTextStyle=3
+android.support.v4.app.NotificationCompat.Builder=11
+android.support.v4.content.FileProvider=1
+android.support.v4.util.LruCache=1

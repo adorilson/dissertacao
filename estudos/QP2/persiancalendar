@@ -1,0 +1,6 @@
+Call requires API level 11 (current min is 7): `android.content.ClipboardManager#setPrimaryClip`
+Call requires API level 11 (current min is 7): `android.content.ClipData#newPlainText`
+Call requires API level 11 (current min is 7): `android.view.View#setTranslationX`
+Call requires API level 17 (current min is 7): `android.content.res.Configuration#getLayoutDirection`
+Call requires API level 19 (current min is 7): `android.app.AlarmManager#setExact`
+Field requires API level 14 (current min is 7): `android.provider.CalendarContract.Events#CONTENT_URI`

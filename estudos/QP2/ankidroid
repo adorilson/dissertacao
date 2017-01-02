@@ -1,0 +1,69 @@
+`android:fontFamily` requires API level 16 (current min is 10)
+`android:fontFamily` requires API level 16 (current min is 10)
+`android:textAllCaps` requires API level 14 (current min is 10)
+`android:textAllCaps` requires API level 14 (current min is 10)
+Call requires API level 11 (current min is 10): `android.database.sqlite.SQLiteDatabase#openDatabase`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceActivity#loadHeadersFromResource`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getActivity`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getActivity`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getActivity`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getActivity`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getArguments`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getPreferenceManager`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getPreferenceManager`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#getPreferenceScreen`
+Call requires API level 11 (current min is 10): `android.view.MenuItem#setShowAsAction`
+Call requires API level 11 (current min is 10): `android.view.View#setOnSystemUiVisibilityChangeListener`
+Call requires API level 11 (current min is 10): `android.view.View#setSystemUiVisibility`
+Call requires API level 11 (current min is 10): `android.view.ViewGroup#setAlpha`
+Call requires API level 11 (current min is 10): `android.webkit.WebSettings#setDisplayZoomControls`
+Call requires API level 11 (current min is 10): `android.widget.LinearLayout#setAlpha`
+Call requires API level 11 (current min is 10): `android.widget.RelativeLayout#setAlpha`
+Call requires API level 11 (current min is 10): `new android.animation.AnimatorListenerAdapter`
+Call requires API level 11 (current min is 10): `new android.animation.AnimatorListenerAdapter`
+Call requires API level 11 (current min is 10): `new android.animation.AnimatorListenerAdapter`
+Call requires API level 11 (current min is 10): `new android.preference.PreferenceFragment`
+Call requires API level 12 (current min is 10): `android.view.ViewGroup#animate`
+Call requires API level 12 (current min is 10): `android.view.ViewGroup#animate`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#alpha`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#alpha`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#alpha`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#alpha`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#alpha`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#alpha`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setDuration`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setDuration`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setDuration`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setDuration`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setDuration`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setDuration`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setListener`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setListener`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setListener`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setListener`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setListener`
+Call requires API level 12 (current min is 10): `android.view.ViewPropertyAnimator#setListener`
+Call requires API level 12 (current min is 10): `android.webkit.CookieManager#setAcceptFileSchemeCookies`
+Call requires API level 12 (current min is 10): `android.widget.LinearLayout#animate`
+Call requires API level 12 (current min is 10): `android.widget.LinearLayout#animate`
+Call requires API level 12 (current min is 10): `android.widget.RelativeLayout#animate`
+Call requires API level 12 (current min is 10): `android.widget.RelativeLayout#animate`
+Call requires API level 14 (current min is 10): `android.view.View#setFitsSystemWindows`
+Call requires API level 14 (current min is 10): `android.view.ViewConfiguration#hasPermanentMenuKey`
+Call requires API level 15 (current min is 10): `android.speech.tts.TextToSpeech#setOnUtteranceProgressListener`
+Call requires API level 15 (current min is 10): `new android.speech.tts.UtteranceProgressListener`
+Call requires API level 16 (current min is 10): `android.appwidget.AppWidgetManager#getAppWidgetOptions`
+Call requires API level 16 (current min is 10): `android.database.sqlite.SQLiteDatabase#disableWriteAheadLogging`
+Call requires API level 16 (current min is 10): `android.database.sqlite.SQLiteDatabase#disableWriteAheadLogging`
+Call requires API level 16 (current min is 10): `android.database.sqlite.SQLiteDatabase#isWriteAheadLoggingEnabled`
+Call requires API level 16 (current min is 10): `android.text.Html#escapeHtml`
+Call requires API level 16 (current min is 10): `android.widget.RemoteViews#setTextViewTextSize`
+Call requires API level 16 (current min is 10): `android.widget.RemoteViews#setTextViewTextSize`
+Call requires API level 16 (current min is 10): `android.widget.RemoteViews#setViewPadding`
+Class requires API level 11 (current min is 10): `android.animation.AnimatorListenerAdapter`
+Class requires API level 11 (current min is 10): `android.animation.AnimatorListenerAdapter`
+Class requires API level 11 (current min is 10): `android.animation.AnimatorListenerAdapter`
+Class requires API level 11 (current min is 10): `android.database.DatabaseErrorHandler`
+Class requires API level 11 (current min is 10): `android.preference.PreferenceFragment`
+Class requires API level 11 (current min is 10): `android.view.View.OnSystemUiVisibilityChangeListener`
+Class requires API level 15 (current min is 10): `android.speech.tts.UtteranceProgressListener`

@@ -1,0 +1,2 @@
+Call requires API level 19 (current min is 10): `android.app.AlarmManager#setExact`
+Call requires API level 19 (current min is 10): `android.app.AlarmManager#setWindow`

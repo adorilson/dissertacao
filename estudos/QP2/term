@@ -1,0 +1,9 @@
+Call requires API level 11 (current min is 4): `android.content.ClipboardManager#getPrimaryClip`
+Call requires API level 11 (current min is 4): `android.content.ClipboardManager#getPrimaryClipDescription`
+Call requires API level 11 (current min is 4): `android.content.ClipboardManager#hasPrimaryClip`
+Call requires API level 11 (current min is 4): `android.content.ClipboardManager#setPrimaryClip`
+Call requires API level 11 (current min is 4): `android.content.ClipData#getItemAt`
+Call requires API level 11 (current min is 4): `android.content.ClipData#newPlainText`
+Call requires API level 11 (current min is 4): `android.content.ClipDescription#hasMimeType`
+Call requires API level 11 (current min is 4): `android.view.KeyCharacterMap#getModifierBehavior`
+Call requires API level 8 (current min is 4): `android.text.AndroidCharacter#getEastAsianWidth`

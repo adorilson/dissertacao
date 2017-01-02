@@ -1,0 +1,1324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Lint Report</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto" />
+<link rel="stylesheet" type="text/css" href="lint-results-debug_files/hololike.css" />
+<script language="javascript" type="text/javascript"> 
+<!--
+function reveal(id) {
+if (document.getElementById) {
+document.getElementById(id).style.display = 'block';
+document.getElementById(id+'Link').style.display = 'none';
+}
+}
+//--> 
+</script>
+</head>
+<body>
+<h1>Lint Report</h1>
+<div class="titleSeparator"></div>
+Check performed at Wed Nov 23 20:26:29 BRT 2016.<br/>
+60 errors and 22 warnings found:<br/><br/>
+<table class="overview">
+<tr><td></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-error.png" alt="Error" />
+<a href="#ResourceType">ResourceType: Wrong Resource Type</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#DefaultLocale">DefaultLocale: Implied default locale in case conversion</a>
+</td></tr>
+<tr>
+<td class="countColumn">4</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#InlinedApi">InlinedApi: Using inlined constants on older versions</a>
+</td></tr>
+<tr>
+<td class="countColumn">59</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-error.png" alt="Error" />
+<a href="#NewApi">NewApi: Calling new methods on older versions</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#OldTargetApi">OldTargetApi: Target SDK attribute is not targeting latest version</a>
+</td></tr>
+<tr>
+<td class="countColumn">3</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#SdCardPath">SdCardPath: Hardcoded reference to <code>/sdcard</code></a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#UnusedAttribute">UnusedAttribute: Attribute unused on older versions</a>
+</td></tr>
+<tr>
+<td class="countColumn">2</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#GradleDependency">GradleDependency: Obsolete Gradle Dependency</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Performance">Performance</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#Wakelock">Wakelock: Incorrect <code>WakeLock</code> usage</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#HandlerLeak">HandlerLeak: Handler reference leaks</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Usability:Icons">Usability:Icons</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#IconLocation">IconLocation: Image defined in density-independent drawable folder</a>
+</td></tr>
+<tr>
+<td class="countColumn">4</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#IconDensities">IconDensities: Icon densities validation</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Usability">Usability</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#GoogleAppIndexingWarning">GoogleAppIndexingWarning: Missing support for Google App Indexing</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#AlwaysShowAction">AlwaysShowAction: Usage of <code>showAsAction=always</code></a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Accessibility">Accessibility</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results-debug_files/lint-warning.png" alt="Warning" />
+<a href="#ClickableViewAccessibility">ClickableViewAccessibility: Accessibility in Custom Views</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (15)</a>
+</td></tr></table>
+<br/>
+<a name="Correctness"></a>
+<div class="category"><a href="#" title="Return to top">Correctness</a><div class="categorySeparator"></div>
+</div>
+<a name="ResourceType"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">ResourceType: Wrong Resource Type</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:910</span>: <span class="message">Expected resource of type styleable</span><br /><pre class="errorlines">
+<span class="lineno"> 907</span> 
+<span class="lineno"> 908</span>                         ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+<span class="lineno"> 909</span>                         menu.add(Menu.NONE, 1, Menu.NONE, R.string.copy_text).setIcon(styledAttributes.getResourceId(0, 0)).setShowAsAction(show);
+<span class="lineno"> 910</span>                         menu.add(Menu.NONE, 2, Menu.NONE, R.string.paste_text).setIcon(styledAttributes.getResourceId(<span class="errorspan">1, 0)).setEnabled(clipboard.hasPrimaryClip()).setShowAsAction(show);</span>
+<span class="lineno"> 911</span>                         menu.add(Menu.NONE, 3, Menu.NONE, R.string.text_selection_more);
+<span class="lineno"> 912</span>                     } finally {
+</pre>
+</div>
+<div class="metadata">Priority: 7 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="error">Fatal</span><div class="summary">
+Explanation: Wrong Resource Type.</div>
+<div class="explanation">
+Ensures that resource id's passed to APIs are of the right type; for example, calling <code>Resources.getColor(R.string.name)</code> is wrong.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "ResourceType" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="DefaultLocale"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">DefaultLocale: Implied default locale in case conversion</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/filepicker/TermuxDocumentsProvider.java">../../src/main/java/com/termux/filepicker/TermuxDocumentsProvider.java</a>:163</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>toLowerCase(Locale)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 160</span>                 if (file.isDirectory()) {
+<span class="lineno"> 161</span>                     Collections.addAll(pending, file.listFiles());
+<span class="lineno"> 162</span>                 } else {
+<span class="lineno"> 163</span>                     if (file.getName().<span class="errorspan">toLowerCase().contains(query)) {</span>
+<span class="lineno"> 164</span>                         includeFile(result, null, file);
+<span class="lineno"> 165</span>                     }
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Implied default locale in case conversion.</div>
+<div class="explanation">
+Calling <code>String#toLowerCase()</code> or <code>#toUpperCase()</code> <b>without specifying an explicit locale</b> is a common source of bugs. The reason for that is that those methods will use the current locale on the user's device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for <code>i</code> is <b>not</b> <code>I</code>.<br/>
+<br/>
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call <code>String#toUpperCase(Locale.US)</code> instead. If you really want to use the current locale, call <code>String#toUpperCase(Locale.getDefault())</code> instead.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/reference/java/util/Locale.html#default_locale">http://developer.android.com/reference/java/util/Locale.html#default_locale</a>
+</div><br/>To suppress this error, use the issue id "DefaultLocale" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="InlinedApi"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">InlinedApi: Using inlined constants on older versions</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:37</span>: <span class="message">Field requires API level 21 (current min is 19): <code>android.R.attr#colorPrimaryDark</code></span><br /><pre class="errorlines">
+<span class="lineno">  34</span> //@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+<span class="lineno">  35</span> class DrawerLayoutCompatApi21 {
+<span class="lineno">  36</span> 
+<span class="lineno">  37</span> 	private static final int[] THEME_ATTRS = { <span class="errorspan">android.R.attr.colorPrimaryDark };</span>
+<span class="lineno">  38</span> 
+<span class="lineno">  39</span> 	public static void configureApplyInsets(DrawerLayout drawerLayout) {
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:982</span>: <span class="message">Field requires API level 23 (current min is 19): <code>android.view.ActionMode#TYPE_FLOATING</code></span><br /><pre class="errorlines">
+<span class="lineno"> 979</span> 						int y2 = Math.round((mSelY2 + 1 - mTopRow) * mRenderer.mFontLineSpacing);
+<span class="lineno"> 980</span> 						outRect.set(Math.min(x1, x2), y1, Math.max(x1, x2), y2);
+<span class="lineno"> 981</span> 					}
+<span class="lineno"> 982</span> 				}, <span class="errorspan">ActionMode.TYPE_FLOATING);</span>
+<span class="lineno"> 983</span> 			} else {
+<span class="lineno"> 984</span> 				mActionMode = startActionMode(callback);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:127</span>: <span class="message">Field requires API level 21 (current min is 19): <code>android.media.AudioAttributes#CONTENT_TYPE_SONIFICATION</code></span><br /><pre class="errorlines">
+<span class="lineno"> 124</span> 	boolean mIsVisible;
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(<span class="errorspan">AudioAttributes.CONTENT_TYPE_SONIFICATION)</span>
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
+<span class="lineno"> 129</span> 	private int mBellSoundId;
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:128</span>: <span class="message">Field requires API level 21 (current min is 19): <code>android.media.AudioAttributes#USAGE_ASSISTANCE_SONIFICATION</code></span><br /><pre class="errorlines">
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(<span class="errorspan">AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();</span>
+<span class="lineno"> 129</span> 	private int mBellSoundId;
+<span class="lineno"> 130</span> 
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ & Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Using inlined constants on older versions.</div>
+<div class="explanation">
+This check scans through all the Android API field references in the application and flags certain constants, such as static final integers and Strings, which were introduced in later versions. These will actually be copied into the class files rather than being referenced, which means that the value is available even when running on older devices. In some cases that's fine, and in other cases it can result in a runtime crash or incorrect behavior. It depends on the context, so consider the code carefully and device whether it's safe and can be suppressed or whether the code needs tbe guarded.<br/>
+<br/>
+If you really want to use this API and don't need to support older devices just set the <code>minSdkVersion</code> in your <code>build.gradle</code> or <code>AndroidManifest.xml</code> files.<br/>
+If your code is <b>deliberately</b> accessing newer APIs, and you have ensured (e.g. with conditional execution) that this code will only ever be called on a supported platform, then you can annotate your class or method with the <code>@TargetApi</code> annotation specifying the local minimum SDK to apply, such as <code>@TargetApi(11)</code>, such that this check considers 11 rather than your manifest file's minimum SDK as the required API level.<br/>
+
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "InlinedApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="NewApi"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">NewApi: Calling new methods on older versions</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:42</span>: <span class="message"><code>@android:style/Theme.Material.Light.DarkActionBar</code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">  39</span>         &lt;activity
+<span class="lineno">  40</span>             android:name="com.termux.app.TermuxHelpActivity"
+<span class="lineno">  41</span>             android:exported="false"
+<span class="lineno">  42</span>             <span class="errorspan">android:theme="@android:style/Theme.Material.Light.DarkActionBar"</span>
+<span class="lineno">  43</span>             android:parentActivityName=".app.TermuxActivity"
+<span class="lineno">  44</span>             android:label="@string/application_name" />
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayout.java">../../src/main/java/com/termux/drawer/DrawerLayout.java</a>:961</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.content.Context#getDrawable</code></span><br /><pre class="errorlines">
+<span class="lineno"> 958</span> 	 *            Resource id of a background drawable to draw behind the status bar
+<span class="lineno"> 959</span> 	 */
+<span class="lineno"> 960</span> 	public void setStatusBarBackground(int resId) {
+<span class="lineno"> 961</span> 		mStatusBarBackground = resId != 0 ? getContext().<span class="errorspan">getDrawable(resId) : null;</span>
+<span class="lineno"> 962</span> 		invalidate();
+<span class="lineno"> 963</span> 	}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:40</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.ViewGroup#setOnApplyWindowInsetsListener</code></span><br /><pre class="errorlines">
+<span class="lineno">  37</span> 	private static final int[] THEME_ATTRS = { android.R.attr.colorPrimaryDark };
+<span class="lineno">  38</span> 
+<span class="lineno">  39</span> 	public static void configureApplyInsets(DrawerLayout drawerLayout) {
+<span class="lineno">  40</span> 		drawerLayout.<span class="errorspan">setOnApplyWindowInsetsListener(new InsetsListener());</span>
+<span class="lineno">  41</span> 		drawerLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+<span class="lineno">  42</span> 	}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:47</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetBottom</code></span><br /><pre class="errorlines">
+<span class="lineno">  44</span> 	public static void dispatchChildInsets(View child, Object insets, int gravity) {
+<span class="lineno">  45</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.<span class="errorspan">getSystemWindowInsetBottom());</span>
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:47</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetLeft</code></span><br /><pre class="errorlines">
+<span class="lineno">  44</span> 	public static void dispatchChildInsets(View child, Object insets, int gravity) {
+<span class="lineno">  45</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.<span class="errorspan">getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<button id="NewApiDivLink" onclick="reveal('NewApiDiv');" />+ 54 More Occurrences...</button>
+<div id="NewApiDiv" style="display: none">
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:47</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  44</span> 	public static void dispatchChildInsets(View child, Object insets, int gravity) {
+<span class="lineno">  45</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.<span class="errorspan">getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:47</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#replaceSystemWindowInsets</code></span><br /><pre class="errorlines">
+<span class="lineno">  44</span> 	public static void dispatchChildInsets(View child, Object insets, int gravity) {
+<span class="lineno">  45</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.<span class="errorspan">replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:49</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetBottom</code></span><br /><pre class="errorlines">
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.<span class="errorspan">getSystemWindowInsetBottom());</span>
+<span class="lineno">  50</span> 		}
+<span class="lineno">  51</span> 		child.dispatchApplyWindowInsets(wi);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:49</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetRight</code></span><br /><pre class="errorlines">
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.<span class="errorspan">getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  50</span> 		}
+<span class="lineno">  51</span> 		child.dispatchApplyWindowInsets(wi);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:49</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.<span class="errorspan">getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  50</span> 		}
+<span class="lineno">  51</span> 		child.dispatchApplyWindowInsets(wi);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:49</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#replaceSystemWindowInsets</code></span><br /><pre class="errorlines">
+<span class="lineno">  46</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  47</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.<span class="errorspan">replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  50</span> 		}
+<span class="lineno">  51</span> 		child.dispatchApplyWindowInsets(wi);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:51</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.View#dispatchApplyWindowInsets</code></span><br /><pre class="errorlines">
+<span class="lineno">  48</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  49</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+<span class="lineno">  50</span> 		}
+<span class="lineno">  51</span> 		child.<span class="errorspan">dispatchApplyWindowInsets(wi);</span>
+<span class="lineno">  52</span> 	}
+<span class="lineno">  53</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:57</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetBottom</code></span><br /><pre class="errorlines">
+<span class="lineno">  54</span> 	public static void applyMarginInsets(ViewGroup.MarginLayoutParams lp, Object insets, int gravity) {
+<span class="lineno">  55</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.<span class="errorspan">getSystemWindowInsetBottom());</span>
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:57</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetLeft</code></span><br /><pre class="errorlines">
+<span class="lineno">  54</span> 	public static void applyMarginInsets(ViewGroup.MarginLayoutParams lp, Object insets, int gravity) {
+<span class="lineno">  55</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.<span class="errorspan">getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:57</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  54</span> 	public static void applyMarginInsets(ViewGroup.MarginLayoutParams lp, Object insets, int gravity) {
+<span class="lineno">  55</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.<span class="errorspan">getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:57</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#replaceSystemWindowInsets</code></span><br /><pre class="errorlines">
+<span class="lineno">  54</span> 	public static void applyMarginInsets(ViewGroup.MarginLayoutParams lp, Object insets, int gravity) {
+<span class="lineno">  55</span> 		WindowInsets wi = (WindowInsets) insets;
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.<span class="errorspan">replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:59</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetBottom</code></span><br /><pre class="errorlines">
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.<span class="errorspan">getSystemWindowInsetBottom());</span>
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:59</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetRight</code></span><br /><pre class="errorlines">
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.<span class="errorspan">getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:59</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.<span class="errorspan">getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:59</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#replaceSystemWindowInsets</code></span><br /><pre class="errorlines">
+<span class="lineno">  56</span> 		if (gravity == Gravity.LEFT) {
+<span class="lineno">  57</span> 			wi = wi.replaceSystemWindowInsets(wi.getSystemWindowInsetLeft(), wi.getSystemWindowInsetTop(), 0, wi.getSystemWindowInsetBottom());
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.<span class="errorspan">replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());</span>
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:61</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetLeft</code></span><br /><pre class="errorlines">
+<span class="lineno">  58</span> 		} else if (gravity == Gravity.RIGHT) {
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.<span class="errorspan">getSystemWindowInsetLeft();</span>
+<span class="lineno">  62</span> 		lp.topMargin = wi.getSystemWindowInsetTop();
+<span class="lineno">  63</span> 		lp.rightMargin = wi.getSystemWindowInsetRight();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:62</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  59</span> 			wi = wi.replaceSystemWindowInsets(0, wi.getSystemWindowInsetTop(), wi.getSystemWindowInsetRight(), wi.getSystemWindowInsetBottom());
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+<span class="lineno">  62</span> 		lp.topMargin = wi.<span class="errorspan">getSystemWindowInsetTop();</span>
+<span class="lineno">  63</span> 		lp.rightMargin = wi.getSystemWindowInsetRight();
+<span class="lineno">  64</span> 		lp.bottomMargin = wi.getSystemWindowInsetBottom();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:63</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetRight</code></span><br /><pre class="errorlines">
+<span class="lineno">  60</span> 		}
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+<span class="lineno">  62</span> 		lp.topMargin = wi.getSystemWindowInsetTop();
+<span class="lineno">  63</span> 		lp.rightMargin = wi.<span class="errorspan">getSystemWindowInsetRight();</span>
+<span class="lineno">  64</span> 		lp.bottomMargin = wi.getSystemWindowInsetBottom();
+<span class="lineno">  65</span> 	}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:64</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetBottom</code></span><br /><pre class="errorlines">
+<span class="lineno">  61</span> 		lp.leftMargin = wi.getSystemWindowInsetLeft();
+<span class="lineno">  62</span> 		lp.topMargin = wi.getSystemWindowInsetTop();
+<span class="lineno">  63</span> 		lp.rightMargin = wi.getSystemWindowInsetRight();
+<span class="lineno">  64</span> 		lp.bottomMargin = wi.<span class="errorspan">getSystemWindowInsetBottom();</span>
+<span class="lineno">  65</span> 	}
+<span class="lineno">  66</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:68</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  65</span> 	}
+<span class="lineno">  66</span> 
+<span class="lineno">  67</span> 	public static int getTopInset(Object insets) {
+<span class="lineno">  68</span> 		return insets != null ? ((WindowInsets) insets).<span class="errorspan">getSystemWindowInsetTop() : 0;</span>
+<span class="lineno">  69</span> 	}
+<span class="lineno">  70</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:80</span>: <span class="message">Class requires API level 20 (current min is 19): <code>android.view.View.OnApplyWindowInsetsListener</code></span><br /><pre class="errorlines">
+<span class="lineno">  77</span> 		}
+<span class="lineno">  78</span> 	}
+<span class="lineno">  79</span> 
+<span class="lineno">  80</span> 	static class InsetsListener implements View.<span class="errorspan">OnApplyWindowInsetsListener {</span>
+<span class="lineno">  81</span> 		@Override
+<span class="lineno">  82</span> 		public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:84</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#getSystemWindowInsetTop</code></span><br /><pre class="errorlines">
+<span class="lineno">  81</span> 		@Override
+<span class="lineno">  82</span> 		public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
+<span class="lineno">  83</span> 			final DrawerLayout drawerLayout = (DrawerLayout) v;
+<span class="lineno">  84</span> 			drawerLayout.setChildInsets(insets, insets.<span class="errorspan">getSystemWindowInsetTop() > 0);</span>
+<span class="lineno">  85</span> 			return insets.consumeSystemWindowInsets();
+<span class="lineno">  86</span> 		}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java">../../src/main/java/com/termux/drawer/DrawerLayoutCompatApi21.java</a>:85</span>: <span class="message">Call requires API level 20 (current min is 19): <code>android.view.WindowInsets#consumeSystemWindowInsets</code></span><br /><pre class="errorlines">
+<span class="lineno">  82</span> 		public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
+<span class="lineno">  83</span> 			final DrawerLayout drawerLayout = (DrawerLayout) v;
+<span class="lineno">  84</span> 			drawerLayout.setChildInsets(insets, insets.getSystemWindowInsetTop() > 0);
+<span class="lineno">  85</span> 			return insets.<span class="errorspan">consumeSystemWindowInsets();</span>
+<span class="lineno">  86</span> 		}
+<span class="lineno">  87</span> 	}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:514</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.view.MotionEvent#isButtonPressed</code></span><br /><pre class="errorlines">
+<span class="lineno"> 511</span> 			mGestureRecognizer.onTouchEvent(ev);
+<span class="lineno"> 512</span> 			return true;
+<span class="lineno"> 513</span> 		} else if (ev.isFromSource(InputDevice.SOURCE_MOUSE)) {
+<span class="lineno"> 514</span> 			if (ev.<span class="errorspan">isButtonPressed(MotionEvent.BUTTON_SECONDARY)) {</span>
+<span class="lineno"> 515</span> 				if (action == MotionEvent.ACTION_DOWN) showContextMenu();
+<span class="lineno"> 516</span> 				return true;
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:517</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.view.MotionEvent#isButtonPressed</code></span><br /><pre class="errorlines">
+<span class="lineno"> 514</span> 			if (ev.isButtonPressed(MotionEvent.BUTTON_SECONDARY)) {
+<span class="lineno"> 515</span> 				if (action == MotionEvent.ACTION_DOWN) showContextMenu();
+<span class="lineno"> 516</span> 				return true;
+<span class="lineno"> 517</span> 			} else if (ev.<span class="errorspan">isButtonPressed(MotionEvent.BUTTON_TERTIARY)) {</span>
+<span class="lineno"> 518</span> 				ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+<span class="lineno"> 519</span> 				ClipData clipData = clipboard.getPrimaryClip();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:871</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.content.Context#getDrawable</code></span><br /><pre class="errorlines">
+<span class="lineno"> 868</span> 
+<span class="lineno"> 869</span> 		if (mIsSelectingText) {
+<span class="lineno"> 870</span> 			if (mLeftSelectionHandle == null) {
+<span class="lineno"> 871</span> 				mLeftSelectionHandle = (BitmapDrawable) getContext().<span class="errorspan">getDrawable(R.drawable.text_select_handle_left_material);</span>
+<span class="lineno"> 872</span> 				mRightSelectionHandle = (BitmapDrawable) getContext().getDrawable(R.drawable.text_select_handle_right_material);
+<span class="lineno"> 873</span> 			}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:872</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.content.Context#getDrawable</code></span><br /><pre class="errorlines">
+<span class="lineno"> 869</span> 		if (mIsSelectingText) {
+<span class="lineno"> 870</span> 			if (mLeftSelectionHandle == null) {
+<span class="lineno"> 871</span> 				mLeftSelectionHandle = (BitmapDrawable) getContext().getDrawable(R.drawable.text_select_handle_left_material);
+<span class="lineno"> 872</span> 				mRightSelectionHandle = (BitmapDrawable) getContext().<span class="errorspan">getDrawable(R.drawable.text_select_handle_right_material);</span>
+<span class="lineno"> 873</span> 			}
+<span class="lineno"> 874</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:953</span>: <span class="message">Call requires API level 23 (current min is 19): <code>new android.view.ActionMode.Callback2</code></span><br /><pre class="errorlines">
+<span class="lineno"> 950</span> 			};
+<span class="lineno"> 951</span> 
+<span class="lineno"> 952</span> 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+<span class="lineno"> 953</span> 				mActionMode = startActionMode(new ActionMode.<span class="errorspan">Callback2() {</span>
+<span class="lineno"> 954</span> 					@Override
+<span class="lineno"> 955</span> 					public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:953</span>: <span class="message">Class requires API level 23 (current min is 19): <code>android.view.ActionMode.Callback2</code></span><br /><pre class="errorlines">
+<span class="lineno"> 950</span> 			};
+<span class="lineno"> 951</span> 
+<span class="lineno"> 952</span> 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+<span class="lineno"> 953</span> 				mActionMode = startActionMode(new ActionMode.<span class="errorspan">Callback2() {</span>
+<span class="lineno"> 954</span> 					@Override
+<span class="lineno"> 955</span> 					public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:126</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.media.SoundPool.Builder#setAudioAttributes</code></span><br /><pre class="errorlines">
+<span class="lineno"> 123</span> 	 */
+<span class="lineno"> 124</span> 	boolean mIsVisible;
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).<span class="errorspan">setAudioAttributes(</span>
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:126</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.media.SoundPool.Builder#setMaxStreams</code></span><br /><pre class="errorlines">
+<span class="lineno"> 123</span> 	 */
+<span class="lineno"> 124</span> 	boolean mIsVisible;
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().<span class="errorspan">setMaxStreams(1).setAudioAttributes(</span>
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:126</span>: <span class="message">Call requires API level 21 (current min is 19): <code>new android.media.AudioAttributes.Builder</code></span><br /><pre class="errorlines">
+<span class="lineno"> 123</span> 	 */
+<span class="lineno"> 124</span> 	boolean mIsVisible;
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.<span class="errorspan">Builder().setMaxStreams(1).setAudioAttributes(</span>
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:126</span>: <span class="message">Call requires API level 21 (current min is 19): <code>new android.media.SoundPool.Builder</code></span><br /><pre class="errorlines">
+<span class="lineno"> 123</span> 	 */
+<span class="lineno"> 124</span> 	boolean mIsVisible;
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.<span class="errorspan">Builder().setMaxStreams(1).setAudioAttributes(</span>
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:127</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.media.AudioAttributes.Builder#setContentType</code></span><br /><pre class="errorlines">
+<span class="lineno"> 124</span> 	boolean mIsVisible;
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().<span class="errorspan">setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)</span>
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
+<span class="lineno"> 129</span> 	private int mBellSoundId;
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:128</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.media.AudioAttributes.Builder#build</code></span><br /><pre class="errorlines">
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).<span class="errorspan">build()).build();</span>
+<span class="lineno"> 129</span> 	private int mBellSoundId;
+<span class="lineno"> 130</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:128</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.media.AudioAttributes.Builder#setUsage</code></span><br /><pre class="errorlines">
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .<span class="errorspan">setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();</span>
+<span class="lineno"> 129</span> 	private int mBellSoundId;
+<span class="lineno"> 130</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxActivity.java">../../src/main/java/com/termux/app/TermuxActivity.java</a>:128</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.media.SoundPool.Builder#build</code></span><br /><pre class="errorlines">
+<span class="lineno"> 125</span> 
+<span class="lineno"> 126</span> 	private final SoundPool mBellSoundPool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+<span class="lineno"> 127</span> 			new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+<span class="lineno"> 128</span> 			                             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).<span class="errorspan">build()).build();</span>
+<span class="lineno"> 129</span> 	private int mBellSoundId;
+<span class="lineno"> 130</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:118</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#chmod</code></span><br /><pre class="errorlines">
+<span class="lineno"> 115</span> 									}
+<span class="lineno"> 116</span> 									if (zipEntryName.startsWith("bin/") || zipEntryName.startsWith("libexec") || zipEntryName.startsWith("lib/apt/methods")) {
+<span class="lineno"> 117</span> 										//noinspection OctalInteger
+<span class="lineno"> 118</span> 										Os.<span class="errorspan">chmod(targetFile.getAbsolutePath(), 0700);</span>
+<span class="lineno"> 119</span> 									}
+<span class="lineno"> 120</span> 								}
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:127</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 124</span> 
+<span class="lineno"> 125</span> 					if (symlinks.isEmpty()) throw new RuntimeException("No SYMLINKS.txt encountered");
+<span class="lineno"> 126</span> 					for (Pair&lt;String, String> symlink : symlinks) {
+<span class="lineno"> 127</span> 						Os.<span class="errorspan">symlink(symlink.first, symlink.second);</span>
+<span class="lineno"> 128</span> 					}
+<span class="lineno"> 129</span> 
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:193</span>: <span class="message">Field requires API level 21 (current min is 19): <code>android.os.Build#SUPPORTED_ABIS</code></span><br /><pre class="errorlines">
+<span class="lineno"> 190</span>         final String[] androidArchNames = {"arm64-v8a", "x86", "armeabi-v7a"};
+<span class="lineno"> 191</span>         final String[] termuxArchNames = {"aarch64", "i686", "arm"};
+<span class="lineno"> 192</span> 
+<span class="lineno"> 193</span>         final List&lt;String> supportedArches = Arrays.asList(Build.<span class="errorspan">SUPPORTED_ABIS);</span>
+<span class="lineno"> 194</span>         for (int i = 0; i &lt; termuxArchNames.length; i++) {
+<span class="lineno"> 195</span>             if (supportedArches.contains(androidArchNames[i])) {
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:235</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 232</span> 					}
+<span class="lineno"> 233</span> 
+<span class="lineno"> 234</span> 					File sharedDir = Environment.getExternalStorageDirectory();
+<span class="lineno"> 235</span> 					Os.<span class="errorspan">symlink(sharedDir.getAbsolutePath(), new File(storageDir, "shared").getAbsolutePath());</span>
+<span class="lineno"> 236</span> 
+<span class="lineno"> 237</span> 					File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:238</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 235</span> 					Os.symlink(sharedDir.getAbsolutePath(), new File(storageDir, "shared").getAbsolutePath());
+<span class="lineno"> 236</span> 
+<span class="lineno"> 237</span> 					File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+<span class="lineno"> 238</span> 					Os.<span class="errorspan">symlink(downloadsDir.getAbsolutePath(), new File(storageDir, "downloads").getAbsolutePath());</span>
+<span class="lineno"> 239</span> 
+<span class="lineno"> 240</span> 					File dcimDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:241</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 238</span> 					Os.symlink(downloadsDir.getAbsolutePath(), new File(storageDir, "downloads").getAbsolutePath());
+<span class="lineno"> 239</span> 
+<span class="lineno"> 240</span> 					File dcimDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+<span class="lineno"> 241</span> 					Os.<span class="errorspan">symlink(dcimDir.getAbsolutePath(), new File(storageDir, "dcim").getAbsolutePath());</span>
+<span class="lineno"> 242</span> 
+<span class="lineno"> 243</span> 					File picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:244</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 241</span> 					Os.symlink(dcimDir.getAbsolutePath(), new File(storageDir, "dcim").getAbsolutePath());
+<span class="lineno"> 242</span> 
+<span class="lineno"> 243</span> 					File picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+<span class="lineno"> 244</span> 					Os.<span class="errorspan">symlink(picturesDir.getAbsolutePath(), new File(storageDir, "pictures").getAbsolutePath());</span>
+<span class="lineno"> 245</span> 
+<span class="lineno"> 246</span> 					File musicDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:247</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 244</span> 					Os.symlink(picturesDir.getAbsolutePath(), new File(storageDir, "pictures").getAbsolutePath());
+<span class="lineno"> 245</span> 
+<span class="lineno"> 246</span> 					File musicDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+<span class="lineno"> 247</span> 					Os.<span class="errorspan">symlink(musicDir.getAbsolutePath(), new File(storageDir, "music").getAbsolutePath());</span>
+<span class="lineno"> 248</span> 
+<span class="lineno"> 249</span> 					File moviesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:250</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 247</span> 					Os.symlink(musicDir.getAbsolutePath(), new File(storageDir, "music").getAbsolutePath());
+<span class="lineno"> 248</span> 
+<span class="lineno"> 249</span> 					File moviesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+<span class="lineno"> 250</span> 					Os.<span class="errorspan">symlink(moviesDir.getAbsolutePath(), new File(storageDir, "movies").getAbsolutePath());</span>
+<span class="lineno"> 251</span> 
+<span class="lineno"> 252</span> 					final File[] dirs = context.getExternalFilesDirs(null);
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxInstaller.java">../../src/main/java/com/termux/app/TermuxInstaller.java</a>:255</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.system.Os#symlink</code></span><br /><pre class="errorlines">
+<span class="lineno"> 252</span> 					final File[] dirs = context.getExternalFilesDirs(null);
+<span class="lineno"> 253</span> 					if (dirs != null &amp;&amp; dirs.length >= 2) {
+<span class="lineno"> 254</span> 						final File externalDir = dirs[1];
+<span class="lineno"> 255</span> 						Os.<span class="errorspan">symlink(externalDir.getAbsolutePath(), new File(storageDir, "external").getAbsolutePath());</span>
+<span class="lineno"> 256</span> 					}
+<span class="lineno"> 257</span> 				} catch (Exception e) {
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxService.java">../../src/main/java/com/termux/app/TermuxService.java</a>:201</span>: <span class="message">Call requires API level 21 (current min is 19): <code>android.app.Notification.Builder#setColor</code></span><br /><pre class="errorlines">
+<span class="lineno"> 198</span> 		builder.setShowWhen(false);
+<span class="lineno"> 199</span> 
+<span class="lineno"> 200</span> 		// Background color for small notification icon:
+<span class="lineno"> 201</span> 		builder.<span class="errorspan">setColor(0xFF000000);</span>
+<span class="lineno"> 202</span> 
+<span class="lineno"> 203</span> 		Resources res = getResources();
+</pre>
+<span class="location"><a href="../../src/main/res/drawable/session_ripple.xml">../../src/main/res/drawable/session_ripple.xml</a>:2</span>: <span class="message"><code>&lt;ripple></code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;?xml version="1.0" encoding="utf-8"?>
+<span class="lineno">   2</span> <span class="errorspan">&lt;ripple xmlns:android="http://schemas.android.com/apk/res/android"</span>
+<span class="lineno">   3</span>     android:color="@android:color/darker_gray" >
+<span class="lineno">   4</span>     &lt;item>
+</pre>
+<span class="location"><a href="../../src/main/res/values/styles.xml">../../src/main/res/values/styles.xml</a>:6</span>: <span class="message"><code>@android:style/Theme.Material.Light.NoActionBar</code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;!-- See https://developer.android.com/training/material/theme.html for how to customize the Material theme. -->
+<span class="lineno">   5</span>     &lt;!-- NOTE: Cannot use "Light." since it hides the terminal scrollbar on the default black background. -->
+<span class="lineno">   6</span>     &lt;style name="Theme.Termux" <span class="errorspan">parent="@android:style/Theme.Material.Light.NoActionBar"></span>
+<span class="lineno">   7</span>         &lt;item name="android:statusBarColor">#000000&lt;/item>
+<span class="lineno">   8</span>         &lt;item name="android:windowBackground">@android:color/black&lt;/item>
+</pre>
+<span class="location"><a href="../../src/main/res/values/styles.xml">../../src/main/res/values/styles.xml</a>:7</span>: <span class="message"><code>android:statusBarColor</code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">   4</span>     &lt;!-- See https://developer.android.com/training/material/theme.html for how to customize the Material theme. -->
+<span class="lineno">   5</span>     &lt;!-- NOTE: Cannot use "Light." since it hides the terminal scrollbar on the default black background. -->
+<span class="lineno">   6</span>     &lt;style name="Theme.Termux" parent="@android:style/Theme.Material.Light.NoActionBar">
+<span class="lineno">   7</span>         &lt;item <span class="errorspan">name="android:statusBarColor">#000000&lt;/item></span>
+<span class="lineno">   8</span>         &lt;item name="android:windowBackground">@android:color/black&lt;/item>
+<span class="lineno">   9</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/styles.xml">../../src/main/res/values/styles.xml</a>:11</span>: <span class="message"><code>android:colorAccent</code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">   8</span>         &lt;item name="android:windowBackground">@android:color/black&lt;/item>
+<span class="lineno">   9</span> 
+<span class="lineno">  10</span>         &lt;!-- Seen in buttons on left drawer: -->
+<span class="lineno">  11</span>         &lt;item <span class="errorspan">name="android:colorAccent">#212121&lt;/item></span>
+<span class="lineno">  12</span>         &lt;item name="android:alertDialogTheme">@style/TermuxAlertDialogStyle&lt;/item>
+<span class="lineno">  13</span>         &lt;!-- Avoid action mode toolbar pushing down terminal content when
+</pre>
+<span class="location"><a href="../../src/main/res/values/styles.xml">../../src/main/res/values/styles.xml</a>:18</span>: <span class="message"><code>@android:style/Theme.Material.Light.Dialog.Alert</code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">  15</span>         &lt;item name="android:windowActionModeOverlay">true&lt;/item>
+<span class="lineno">  16</span>     &lt;/style>
+<span class="lineno">  17</span> 
+<span class="lineno">  18</span> 	&lt;style name="TermuxAlertDialogStyle" <span class="errorspan">parent="@android:style/Theme.Material.Light.Dialog.Alert"></span>
+<span class="lineno">  19</span> 	    &lt;!-- Seen in buttons on alert dialog: -->
+<span class="lineno">  20</span>         &lt;item name="android:colorAccent">#212121&lt;/item>
+</pre>
+<span class="location"><a href="../../src/main/res/values/styles.xml">../../src/main/res/values/styles.xml</a>:20</span>: <span class="message"><code>android:colorAccent</code> requires API level 21 (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">  17</span> 
+<span class="lineno">  18</span> 	&lt;style name="TermuxAlertDialogStyle" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+<span class="lineno">  19</span> 	    &lt;!-- Seen in buttons on alert dialog: -->
+<span class="lineno">  20</span>         &lt;item <span class="errorspan">name="android:colorAccent">#212121&lt;/item></span>
+<span class="lineno">  21</span>     &lt;/style>
+<span class="lineno">  22</span> 
+</pre>
+</div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ & Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Calling new methods on older versions.</div>
+<div class="explanation">
+This check scans through all the Android API calls in the application and warns about any calls that are not available on <b>all</b> versions targeted by this application (according to its minimum SDK attribute in the manifest).<br/>
+<br/>
+If you really want to use this API and don't need to support older devices just set the <code>minSdkVersion</code> in your <code>build.gradle</code> or <code>AndroidManifest.xml</code> files.<br/>
+<br/>
+If your code is <b>deliberately</b> accessing newer APIs, and you have ensured (e.g. with conditional execution) that this code will only ever be called on a supported platform, then you can annotate your class or method with the <code>@TargetApi</code> annotation specifying the local minimum SDK to apply, such as <code>@TargetApi(11)</code>, such that this check considers 11 rather than your manifest file's minimum SDK as the required API level.<br/>
+<br/>
+If you are deliberately setting <code>android:</code> attributes in style definitions, make sure you place this in a <code>values-vNN</code> folder in order to avoid running into runtime conflicts on certain devices where manufacturers have added custom attributes whose ids conflict with the new ones on later platforms.<br/>
+<br/>
+Similarly, you can use tools:targetApi="11" in an XML file to indicate that the element will only be inflated in an adequate context.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "NewApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="OldTargetApi"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">OldTargetApi: Target SDK attribute is not targeting latest version</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:20</span>: <span class="message">Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.</span><br /><pre class="errorlines">
+<span class="lineno">  17</span>     defaultConfig {
+<span class="lineno">  18</span>         applicationId "com.termux"
+<span class="lineno">  19</span>         minSdkVersion 19
+<span class="lineno">  20</span>         <span class="errorspan">targetSdkVersion 23</span>
+<span class="lineno">  21</span>         versionCode 34
+<span class="lineno">  22</span>         versionName "0.34"
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Target SDK attribute is not targeting latest version.</div>
+<div class="explanation">
+When your application runs on a version of Android that is more recent than your <code>targetSdkVersion</code> specifies that it has been tested with, various compatibility modes kick in. This ensures that your application continues to work, but it may look out of place. For example, if the <code>targetSdkVersion</code> is less than 14, your app may get an option button in the UI.<br/>
+<br/>
+To fix this issue, set the <code>targetSdkVersion</code> to the highest available value. Then test your app to make sure everything works correctly. You may want to consult the compatibility notes to see what changes apply to each version you are adding support for: <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html">http://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a>
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html">http://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a>
+</div><br/>To suppress this error, use the issue id "OldTargetApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="SdCardPath"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">SdCardPath: Hardcoded reference to <code>/sdcard</code></a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:787</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 784</span> 		try {
+<span class="lineno"> 785</span>             // Hard-coded paths since this file is used also in Termux:Float.
+<span class="lineno"> 786</span>             //@SuppressLint("SdCardPath")
+<span class="lineno"> 787</span>             File fontFile = new File(<span class="errorspan">"/data/data/com.termux/files/home/.termux/font.ttf");</span>
+<span class="lineno"> 788</span>             //@SuppressLint("SdCardPath")
+<span class="lineno"> 789</span>             File colorsFile = new File("/data/data/com.termux/files/home/.termux/colors.properties");
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:789</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 786</span>             //@SuppressLint("SdCardPath")
+<span class="lineno"> 787</span>             File fontFile = new File("/data/data/com.termux/files/home/.termux/font.ttf");
+<span class="lineno"> 788</span>             //@SuppressLint("SdCardPath")
+<span class="lineno"> 789</span>             File colorsFile = new File(<span class="errorspan">"/data/data/com.termux/files/home/.termux/colors.properties");</span>
+<span class="lineno"> 790</span> 
+<span class="lineno"> 791</span> 			final Properties props = new Properties();
+</pre>
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxService.java">../../src/main/java/com/termux/app/TermuxService.java</a>:45</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  42</span> 
+<span class="lineno">  43</span> 	/** Note that this is a symlink on the Android M preview. */
+<span class="lineno">  44</span> 	//@SuppressLint("SdCardPath")
+<span class="lineno">  45</span> 	public static final String FILES_PATH = <span class="errorspan">"/data/data/com.termux/files";</span>
+<span class="lineno">  46</span> 	public static final String PREFIX_PATH = FILES_PATH + "/usr";
+<span class="lineno">  47</span> 	public static final String HOME_PATH = FILES_PATH + "/home";
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Hardcoded reference to <code>/sdcard</code></div>
+<div class="explanation">
+Your code should not reference the <code>/sdcard</code> path directly; instead use <code>Environment.getExternalStorageDirectory().getPath()</code>.<br/>
+<br/>
+Similarly, do not reference the <code>/data/data/</code> path directly; it can vary in multi-user scenarios. Instead, use <code>Context.getFilesDir().getPath()</code>.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/topics/data/data-storage.html#filesExternal">http://developer.android.com/guide/topics/data/data-storage.html#filesExternal</a>
+</div><br/>To suppress this error, use the issue id "SdCardPath" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="UnusedAttribute"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">UnusedAttribute: Attribute unused on older versions</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:19</span>: <span class="message">Attribute <code>banner</code> is only used in API level 21 and higher (current min is 19)</span><br /><pre class="errorlines">
+<span class="lineno">  16</span>         android:allowBackup="true"
+<span class="lineno">  17</span>         android:fullBackupContent="@xml/backupscheme"
+<span class="lineno">  18</span>         android:icon="@drawable/ic_launcher"
+<span class="lineno">  19</span>         <span class="errorspan">android:banner="@drawable/banner"</span>
+<span class="lineno">  20</span>         android:label="@string/application_name"
+<span class="lineno">  21</span>         android:theme="@style/Theme.Termux"
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Attribute unused on older versions.</div>
+<div class="explanation">
+This check finds attributes set in XML files that were introduced in a version newer than the oldest version targeted by your application (with the <code>minSdkVersion</code> attribute).<br/>
+<br/>
+This is not an error; the application will simply ignore the attribute. However, if the attribute is important to the appearance of functionality of your application, you should consider finding an alternative way to achieve the same result with only available attributes, and then you can optionally create a copy of the layout in a layout-vNN folder which will be used on API NN or higher where you can take advantage of the newer attribute.<br/>
+<br/>
+Note: This check does not only apply to attributes. For example, some tags can be unused too, such as the new <code>&lt;tag></code> element in layouts introduced in API 21.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "UnusedAttribute" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="GradleDependency"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">GradleDependency: Obsolete Gradle Dependency</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:5</span>: <span class="message">Old buildToolsVersion 23.0.2; recommended version is 23.0.3 or later</span><br /><pre class="errorlines">
+<span class="lineno">   2</span> 
+<span class="lineno">   3</span> android {
+<span class="lineno">   4</span>     compileSdkVersion 23
+<span class="lineno">   5</span>     <span class="errorspan">buildToolsVersion "23.0.2"</span>
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     dependencies {
+</pre>
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:8</span>: <span class="message">A newer version of com.android.support:support-annotations than 23.3.0 is available: 25.0.1</span><br /><pre class="errorlines">
+<span class="lineno">   5</span>     buildToolsVersion "23.0.2"
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     dependencies {
+<span class="lineno">   8</span>         <span class="errorspan">compile 'com.android.support:support-annotations:23.3.0'</span>
+<span class="lineno">   9</span>     }
+<span class="lineno">  10</span> 
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 4 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Obsolete Gradle Dependency.</div>
+<div class="explanation">
+This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "GradleDependency" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Performance"></a>
+<div class="category"><a href="#" title="Return to top">Performance</a><div class="categorySeparator"></div>
+</div>
+<a name="Wakelock"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">Wakelock: Incorrect <code>WakeLock</code> usage</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/app/TermuxService.java">../../src/main/java/com/termux/app/TermuxService.java</a>:103</span>: <span class="message">The <code>release()</code> call is not always reached</span><br /><pre class="errorlines">
+<span class="lineno"> 100</span> 				mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, EmulatorDebug.LOG_TAG);
+<span class="lineno"> 101</span> 				mWakeLock.acquire();
+<span class="lineno"> 102</span> 			} else {
+<span class="lineno"> 103</span> 				mWakeLock.<span class="errorspan">release();</span>
+<span class="lineno"> 104</span> 				mWakeLock = null;
+<span class="lineno"> 105</span> 			}
+</pre>
+</div>
+<div class="metadata">Priority: 9 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Incorrect <code>WakeLock</code> usage.</div>
+<div class="explanation">
+Failing to release a wakelock properly can keep the Android device in a high power mode, which reduces battery life. There are several causes of this, such as releasing the wake lock in <code>onDestroy()</code> instead of in <code>onPause()</code>, failing to call <code>release()</code> in all possible code paths after an <code>acquire()</code>, and so on.<br/>
+<br/>
+NOTE: If you are using the lock just to keep the screen on, you should strongly consider using <code>FLAG_KEEP_SCREEN_ON</code> instead. This window flag will be correctly managed by the platform as the user moves between applications and doesn't require a special permission. See <a href="http://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_KEEP_SCREEN_ON">http://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_KEEP_SCREEN_ON</a>.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "Wakelock" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="HandlerLeak"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">HandlerLeak: Handler reference leaks</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/terminal/TerminalSession.java">../../src/main/java/com/termux/terminal/TerminalSession.java</a>:101</span>: <span class="message">This Handler class should be static or leaks might occur (anonymous android.os.Handler)</span><br /><pre class="errorlines">
+<span class="lineno">  98</span> 	public String mSessionName;
+<span class="lineno">  99</span> 
+<span class="lineno"> 100</span> 	//@SuppressLint("HandlerLeak")
+<span class="lineno"> 101</span> 	final Handler mMainThreadHandler = <span class="errorspan">new Handler() {</span>
+<span class="lineno"> 102</span> 		final byte[] mReceiveBuffer = new byte[4 * 1024];
+<span class="lineno"> 103</span> 
+</pre>
+</div>
+<div class="metadata">Priority: 4 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Handler reference leaks.</div>
+<div class="explanation">
+Since this Handler is declared as an inner class, it may prevent the outer class from being garbage collected. If the Handler is using a Looper or MessageQueue for a thread other than the main thread, then there is no issue. If the Handler is using the Looper or MessageQueue of the main thread, you need to fix your Handler declaration, as follows: Declare the Handler as a static class; In the outer class, instantiate a WeakReference to the outer class and pass this object to your Handler when you instantiate the Handler; Make all references to members of the outer class using the WeakReference object.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "HandlerLeak" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Usability:Icons"></a>
+<div class="category"><a href="#" title="Return to top">Usability:Icons</a><div class="categorySeparator"></div>
+</div>
+<a name="IconLocation"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">IconLocation: Image defined in density-independent drawable folder</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/res/drawable/banner.png">../../src/main/res/drawable/banner.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/drawable/banner.png" /><span class="message">Found bitmap drawable <code>res/drawable/banner.png</code> in densityless folder</span><br clear="right"/>
+</div>
+<div class="metadata">Priority: 5 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Image defined in density-independent drawable folder.</div>
+<div class="explanation">
+The res/drawable folder is intended for density-independent graphics such as shapes defined in XML. For bitmaps, move it to <code>drawable-mdpi</code> and consider providing higher and lower resolution versions in <code>drawable-ldpi</code>, <code>drawable-hdpi</code> and <code>drawable-xhdpi</code>. If the icon <b>really</b> is density independent (for example a solid color) you can place it in <code>drawable-nodpi</code>.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/practices/screens_support.html">http://developer.android.com/guide/practices/screens_support.html</a>
+</div><br/>To suppress this error, use the issue id "IconLocation" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconDensities"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">IconDensities: Icon densities validation</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/res/drawable-hdpi">../../src/main/res/drawable-hdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-hdpi</code>: text_select_handle_left_mtrl_alpha.png, text_select_handle_right_mtrl_alpha.png</span><br />
+<span class="location"><a href="../../src/main/res/drawable-mdpi">../../src/main/res/drawable-mdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-mdpi</code>: text_select_handle_left_mtrl_alpha.png, text_select_handle_right_mtrl_alpha.png</span><br />
+<span class="location"><a href="../../src/main/res/drawable-xhdpi">../../src/main/res/drawable-xhdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-xhdpi</code>: text_select_handle_left_mtrl_alpha.png, text_select_handle_right_mtrl_alpha.png</span><br />
+<span class="location"><a href="../../src/main/res/drawable-xxxhdpi">../../src/main/res/drawable-xxxhdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-xxxhdpi</code>: text_select_handle_left_mtrl_alpha.png, text_select_handle_right_mtrl_alpha.png</span><br />
+</div>
+<div class="metadata">Priority: 4 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Icon densities validation.</div>
+<div class="explanation">
+Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.<br/>
+<br/>
+Low density is not really used much anymore, so this check ignores the ldpi density. To force lint to include it, set the environment variable <code>ANDROID_LINT_INCLUDE_LDPI=true</code>. For more information on current density usage, see <a href="http://developer.android.com/resources/dashboard/screens.html">http://developer.android.com/resources/dashboard/screens.html</a>
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/practices/screens_support.html">http://developer.android.com/guide/practices/screens_support.html</a>
+</div><br/>To suppress this error, use the issue id "IconDensities" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Usability"></a>
+<div class="category"><a href="#" title="Return to top">Usability</a><div class="categorySeparator"></div>
+</div>
+<a name="GoogleAppIndexingWarning"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">GoogleAppIndexingWarning: Missing support for Google App Indexing</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:65</span>: <span class="message">Missing URL</span><br /><pre class="errorlines">
+<span class="lineno">  62</span>                 &lt;data android:mimeType="video/*" />
+<span class="lineno">  63</span>             &lt;/intent-filter>
+<span class="lineno">  64</span>             &lt;!-- Be more restrictive for viewing files, restricting ourselves to text files. -->
+<span class="lineno">  65</span>             <span class="errorspan">&lt;intent-filter></span>
+<span class="lineno">  66</span>                 &lt;action android:name="android.intent.action.VIEW"/>
+<span class="lineno">  67</span>                 &lt;category android:name="android.intent.category.DEFAULT" />
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 5 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Missing support for Google App Indexing.</div>
+<div class="explanation">
+Adds URLs to get your app into the Google index, to get installs and traffic to your app from Google Search.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://g.co/AppIndexing/AndroidStudio">https://g.co/AppIndexing/AndroidStudio</a>
+</div><br/>To suppress this error, use the issue id "GoogleAppIndexingWarning" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="AlwaysShowAction"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">AlwaysShowAction: Usage of <code>showAsAction=always</code></a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:906</span>: <span class="message">Prefer "<code>SHOW_AS_ACTION_IF_ROOM</code>" instead of "<code>SHOW_AS_ACTION_ALWAYS</code>"</span><br /><pre class="errorlines">
+<span class="lineno"> 903</span> 					final int[] ACTION_MODE_ATTRS = { android.R.attr.actionModeCopyDrawable, android.R.attr.actionModePasteDrawable, };
+<span class="lineno"> 904</span> 					TypedArray styledAttributes = getContext().obtainStyledAttributes(ACTION_MODE_ATTRS);
+<span class="lineno"> 905</span>                     try {
+<span class="lineno"> 906</span>                         int show = <span class="errorspan">MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT;</span>
+<span class="lineno"> 907</span> 
+<span class="lineno"> 908</span>                         ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Priority: 3 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Usage of <code>showAsAction=always</code></div>
+<div class="explanation">
+Using <code>showAsAction="always"</code> in menu XML, or <code>MenuItem.SHOW_AS_ACTION_ALWAYS</code> in Java code is usually a deviation from the user interface style guide.Use <code>ifRoom</code> or the corresponding <code>MenuItem.SHOW_AS_ACTION_IF_ROOM</code> instead.<br/>
+<br/>
+If <code>always</code> is used sparingly there are usually no problems and behavior is roughly equivalent to <code>ifRoom</code> but with preference over other <code>ifRoom</code> items. Using it more than twice in the same menu is a bad idea.<br/>
+<br/>
+This check looks for menu XML files that contain more than two <code>always</code> actions, or some <code>always</code> actions and no <code>ifRoom</code> actions. In Java code, it looks for projects that contain references to <code>MenuItem.SHOW_AS_ACTION_ALWAYS</code> and no references to <code>MenuItem.SHOW_AS_ACTION_IF_ROOM</code>.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/patterns/actionbar.html">http://developer.android.com/design/patterns/actionbar.html</a>
+</div><br/>To suppress this error, use the issue id "AlwaysShowAction" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Accessibility"></a>
+<div class="category"><a href="#" title="Return to top">Accessibility</a><div class="categorySeparator"></div>
+</div>
+<a name="ClickableViewAccessibility"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">ClickableViewAccessibility: Accessibility in Custom Views</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/termux/view/TerminalView.java">../../src/main/java/com/termux/view/TerminalView.java</a>:459</span>: <span class="message">Custom view <code>com/termux/view/TerminalView</code> overrides <code>onTouchEvent</code> but not <code>performClick</code></span><br /><pre class="errorlines">
+<span class="lineno"> 456</span> 	//@SuppressLint("ClickableViewAccessibility")
+<span class="lineno"> 457</span> 	@Override
+<span class="lineno"> 458</span> 	//@TargetApi(23)
+<span class="lineno"> 459</span> 	public boolean <span class="errorspan">onTouchEvent(MotionEvent ev) {</span>
+<span class="lineno"> 460</span> 		if (mEmulator == null) return true;
+<span class="lineno"> 461</span> 		final int action = ev.getAction();
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Accessibility</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Accessibility in Custom Views.</div>
+<div class="explanation">
+If a <code>View</code> that overrides <code>onTouchEvent</code> or uses an <code>OnTouchListener</code> does not also implement <code>performClick</code> and call it when clicks are detected, the <code>View</code> may not handle accessibility actions properly. Logic handling the click actions should ideally be placed in <code>View#performClick</code> as some accessibility services invoke <code>performClick</code> when a click action should occur.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "ClickableViewAccessibility" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="MissingIssues"></a>
+<div class="category">Disabled Checks<div class="categorySeparator"></div>
+</div>
+The following issues were not run by lint, either because the check is not enabled by default, or because it was disabled with a command line flag or via one or more lint.xml configuration files in the project directories.
+<br/><br/>
+<a name="AppLinksAutoVerifyError"></a>
+<div class="issue">
+<div class="id">AppLinksAutoVerifyError<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: App Links Auto Verification Failure.</div>
+<div class="explanation">
+Ensures that app links are correctly set and associated with website.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://g.co/appindexing/applinks">https://g.co/appindexing/applinks</a>
+</div><br/>To suppress this error, use the issue id "AppLinksAutoVerifyError" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="AppLinksAutoVerifyWarning"></a>
+<div class="issue">
+<div class="id">AppLinksAutoVerifyWarning<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Potential App Links Auto Verification Failure.</div>
+<div class="explanation">
+Ensures that app links are correctly set and associated with website.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://g.co/appindexing/applinks">https://g.co/appindexing/applinks</a>
+</div><br/>To suppress this error, use the issue id "AppLinksAutoVerifyWarning" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="BackButton"></a>
+<div class="issue">
+<div class="id">BackButton<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Back button.</div>
+<div class="explanation">
+According to the Android Design Guide,<br/>
+<br/>
+"Other platforms use an explicit back button with label to allow the user to navigate up the application's hierarchy. Instead, Android uses the main action bar's app icon for hierarchical navigation and the navigation bar's back button for temporal navigation."<br/>
+This check is not very sophisticated (it just looks for buttons with the label "Back"), so it is disabled by default to not trigger on common scenarios like pairs of Back/Next buttons to paginate through screens.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/patterns/pure-android.html">http://developer.android.com/design/patterns/pure-android.html</a>
+</div><br/>To suppress this error, use the issue id "BackButton" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="EasterEgg"></a>
+<div class="issue">
+<div class="id">EasterEgg<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Security</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Code contains easter egg.</div>
+<div class="explanation">
+An "easter egg" is code deliberately hidden in the code, both from potential users and even from other developers. This lint check looks for code which looks like it may be hidden from sight.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "EasterEgg" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="FieldGetter"></a>
+<div class="issue">
+<div class="id">FieldGetter<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Using getter instead of field.</div>
+<div class="explanation">
+Accessing a field within the class that defines a getter for that field is at least 3 times faster than calling the getter. For simple getters that do nothing other than return the field, you might want to just reference the local field directly instead.<br/>
+<br/>
+<b>NOTE</b>: As of Android 2.3 (Gingerbread), this optimization is performed automatically by Dalvik, so there is no need to change your code; this is only relevant if you are targeting older versions of Android.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/practices/design/performance.html#internal_get_set">http://developer.android.com/guide/practices/design/performance.html#internal_get_set</a>
+</div><br/>To suppress this error, use the issue id "FieldGetter" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="GoogleAppIndexingApiWarning"></a>
+<div class="issue">
+<div class="id">GoogleAppIndexingApiWarning<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Missing support for Google App Indexing Api.</div>
+<div class="explanation">
+Adds URLs to get your app into the Google index, to get installs and traffic to your app from Google Search.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://g.co/AppIndexing/AndroidStudio">https://g.co/AppIndexing/AndroidStudio</a>
+</div><br/>To suppress this error, use the issue id "GoogleAppIndexingApiWarning" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconExpectedSize"></a>
+<div class="issue">
+<div class="id">IconExpectedSize<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Icon has incorrect size.</div>
+<div class="explanation">
+There are predefined sizes (for each density) for launcher icons. You should follow these conventions to make sure your icons fit in with the overall look of the platform.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>
+</div><br/>To suppress this error, use the issue id "IconExpectedSize" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="LogConditional"></a>
+<div class="issue">
+<div class="id">LogConditional<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Unconditional Logging Calls.</div>
+<div class="explanation">
+The BuildConfig class (available in Tools 17) provides a constant, "DEBUG", which indicates whether the code is being built in release mode or in debug mode. In release mode, you typically want to strip out all the logging calls. Since the compiler will automatically remove all code which is inside a "if (false)" check, surrounding your logging calls with a check for BuildConfig.DEBUG is a good idea.<br/>
+<br/>
+If you <b>really</b> intend for the logging to be present in release mode, you can suppress this warning with a @SuppressLint annotation for the intentional logging calls.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "LogConditional" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="MangledCRLF"></a>
+<div class="issue">
+<div class="id">MangledCRLF<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 2 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Mangled file line endings.</div>
+<div class="explanation">
+On Windows, line endings are typically recorded as carriage return plus newline: \r\n.<br/>
+<br/>
+This detector looks for invalid line endings with repeated carriage return characters (without newlines). Previous versions of the ADT plugin could accidentally introduce these into the file, and when editing the file, the editor could produce confusing visual artifacts.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=375421">https://bugs.eclipse.org/bugs/show_bug.cgi?id=375421</a>
+</div><br/>To suppress this error, use the issue id "MangledCRLF" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="NegativeMargin"></a>
+<div class="issue">
+<div class="id">NegativeMargin<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Negative Margins.</div>
+<div class="explanation">
+Margin values should be positive. Negative values are generally a sign that you are making assumptions about views surrounding the current one, or may be tempted to turn off child clipping to allow a view to escape its parent. Turning off child clipping to do this not only leads to poor graphical performance, it also results in wrong touch event handling since touch events are based strictly on a chain of parent-rect hit tests. Finally, making assumptions about the size of strings can lead to localization problems.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "NegativeMargin" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="NewerVersionAvailable"></a>
+<div class="issue">
+<div class="id">NewerVersionAvailable<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Newer Library Versions Available.</div>
+<div class="explanation">
+This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the <code>GradleDependency</code> check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also <b>much</b> slower.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "NewerVersionAvailable" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="SelectableText"></a>
+<div class="issue">
+<div class="id">SelectableText<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 7 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Dynamic text should probably be selectable.</div>
+<div class="explanation">
+If a <code>&lt;TextView></code> is used to display data, the user might want to copy that data and paste it elsewhere. To allow this, the <code>&lt;TextView></code> should specify <code>android:textIsSelectable="true"</code>.<br/>
+<br/>
+This lint check looks for TextViews which are likely to be displaying data: views whose text is set dynamically. This value will be ignored on platforms older than API 11, so it is okay to set it regardless of your <code>minSdkVersion</code>.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "SelectableText" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="StopShip"></a>
+<div class="issue">
+<div class="id">StopShip<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 10 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Code contains <code>STOPSHIP</code> marker.</div>
+<div class="explanation">
+Using the comment <code>// STOPSHIP</code> can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "StopShip" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="TypographyQuotes"></a>
+<div class="issue">
+<div class="id">TypographyQuotes<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ & Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results-debug_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability:Typography</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Straight quotes can be replaced with curvy quotes.</div>
+<div class="explanation">
+Straight single quotes and double quotes, when used as a pair, can be replaced by "curvy quotes" (or directional quotes). This can make the text more readable.<br/>
+<br/>
+Note that you should never use grave accents and apostrophes to quote, `like this'.<br/>
+<br/>
+(Also note that you should not use curvy quotes for code fragments.)
+</div>
+<br/><div class="moreinfo">More info: <a href="http://en.wikipedia.org/wiki/Quotation_mark">http://en.wikipedia.org/wiki/Quotation_mark</a>
+</div><br/>To suppress this error, use the issue id "TypographyQuotes" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="UnusedIds"></a>
+<div class="issue">
+<div class="id">UnusedIds<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 1 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Unused id.</div>
+<div class="explanation">
+This resource id definition appears not to be needed since it is not referenced from anywhere. Having id definitions, even if unused, is not necessarily a bad idea since they make working on layouts and menus easier, so there is not a strong reason to delete these.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "UnusedIds" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="SuppressInfo"></a>
+<div class="category">Suppressing Warnings and Errors<div class="categorySeparator"></div>
+</div>
+Lint errors can be suppressed in a variety of ways:<br/>
+<br/>
+1. With a <code>@SuppressLint</code> annotation in the Java code<br/>
+2. With a <code>tools:ignore</code> attribute in the XML file<br/>
+3. With ignore flags specified in the <code>build.gradle</code> file, as explained below<br/>
+4. With a <code>lint.xml</code> configuration file in the project<br/>
+5. With a <code>lint.xml</code> configuration file passed to lint via the --config flag<br/>
+6. With the --ignore flag passed to lint.<br/>
+<br/>
+To suppress a lint warning with an annotation, add a <code>@SuppressLint("id")</code> annotation on the class, method or variable declaration closest to the warning instance you want to disable. The id can be one or more issue id's, such as <code>"UnusedResources"</code> or <code>{"UnusedResources","UnusedIds"}</code>, or it can be <code>"all"</code> to suppress all lint warnings in the given scope.<br/>
+<br/>
+To suppress a lint warning in an XML file, add a <code>tools:ignore="id"</code> attribute on the element containing the error, or one of its surrounding elements. You also need to define the namespace for the tools prefix on the root element in your document, next to the <code>xmlns:android</code> declaration:<br/>
+<code>xmlns:tools="http://schemas.android.com/tools"</code><br/>
+<br/>
+To suppress a lint warning in a <code>build.gradle</code> file, add a section like this:<br/>
+<br/>
+android {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;lintOptions {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disable 'TypographyFractions','TypographyQuotes'<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+Here we specify a comma separated list of issue id's after the disable command. You can also use <code>warning</code> or <code>error</code> instead of <code>disable</code> to change the severity of issues.<br/>
+<br/>
+To suppress lint warnings with a configuration XML file, create a file named <code>lint.xml</code> and place it at the root directory of the project in which it applies.<br/>
+<br/>
+The format of the <code>lint.xml</code> file is something like the following:<br/>
+<br/>
+&lt;?xml version="1.0" encoding="UTF-8"?><br/>
+&lt;lint><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Disable this given check in this project --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="IconMissingDensityFolder" severity="ignore" /><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Ignore the ObsoleteLayoutParam issue in the given files --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="ObsoleteLayoutParam"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ignore path="res/layout/activation.xml" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ignore path="res/layout-xlarge/activation.xml" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/issue><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Ignore the UselessLeaf issue in the given file --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="UselessLeaf"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ignore path="res/layout/main.xml" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/issue><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Change the severity of hardcoded strings to "error" --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="HardcodedText" severity="error" /><br/>
+&lt;/lint><br/>
+<br/>
+To suppress lint checks from the command line, pass the --ignore flag with a comma separated list of ids to be suppressed, such as:<br/>
+<code>$ lint --ignore UnusedResources,UselessLeaf /my/project/path</code><br/>
+<br/>
+For more information, see <a href="http://g.co/androidstudio/suppressing-lint-warnings">http://g.co/androidstudio/suppressing-lint-warnings</a><br/>
+
+
+</body>
+</html>

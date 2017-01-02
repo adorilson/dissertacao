@@ -1,0 +1,9 @@
+android.support.v4.app.FragmentManager=1
+android.support.v7.app.AlertDialog=1
+android.support.v7.widget.Toolbar=1
+android.support.v4.app.FragmentActivity=9
+android.support.v4.app.NotificationCompat=1
+android.support.v4.app.DialogFragment=3
+android.support.design.widget.Snackbar=1
+android.support.v7.app.AppCompatActivity=2
+android.support.v4.content.WakefulBroadcastReceiver=2

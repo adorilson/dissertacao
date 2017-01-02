@@ -1,0 +1,14 @@
+16 ; Metodo ; android.app.Activity#getParentActivityIntent ; 1
+21 ; Metodo ; android.graphics.drawable.Drawable#setHotspot ; 1
+21 ; Metodo ; android.view.ViewAnimationUtils#createCircularReveal ; 2
+23 ; Metodo ; android.app.Fragment#getContext ; 2
+16 ; Metodo ; android.app.Activity#startActivity ; 1
+21 ; Metodo ; android.graphics.drawable.AnimatedVectorDrawable#start ; 1
+21 ; Metodo ; android.graphics.drawable.Drawable#setTint ; 1
+15 ; Metodo ; android.widget.RadioButton#callOnClick ; 1
+16 ; Metodo ; android.app.ActivityOptions#toBundle ; 1
+17 ; XML ; paddingStart ; 11
+21 ; XML ; android:overlapAnchor ; 1
+21 ; XML ; android:elevation ; 1
+17 ; XML ; android:textAlignment ; 3
+16 ; XML ; android:fontFamily ; 6

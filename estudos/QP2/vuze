@@ -1,0 +1,58 @@
+Call requires API level 11 (current min is 7): `android.animation.Animator#addListener`
+Call requires API level 11 (current min is 7): `android.animation.Animator#cancel`
+Call requires API level 11 (current min is 7): `android.animation.Animator#cancel`
+Call requires API level 11 (current min is 7): `android.animation.Animator#setDuration`
+Call requires API level 11 (current min is 7): `android.animation.Animator#setDuration`
+Call requires API level 11 (current min is 7): `android.animation.Animator#setInterpolator`
+Call requires API level 11 (current min is 7): `android.animation.Animator#setInterpolator`
+Call requires API level 11 (current min is 7): `android.animation.Animator#start`
+Call requires API level 11 (current min is 7): `android.animation.Animator#start`
+Call requires API level 11 (current min is 7): `android.animation.ObjectAnimator#cancel`
+Call requires API level 11 (current min is 7): `android.animation.ObjectAnimator#ofFloat`
+Call requires API level 11 (current min is 7): `android.animation.ObjectAnimator#ofInt`
+Call requires API level 11 (current min is 7): `android.animation.ObjectAnimator#setDuration`
+Call requires API level 11 (current min is 7): `android.animation.ObjectAnimator#start`
+Call requires API level 11 (current min is 7): `android.view.ActionMode#invalidate`
+Call requires API level 11 (current min is 7): `android.view.View#addOnLayoutChangeListener`
+Call requires API level 11 (current min is 7): `android.webkit.WebSettings#setDisplayZoomControls`
+Call requires API level 11 (current min is 7): `new android.animation.AnimatorListenerAdapter`
+Call requires API level 14 (current min is 7): `android.animation.ObjectAnimator#ofFloat`
+Call requires API level 14 (current min is 7): `android.animation.ObjectAnimator#ofInt`
+Call requires API level 14 (current min is 7): `new android.util.Property`
+Call requires API level 14 (current min is 7): `new android.util.Property`
+Call requires API level 19 (current min is 7): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 7): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 7): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 7): `android.provider.DocumentsContract#getDocumentId`
+Call requires API level 19 (current min is 7): `android.provider.DocumentsContract#isDocumentUri`
+Call requires API level 21 (current min is 7): `new android.widget.ScrollView`
+Call requires API level 8 (current min is 7): `android.app.SearchManager#getSearchableInfo`
+Call requires API level 8 (current min is 7): `android.net.http.AndroidHttpClient#getCompressedEntity`
+Call requires API level 8 (current min is 7): `android.net.http.AndroidHttpClient#getUngzippedContent`
+Call requires API level 8 (current min is 7): `android.net.http.AndroidHttpClient#modifyRequestToAcceptGzipResponse`
+Call requires API level 8 (current min is 7): `android.os.Environment#getExternalStoragePublicDirectory`
+Call requires API level 8 (current min is 7): `android.webkit.ConsoleMessage#lineNumber`
+Call requires API level 8 (current min is 7): `android.webkit.ConsoleMessage#message`
+Call requires API level 8 (current min is 7): `android.webkit.ConsoleMessage#sourceId`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#build`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#permitNetwork`
+Call requires API level 9 (current min is 7): `android.os.StrictMode#getThreadPolicy`
+Call requires API level 9 (current min is 7): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 7): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 7): `java.net.NetworkInterface#isLoopback`
+Call requires API level 9 (current min is 7): `java.net.NetworkInterface#isPointToPoint`
+Call requires API level 9 (current min is 7): `java.net.NetworkInterface#isUp`
+Call requires API level 9 (current min is 7): `java.net.NetworkInterface#isUp`
+Call requires API level 9 (current min is 7): `java.net.NetworkInterface#isVirtual`
+Call requires API level 9 (current min is 7): `new android.os.StrictMode.ThreadPolicy.Builder`
+Class requires API level 11 (current min is 7): `android.animation.AnimatorListenerAdapter`
+Class requires API level 11 (current min is 7): `android.view.View.OnLayoutChangeListener`
+Class requires API level 14 (current min is 7): `android.util.Property`
+Class requires API level 14 (current min is 7): `android.util.Property`
+Field requires API level 19 (current min is 7): `android.content.pm.ResolveInfo#providerInfo`
+Field requires API level 19 (current min is 7): `android.content.pm.ResolveInfo#providerInfo`
+Field requires API level 8 (current min is 7): `android.content.res.Configuration#uiMode`
+Field requires API level 8 (current min is 7): `android.content.res.Configuration#uiMode`
+Field requires API level 8 (current min is 7): `android.os.Environment#DIRECTORY_DOWNLOADS`
+Field requires API level 9 (current min is 7): `android.content.pm.PackageInfo#firstInstallTime`
+Field requires API level 9 (current min is 7): `android.content.pm.PackageInfo#lastUpdateTime`

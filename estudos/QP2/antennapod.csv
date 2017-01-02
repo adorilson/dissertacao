@@ -1,0 +1,8 @@
+21 ; Classe ; android.preference.CheckBoxPreference ; 1
+11 ; Classe ; android.preference.PreferenceFragment ; 4
+11 ; Metodo ; android.app.Activity#getFragmentManager ; 1
+11 ; Metodo ; android.app.FragmentTransaction#commit ; 1
+11 ; Metodo ; android.app.Activity#invalidateOptionsMenu ; 3
+11 ; Metodo ; android.app.FragmentManager#beginTransaction ; 1
+11 ; Metodo ; android.app.FragmentTransaction#replace ; 1
+11 ; XML ; android:windowActionBarOverlay ; 1

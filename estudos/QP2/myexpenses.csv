@@ -1,0 +1,16 @@
+16 ; Classe ; android.database.sqlite.SQLiteException ; 1
+11 ; Classe ; android.widget.AbsListView.MultiChoiceModeListener ; 1
+19 ; Metodo ; android.provider.DocumentsContract#isDocumentUri ; 1
+19 ; Metodo ; android.provider.DocumentsContract#getDocumentId ; 3
+11 ; Metodo ; android.widget.AbsListView#getCheckedItemPositions ; 3
+19 ; Metodo ; java.util.Currency#getDisplayName ; 1
+11 ; Metodo ; android.view.ActionMode#finish ; 2
+11 ; Metodo ; android.widget.AbsListView#getCheckedItemCount ; 3
+11 ; Metodo ; android.view.ActionMode#setTitle ; 2
+11 ; Metodo ; android.view.ActionMode#getMenu ; 1
+11 ; Metodo ; android.widget.AbsListView#getCheckedItemIds ; 1
+11 ; Metodo ; android.view.ActionMode#invalidate ; 1
+14 ; Campo ; android.provider.CalendarContract.Instances#CONTENT_URI ; 1
+14 ; Campo ; android.provider.CalendarContract#CONTENT_URI ; 1
+14 ; Campo ; android.provider.CalendarContract.Events#CONTENT_URI ; 1
+14 ; Campo ; android.provider.CalendarContract.Calendars#CONTENT_URI ; 1

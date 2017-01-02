@@ -1,0 +1,13 @@
+Call requires API level 11 (current min is 10): `android.app.Activity#invalidateOptionsMenu`
+Call requires API level 11 (current min is 10): `android.app.Activity#invalidateOptionsMenu`
+Call requires API level 11 (current min is 10): `android.app.Activity#invalidateOptionsMenu`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#findPreference`
+Call requires API level 11 (current min is 10): `android.app.Activity#getFragmentManager`
+Call requires API level 11 (current min is 10): `android.app.FragmentManager#beginTransaction`
+Call requires API level 11 (current min is 10): `android.app.FragmentTransaction#replace`
+Call requires API level 11 (current min is 10): `android.app.FragmentTransaction#commit`
+Call requires API level 11 (current min is 10): `new android.preference.PreferenceFragment`
+Class requires API level 11 (current min is 10): `android.preference.PreferenceFragment`
+Call requires API level 11 (current min is 10): `android.preference.PreferenceFragment#addPreferencesFromResource`
+Call requires API level 21 (current min is 10): `new android.preference.CheckBoxPreference`
+`android:windowActionBarOverlay` requires API level 11 (current min is 10)

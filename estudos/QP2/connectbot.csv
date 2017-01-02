@@ -1,0 +1,15 @@
+8 ; Classe ; android.app.backup.FileBackupHelper ; 2
+8 ; Classe ; android.app.backup.SharedPreferencesBackupHelper ; 1
+8 ; Classe ; android.app.backup.BackupManager ; 2
+11 ; Classe ; android.app.ActionBar.OnMenuVisibilityListener ; 1
+8 ; Classe ; android.app.backup.BackupAgentHelper ; 6
+8 ; Metodo ; android.text.AndroidCharacter#getEastAsianWidths ; 1
+11 ; Metodo ; android.app.Activity#getActionBar ; 1
+13 ; Metodo ; android.view.KeyEvent#getModifiers ; 1
+12 ; Metodo ; android.view.KeyEvent#keyCodeToString ; 1
+11 ; Metodo ; android.app.ActionBar#addOnMenuVisibilityListener ; 1
+5 ; Metodo ; android.app.Service#startForeground ; 1
+5 ; Metodo ; android.app.Service#stopForeground ; 1
+9 ; Metodo ; android.view.KeyEvent#getSource ; 1
+9 ; Metodo ; android.os.StrictMode#setThreadPolicy ; 1
+9 ; Campo ; android.os.StrictMode.ThreadPolicy#LAX ; 1

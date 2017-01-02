@@ -1,0 +1,8 @@
+17 ; Casting ; from CellInfo to CellInfoGsm ; 1
+17 ; Casting ; from CellInfo to CellInfoWcdma ; 1
+9 ; Classe ; android.os.StrictMode.VmPolicy.Builder ; 10
+9 ; Classe ; android.os.StrictMode.ThreadPolicy.Builder ; 12
+21 ; Classe ; android.view.View ; 1
+9 ; Metodo ; android.os.StrictMode#setVmPolicy ; 2
+9 ; Metodo ; android.content.SharedPreferences.Editor#apply ; 1
+9 ; Metodo ; android.os.StrictMode#setThreadPolicy ; 2

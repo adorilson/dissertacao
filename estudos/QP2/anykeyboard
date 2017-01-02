@@ -1,0 +1,61 @@
+Call requires API level 11 (current min is 7): `android.content.ClipboardManager#getPrimaryClip`
+Call requires API level 11 (current min is 7): `android.content.ClipboardManager#getPrimaryClip`
+Call requires API level 11 (current min is 7): `android.content.ClipboardManager#getPrimaryClip`
+Call requires API level 11 (current min is 7): `android.content.ClipboardManager#setPrimaryClip`
+Call requires API level 11 (current min is 7): `android.content.ClipData.Item#coerceToText`
+Call requires API level 11 (current min is 7): `android.content.ClipData#addItem`
+Call requires API level 11 (current min is 7): `android.content.ClipData#getItemAt`
+Call requires API level 11 (current min is 7): `android.content.ClipData#getItemAt`
+Call requires API level 11 (current min is 7): `android.content.ClipData#getItemCount`
+Call requires API level 11 (current min is 7): `android.content.ClipData#getItemCount`
+Call requires API level 11 (current min is 7): `android.content.ClipData#getItemCount`
+Call requires API level 11 (current min is 7): `android.content.ClipData#newPlainText`
+Call requires API level 11 (current min is 7): `android.graphics.Canvas#isHardwareAccelerated`
+Call requires API level 11 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#penaltyFlashScreen`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputConnection#commitCorrection`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodInfo#getSubtypeAt`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodInfo#getSubtypeCount`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodManager#getShortcutInputMethodsAndSubtypes`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodManager#setInputMethodAndSubtype`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodManager#setInputMethodAndSubtype`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodSubtype#getExtraValue`
+Call requires API level 11 (current min is 7): `android.view.inputmethod.InputMethodSubtype#getMode`
+Call requires API level 11 (current min is 7): `new android.view.inputmethod.CorrectionInfo`
+Call requires API level 14 (current min is 7): `android.view.inputmethod.InputMethodManager#setAdditionalInputMethodSubtypes`
+Call requires API level 14 (current min is 7): `new android.view.inputmethod.InputMethodSubtype`
+Call requires API level 19 (current min is 7): `android.view.inputmethod.InputMethodSubtype.InputMethodSubtypeBuilder#build`
+Call requires API level 19 (current min is 7): `android.view.inputmethod.InputMethodSubtype.InputMethodSubtypeBuilder#setIsAsciiCapable`
+Call requires API level 19 (current min is 7): `android.view.inputmethod.InputMethodSubtype.InputMethodSubtypeBuilder#setSubtypeExtraValue`
+Call requires API level 19 (current min is 7): `android.view.inputmethod.InputMethodSubtype.InputMethodSubtypeBuilder#setSubtypeLocale`
+Call requires API level 19 (current min is 7): `android.view.ScaleGestureDetector#setQuickScaleEnabled`
+Call requires API level 19 (current min is 7): `new android.view.inputmethod.InputMethodSubtype.InputMethodSubtypeBuilder`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#addHelper`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getApplicationContext`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getApplicationContext`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getApplicationContext`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getApplicationContext`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getApplicationContext`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#getApplicationContext`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupDataInputStream#getKey`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupManager#dataChanged`
+Call requires API level 8 (current min is 7): `android.view.ScaleGestureDetector#getScaleFactor`
+Call requires API level 8 (current min is 7): `new android.app.backup.BackupAgentHelper`
+Call requires API level 8 (current min is 7): `new android.app.backup.BackupManager`
+Call requires API level 8 (current min is 7): `new android.app.backup.SharedPreferencesBackupHelper`
+Call requires API level 8 (current min is 7): `new android.view.GestureDetector`
+Call requires API level 8 (current min is 7): `new android.view.ScaleGestureDetector.SimpleOnScaleGestureListener`
+Call requires API level 8 (current min is 7): `new android.view.ScaleGestureDetector`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#build`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#detectAll`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.ThreadPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.VmPolicy.Builder#build`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.VmPolicy.Builder#detectAll`
+Call requires API level 9 (current min is 7): `android.os.StrictMode.VmPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 7): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 7): `android.os.StrictMode#setVmPolicy`
+Call requires API level 9 (current min is 7): `new android.os.StrictMode.ThreadPolicy.Builder`
+Call requires API level 9 (current min is 7): `new android.os.StrictMode.VmPolicy.Builder`
+Cast from SharedPreferencesBackupHelper to BackupHelper requires API level 8 (current min is 7)
+Class requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper`
+Class requires API level 8 (current min is 7): `android.app.backup.SharedPreferencesBackupHelper`
+Class requires API level 8 (current min is 7): `android.view.ScaleGestureDetector.SimpleOnScaleGestureListener`

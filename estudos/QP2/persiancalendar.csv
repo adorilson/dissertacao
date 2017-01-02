@@ -1,0 +1,6 @@
+19 ; Metodo ; android.app.AlarmManager#setExact ; 1
+11 ; Metodo ; android.content.ClipboardManager#setPrimaryClip ; 1
+17 ; Metodo ; android.content.res.Configuration#getLayoutDirection ; 1
+11 ; Metodo ; android.view.View#setTranslationX ; 1
+11 ; Metodo ; android.content.ClipData#newPlainText ; 1
+14 ; Campo ; android.provider.CalendarContract.Events#CONTENT_URI ; 1

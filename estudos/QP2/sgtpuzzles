@@ -1,0 +1,35 @@
+Call requires API level 10 (current min is 7): `android.nfc.NfcAdapter#getDefaultAdapter`
+Call requires API level 11 (current min is 7): `android.view.View#setSystemUiVisibility`
+Call requires API level 11 (current min is 7): `android.view.ViewGroup#setLayoutTransition`
+Call requires API level 11 (current min is 7): `new android.animation.LayoutTransition`
+Call requires API level 14 (current min is 7): `android.graphics.Canvas#getMaximumBitmapHeight`
+Call requires API level 14 (current min is 7): `android.graphics.Canvas#getMaximumBitmapWidth`
+Call requires API level 14 (current min is 7): `android.nfc.NdefRecord#createApplicationRecord`
+Call requires API level 14 (current min is 7): `android.nfc.NfcAdapter#setNdefPushMessageCallback`
+Call requires API level 16 (current min is 7): `android.animation.LayoutTransition#enableTransitionType`
+Call requires API level 16 (current min is 7): `android.content.ContentResolver#query`
+Call requires API level 23 (current min is 7): `android.app.Activity#requestPermissions`
+Call requires API level 23 (current min is 7): `android.app.Activity#shouldShowRequestPermissionRationale`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper#addHelper`
+Call requires API level 8 (current min is 7): `android.app.backup.BackupManager#dataChanged`
+Call requires API level 8 (current min is 7): `android.view.ScaleGestureDetector#getFocusX`
+Call requires API level 8 (current min is 7): `android.view.ScaleGestureDetector#getFocusY`
+Call requires API level 8 (current min is 7): `android.view.ScaleGestureDetector#getScaleFactor`
+Call requires API level 8 (current min is 7): `android.view.ScaleGestureDetector#isInProgress`
+Call requires API level 8 (current min is 7): `new android.app.backup.BackupAgentHelper`
+Call requires API level 8 (current min is 7): `new android.app.backup.BackupManager`
+Call requires API level 8 (current min is 7): `new android.app.backup.SharedPreferencesBackupHelper`
+Call requires API level 8 (current min is 7): `new android.view.ScaleGestureDetector.SimpleOnScaleGestureListener`
+Call requires API level 8 (current min is 7): `new android.view.ScaleGestureDetector`
+Call requires API level 9 (current min is 7): `android.content.SharedPreferences.Editor#apply`
+Call requires API level 9 (current min is 7): `android.content.SharedPreferences.Editor#apply`
+Call requires API level 9 (current min is 7): `android.nfc.NdefMessage#getRecords`
+Call requires API level 9 (current min is 7): `android.nfc.NdefMessage#getRecords`
+Call requires API level 9 (current min is 7): `android.nfc.NdefRecord#getPayload`
+Call requires API level 9 (current min is 7): `java.lang.String#getBytes`
+Call requires API level 9 (current min is 7): `java.lang.String#getBytes`
+Call requires API level 9 (current min is 7): `new android.nfc.NdefMessage`
+Call requires API level 9 (current min is 7): `new android.nfc.NdefRecord`
+Class requires API level 14 (current min is 7): `android.nfc.NfcAdapter.CreateNdefMessageCallback`
+Class requires API level 8 (current min is 7): `android.app.backup.BackupAgentHelper`
+Class requires API level 8 (current min is 7): `android.view.ScaleGestureDetector.SimpleOnScaleGestureListener`

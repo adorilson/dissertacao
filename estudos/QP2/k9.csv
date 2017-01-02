@@ -1,0 +1,8 @@
+16 ; Metodo ; android.view.View#postOnAnimation ; 1
+11 ; Metodo ; android.view.View#setLayerType ; 1
+21 ; Metodo ; android.webkit.WebResourceRequest#getUrl ; 1
+9 ; Metodo ; android.view.View#getOverScrollMode ; 1
+23 ; Metodo ; android.database.Cursor#setExtras ; 1
+23 ; Metodo ; android.database.CrossProcessCursor#setExtras ; 1
+23 ; Metodo ; android.os.PowerManager#isIgnoringBatteryOptimizations ; 1
+16 ; Metodo ; android.view.View#setBackground ; 1

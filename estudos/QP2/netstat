@@ -1,0 +1,30 @@
+Call requires API level 11 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#detectCustomSlowCalls`
+Call requires API level 11 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#penaltyFlashScreen`
+Call requires API level 11 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#detectActivityLeaks`
+Call requires API level 11 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#detectLeakedClosableObjects`
+Call requires API level 21 (current min is 8): `new android.view.View`
+Call requires API level 9 (current min is 8): `android.content.SharedPreferences.Editor#apply`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#build`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#build`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#detectDiskWrites`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#detectDiskWrites`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#detectNetwork`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#detectNetwork`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.ThreadPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#build`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#build`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#detectLeakedSqlLiteObjects`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#detectLeakedSqlLiteObjects`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 8): `android.os.StrictMode.VmPolicy.Builder#penaltyLog`
+Call requires API level 9 (current min is 8): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 8): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 8): `android.os.StrictMode#setVmPolicy`
+Call requires API level 9 (current min is 8): `android.os.StrictMode#setVmPolicy`
+Call requires API level 9 (current min is 8): `new android.os.StrictMode.ThreadPolicy.Builder`
+Call requires API level 9 (current min is 8): `new android.os.StrictMode.ThreadPolicy.Builder`
+Call requires API level 9 (current min is 8): `new android.os.StrictMode.VmPolicy.Builder`
+Call requires API level 9 (current min is 8): `new android.os.StrictMode.VmPolicy.Builder`
+Cast from CellInfo to CellInfoGsm requires API level 17 (current min is 8)
+Cast from CellInfo to CellInfoWcdma requires API level 17 (current min is 8)

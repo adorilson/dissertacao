@@ -1,0 +1,11 @@
+android.support.v4.content.Loader=3
+android.support.v4.app.FragmentManager=1
+android.support.v4.app.LoaderManager.LoaderCallbacks=2
+android.support.v4.app.FragmentActivity=2
+android.support.v4.util.LongSparseArray=1
+android.support.v4.app.NotificationCompat=1
+android.support.v4.app.Fragment=2
+android.support.v4.content.ContextCompat=2
+android.support.v4.content.AsyncTaskLoader=1
+android.support.v4.app.DialogFragment=3
+android.support.v4.app.ActivityCompat=3

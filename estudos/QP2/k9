@@ -1,0 +1,8 @@
+Call requires API level 23 (current min is 15): `android.os.PowerManager#isIgnoringBatteryOptimizations`
+Call requires API level 23 (current min is 15): `android.database.Cursor#setExtras`
+Call requires API level 23 (current min is 15): `android.database.CrossProcessCursor#setExtras`
+Call requires API level 21 (current min is 15): `android.webkit.WebResourceRequest#getUrl`
+Call requires API level 11 (current min is 4): `android.view.View#setLayerType`
+Call requires API level 16 (current min is 4): `android.view.View#postOnAnimation`
+Call requires API level 16 (current min is 4): `android.view.View#setBackground`
+Call requires API level 9 (current min is 4): `android.view.View#getOverScrollMode`

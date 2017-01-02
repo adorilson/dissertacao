@@ -1,0 +1,12 @@
+14 ; Classe ; android.nfc.NfcAdapter.CreateNdefMessageCallback ; 1
+11 ; Classe ; android.widget.PopupMenu ; 10
+11 ; Classe ; android.widget.PopupMenu.OnMenuItemClickListener ; 2
+11 ; Metodo ; android.app.DatePickerDialog#getDatePicker ; 1
+14 ; Metodo ; android.nfc.NdefRecord#createUri ; 1
+14 ; Metodo ; android.nfc.NdefRecord#createApplicationRecord ; 1
+13 ; Metodo ; android.view.Display#getSize ; 1
+11 ; Metodo ; android.app.ActionBar#setSubtitle ; 1
+14 ; Metodo ; android.nfc.NfcAdapter#setNdefPushMessageCallback ; 1
+10 ; Metodo ; android.nfc.NfcAdapter#getDefaultAdapter ; 1
+11 ; Metodo ; android.app.ActionBar#setTitle ; 1
+11 ; Metodo ; android.widget.TextView#setTextIsSelectable ; 1

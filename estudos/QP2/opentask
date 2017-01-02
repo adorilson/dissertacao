@@ -1,0 +1,40 @@
+Call requires API level 14 (current min is 8): `android.view.MenuItem#expandActionView`
+Class requires API level 11 (current min is 8): `android.animation.Animator.AnimatorListener`
+Class requires API level 11 (current min is 8): `android.widget.NumberPicker`
+Call requires API level 21 (current min is 8): `android.widget.ImageButton#setBackgroundTintList`
+Call requires API level 11 (current min is 8): `android.appwidget.AppWidgetManager#notifyAppWidgetViewDataChanged`
+Call requires API level 11 (current min is 8): `android.widget.RemoteViews#setRemoteAdapter`
+Call requires API level 11 (current min is 8): `android.widget.RemoteViews#setPendingIntentTemplate`
+Call requires API level 11 (current min is 8): `new android.widget.RemoteViewsService`
+Class requires API level 11 (current min is 8): `android.widget.RemoteViewsService`
+Class requires API level 11 (current min is 8): `android.widget.RemoteViewsService.RemoteViewsFactory`
+Call requires API level 11 (current min is 8): `android.widget.RemoteViews#setOnClickFillInIntent`
+Call requires API level 11 (current min is 8): `android.appwidget.AppWidgetManager#notifyAppWidgetViewDataChanged`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#end`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#cancel`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#end`
+Call requires API level 11 (current min is 8): `android.widget.LinearLayout#getLayoutTransition`
+Call requires API level 11 (current min is 8): `android.widget.LinearLayout#setLayoutTransition`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#ofFloat`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#setDuration`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#addUpdateListener`
+Class requires API level 11 (current min is 8): `android.animation.ValueAnimator.AnimatorUpdateListener`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#getAnimatedValue`
+Call requires API level 12 (current min is 8): `android.animation.ValueAnimator#getAnimatedFraction`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#addListener`
+Class requires API level 11 (current min is 8): `android.animation.AnimatorListenerAdapter`
+Call requires API level 11 (current min is 8): `android.widget.LinearLayout#getLayoutTransition`
+Call requires API level 11 (current min is 8): `android.widget.LinearLayout#setLayoutTransition`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#start`
+Call requires API level 11 (current min is 8): `android.view.View#getY`
+Call requires API level 11 (current min is 8): `android.animation.ObjectAnimator#ofFloat`
+Call requires API level 11 (current min is 8): `android.animation.ObjectAnimator#setDuration`
+Call requires API level 11 (current min is 8): `android.animation.ObjectAnimator#addListener`
+Call requires API level 11 (current min is 8): `new android.animation.AnimatorListenerAdapter`
+Class requires API level 11 (current min is 8): `android.animation.AnimatorListenerAdapter`
+Call requires API level 11 (current min is 8): `new android.animation.AnimatorListenerAdapter`
+Call requires API level 11 (current min is 8): `android.animation.ObjectAnimator#start`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#removeAllListeners`
+Call requires API level 11 (current min is 8): `android.animation.ValueAnimator#cancel`
+Call requires API level 11 (current min is 8): `new android.widget.LinearLayout`
+Call requires API level 11 (current min is 8): `new android.widget.LinearLayout`

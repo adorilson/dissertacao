@@ -1,0 +1,22 @@
+Call requires API level 11 (current min is 9): `new android.widget.PopupMenu`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#getMenu`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#setOnMenuItemClickListener`
+Class requires API level 11 (current min is 9): `android.widget.PopupMenu.OnMenuItemClickListener`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#show`
+Call requires API level 11 (current min is 9): `android.widget.TextView#setTextIsSelectable`
+Call requires API level 13 (current min is 9): `android.view.Display#getSize`
+Call requires API level 11 (current min is 9): `android.app.ActionBar#setTitle`
+Call requires API level 11 (current min is 9): `android.app.ActionBar#setSubtitle`
+Call requires API level 11 (current min is 9): `new android.widget.PopupMenu`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#getMenu`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#getMenu`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#getMenu`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#setOnMenuItemClickListener`
+Class requires API level 11 (current min is 9): `android.widget.PopupMenu.OnMenuItemClickListener`
+Call requires API level 11 (current min is 9): `android.widget.PopupMenu#show`
+Call requires API level 10 (current min is 9): `android.nfc.NfcAdapter#getDefaultAdapter`
+Call requires API level 14 (current min is 9): `android.nfc.NfcAdapter#setNdefPushMessageCallback`
+Class requires API level 14 (current min is 9): `android.nfc.NfcAdapter.CreateNdefMessageCallback`
+Call requires API level 14 (current min is 9): `android.nfc.NdefRecord#createUri`
+Call requires API level 14 (current min is 9): `android.nfc.NdefRecord#createApplicationRecord`
+Call requires API level 11 (current min is 9): `android.app.DatePickerDialog#getDatePicker`

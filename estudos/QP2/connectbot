@@ -1,0 +1,22 @@
+Call requires API level 11 (current min is 4): `android.app.ActionBar#addOnMenuVisibilityListener`
+Call requires API level 11 (current min is 4): `android.app.Activity#getActionBar`
+Call requires API level 12 (current min is 4): `android.view.KeyEvent#keyCodeToString`
+Call requires API level 13 (current min is 4): `android.view.KeyEvent#getModifiers`
+Call requires API level 5 (current min is 4): `android.app.Service#startForeground`
+Call requires API level 5 (current min is 4): `android.app.Service#stopForeground`
+Call requires API level 8 (current min is 4): `android.app.backup.BackupAgentHelper#addHelper`
+Call requires API level 8 (current min is 4): `android.app.backup.BackupAgentHelper#addHelper`
+Call requires API level 8 (current min is 4): `android.app.backup.BackupAgentHelper#addHelper`
+Call requires API level 8 (current min is 4): `android.app.backup.BackupAgentHelper#getPackageName`
+Call requires API level 8 (current min is 4): `android.app.backup.BackupManager#dataChanged`
+Call requires API level 8 (current min is 4): `android.text.AndroidCharacter#getEastAsianWidths`
+Call requires API level 8 (current min is 4): `new android.app.backup.BackupAgentHelper`
+Call requires API level 8 (current min is 4): `new android.app.backup.BackupManager`
+Call requires API level 8 (current min is 4): `new android.app.backup.FileBackupHelper`
+Call requires API level 8 (current min is 4): `new android.app.backup.FileBackupHelper`
+Call requires API level 8 (current min is 4): `new android.app.backup.SharedPreferencesBackupHelper`
+Call requires API level 9 (current min is 4): `android.os.StrictMode#setThreadPolicy`
+Call requires API level 9 (current min is 4): `android.view.KeyEvent#getSource`
+Class requires API level 11 (current min is 4): `android.app.ActionBar.OnMenuVisibilityListener`
+Class requires API level 8 (current min is 4): `android.app.backup.BackupAgentHelper`
+Field requires API level 9 (current min is 4): `android.os.StrictMode.ThreadPolicy#LAX`

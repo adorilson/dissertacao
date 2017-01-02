@@ -1,0 +1,33 @@
+Call requires API level 16 (current min is 14): `android.app.Activity#getParentActivityIntent`
+Call requires API level 23 (current min is 14): `android.app.Fragment#getContext`
+Call requires API level 21 (current min is 14): `android.graphics.drawable.AnimatedVectorDrawable#start`
+Call requires API level 21 (current min is 14): `android.view.ViewAnimationUtils#createCircularReveal`
+Call requires API level 21 (current min is 14): `android.view.ViewAnimationUtils#createCircularReveal`
+Call requires API level 21 (current min is 14): `android.graphics.drawable.Drawable#setHotspot`
+Call requires API level 16 (current min is 14): `android.app.Activity#startActivity`
+Call requires API level 16 (current min is 14): `android.app.ActivityOptions#toBundle`
+Call requires API level 21 (current min is 14): `android.graphics.drawable.Drawable#setTint`
+Call requires API level 15 (current min is 14): `android.widget.RadioButton#callOnClick`
+Call requires API level 23 (current min is 14): `android.app.Fragment#getContext`
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+Attribute `paddingStart` referenced here can result in a crash on some specific devices older than API 17 (current min is 14)
+`android:overlapAnchor` requires API level 21 (current min is 14)
+`android:fontFamily` requires API level 16 (current min is 14)
+`android:textAlignment` requires API level 17 (current min is 14)
+`android:textAlignment` requires API level 17 (current min is 14)
+`android:textAlignment` requires API level 17 (current min is 14)
+`android:fontFamily` requires API level 16 (current min is 14)
+`android:fontFamily` requires API level 16 (current min is 14)
+`android:fontFamily` requires API level 16 (current min is 14)
+`android:fontFamily` requires API level 16 (current min is 14)
+`android:elevation` requires API level 21 (current min is 14)
+`android:fontFamily` requires API level 16 (current min is 14)
