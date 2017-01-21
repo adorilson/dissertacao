@@ -1,48 +1,39 @@
 % Introdução
 \chapter{Introdução} \label{ch:introducao}
 
-Dispositivos móveis estão ficando cada vez mais populares e acessíveis para pessoas
-de diferentes poder aquisitivo ao redor do mundo \cite{Lhamas2014}. A plataforma
-Android é atualmente a mais popular para o desenvolvimento de aplicações móveis,
-ocupando mais de 80\% do mercado de sistemas operacionais para aplicações de
-dispositivos móveis \cite{jim2014}. Tal realidade cria uma demanda por customizações
-de aplicações para lidar com diferentes dispositivos, tais como tamanho de tela,
-bibliotecas de classes \abrv[API -- \textit{Application Programming Interface}]
-{API}(\textit{Application Programming Interface}), disponibilidade de poder de
-processamento e memória disponível, idiomas e necessidades específicas dos usuários.
-O Facebook, por exemplo, disponibiliza duas versões do seu aplicativo. A versão
-padrão é direcionada para os dispositivos mais modernos e a alternativa, chamada
-de Facebook Lite\footnote{Disponível em: https://play.google.com/store/apps/details?id=com.facebook.lite},
-para dispositivos mais antigos (que utilizam a versão 2.2 do Android.), que ocupa
-bem menos espaço de armazenamento, é mais eficiente no uso de dados móveis, pode
-ser carregada na memória do dispositivo mais rapidamente e funciona com conexões
-de Internet instáveis ou lentas. A existência de diferentes dispositivos para os
-quais a plataforma Android oferece suporte é conhecido como fragmentação, e isso
-se apresenta como um grande desafio para o Android, em relação a outras plataformas.
-Há um número considerável de dispositivos com versões antigas da API \cite{Gronli2014}.
-Diferentes versões da API é uma das variabilidades mais comuns na plataforma Android.
-Esse cenário leva os desenvolvedores de aplicações Android buscarem técnicas e
-metodologias que otimizem o desenvolvimento de versões da aplicação que melhor
-atendam às restrições e características de cada dispositivo.
+Dispositivos móveis estão ficando cada vez mais populares e acessíveis para
+pessoas de diferentes poder aquisitivo ao redor do mundo \cite{Lhamas2014}.
+A plataforma Android é atualmente a mais popular para o desenvolvimento de
+aplicações móveis, ocupando mais de 80\% do mercado de sistemas operacionais
+para aplicações de dispositivos móveis \cite{jim2014}. Tal realidade cria uma
+demanda por customizações de aplicações para lidar com diferentes dispositivos,
+tais como, tamanho de tela, bibliotecas de classes 
+disponíveis \abrv[API -- \textit{Application
+Programming Interface}] (API - \textit{Application Programming Interface}),
+disponibilidade de poder de processamento e memória, idiomas e
+necessidades específicas dos usuários. O Facebook, por exemplo, disponibiliza
+duas versões do seu aplicativo. A versão padrão é direcionada para os dispositivos
+mais modernos e a alternativa, chamada de Facebook Lite\footnote{Disponível em:
+https://play.google.com/store/apps/details?id=com.facebook.lite},
+para dispositivos mais antigos (que utilizam a partir da versão 2.2 do Android.),
+que ocupa bem menos espaço de armazenamento, pode ser carregada na memória do
+dispositivo mais rapidamente e funciona com conexões de Internet instáveis ou lentas.
 
-De fato, customizações em larga escala de aplicações são um requisito fundamental
-que vem sendo considerado por abordagens de engenharia de linhas de produtos de
-software  \cite{Alves2007} \cite{Alves2005}, direcionando esforços para a
-gerência de variabilidade no contexto de aplicações móveis. Estudos \cite{Dehlinger2011}
-indicam que o desenvolvimento de linhas de produtos de software para aplicações
-móveis é um desafio atual da engenharia de software, enquanto outros
-\cite{Linares-Vasquez2013} apontam que fazer uso de API propensas a mudanças e
-falhas pode ter um impacto negativo no sucesso de aplicações. A documentação oficial
+A existência de diferentes dispositivos para os quais a plataforma Android oferece
+suporte é conhecido como fragmentação, e isso se apresenta como um grande desafio
+em relação à outras plataformas. Há um número considerável de dispositivos com versões
+antigas da API  \cite{Gronli2014}. Já em 2011, 86\% dos desenvolvedores consideravam
+a fragmentação da plataforma um sério problema \cite{Elmer-DeWitt2011}.
+Diferentes versões da API é uma das variabilidades mais comuns na plataforma Android.
+Esse cenário leva os desenvolvedores de aplicações Android a buscarem técnicas e
+metodologias que otimizem o desenvolvimento de versões da aplicação que melhor
+atendam às restrições e características de cada dispositivo. A documentação oficial
 do Android \cite{GuiaAndroid} é rica em propor soluções para tais variabilidades,
 no entanto, a implementação dessas soluções pode sofrer variações. Cada equipe
-de desenvolvimento pode tomar decisões de projeto diferentes.
-
-Existe atualmente uma carência de estudos específicos sobre gerência de variabilidades
-em aplicações para plataforma Android. Sobretudo em relação ao suporte à múltiplas
-versões da API. Neste contexto, este trabalho apresenta uma caracterização de com
-o suporte a múltiplas versões da API é implementado por aplicações atuais e qual
-o impacto de tais soluções no desenvolvimento de aplicações reais na plataforma
-Android.
+de desenvolvimento pode tomar decisões de projeto diferentes. Em especial, existe
+atualmente uma carência de estudos sobre a forma como aplicações Android atuais
+oferecem suporte às múltiplas versões da API. Neste contexto, este trabalho busca
+entender as técnicas utilizadas para oferecer tal suporte e qual o impacto do seu uso.
 
 Este capítulo introduz este trabalho. A seção \ref{sec:apresentacao-do-problema}
 exibe o contexto do trabalho e apresenta o problema a ser tratado. A seção \ref{sec:limitacao-abordagens-atuais}
@@ -53,39 +44,87 @@ do trabalho é apresentada na seção \ref{sec:metodologia}. Por fim, a organiza
 
 \section{Apresentação do Problema} \label{sec:apresentacao-do-problema}
 
-Apesar da ampla adoção da plataforma Android e sua fragmentação, há uma carência
-de estudos que indiquem de que forma as aplicações de tal plataforma lidam com
-variabilidades relacionadas à diversas versões da API.
-
-Oferecer suporte a múltiplas versões da API, de forma a atender clientes com
-versões antigas ao mesmo tempo usar os recursos mais modernos quando disponíveis,
+Apesar da ampla adoção da plataforma Android e o problema da fragmentação \cite{Park2013},
+há uma carência de estudos que indiquem de que forma as aplicações de tal plataforma
+lidam e se adaptam às diversas versões lançadas da API. 
+Enquanto atender a usuários com uma antiga versão da API significa ter um amplo
+mercado potencial, utilizar os recursos das versões mais novas da API é um dos três 
+fatores mais importantes para as aplicações com alta avaliação na Google Play \cite{Tian2015}.
+Oferecer suporte a múltiplas versões da API da plataforma, de forma a atender clientes
+com versões antigas ao mesmo tempo usar os recursos mais modernos quando disponíveis,
 é primordial para o sucesso das aplicações.
 
-No entanto, a carência de estudos sistemáticos que identifiquem e analisem técnicas
-para implementação de variabilidades ao longo da evolução de tais aplicações e da
-própria plataforma Android pode trazer dificuldades para a evolução do código de
-tais aplicações ou até mesmo erros durante a execução.
+Uma alternativa possível é disponibilizar uma versão da aplicação para cada versão
+da API. Essa solução é a comumente utilizada para API’s locais - API’s de sistemas
+operacionais de computadores de mesa, por exemplo -, onde o número de versões de
+API’s é reduzido e a evolução é mais lenta em comparação à API do Android: existem
+cerca de 10 versões da API com uma margem relevante do mercado. Manter diversas
+versões simultâneas de uma aplicação causa duplicação de código e prejudica a
+manutenabilidade. %faltando referencia aqui
+Assim, a plataforma oferece mecanismos para que uma única base
+de código atenda da melhor forma possível às diversas versões da API, usando os
+melhores recursos disponíveis nos aparelhos.
+
+No entanto, no melhor do nosso conhecimento, não existem estudos sistemáticos que
+identifiquem e analisem técnicas para implementação de suporte às
+múltiplas versões da plataforma Android. Tais estudos podem trazer luz sobre as
+práticas adotadas pela comunidade de desenvolvedores e auxiliá-los a decidir
+quando e quais técnicas melhor atendem a determinadas situações.
 
 \section{Limitações das Trabalhos Existentes} \label{sec:limitacao-abordagens-atuais}
 Diversos trabalhos têm sido realizados sobre a API Android. Sobretudo, no sentido
-de identificar os elementos mais comuns e padrões de uso. Mojica \cite{Mojica2014}
-analisa como reuso de software ocorre nas aplicações disponíveis na Google Play.
-Os três principais tipos de reuso identificados foram: (i) 18,75\% das classes
-herdam de uma classe base da API Android, e 35,78\% de uma classe específica de
-domínio; (ii) 84,23\% das classes aparecem em duas ou mais aplicações; (iii)
-17.109 aplicações móveis são cópias diretas de outras aplicações. Lambda et al. \cite{Lamba2015}
-apresentou resultados de um estudo em larga escala, consistindo de 1.120 aplicações
-open-source e 17,4 milhões de linha de código, de análise do uso da API em aplicações
-Android. Foram identificados os métodos mais frequentemente invocados, os pacotes da
-API e padrões de chamadas mais populares. McDonnell et al. \cite{McDonnell2013}
-realizou um estudo empírico da adoção de atualização da API pelas aplicações,
-onde foi confirmado que, apesar dos benefícios de novas ou atualização de API,
-desenvolvedores são frequentemente lentos na adoção das novas API’s.
- 
-No entanto, nenhum desses trabalhos considerou o suporte a múltiplas versões da API.
-Todas as análises foram feitas sem nenhum tipo de discussão sobre a versão mínima da
-API para a aplicação e a versão da API em que os elementos foram disponibilizados
-pela plataforma.
+de identificar os elementos mais comuns e padrões de uso. Lamba et al.\cite{Lamba2015} apresentaram
+resultados de um estudo em larga escala de análise do uso da API em aplicações Android.
+O estudo envolveu 1.120 aplicações open-source e 17,4 milhões de linha de código.
+Foram identificados os métodos mais frequentemente invocados, os pacotes da API,
+classes, e padrões de chamadas mais populares.Os métodos mais comuns são \texttt{getString},
+\texttt{get} e \texttt{toString}. Os pacotes mais comuns são \texttt{java.util} e
+\texttt{android.content}. As classes mais comuns são \texttt{Context} e \texttt{View}.
+O padrão de chamada mais popular está relacionado à dimensão, espaçamento e margens
+de uma \textit{view} na interface com o usuário. No entanto, na análise de popularidade
+de métodos não levaram em consideração suas respectivas classes. Por exemplo, o método
+\texttt{getString} da classe \texttt{Activity} foi contabilizado juntamente com
+o método \texttt{getString} da classe \texttt{Cursor}, que não possuem nenhuma
+relação entre si.
+
+McDonnell et al. \cite{McDonnell2013} conduziram um estudo sobre a co-evolução
+da API Android e suas aplicações usando o histórico de versões encontradas no
+Github. O estudo confirmou que a plataforma Android evolui rapidamente em uma
+taxa de 115 mudanças da API por mês na média. Contudo, a adoção pelas aplicações
+clientes não segue na mesma velocidade. Cerca de 28\% das referências à API nas
+aplicações clientes estão desatualizadas com uma mediana de tempo de 16 meses.
+22\% das referências desatualizadas são eventualmente atualizadas para versões
+mais novas da API, mas com um tempo de propagação de cerca de 14 meses, que é mais
+lento que o tempo médio entre novas versões da API (3 meses). APIs de rápida
+evolução são mais usadas por clientes que APIs de evolução lenta, mas o tempo
+médio necessário para adoção de novas versões é mais longo para APIs de rápida
+evolução. Além disso, código adaptado para uso de novas APIs são mais sujeitos a
+erros que aqueles sem adaptação para novas APIs. Segundo os autores do trabalho,
+os resultados sugerem que os desenvolvedores não adotam novas API’s com rapidez,
+mantendo referências para API’s desatualizadas. Assim evitam a instabilidade de
+novas API’s e o trabalho de atualização propriamente dito. Porém, outras possibilidades
+devem ser consideradas: os desenvolvedores atualizam para as mais recentes API’s,
+mas mantém tais códigos para garantir a compatibilidade com API’s mais antigas;
+ou atualizam e as referências às API’s antigas são código-morto.
+
+Aplicações Android declaram uma versão alvo da API. Quando estão em execução em
+um dispositivo cuja versão da API é inferior à versão alvo, as aplicações são
+executadas em um modo de compatibilidade, que busca reproduzir o comportamento
+da versão alvo indicada pelo aplicação. Esse cenário desabilita as melhorias da
+nova versão, incluindo as correções de problemas de segurança. Mutchler \cite{Mutchler2016}
+chamou essa característica de problema da fragmentação do alvo e analisou um
+conjunto de 1.232.696 aplicações Android para mostrar que isso traz sérias
+consequências em todo ecossistema de aplicações e não mudou consideravelmente ao
+passar dos anos. No total, 93\% das aplicações atualmente definem como alvo uma
+versão desatualizada e possuem uma média de desatualização de 686 dias; 79\% das
+aplicações já estão desatualizadas no dia que são carregadas para o Google Play.
+Também analisaram 5 mudanças na plataforma relacionadas a segurança e que são
+desabilitadas nessas aplicações desatualizadas.
+
+Esses trabalhos não abordam o tema de suporte a múltiplas versões da API por aplicações
+Android existentes. Todas as análises de estudos existentes foram realizadas sem
+abordar questões sobre a adaptação e organização do código para lidar com as
+múltiplas APIs disponíveis.
 
 \section{Objetivos Gerais e Específicos} \label{sec:objetivos-gerais-especificos}
 
