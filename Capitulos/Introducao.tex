@@ -60,7 +60,7 @@ operacionais de computadores de mesa, por exemplo -, onde o número de versões 
 API’s é reduzido e a evolução é mais lenta em comparação à API do Android: existem
 cerca de 10 versões da API com uma margem relevante do mercado. Manter diversas
 versões simultâneas de uma aplicação causa duplicação de código e prejudica a
-manutenabilidade. %faltando referencia aqui
+manutenabilidade. % TODO colocar referencia aqui
 Assim, a plataforma oferece mecanismos para que uma única base
 de código atenda da melhor forma possível às diversas versões da API, usando os
 melhores recursos disponíveis nos aparelhos.
@@ -126,30 +126,119 @@ Android existentes. Todas as análises de estudos existentes foram realizadas se
 abordar questões sobre a adaptação e organização do código para lidar com as
 múltiplas APIs disponíveis.
 
-\section{Objetivos Gerais e Específicos} \label{sec:objetivos-gerais-especificos}
+Wei \cite{Wei2016} realizou um estudo sobre problemas de compatibilidade induzidos
+pela fragmentação 
+\abrv[FIC -- \textit{Fragmentation-Induced Compatibility}]
+(FIC issues - \textit{Fragmentation-Induced Compatibility issues}).
+De forma manual, analisaram 191 \textit{issues} nos sistemas de reporte de erros
+de 5 projetos de código aberto e os \textit{commits} relacionadas a esses \textit{issues}.
+As questões de pesquisa desse trabalho foram:
+\begin{itemize}
+	\item \textbf{QP1}: Quais são os tipos comuns de FIC issues em aplicações
+	Android? Quais são suas causas?
+	    \begin{itemize}
+	        \item \textbf{R}: Observaram que existem 5 maiores causas de FIC \textit{issues}
+	        em aplicações Android, entre elas a evolução da API da plataforma e implementação
+	        problemática de drive de hardware. Todos os tipos e causas são apresentados
+	        na Tabela \ref{tab:causas_FIC};
+	        \begin{table}[h] %  TODO centralizar tabela na pagina
+              \caption{Tipos e causas de FIC issues \cite{Wei2016}}
+              \begin{tabular}{ | l | l |}
+                \hline % TODO a primeira coluna deve ser multiplas linhas
+                \textbf{Tipo} & \textbf{Causa}  \\ \hline
+                Específico do dispositivo & Implementação de hardware problemática   \\ \hline
+                Específico do dispositivo & Customização do SO \\ \hline
+                Específico do dispositivo & Composição de hardware peculiar \\ \hline
+                Não-específico do dispositivo & Evolução da API da plataforma Android \\ \hline
+                Não-específico do dispositivo & Bugs do sistema Android Original \\ \hline
+              \end{tabular}
+              \label{tab:causas_FIC}
+            \end{table}
+	    \end{itemize}
+	\item \textbf{QP2}: Quais são os sintomas mais comuns de FIC \textit{issues} em aplicações
+	Android?
+	    \begin{itemize}
+	        \item \textbf{R}: FIC \textit{issues} podem causar tanto consequências funcionais
+	        como não-funcionais, como travamento da aplicação, aplicação não funcionar,
+	        degradação na performance e experiência de uso. Os sintomas podem ser
+	        específicos da aplicação, o que dificulta a criação de testes de
+	        compatibilidade;
+	    \end{itemize}
+	\item \textbf{QP3}: Como os desenvolvedores corrigem FIC \textit{issues} na
+	prática?
+	Existe algum padrão comum?
+	    \begin{itemize}
+	    \item \textbf{R}: Localizar a causa dos FIC \textit{issues} é difícil na
+	    prática.
+	    Por outro lado, as correções são usualmente simples e apresentam padrões
+	    comuns: checar informações do dispositivo e disponibilidade de componentes
+	    de software/hardware antes de chamar APIs/métodos causadores de problemas.
+	    Este é o padrão mais comum, presente em 137 das 191 correções analisadas.
+	    Uma forma típica de evitar os erros é pular a chamada da API ou substituí-la
+	    por uma implementação alternativa.
+	    \end{itemize}
+\end{itemize}
+
+Também desenvolveram uma ferramenta, FicFinder, que realiza uma análise estática
+nas aplicações e informa se estas contém FIC \textit{issues}. Realizaram um experimento
+com 27 aplicações para avaliar a ferramenta a responder às seguintes questões de
+pesquisa:
+\begin{itemize}
+    \item \textbf{QP4}: O FicFinder pode ajudar a detectar FIC \textit{issues} em
+    aplicações Android do mundo real?
+        \begin{itemize}
+            \item \textbf{R}:FicFinder efetivamente detectou FIC \textit{issues}
+            desconhecidos em aplicações Android do mundo real e obteve uma alta
+            precisão na análise. Nas 27 aplicações foram emitidos 51 alertas,
+            sendo 46 de casos confirmados (precisão de 90,2\%);
+        \end{itemize}
+    \item \textbf{QP5}: FicFinder fornece informações úteis aos desenvolvedores
+    de aplicações para facilitar o diagnóstico e processo de correção de FIC
+    \textit{issues}?
+        \begin{itemize}
+            \item \textbf{R}: FicFinder pode fornecer informações úteis para ajudar
+            desenvolvedores a diagnosticar e corrigir FIC \textit{issues}. Os
+            alertas emitidos pelo FicFinder foram encaminhados para os desenvolvedores
+            das aplicações. Alguns já haviam corrigido o problema e outros informaram
+            que iriam corrigir.
+        \end{itemize}
+\end{itemize}
+
+No experimento, o FicFinder foi alterado para reportar situações em que os FIC
+\textit{issues} já estavam protegidos de execuções indevidas, tais casos foram
+identificados como “boas práticas”. Porém, o trabalho não apresentou essas boas
+práticas, tampouco fez qualquer tipo de comparação, avaliação ou indicação de uso.
+
+\section{Objetivos} \label{sec:objetivos-gerais-especificos}
 
 O objetivo geral desta dissertação de mestrado é analisar, caracterizar e comparar
 técnicas de implementação de suporte a múltiplas versões da API da plataforma
-Android por aplicações.
-
-Os objetivos específicos são:
+Android por aplicações existentes. Os objetivos específicos do trabalho são:
 \begin{itemize}
 	\item Identificar na literatura quais as técnicas indicadas para suporte a
 	múltiplas versões da API Android;
-	\item Analisar aplicações reais para quantificar o uso dessas técnicas
-	indicadas; e
-	\item Comparar as características e consequências do uso de tais técnicas.
+	\item Analisar aplicações reais para quantificar o uso dessas técnicas indicadas;
+	\item Comparar as características e consequências do uso de tais técnicas; e
+	\item Identificar as mudanças mais comuns na API que afeta a evolução das
+	aplicações para rodar em aparelhos com versões diferentes da API.
 \end{itemize}
 
 \section{Metodologia} \label{sec:metodologia}
 
 Visando atingir os objetivos dessa dissertação de mestrado, foi definido uma
-metodologia de trabalhos composta das seguintes etapas:
+metodologia de trabalho composta das seguintes etapas:
 \begin{itemize}
-	\item Revisão da literatura: nessa fase, identificamos quais as técnicas
-	indicadas para suporte a múltiplas versões da API;
+	\item Revisão da literatura: essa etapa buscou identificar quais as técnicas
+	indicadas pela literatura para oferecer suporte a múltiplas versões da API,
+	além de entender melhor os trabalhos relacionados atuais;
 	\item Estudo empírico: a partir dos resultados da fase anterior, foi realizado
-	um empírico com o objetivo de identificar a adoção dessas técnicas por aplicações reais.
+	um estudo empírico com o objetivo de identificar e caracterizar a adoção dessas
+	técnicas por aplicações reais. Foi composto das seguintes atividades:
+	\begin{itemize}
+	    \item Seleção das aplicações;
+	    \item Análise das aplicações, e;
+	    \item Análise dos resultados.    
+	\end{itemize}
 \end{itemize}
 
 
@@ -157,9 +246,9 @@ metodologia de trabalhos composta das seguintes etapas:
 
 O restante deste documento está organizado da seguinte forma:
 \begin{itemize}
-    \item O capítulo \ref{ch:fundamentacao-teorica} apresenta os principais
-    referenciais teóricos que serviram de arcabouço para o desenvolvimento  deste trabalho;
-    \item O capítulo \ref{ch:estudo-empirico} traz o estudo sobre a compatibilidade
+    \item O capítulo \ref{ch:fundamentacao-teorica} os principais referenciais
+    teóricos que serviram de arcabouço para o desenvolvimento deste trabalho;
+    \item O capítulo \ref{ch:estudo-empirico}  traz o estudo sobre a compatibilidade
     de aplicações Android com as diferentes versões da API da plataforma. São
     apresentados resultados do estudo e discussão de tais resultados;
     \item No capítulo \ref{ch:trabalhos-relacionados} são discutidos trabalhos
