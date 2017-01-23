@@ -142,15 +142,16 @@ As questões de pesquisa desse trabalho foram:
 	        problemática de drive de hardware. Todos os tipos e causas são apresentados
 	        na Tabela \ref{tab:causas_FIC};
 	        \begin{table}[h] %  TODO centralizar tabela na pagina
+              \centering
               \caption{Tipos e causas de FIC issues \cite{Wei2016}}
               \begin{tabular}{ | l | l |}
                 \hline % TODO a primeira coluna deve ser multiplas linhas
                 \textbf{Tipo} & \textbf{Causa}  \\ \hline
-                Específico do dispositivo & Implementação de hardware problemática   \\ \hline
-                Específico do dispositivo & Customização do SO \\ \hline
-                Específico do dispositivo & Composição de hardware peculiar \\ \hline
-                Não-específico do dispositivo & Evolução da API da plataforma Android \\ \hline
-                Não-específico do dispositivo & Bugs do sistema Android Original \\ \hline
+                \multirow{3}{*}{Específico do dispositivo} & Implementação de hardware problemática   \\ \cline{2-2}
+                                                         & Customização do SO \\ \cline{2-2}
+                                                         & Composição de hardware peculiar \\ \hline
+                \multirow{2}{*}{Não-específico do dispositivo} & Evolução da API da plataforma Android \\ \cline{2-2}
+                                                             & Bugs do sistema Android Original \\ \hline
               \end{tabular}
               \label{tab:causas_FIC}
             \end{table}
