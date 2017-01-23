@@ -418,7 +418,7 @@ padrões de projeto encontrados durante a análise das aplicações.
 
 O padrão \textit{Strategy} tem como objetivo "definir uma família de algoritmos,
 encapsular cada uma delas e torná-las intercambiáveis. \textit{Strategy} permite
-que o algoritmo varie independentemente dos clientes que o utilizam" \cite{Gamma1994}.
+que o algoritmo varie independentemente dos clientes que o utilizam" \cite{Gamma}.
 A figura \ref{fig:strategy_simple} apresenta uma visão geral do padrão. \texttt{Context}
 é o cliente que usa os serviços de classes (\texttt{Strategy 1} e \texttt{Strategy 2})
 que encapsulam os algoritmos de implementação da interface \texttt{Strategy}. 
@@ -475,7 +475,45 @@ que passará a ser uma classe abstrata.
 \subsection{Template Method}
 \label{sec:template-method}
 
+O padrão \textit{Template Method} tem como objetivo "definir o esqueleto de um
+algoritmo em um método, deixando alguns passos para subclasses" \cite{Gamma}.
+A Figura \ref{fig:template_method} apresenta uma visão geral do padrão.
+\texttt{AbstractClass} é a classe que contém o esqueleto do algoritmo, no método
+\texttt{TemplateMethod()}. No esqueleto são feitas chamadas para métodos
+(\texttt{PrimitiveOperation1} e \texttt{PrimitiveOperation2}) que são os passos
+que deverão ser implementados pelas subclasses, representada por \texttt{ConcreteClass}.
 
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=1]{imagens/template_method.jpg}
+  	\textsf{\caption{Estrutura geral do padrão de projeto Template Method}
+      	{Fonte: DoFactory \cite{TemplateMethod}}
+  	        \label{fig:template_method}}
+\end{figure}
+
+No contexto de versões da API, os métodos abstratos são comportamentos que mudam
+de uma versão para outra, já as classes concretas contém as implementações específicas necessárias para cada versão.
+
+A aplicação que utilizou esse padrão de projeto, Wififixer, definiu como algoritmo
+para tratar as diferenças entre as versões da API os seguintes passos:
+\begin{itemize}
+    \item Determinar o nível da API no aparelho;
+    \item Executar o código específico do nível da API.
+\end{itemize}
+
+Assim, o algoritmo executa o passo \textbf{a} de forma fixa, implementado no
+\textit{"template method"}, enquanto o passo \textbf{b} é delegado para a classe
+concreta. A Figura \ref{fig:templatemethod_wififixer} mostra o código do método
+\textit{template method} \texttt{getFile}, onde a parte fixa do algoritmo faz a
+seleção da classe concreta de acordo com a versão da API e logo depois o método
+abstrato \texttt{vgetLogFile} é chamado.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.5]{imagens/templatemethod_wififixer}
+  	\textsf{\caption{Exemplo de template method no aplicativo Wififixer}
+  	        \label{fig:templatemethod_wififixer}}
+\end{figure}
 
 \section{Taxonomia dos Componentes da API} \label{sec:taxonomia}
 
