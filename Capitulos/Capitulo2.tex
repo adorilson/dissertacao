@@ -346,17 +346,19 @@ aplicação, sempre que a chamada for feita em dispositivos com API antigas.
 Dessa forma, nessa dissertação de mestrado focaremos apenas nas ocorrências de NewApi.
 
 
-\section{Framework para Comparação de Técnicas de Implementação de Variabilidades} \label{sec:framework}
+\section{Framework para Comparação de Técnicas de Implementação de Variabilidades}
+\label{sec:framework}
 
 As diversas versões de API existentes na plataforma Android, em um contexto de
-engenharia de linha de produtos de software (LPS) [REF],
-são conhecidas como variabilidades. Existem diversas técnicas para implementação
-de variabilidades, de forma que se faz necessários critérios de comparação e
-seleção de qual utilizar em uma determinada situação. propôs um framework para
-comparação de tais técnicas. O framework é uma extensão de outros trabalhos [REF] [REF],
-cujos critérios de avaliação e valores possíveis estão apresentados na 
-
-Tabela F.
+engenharia de 
+\abrv[LPS -- \textit{Linha de Produtos de Software}]
+{linha de produtos de software} (LPS)
+\cite{Clements2002}, são conhecidas como variabilidades. Existem diversas técnicas
+para implementação de variabilidades, de forma que se faz necessários critérios
+de comparação e seleção de qual utilizar em uma determinada situação. Alves \cite{Alves2007}
+propôs um framework para comparação de tais técnicas. O framework é uma extensão
+de outros trabalhos \cite{Gacek2001} \cite{Coplien1999}, cujos critérios de avaliação
+e valores possíveis estão apresentados na Tabela \ref{tab:framework}.
 
 \begin{table}[h]
   \caption{Framework para comparação de técnicas de implementação de variabilidades}
@@ -394,11 +396,87 @@ respeito a um produto executável da LPS.
 
 Também é considerado o suporte para implementação modular de requisitos transversais.
 Esse suporte é importante porque muitas variabilidades de LPS podem ser requisitos
-transversais, como apontado por diversas pesquisas [REF] [REF] [REF] [REF] [REF].
+transversais, como apontado por diversas pesquisas \cite{Gacek2001} \cite{Batory2004}
+\cite{Liu2006} \cite{Lopez2005} \cite{mezini2004}.
 
-\section{Padrões de Projeto} \label{sec:padroes-de-projeto}
+\section{Padrões de Projeto}
+\label{sec:padroes-de-projeto}
+
+Padrões de projeto \cite{Gamma1994}  e técnicas
+\abrv[OO -- \textit{Orientação a Objetos}]
+{orientação a objetos} (OO)
+-- polimorfismo, herança, composição, agregação/delegação -- são abordagens utilizadas
+para implementação de variabilidades de uma forma geral. Padrões de projeto
+identificam aspectos do sistema que podem variar e fornecem soluções para gerenciar
+a variação. Técnicas de OO são utilizadas para a implementação dos padrões de
+projeto \cite{Gacek2001}. Com efeito, há relatos do uso de tal abordagem em linhas
+de produto de software Android \cite{Pavlic2013}. Essa seção apresenta alguns
+padrões de projeto encontrados durante a análise das aplicações.
+
+\subsection{Strategy}
+\label{sec:strategy}
+
+O padrão \textit{Strategy} tem como objetivo "definir uma família de algoritmos,
+encapsular cada uma delas e torná-las intercambiáveis. \textit{Strategy} permite
+que o algoritmo varie independentemente dos clientes que o utilizam" \cite{Gamma1994}.
+A figura \ref{fig:strategy_simple} apresenta uma visão geral do padrão. \texttt{Context}
+é o cliente que usa os serviços de classes (\texttt{Strategy 1} e \texttt{Strategy 2})
+que encapsulam os algoritmos de implementação da interface \texttt{Strategy}. 
+
+\begin{figure}[htb]
+	\centering
+  	\includegraphics[scale=1]{imagens/strategy_simple.jpg}
+  	\textsf{\caption{Visão geral do padrão Strategy}
+  	        {Fonte: Best Practice Software Engineering (BPSE) \cite{StrategyPattern}}
+  	        \label{fig:strategy_simple}}
+\end{figure}
+
+No contexto de versões da API, a interface \texttt{Strategy} pode conter um conjunto
+de métodos que encapsulam serviços que mudam de uma versão para outra, e cada
+implementação desse interface - \texttt{Strategy 1}, \texttt{Strategy 2} e assim
+por diante - encapsula o comportamento desse serviço na versão respectiva da API.
+
+Implementação de padrões de projeto podem variar entre si. Por exemplo, em um dos
+aplicativos analisados, o  AnkiDroid, foi definida uma relação semântica de
+dependência entre as implementações concretas da interface \texttt{Strategy}, que
+no caso foi chamado de \texttt{Compat}. A interface \texttt{Strategy} contém todos
+os métodos que encapsulam diferenças entre as diversas versões da API. A implementação concreta para a API de menor nível que a aplicação dará suporte, API de nível 10
+neste caso, deve implementar a interface e escrever o código para os métodos referentes
+à essa versão da API, deixando os métodos referentes às versões seguintes com corpo
+vazio. A implementação concreta referente a próxima versão da API, nível 11 no caso,
+deverá estender dessa classe e implementar o corpo do métodos relevante. E assim sucessivamente com as demais versões.
+
+A Figura \ref{fig:strategy_ankidroid} apresenta um diagrama de classes simplificada
+dessa estrutura. Nessa figura, também notamos a presença de um outro elemento: a
+classe \texttt{CompatHelper}. Essa classe é responsável pela seleção e criação
+das estratégias concretas. A Figura \ref{fig:strategy_compathelper} mostra o código
+do método \texttt{CompatHelper}, onde a estratégia concreta é instanciada de acordo
+com a versão do API do aparelho. Em outras variações do padrão, essas tarefas podem
+ficar a cargo do próprio cliente ou em um método estático na interface \texttt{Compat},
+que passará a ser uma classe abstrata. 
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.5]{imagens/strategy_ankidroid.png}
+  	\textsf{\caption{Diagrama de classe da implementação do padrão Strategy na
+  	                aplicação AnkiDroid}
+  	        \label{fig:strategy_ankidroid}}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering % TODO alinhar caption no centro
+  	\includegraphics[scale=0.6]{imagens/strategy_compathelper.png}
+    
+  	\textsf{\caption{Trecho de código onde as implementações concretas são
+  	                criadas de acordo com a nível da API no aparelho}
+  	        \label{fig:strategy_compathelper}}
+\end{figure}
+
+\subsection{Template Method}
+\label{sec:template-method}
+
+
 
 \section{Taxonomia dos Componentes da API} \label{sec:taxonomia}
-
 
 
