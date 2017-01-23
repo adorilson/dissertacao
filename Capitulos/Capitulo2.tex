@@ -291,7 +291,8 @@ já o outro valor da comparação é normalmente definida diretamente no código
 \texttt{VERSION\_CODES}.
 
 A figura \ref{fig:EC_in_cgeo2} apresenta um exemplo do uso de EC na aplicação C:geo.
-A classe \texttt{AbstractDi alogFragment} % Esse espaço é gambiarra. Se ficar junto,
+A classe \texttt{Abstract- DialogFragment} % TODO Esse espaço é gambiarra. Se ficar
+                                            % junto,
                                             % fica sem quebra de linha
 é a classe alvo no padrão, do repositório
 de parâmetros são obtidos os valores de \texttt{Build.VERSION.SDK\_INT} e
@@ -548,6 +549,46 @@ A Figura \ref{fig:null_object_cgeo} mostra um diagrama de classes dessa estrutur
   	\textsf{\caption{Diagrama de classes do padrão de projeto Null Object aplicado no C:Geo}
   	        \label{fig:null_object_cgeo}}
 \end{figure}
+
+
+\subsection{Proxy}
+\label{sec:proxy}
+
+O padrão de projeto \textit{Proxy} "fornece um substituto de outro objeto para
+controlar acesso a este" \cite{Gamma}. A figura \ref{fig:proxy} apresenta uma
+visão geral do padrão. \texttt{Client} é o cliente que usa os serviços de uma
+classe abstrata ou interface (\texttt{Subject}), que terá duas implementações:
+o proxy (\texttt{Proxy}) e o objeto real (\texttt{RealSubject}). O proxy irá
+receber do cliente as chamadas de métodos e, mediante alguma condição, delegar a
+chamada para o objeto real.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.5]{imagens/proxy}
+  	\textsf{\caption{Estrutura geral do padrão de projeto Proxy}
+  	        {Fonte: DoFactory \cite{Proxy}}
+  	        \label{fig:proxy}}
+\end{figure}
+
+Existem três tipos de proxies:
+\begin{itemize}
+    \item Proxies remotos: responsável por codificar uma requisição e enviar a
+    requisição codificada quando o cliente e o objeto real estão em espaços de
+    endereços diferentes;
+    \item Proxies virtuais: podem fazer cache de informações adicionais sobre o
+    objeto real, para adiar o acesso a eles; 
+    \item E, proxies de proteção: checa se o cliente tem as permissões de acesso
+    necessárias para realizar a requisição.
+\end{itemize}
+
+No contexto de versões de API, os proxies são de proteção. Sendo a existência da
+versão esperada a "permissão" necessária para acesso ao objeto real.
+
+As aplicações que utilizaram esse padrão de projeto definiram proxies para acessar
+objetos do tipo \texttt{View}. Esses objetos são instanciados pela própria plataforma
+e, por isso, não é possível resolver essa questão da versão na criação, somente no
+momento da chamada. 
+
 
 \section{Taxonomia dos Componentes da API} \label{sec:taxonomia}
 
