@@ -515,6 +515,40 @@ abstrato \texttt{vgetLogFile} é chamado.
   	        \label{fig:templatemethod_wififixer}}
 \end{figure}
 
+\subsection{Null Object}
+\label{sec:null-object}
+
+O padrão de projeto  \textit{Null Object} "encapsula a ausência de um objeto
+disponibilizando uma alternativa que nada faz como comportamento padrão" \cite{Henney2002}.
+A figura \ref{fig:null-object}  apresenta uma visão geral do padrão. \texttt{Client}
+é o cliente que usa os serviços de uma classe abstrata ou interface
+(\texttt{AbstractObject}), que terá implementações reais (\texttt{RealObject}) e
+ao menos uma implementação de um objeto nulo (\texttt{NullObject}) que faz nada.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.5]{imagens/null-object-structure}
+  	\textsf{\caption{Estrutura geral do padrão de projeto Null Object}
+  	        {Fonte: SourceCodeMania \cite{SourceCodeMania}}
+  	        \label{fig:null-object}}
+\end{figure}
+
+No contexto de versões da API, os objetos nulos serão instanciados quando uma
+versão da API necessária para usar algum recurso não estiver disponível no aparelho,
+já as objetos reais contém as implementações específicas necessárias para cada versão.
+
+A aplicação que utilizou esse padrão de projeto, C:Geo, definiu uma instância do
+padrão para cada versão relevante, níveis 11, 13 e 19. Os serviços dessas instâncias
+são disponibilizadas para os clientes através de uma fachada (\texttt{Compatibility}).
+A Figura \ref{fig:null_object_cgeo} mostra um diagrama de classes dessa estrutura.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.5]{imagens/null_object}
+  	\textsf{\caption{Diagrama de classes do padrão de projeto Null Object aplicado no C:Geo}
+  	        \label{fig:null_object_cgeo}}
+\end{figure}
+
 \section{Taxonomia dos Componentes da API} \label{sec:taxonomia}
 
 
