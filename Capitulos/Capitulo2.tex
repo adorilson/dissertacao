@@ -590,6 +590,35 @@ e, por isso, não é possível resolver essa questão da versão na criação, s
 momento da chamada. 
 
 
-\section{Taxonomia dos Componentes da API} \label{sec:taxonomia}
+\section{Taxonomia dos Componentes da API}
+\label{sec:taxonomia}
+
+McDonnell et al. \cite{McDonnell2013} definiu algumas palavras chaves para
+categorizar componentes da API. Por exemplo, o termo \texttt{text} engloba todos
+os pacotes relevantes para renderizar ou manipular texto em dispositivos Android:
+\texttt{android.text.format}, \texttt{android.text.method}, \texttt{android.text.style}
+e \texttt{android.text.util}.
+
+No entanto, identificamos alguns problemas de concordância com essa taxonomia.
+Por exemplo, são apresentados os termos \texttt{sip} e \texttt{rtp}, que referem-se
+aos pacotes \texttt{android.net.sip} e \texttt{android.net.rtp}, respectivamente.
+Mas estes em si não deveriam ser termos da taxonomia. Deveriam fazer parte do termo
+\texttt{net}. Então, entramos em contatos com os autores que nos confirmaram que
+realmente deveriam estar em \texttt{net}, e não se lembravam o porquê de estarem
+separados. A possibilidade, segundo os autores, era que teriam considerados esses
+casos como categorias muitos diferentes e por isso ficaram separados.
+
+Assim, neste trabalho, consolidamos a taxonomia da forma original e sem exceções
+ou casos especiais: \texttt{android.TAXONOMIA.PACOTE}. Os pacotes de compatibilidade
+também seguem esse padrão: \texttt{android.support.TAXONOMIA.PACOTE} ou
+\texttt{android.support.vX.TAXO- NOMIA.PACOTE}, % TODO gambiarra do espaço para 
+                                                % quebra de linha
+onde \texttt{X} é um número que compõe
+o nome do pacote. Além dos elementos específicos da plataforma Android, existem
+elementos do SDK padrão do Java, por exemplo \texttt{java.net} ou \texttt{java.xml}.
+Para diferenciar estes casos, consideramos como termos da taxonomia o primeiro e
+segundo nível dos nomes dos pacotes.  A tabela \ref{tab:taxonomia} apresenta os
+termos relevantes para este trabalho, seu significado e a versão da API em que a
+taxonomia surgiu.
 
 
