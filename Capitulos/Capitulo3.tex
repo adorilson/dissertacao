@@ -1,9 +1,23 @@
 % Capíulo 3
-\chapter{Visualizações} \label{ch:visualizacoes}
+\chapter{Estudo sobre a Compatibilidade a Múltiplas Versões da API Android}
+\label{ch:estudo}
 
-Este capítulo apresenta o conjunto de visualizações proposto como extensão à ferramenta \textit{PerfMiner}. A seção \ref{sec:perfminer} destaca o funcionamento dessa ferramenta. A seção \ref{sec:visao-geral-visualizacoes} mostra uma visão geral sobre o funcionamento das visualizações propostas. As seções \ref{sec:visualizacao1}, \ref{sec:visualizacao2} e \ref{sec:visualizacao3} descrevem cada uma das visualizações, sendo esta última em detalhes, com suas características, propriedades visuais, funcionamento e exemplo de uso. Por fim, são reportadas considerações finais sobre o capítulo na seção \ref{sec:consideracoes-cap3}.
+Este capítulo apresenta o estudo realizado para análise do suporte de aplicações
+existentes à múltiplas versões da API da plataforma Android. Foram analisados o
+código-fonte de 41 aplicações únicas com o objetivo de identificar e caracterizar
+as técnicas de implementação de variabilidades.
 
-\section{PerfMiner} \label{sec:perfminer}
+O restante do capítulo esta organizado da seguinte maneira: 
+a seção \ref{sec:objetivos} destaca os objetivos do estudo e as questões de pesquisa.
+A seção \ref{sec:aplicacoes-alvo} apresenta os critérios de seleção das aplicações
+alvo do estudo, bem como as aplicações selecionadas.
+A seção \ref{sec:procedimentos} descrevem os procedimentos adotados para responder
+cada questão de pesquisa. 
+A seção \ref{sec:resultados} apresenta os resultados do estudo, que são discutidos na
+seção \ref{sec:discussao}.
+Por fim, as ameaças à validade são reportadas na seção \ref{sec:ameacas}.
+
+\section{Objetivos do Estudo e Questões de Pesquisa} \label{sec:objetivos}
 
 A implementação das visualizações está sendo desenvolvida como uma extensão da ferramenta \textit{PerfMiner}, a qual provê a avaliação contínua de cenários no que diz respeito a análise de desvios de desempenho, de forma a minimizar a erosão de atributos de qualidade em cenários arquiteturalmente relevantes \cite{Pinto2015}.
 
@@ -79,7 +93,7 @@ A abordagem completa do \textit{PerfMiner} pode ser vista na figura \ref{fig:per
 
 As visualizações propostas como extensão da ferramenta utilizam os artefatos de saída gerados após a execução completa da abordagem, caracterizando assim mais uma fase da ferramenta: a Fase 4. Como ilustra a figura \ref{fig:perfminer-fase4} a seguir, os artefatos de saída utilizados pelas visualizações são: (i) os modelos de análise dinâmica de ambas as versões, (ii) os relatórios de cenários e métodos com desvios de desempenho, (iii) os métodos potencialmente responsáveis pelo desvio de desempenho dos cenários e (iv) os \textit{commits} que introduziram mudanças aos métodos, bem como suas informações de desenvolvimento associadas. Cada uma das visualizações implementadas utilizam total ou parcialmente os artefatos gerados nas fases anteriores, de acordo com o seu propósito.
 
-\section{Visão Geral das Visualizações} \label{sec:visao-geral-visualizacoes}
+\section{Aplicações Alvo de estudo} \label{sec:aplicacoes-alvo}
 
 A extensão à ferramenta foi implementada através de uma aplicação web para apresentação das visualizações, de modo que o processamento do \textit{PerfMiner} em suas fases 1, 2 e 3 não foi alterado, continuando \textit{standalone}. A escolha por esse tipo de aplicação se deu pelo fato de sua execução ocorrer em um ambiente distribuído, onde cada parte que compõe a aplicação está localizada em locais diferentes. Por exemplo, a interface com o usuário reside em sua estação de trabalho, ao passo que o servidor e o banco de dados estão localizados em outro computador.
 
@@ -101,19 +115,19 @@ Caso a visualização solicitada pelo usuário já tenha sido processada anterio
 
 Para evitar que o usuário tenha que lidar com o processamento necessário entre os passos 2 e 3, fazendo-o esperar certa quantidade de tempo até obter a resposta e a consequente renderização da visualização, a ferramenta oferece a possibilidade de realizar um processamento em lote de todas as visualizações para um determinado sistema, entre versões diferentes. Esse processamento executa os passos 2 e 3, exceto a atividade do envio da resposta com o arquivo JSON, salvando todos os dados necessários às visualizações no banco de dados QAV, aumentando o tempo de resposta da aplicação quando da requisição de alguma das suas visualizações pelo usuário.
 
-\section{Visualização 1: Evolução do Desempenho} \label{sec:visualizacao1}
+\section{Procedimentos} \label{sec:procedimentos}
 
 Ter uma visão geral da evolução do atributo de qualidade de desempenho é o objetivo principal desta visualização. Será mostrada a evolução do desempenho entre as versões do sistema, no entanto, destacando também a quantidade total de cenários em cada versão, bem como quantos degradaram e quantos otimizaram o seu desempenho. Serão utilizadas propriedades visuais que simplifiquem a percepção dos desenvolvedores e arquitetos com relação ao desempenho geral do sistema.
 
 Esta visualização ainda está em fase de concepção no momento da escrita desta proposta. Entretanto, sua implementação seguirá a mesma rotina mostrada na figura \ref{fig:funcionamento-geral-visualizacoes}. Planeja-se que esta seja a primeira visualização que o usuário do sistema terá contato, sobretudo por ter granularidade mais alta do que as demais. A partir dela, o usuário poderá navegar entre as outras visualizações descritas neste trabalho.
 
-\section{Visualização 2: Sumarização dos Cenários} \label{sec:visualizacao2}
+\section{Resultados do Estudo} \label{sec:resultados}
 
 Através da navegação da visualização de evolução do desempenho, o usuário poderá obter uma sumarização dos cenários de determinada versão do sistema, bem como o desvio de desempenho destes em relação à versão anterior. Nesta visualização, os cenários serão exibidos com propriedades visuais que proporcionem a identificação de quais degradaram e quais otimizaram o desempenho, seus tempos de execução e a porcentagem de desvio.
 
 Esta visualização também está em fase de concepção, assim como a anterior, e sua implementação seguirá igualmente o processo exibido na figura \ref{fig:funcionamento-geral-visualizacoes}. A partir da sumarização, o usuário poderá escolher um dos cenários mostrados e navegar para a visualização do grafo de chamadas.
 
-\section{Visualização 3: Grafo de Chamadas} \label{sec:visualizacao3}
+\section{Discussão} \label{sec:discussao}
 
 Uma das visualizações propostas tem o objetivo de mostrar, para dadas duas versões de um sistema, os métodos que potencialmente causaram o desvio de desempenho para um determinado cenário. Os métodos são exibidos em um grafo direcionado de chamadas com propriedades visuais que destacam quais dos métodos mostrados tiveram desvios de desempenho. É a visualização que possui granularidade mais fina dentre as três propostas como extensão ao \textit{PerfMiner}.
 
@@ -383,6 +397,7 @@ A maior variação absoluta foi para o cenário \texttt{Entry point for DefaultS
 
 \section{Considerações} \label{sec:consideracoes-cap3}
 
+
 Um dos principais desafios do processo de manutenção de um software é compreendê-lo adequadamente, em especial, a sua arquitetura. A falta de acompanhamento da evolução da arquitetura ao longo do tempo pode levar a sua degradação, impactando os seus atributos de qualidade. Este capítulo apresentou visualizações de arquitetura de software que visam tornar direta e fácil a monitoração da evolução arquitetural, com relação ao atributo de qualidade de desempenho. Uma vez que as ferramentas existentes se mostram complexas ou ineficientes para essa finalidade, as visualizações foram propostas a serem implementadas como extensões da ferramenta \textit{PerfMiner}. Em suma, são as seguintes:
 \begin{enumerate}[(i)]
    \item \textit{Evolução do Desempenho}: a evolução do atributo de qualidade de desempenho pode ser acompanhada em outra visualização, que mostra, para cada versão do sistema, se este degradou, otimizou ou manteve estável o seu desempenho;
@@ -393,3 +408,5 @@ Um dos principais desafios do processo de manutenção de um software é compree
 Foi mostrado os detalhes da visualização do grafo de chamadas, que visa exibir, para dadas duas versões de um sistema, os métodos que potencialmente causaram o desvio de desempenho para um determinado cenário. Nesta visualização, os métodos são apresentados em um grafo direcionado de chamadas com propriedades visuais que destacam quais dos métodos mostrados tiveram desvios de desempenho.
 
 É importante frisar que a implementação das visualizações ainda não está finalizada. As duas primeiras mencionadas neste capítulo, evolução do desempenho e sumarização dos cenários, ainda estão em fase de concepção, ao passo que a terceira, grafo de chamadas, está em fase de conclusão. Para esta última, ainda serão adicionados, na seção de detalhes dos nós, \textit{links} para os \textit{commits} e tarefas que alteraram o método representado. Para cada método com desvio, serão recuperados os \textit{commits} do sistema de controle de versões e verificado quais commits alteraram linhas dentro do método detectado. Para cada um dos que alteraram, o número da respectiva tarefa é procurado na mensagem de \textit{commit}. Este número é usado para procurar a tarefa no sistema de gerenciamento de tarefas em busca de informações extras, como o seu tipo.
+
+\section{Ameaças à validade} \label{sec:ameacas}
