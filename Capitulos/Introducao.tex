@@ -35,7 +35,7 @@ atualmente uma carência de estudos sobre a forma como aplicações Android atua
 oferecem suporte às múltiplas versões da API. Neste contexto, este trabalho busca
 entender as técnicas utilizadas para oferecer tal suporte e qual o impacto do seu uso.
 
-\section{Apresentação do Problema} \label{sec:apresentacao-do-problema}
+\section{Problema Abordado} \label{sec:apresentacao-do-problema}
 
 Apesar da ampla adoção da plataforma Android e o problema da fragmentação \cite{Park2013},
 há uma carência de estudos que indiquem de que forma as aplicações de tal plataforma
@@ -50,10 +50,11 @@ com versões antigas ao mesmo tempo usar os recursos mais modernos quando dispon
 Uma alternativa possível é disponibilizar uma versão da aplicação para cada versão
 da API. Essa solução é a comumente utilizada para API’s locais - API’s de sistemas
 operacionais de computadores de mesa, por exemplo -, onde o número de versões de
-API’s é reduzido e a evolução é mais lenta em comparação à API do Android: existem
+API’s é reduzido e a evolução é mais lenta em comparação à API do Android, na qual
+existem
 cerca de 10 versões da API com uma margem relevante do mercado. Manter diversas
 versões simultâneas de uma aplicação causa duplicação de código e prejudica a
-manutenabilidade. % TODO colocar referencia aqui
+manutenibilidade. % TODO colocar referencia aqui
 Assim, a plataforma oferece mecanismos para que uma única base
 de código atenda da melhor forma possível às diversas versões da API, usando os
 melhores recursos disponíveis nos aparelhos.
@@ -65,19 +66,20 @@ práticas adotadas pela comunidade de desenvolvedores e auxiliá-los a decidir
 quando e quais técnicas melhor atendem a determinadas situações.
 
 \section{Limitações das Trabalhos Existentes} \label{sec:limitacao-abordagens-atuais}
-Diversos trabalhos têm sido realizados sobre a API Android. Sobretudo, no sentido
+Diversos trabalhos têm sido realizados sobre a API da plataforma Android. Sobretudo,
+no sentido
 de identificar os elementos mais comuns e padrões de uso. Lamba et al.\cite{Lamba2015} apresentaram
 resultados de um estudo em larga escala de análise do uso da API em aplicações Android.
 O estudo envolveu 1.120 aplicações open-source e 17,4 milhões de linha de código.
 Foram identificados os métodos mais frequentemente invocados, os pacotes da API,
-classes, e padrões de chamadas mais populares.Os métodos mais comuns são \texttt{getString},
-\texttt{get} e \texttt{toString}. Os pacotes mais comuns são \texttt{java.util} e
+classes, e padrões de chamadas mais populares.Os métodos mais comuns são \texttt{getString()},
+\texttt{get()} e \texttt{toString()}. Os pacotes mais comuns são \texttt{java.util} e
 \texttt{android.content}. As classes mais comuns são \texttt{Context} e \texttt{View}.
 O padrão de chamada mais popular está relacionado à dimensão, espaçamento e margens
 de uma \textit{view} na interface com o usuário. No entanto, na análise de popularidade
 de métodos não levaram em consideração suas respectivas classes. Por exemplo, o método
-\texttt{getString} da classe \texttt{Activity} foi contabilizado juntamente com
-o método \texttt{getString} da classe \texttt{Cursor}, que não possuem nenhuma
+\texttt{getString()} da classe \texttt{Activity} foi contabilizado juntamente com
+o método \texttt{getString()} da classe \texttt{Cursor}, que não possuem nenhuma
 relação entre si.
 
 McDonnell et al. \cite{McDonnell2013} conduziram um estudo sobre a co-evolução
@@ -88,120 +90,84 @@ clientes não segue na mesma velocidade. Cerca de 28\% das referências à API n
 aplicações clientes estão desatualizadas com uma mediana de tempo de 16 meses.
 22\% das referências desatualizadas são eventualmente atualizadas para versões
 mais novas da API, mas com um tempo de propagação de cerca de 14 meses, que é mais
-lento que o tempo médio entre novas versões da API (3 meses). APIs de rápida
+lento que o tempo médio entre novas versões da API (3 meses). API's de rápida
 evolução são mais usadas por clientes que APIs de evolução lenta, mas o tempo
 médio necessário para adoção de novas versões é mais longo para APIs de rápida
 evolução. Além disso, código adaptado para uso de novas APIs são mais sujeitos a
 erros que aqueles sem adaptação para novas APIs. Segundo os autores do trabalho,
-os resultados sugerem que os desenvolvedores não adotam novas API’s com rapidez,
-mantendo referências para API’s desatualizadas. Assim evitam a instabilidade de
-novas API’s e o trabalho de atualização propriamente dito. Porém, outras possibilidades
-devem ser consideradas: os desenvolvedores atualizam para as mais recentes API’s,
-mas mantém tais códigos para garantir a compatibilidade com API’s mais antigas;
-ou atualizam e as referências às API’s antigas são código-morto.
+os resultados sugerem que os desenvolvedores não adotam novas API's com rapidez,
+mantendo referências para API's desatualizadas. Assim evitam a instabilidade de
+novas API's e o trabalho de atualização propriamente dito. Porém, outras possibilidades
+devem ser consideradas: os desenvolvedores atualizam para as mais recentes API's,
+mas mantém tais códigos para garantir a compatibilidade com API's mais antigas;
+ou atualizam para API's recentes e as referências às API's antigas representam
+código-morto.
 
 Aplicações Android declaram uma versão alvo da API. Quando estão em execução em
 um dispositivo cuja versão da API é inferior à versão alvo, as aplicações são
 executadas em um modo de compatibilidade, que busca reproduzir o comportamento
 da versão alvo indicada pelo aplicação. Esse cenário desabilita as melhorias da
-nova versão, incluindo as correções de problemas de segurança. Mutchler \cite{Mutchler2016}
-chamou essa característica de problema da fragmentação do alvo e analisou um
+nova versão, incluindo as correções de problemas de segurança. Mutchler et al.
+\cite{Mutchler2016}
+chamam essa característica de problema da fragmentação do alvo e analisam um
 conjunto de 1.232.696 aplicações Android para mostrar que isso traz sérias
-consequências em todo ecossistema de aplicações e não mudou consideravelmente ao
+consequências para todo o ecossistema de aplicações e não mudou consideravelmente
+com o 
 passar dos anos. No total, 93\% das aplicações atualmente definem como alvo uma
 versão desatualizada e possuem uma média de desatualização de 686 dias; 79\% das
 aplicações já estão desatualizadas no dia que são carregadas para o Google Play.
-Também analisaram 5 mudanças na plataforma relacionadas a segurança e que são
+Eles também analisaram 5 mudanças na plataforma relacionadas a segurança e que estão
 desabilitadas nessas aplicações desatualizadas.
-
-Esses trabalhos não abordam o tema de suporte a múltiplas versões da API por aplicações
-Android existentes. Todas as análises de estudos existentes foram realizadas sem
-abordar questões sobre a adaptação e organização do código para lidar com as
-múltiplas APIs disponíveis.
 
 Wei \cite{Wei2016} realizou um estudo sobre problemas de compatibilidade induzidos
 pela fragmentação 
 \abrv[FIC -- \textit{Fragmentation-Induced Compatibility}]
-(FIC issues - \textit{Fragmentation-Induced Compatibility issues}).
+(FIC issues - \textit{Fragmentation-Induced Compatibility issues}) da plataforma
+Android.
 De forma manual, analisaram 191 \textit{issues} nos sistemas de reporte de erros
 de 5 projetos de código aberto e os \textit{commits} relacionadas a esses \textit{issues}.
-As questões de pesquisa desse trabalho foram:
-\begin{itemize}
-	\item \textbf{QP1}: Quais são os tipos comuns de FIC issues em aplicações
-	Android? Quais são suas causas?
-	    \begin{itemize}
-	        \item \textbf{R}: Observaram que existem 5 maiores causas de FIC \textit{issues}
-	        em aplicações Android, entre elas a evolução da API da plataforma e implementação
-	        problemática de drive de hardware. Todos os tipos e causas são apresentados
-	        na Tabela \ref{tab:causas_FIC};
-	        \begin{table}[h] %  TODO centralizar tabela na pagina
-              \centering
-              \caption{Tipos e causas de FIC issues \cite{Wei2016}}
-              \begin{tabular}{ | l | l |}
-                \hline % TODO a primeira coluna deve ser multiplas linhas
-                \textbf{Tipo} & \textbf{Causa}  \\ \hline
-                \multirow{3}{*}{Específico do dispositivo} & Implementação de hardware problemática   \\ \cline{2-2}
-                                                         & Customização do SO \\ \cline{2-2}
-                                                         & Composição de hardware peculiar \\ \hline
-                \multirow{2}{*}{Não-específico do dispositivo} & Evolução da API da plataforma Android \\ \cline{2-2}
-                                                             & Bugs do sistema Android Original \\ \hline
-              \end{tabular}
-              \label{tab:causas_FIC}
-            \end{table}
-	    \end{itemize}
-	\item \textbf{QP2}: Quais são os sintomas mais comuns de FIC \textit{issues} em aplicações
-	Android?
-	    \begin{itemize}
-	        \item \textbf{R}: FIC \textit{issues} podem causar tanto consequências funcionais
-	        como não-funcionais, como travamento da aplicação, aplicação não funcionar,
-	        degradação na performance e experiência de uso. Os sintomas podem ser
-	        específicos da aplicação, o que dificulta a criação de testes de
-	        compatibilidade;
-	    \end{itemize}
-	\item \textbf{QP3}: Como os desenvolvedores corrigem FIC \textit{issues} na
-	prática?
-	Existe algum padrão comum?
-	    \begin{itemize}
-	    \item \textbf{R}: Localizar a causa dos FIC \textit{issues} é difícil na
-	    prática.
-	    Por outro lado, as correções são usualmente simples e apresentam padrões
-	    comuns: checar informações do dispositivo e disponibilidade de componentes
-	    de software/hardware antes de chamar APIs/métodos causadores de problemas.
-	    Este é o padrão mais comum, presente em 137 das 191 correções analisadas.
-	    Uma forma típica de evitar os erros é pular a chamada da API ou substituí-la
-	    por uma implementação alternativa.
-	    \end{itemize}
-\end{itemize}
+Nesse estudo, identificaram que existem 5 maiores causas de FIC issues, entre elas
+a evolução da API. FIC \textit{issues} podem causar tanto consequências funcionais como
+não-funcionais, como travamento da aplicação, aplicação não funcionar, degradação
+na performance e na experiência de uso. Os sintomas podem ser específicos da aplicação,
+o que dificulta a criação de testes de compatibilidade. Localizar a causa dos FIC
+\textit{issues} é difícil na prática. Por outro lado, as correções são usualmente
+simples e apresentam padrões comuns: checar informações do dispositivo e disponibilidade
+de componentes de software/hardware antes de chamar API's/métodos causadores de
+problemas. Este é o padrão mais comum, presente em 137 das 191 correções analisadas.
+Uma forma típica de evitar os erros é pular a chamada da API ou substituí-la por
+uma implementação alternativa. Também desenvolveram uma ferramenta, FicFinder, que
+realiza uma análise estática nas aplicações e informa se estas contém FIC
+\textit{issues}. Em um experimento com 27 aplicações do mundo real, o FicFinder
+efetivamente detectou FIC issues desconhecidos com
+uma alta precisão na análise. Nas 27 aplicações foram emitidos 51 alertas, sendo
+46 de casos confirmados (precisão de 90,2\%). FicFinder também pode fornecer
+informações úteis para ajudar desenvolvedores a diagnosticar e corrigir FIC
+\textit{issues}. Os alertas emitidos pelo FicFinder foram encaminhados para os
+desenvolvedores das aplicações. Alguns já haviam corrigido o problema e outros
+informaram que iriam corrigir.
 
-Também desenvolveram uma ferramenta, FicFinder, que realiza uma análise estática
-nas aplicações e informa se estas contém FIC \textit{issues}. Realizaram um experimento
-com 27 aplicações para avaliar a ferramenta a responder às seguintes questões de
-pesquisa:
-\begin{itemize}
-    \item \textbf{QP4}: O FicFinder pode ajudar a detectar FIC \textit{issues} em
-    aplicações Android do mundo real?
-        \begin{itemize}
-            \item \textbf{R}:FicFinder efetivamente detectou FIC \textit{issues}
-            desconhecidos em aplicações Android do mundo real e obteve uma alta
-            precisão na análise. Nas 27 aplicações foram emitidos 51 alertas,
-            sendo 46 de casos confirmados (precisão de 90,2\%);
-        \end{itemize}
-    \item \textbf{QP5}: FicFinder fornece informações úteis aos desenvolvedores
-    de aplicações para facilitar o diagnóstico e processo de correção de FIC
-    \textit{issues}?
-        \begin{itemize}
-            \item \textbf{R}: FicFinder pode fornecer informações úteis para ajudar
-            desenvolvedores a diagnosticar e corrigir FIC \textit{issues}. Os
-            alertas emitidos pelo FicFinder foram encaminhados para os desenvolvedores
-            das aplicações. Alguns já haviam corrigido o problema e outros informaram
-            que iriam corrigir.
-        \end{itemize}
-\end{itemize}
+McDonnell et al. \cite{McDonnell2013} e Mutchler et al. \cite{Mutchler2016}
+não abordam o tema de suporte a múltiplas versões da API
+por aplicações Android existentes. Todas as análises dos estudos foram
+realizadas sem considerar questões como a adaptação e organização do código para
+lidar com as múltiplas API's disponíveis.
 
-No experimento, o FicFinder foi alterado para reportar situações em que os FIC
-\textit{issues} já estavam protegidos de execuções indevidas, tais casos foram
-identificados como “boas práticas”. Porém, o trabalho não apresentou essas boas
-práticas, tampouco fez qualquer tipo de comparação, avaliação ou indicação de uso.
+No experimento realizado por Wei et al. \cite{Wei2016}, o FicFinder foi
+alterado para reportar situações em que os FIC \textit{issues} já estavam protegidos
+de execuções indevidas, tais casos foram identificados como "boas práticas". Porém,
+o trabalho não apresentou essas boas práticas, tampouco fez qualquer tipo de
+comparação, avaliação ou indicação de uso.
+
+Nesse contexto, baseado em trabalhos anteriores acerca da evolução da API Android
+e suas limitações, são necessárias pesquisas que:
+\begin{itemize}
+    \item Identifiquem o suporte a múltiplas versão da API provida pela plataforma;
+    \item Analisem como tais técnicas são implementadas em aplicações do mundo
+        real, de forma qualitativa e quantitativa;
+    \item Analisem o impacto do uso de tais técnicas no código-fonte das aplicações
+        cliente.   
+\end{itemize}
 
 \section{Objetivos} \label{sec:objetivos-gerais-especificos}
 
@@ -209,8 +175,8 @@ O objetivo geral desta dissertação de mestrado é analisar, caracterizar e com
 técnicas de implementação de suporte a múltiplas versões da API da plataforma
 Android por aplicações existentes. Os objetivos específicos do trabalho são:
 \begin{itemize}
-	\item Identificar na literatura quais as técnicas indicadas para suporte a
-	múltiplas versões da API Android;
+	\item Identificar na literatura quais as técnicas indicadas para oferecer suporte
+	a múltiplas versões da API Android;
 	\item Analisar aplicações reais para quantificar o uso dessas técnicas indicadas;
 	\item Comparar as características e consequências do uso de tais técnicas; e
 	\item Identificar as mudanças mais comuns na API que afeta a evolução das
@@ -219,7 +185,7 @@ Android por aplicações existentes. Os objetivos específicos do trabalho são:
 
 \section{Metodologia} \label{sec:metodologia}
 
-Visando atingir os objetivos dessa dissertação de mestrado, foi definido uma
+Visando atingir os objetivos desta dissertação de mestrado, foi definido uma
 metodologia de trabalho composta das seguintes etapas:
 \begin{itemize}
 	\item Revisão da literatura: essa etapa buscou identificar quais as técnicas
@@ -227,12 +193,8 @@ metodologia de trabalho composta das seguintes etapas:
 	além de entender melhor os trabalhos relacionados atuais;
 	\item Estudo empírico: a partir dos resultados da fase anterior, foi realizado
 	um estudo empírico com o objetivo de identificar e caracterizar a adoção dessas
-	técnicas por aplicações reais. Foi composto das seguintes atividades:
-	\begin{itemize}
-	    \item Seleção das aplicações;
-	    \item Análise das aplicações, e;
-	    \item Análise dos resultados.    
-	\end{itemize}
+	técnicas por aplicações reais. Ele foi composto das seguintes atividades principais:
+	seleção das aplicações, análise das aplicaçõesa e análise dos resultados.
 \end{itemize}
 
 
