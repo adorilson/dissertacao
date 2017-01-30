@@ -245,9 +245,73 @@ São 7 aplicações nesse grupo.
 
 \section{Procedimentos} \label{sec:procedimentos}
 
-Ter uma visão geral da evolução do atributo de qualidade de desempenho é o objetivo principal desta visualização. Será mostrada a evolução do desempenho entre as versões do sistema, no entanto, destacando também a quantidade total de cenários em cada versão, bem como quantos degradaram e quantos otimizaram o seu desempenho. Serão utilizadas propriedades visuais que simplifiquem a percepção dos desenvolvedores e arquitetos com relação ao desempenho geral do sistema.
+Uma vez selecionadas as aplicações alvos do estudo, foi realizada a atividade de
+análise das aplicações para buscar respostas às questões de pesquisa. A seguir,
+descrevemos os procedimentos adotados. 
 
-Esta visualização ainda está em fase de concepção no momento da escrita desta proposta. Entretanto, sua implementação seguirá a mesma rotina mostrada na figura \ref{fig:funcionamento-geral-visualizacoes}. Planeja-se que esta seja a primeira visualização que o usuário do sistema terá contato, sobretudo por ter granularidade mais alta do que as demais. A partir dela, o usuário poderá navegar entre as outras visualizações descritas neste trabalho.
+\subsection{Questões QP1 e QP2}
+Para responder às questões de pesquisa QP1 e QP2, os procedimentos adotados foram os
+seguintes:
+
+\begin{enumerate}
+	\item Remoção das anotações \texttt{@TargetAPI}, \texttt{@SuppressWarnings},
+	 	\texttt{@SuppressLint} do código-fonte da aplicação. Essas remoções foram
+	 	 necessárias porque tais anotações servem para silenciar o Lint, omitindo 
+	 	 ocorrências do relatório; 
+	\item Execução do Android Lint na aplicação;
+	\item Para cada ocorrência de NewAPI, o contexto era analisado de forma manual
+		para determinar se:
+		\begin{itemize}
+			\item Trata-se da implementação do padrão Execução Condicional
+				\cite{Santos2012};
+			\item Implementação é baseada em padrões de projeto \cite{Gamma}; 
+			\item Ou algum outro mecanismo que evitasse a chamada em uma versão
+			da API cujo recurso está ausente;
+		\end{itemize}
+	\item Para cada ocorrência de NewAPI, de forma semiautomática, o elemento da API
+		era classificado de acordo com a taxonomia apresentada na seção \ref{sec:taxonomia};
+	\item Nos aplicativos que utilizam pacote de compatibilidade, os elementos foram
+		 classificados na taxonomia com uma busca pelos \texttt{import}'s  presentes
+		 nas classes das aplicações.
+\end{enumerate}
+
+\subsection{Questão QP3}
+Para responder à questão de pesquisa QP3, os procedimentos adotados foram os
+seguintes:
+
+\begin{enumerate}
+	\item Remoção das anotações \texttt{@TargetAPI}, \texttt{@SuppressWarnings},
+		 	\texttt{@SuppressLint} do código-fonte da aplicação. Essas remoções foram
+		 	 necessárias porque tais anotações servem para silenciar o Lint, omitindo 
+		 	 ocorrências do relatório; 
+	\item Execução do Android Lint na aplicação;
+		\begin{itemize}
+			\item Esse resultado era salvo para uso futuro;
+		\end{itemize}
+	\item Edição da API mínima da aplicação para a versão imediatamente inferior à atual
+		e presente na tabela \ref{fig:platform_versions};
+		\begin{itemize}
+			\item API's ausentes dessa tabela foram descartadas por não representarem
+			um mercado minimamente significativo;
+		\end{itemize}
+	\item Nova execução do Android Lint na aplicação;
+		\begin{itemize}
+			\item Esse resultado era comparado com o obtido em 2;
+			\item Se a quantidade de NewAPI fosse a mesma, voltávamos para 3, se não
+			o resultado é analisado em maiores detalhes, como a taxonomia, a dependência
+			do recurso pela aplicação e como a ocorrência poderia ser tratada.
+		\end{itemize}
+\end{enumerate}
+
+\subsection{Questão QP4}
+Para responder à questão de pesquisa QP4 os procedimentos adotados foram os seguintes:
+
+\begin{enumerate}
+	\item Pesquisa textual por \texttt{VERSION.SDK\_INT} em todos os arquivos da
+		aplicação;
+	\item Quando \texttt{VERSION.SDK\_INT} fazia parte de um execução condicional, ou equivalente, relacionada a uma versão da API inferior a API mínima da aplicação, o código da aplicação era refatorado de forma a remover todo o código-morto.
+	\item Contabilização e sumarização das linhas de código e arquivos removidos.
+\end{enumerate}
 
 \section{Resultados do Estudo} \label{sec:resultados}
 
