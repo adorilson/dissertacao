@@ -69,97 +69,179 @@ o estudo foi guiado pelas seguintes questões de pesquisa (QPs):
 		\end{itemize}
 \end{itemize}
 
-\subsection{Funcionamento} \label{subsec:funcionamento-perfminer}
-
-Para atingir o objetivo de realizar a análise de desvio de desempenho, foram definidas três fases, descritas com maiores detalhes nas subseções a seguir: (i) análise dinâmica; (ii) análise de desvio; e (iii) mineração de repositório.
-
-\subsubsection{Fase 1: Análise Dinâmica} \label{subsec:fase1}
-
-A fase de análise dinâmica consiste em realizar a execução dos cenários através de uma suíte de testes automatizados. Como resultado, essa fase gera um modelo de análise dinâmica, que é persistido em um banco de dados e contém informações sobre os \textit{traces} de execução do sistema, modelados por um grafo de chamadas dinâmico que representa cada execução dos cenários selecionados para determinada versão \cite{Pinto2015}. A figura \ref{fig:perfminer-fase1} a seguir ilustra esta fase.
-
-\begin{figure}[!htb]
-   \centering
-   \frame{\includegraphics[scale=0.52]{Imagens/perfminer_fase_1.png}}
-   \textsf{\caption[Fase 1 do PerfMiner.]{Fase 1 do PerfMiner.\label{fig:perfminer-fase1}}}
-\end{figure}
-
-O grafo é montado interceptando os métodos de entrada de cada cenário e instrumentando suas execuções, calculando o tempo de execução de cada nó, bem como informações sobre se o cenário falhou ou não. Esse grafo pode ser interpretado como uma estrutura em árvore onde cada nó é a execução de um método, onde os métodos de entrada representam os nós raiz \cite{Pinto2015}.
-
-Duas informações são importantes nesse processo:
-\begin{enumerate}[(i)]
-   \item É fundamental que cada versão do sistema analisado possua testes automatizados para que o sistema seja executado. Caso o sistema não tenha testes automatizados, uma estratégia alternativa é utilizar ferramentas de teste de desempenho, como o \textit{JMeter} \cite{ApacheJMeter2016}, para submeter requisições que exercitem os cenários em um sistema web;
-   \item Cada teste de sistema executado é considerado um cenário. Dessa forma, cada cenário analisado é representado na ferramenta com o seguinte nome: \textit{``Entry point for SimpleClassName.testMethodName''}.
-\end{enumerate}
-
-A ferramenta usa \textit{AspectJ} para definir um aspecto que instrumenta as execuções dos cenários, interceptando os métodos de entrada para montar o grafo de chamadas e calcular os tempos de execução dos cenários e dos seus métodos \cite{Pinto2015}.
-
-De maneira sumária, o processo da figura \ref{fig:perfminer-fase1} se inicia com a execução dos testes de sistema, que são, então, interceptados pelo \textit{AspectJ} a fim de calcular seus tempos de execução. Após isso, o modelo de análise dinâmica resultante é persistido no banco de dados. Vale salientar que todo o processo dessa fase deve ser executado duas vezes, uma para cada versão do sistema a ser analisado. Dessa forma, serão gerados dois modelos de análise dinâmica que são utilizados para calcular os desvios de desempenho dos cenários e métodos na fase seguinte.
-
-A análise dinâmica é executada no mesmo computador para todas as versões, nas mesmas condições e com todos os serviços não essenciais desabilitados (por exemplo: atualizações, antivírus, memória virtual). A suíte de testes para cada versão é executada, no mínimo, 10 vezes. Essa quantidade de execuções ajuda a ter medições de desempenho mais precisas em termos de tempo de execução.
-
-\subsubsection{Fase 2: Análise de Desvio} \label{subsec:fase2}
-
-A segunda fase é a análise de desvio, que consiste em realizar a comparação do modelo de análise dinâmica, extraído durante a fase de análise dinâmica, para as duas versões do sistema. Essa comparação revela os cenários e métodos que foram degradados ou otimizados durante a evolução. O artefato de saída desta fase é um relatório contendo os cenários e métodos degradados ou otimizados em termos de tempo de execução \cite{Pinto2015}. Esta fase pode ser vista na figura \ref{fig:perfminer-fase2} adiante.
-
-\begin{figure}[!htb]
-   \centering
-   \frame{\includegraphics[scale=0.60]{Imagens/perfminer_fase_2.png}}
-   \textsf{\caption[Fase 2 do PerfMiner.]{Fase 2 do PerfMiner.\label{fig:perfminer-fase2}}}
-\end{figure}
-
-Para realizar a comparação entre os tempos de execução, o \textit{PerfMiner} pode utilizar duas estratégias: média aritmética e teste estatístico. A primeira compara a média do tempo de execução para cada método em ambas as versões. Se o valor da versão mais nova aumentou ou diminuiu mais do que um limiar configurado, é considerado que o método teve um desvio de desempenho. Já a segunda, usa um teste estatístico para observar se duas amostras independentes têm a mesma tendência. Neste caso, as amostras são formadas pelo conjunto dos valores dos tempos de execução para cada método comum em cada cenário \cite{Pinto2015}.
-
-A estratégia de teste estatístico utilizado pela ferramenta é o Mann-Whitney U-Test \cite{Neuhauser2011}. Para esse teste, a ferramenta usa um valor padrão para o nível de significância (\textit{alpha}) de 0,05. Dado um método, se o \textit{p-value} calculado for igual ou menor do que o nível de significância, houve um desvio de desempenho para este método. Para os casos em que há o desvio, o tempo médio de execução é usado para determinar se houve uma degradação ou otimização. Embora, no geral, os desenvolvedores e arquitetos estejam interessados em degradações, a ferramenta também sinaliza as otimizações. Isso pode se tornar interessante, pois os desenvolvedores podem checar se algumas modificações esperadas realmente diminuíram o tempo de execução, por exemplo \cite{Pinto2015}.
-
-\subsubsection{Fase 3: Mineração de Repositório} \label{subsec:fase3}
-
-A última fase realiza a mineração nos repositórios de controle de versões e gerenciador de tarefas com o intuito de encontrar os \textit{commits} e tarefas que alteraram os métodos identificados na fase anterior. Para cada método detectado com desvio de desempenho (degradação ou otimização), esta fase recupera os commits do sistema de controle de versões. Se esse \textit{commit} alterou linhas dentro do método detectado, o número da respectiva tarefa é procurado na mensagem de \textit{commit}. O número da tarefa é usado para procurá-la no sistema de gerenciamento de tarefas em busca de informações extras, como o tipo da tarefa (defeito, melhoria, nova funcionalidade, etc), por exemplo \cite{Pinto2015}. A figura \ref{fig:perfminer-fase3} ilustra essa fase.
-
-\begin{figure}[!htb]
-   \centering
-   \frame{\includegraphics[scale=0.62]{Imagens/perfminer_fase_3.png}}
-   \textsf{\caption[Fase 3 do PerfMiner.]{Fase 3 do PerfMiner.\label{fig:perfminer-fase3}}}
-\end{figure}
-
-É importante notar que os métodos identificados com desvios de desempenho nas fases anteriores, mas que não foram alterados durante a evolução, são também selecionados e armazenados, contudo, não estarão presentes no relatório final por, provavelmente, não representar causas reais do desvio de desempenho do cenário. Eles podem ter sido impactados por outros métodos na hierarquia de chamadas \cite{Pinto2015}.
-
-A abordagem completa do \textit{PerfMiner} pode ser vista na figura \ref{fig:perfminer-completo} adiante. Os artefatos de saída são usados como entradas para as fases seguintes, até a geração do relatório final. Os testes de sistemas em ambas as versões são considerados como os cenários para a análise e apenas os cenários e métodos comuns entre as versões são comparados.
-
-\begin{figure}[!htb]
-   \centering
-   \frame{\includegraphics[scale=0.50]{Imagens/perfminer_completo.png}}
-   \textsf{\caption[Abordagem completa do PerfMiner.]{Abordagem completa do PerfMiner.\label{fig:perfminer-completo}}}
-\end{figure}
-
-\begin{figure}[!htb]
-   \centering
-   \frame{\includegraphics[scale=0.60]{Imagens/perfminer_fase_4.png}}
-   \textsf{\caption[Fase 4 do PerfMiner.]{Fase 4 do PerfMiner.\label{fig:perfminer-fase4}}}
-\end{figure}
-
-As visualizações propostas como extensão da ferramenta utilizam os artefatos de saída gerados após a execução completa da abordagem, caracterizando assim mais uma fase da ferramenta: a Fase 4. Como ilustra a figura \ref{fig:perfminer-fase4} a seguir, os artefatos de saída utilizados pelas visualizações são: (i) os modelos de análise dinâmica de ambas as versões, (ii) os relatórios de cenários e métodos com desvios de desempenho, (iii) os métodos potencialmente responsáveis pelo desvio de desempenho dos cenários e (iv) os \textit{commits} que introduziram mudanças aos métodos, bem como suas informações de desenvolvimento associadas. Cada uma das visualizações implementadas utilizam total ou parcialmente os artefatos gerados nas fases anteriores, de acordo com o seu propósito.
-
 \section{Aplicações Alvo de estudo} \label{sec:aplicacoes-alvo}
 
-A extensão à ferramenta foi implementada através de uma aplicação web para apresentação das visualizações, de modo que o processamento do \textit{PerfMiner} em suas fases 1, 2 e 3 não foi alterado, continuando \textit{standalone}. A escolha por esse tipo de aplicação se deu pelo fato de sua execução ocorrer em um ambiente distribuído, onde cada parte que compõe a aplicação está localizada em locais diferentes. Por exemplo, a interface com o usuário reside em sua estação de trabalho, ao passo que o servidor e o banco de dados estão localizados em outro computador.
+As aplicações utilizados no estudo são aplicações \textit{open-source} populares,
+com um mínimo de 6 mil linhas de código, contabilizados arquivos Java e XML, e de
+categorias diversas. Um das aplicações possui 10 mil downloads na Google Play,
+outra possui 50 mil \textit{downloads} e as demais mais de 100 mil.
 
-\begin{figure}[!htb]
-   \centering
-   \frame{\includegraphics[scale=0.52]{Imagens/funcionamento_visualizacoes.png}}
-   \textsf{\caption[Funcionamento geral das visualizações.]{Funcionamento geral das visualizações.\label{fig:funcionamento-geral-visualizacoes}}}
-\end{figure}
+Analisamos um total de 41 aplicações únicas. Não analisamos todas as aplicações em
+todas as questões, mas algumas aplicações foram analisadas em mais de uma questão.
+Isso ocorreu devido a natureza das nossas questões de pesquisa, que exigiu a análise
+de grupos diferentes de aplicações para determinadas questões, com critérios de seleção
+adicionais aos citados anteriormente. Assim, definimos 3 grupos de aplicações, apresentados
+a seguir.
 
-Por ser web, os usuários da aplicação, como os desenvolvedores e arquitetos, podem utilizá-la sem a necessidade de instalar nenhum módulo nas suas estações de trabalho. Essa é uma importante característica da extensão à ferramenta, fazendo com que esta se diferencie das outras ferramentas mencionadas neste trabalho. A ideia é que distribuição e facilidade de acesso façam com que a equipe de desenvolvimento acompanhe mais adequadamente a evolução do atributo de qualidade de desempenho.
+\subsection{Grupo 1 - Aplicações usando API da plataforma com grande variação de versões}
+Aplicações do grupo 1 possuem uma diferença de pelo menos 7 versões entre a API mínima e
+a API alvo. A nossa hipótese é que além da aplicação oferecer suporte para versões de API's
+antigas também utiliza recursos das versões mais recentes da API quando disponíveis. Tais
+aplicações foram utilizadas para responder às questões QP1 e QP2 e são listadas na tabela
+\ref{tab:grupo1}. São 25 aplicações nesse grupo.
 
-O funcionamento geral da fase 4 é ilustrado na figura \ref{fig:funcionamento-geral-visualizacoes}. No passo 1, o usuário realiza a requisição solicitando uma das visualizações implementadas a fim de acompanhar a evolução do atributo de qualidade de desempenho, para um determinado sistema em duas versões diferentes.
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{Aplicações usando API da plataforma com grande variação de versões}
+  \begin{tabular}{| l | l | r | r | r | r |}
+  	\hline
+  	% rótulo das columnas
+  	\multicolumn{1}{|c|}{\textbf{Aplicação}} &
+  	\multicolumn{1}{c|}{\textbf{Categoria}} &
+ 	\multicolumn{1}{c|}{\textbf{Downloads}} & 
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{API}\\ \textbf{Mínima}
+ 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{API}\\ \textbf{Alvo}\end{tabular} &
+ 	\multicolumn{1}{c|}{\textbf{KLoc}} \\ \hline
+ 	%dados
+ 	Wififixer 		& Ferramentas 			& 1.000.000   &  7 & 23 &   9 \\ \hline
+ 	AnySoftKeyBoard & Ferramentas 			& 1.000.000   &  7 & 23 & 180 \\ \hline
+ 	Telegram 		& Comunicação 			& 100.000.000 &  9 & 23 & 169 \\ \hline
+ 	AntennaPod  	& Mídia e Video 		& 100.000 	  & 10 & 23 &  65 \\ \hline
+ 	Google I/O   	& Livros e Referências 	& 500.000 	  & 14 & 22 &  52 \\ \hline
+ 	Firefox    		& Comunicação 			& 100.000.000 & 15 & 22 & 233 \\ \hline
+ 	AnkiDroid     	& Educação 				& 1.000.000   & 10 & 22 &  89 \\ \hline
+ 	K-9 Mail      	& Comunicação 			& 5.000.000   & 15 & 22 & 117 \\ \hline
+ 	C:Geo       	& Entretenimento 		& 1.000.000   &  9 & 21 & 123 \\ \hline
+ 	Zmanim        	& Estilo de Vida 		& 10.000 	  & 10 & 22 &  25  \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 		Simon Tatham's \\ Puzzles
+ 	\end{tabular} 	& Quebra-cabeças 		& 100.000 	  &  7 & 23 &   8  \\ \hline
+ 	Vuze Remote     & Ferramentas			& 100.000	  &  7 & 23 &  20 \\ \hline
+ 	VLC for Android & 
+ 	\begin{tabular}[l]{@{}l@{}} Reproduzir e \\
+ 	 		 editar vídeos \end{tabular}    & 50.000.000  &  8 & 23 &  65 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 	DuckDuckGo \\ Search \& Stories
+ 	\end{tabular}   & Livros e referências  & 1.000.000   &  8 & 23 &  23 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 		Shattered Pixel \\ Dungeon
+ 	\end{tabular} 	& RPG 					& 500.000     &  8 & 23 &  58 \\ \hline
+ 	Persian Calendar& Produtividade			& 100.000 	  &  8 & 23 &  10 \\ \hline
+ 	Free Mobile Netstat& Ferramentas  		& 100.000 	  &  8 & 23 &   6 \\ \hline
+ 	MyExpenses    & Finanças 			& 100.000     &  8 & 23 &  80 \\ \hline
+    \begin{tabular}[l]{@{}l@{}}
+    	Simple Last.fm \\ Scrobbler
+    \end{tabular} 	   & Música e áudio     & 500.000     &  7 & 22 &  10 \\ \hline
+    Document Viewer	   & Produtividade		& 500.000 	  &  8 & 22 &  77 \\ \hline
+	OpenTasks		   & Produtividade      & 100.000     &  8 & 22 &  23 \\ \hline
+	\begin{tabular}[l]{@{}l@{}}
+		Terminal Emulator \\ for Android
+	\end{tabular} 	   & Ferramentas		& 10.000.000  &  4 & 22 &  18 \\ \hline
+	ConnectBot		   & Comunicação	    & 1.000.000   &  4 & 22 &  24 \\ \hline
+	Quick Dice Roller  & Ferramentas		& 100.000 	  &  4 & 21 &  35 \\ \hline
+	\begin{tabular}[l]{@{}l@{}}
+		BatteryBot Battery \\ Indicator
+	\end{tabular} 	   & Ferramentas		& 5.000.000   &  7 & 22 &  6 \\ \hline
+  \end{tabular}
+  \label{tab:grupo1}
+\end{table}
 
-Caso seja a primeira solicitação para a visualização, o passo 2 é executado. Esse passo recupera os arquivos contendo os cenários e métodos com desvio de desempenho, bem como o modelo de análise dinâmica do banco de dados (identificado por \abrv[DAM -- \textit{Dynamic Analysis Model}]{DAM}– \textit{Dynamic Analysis Model}), ambos resultantes das fases anteriores do \textit{PerfMiner}. Após isso, o processamento necessário é realizado e os dados que dão suporte à visualização desejada são salvos em um banco de dados (identificado por \abrv[QAV -- \textit{Quality Attribute Visualization}]{QAV}– \textit{Quality Attribute Visualization}). O passo 4 consiste na resposta do servidor ao usuário, contendo um arquivo no formato \abrv[JSON -- \textit{JavaScript Object Notation}]{JSON}(\textit{JavaScript Object Notation}) com os dados que dão suporte à visualização solicitada. Por fim, no passo 5, é realizado um processamento no \textit{browser} do usuário utilizando os dados recebidos pelo arquivo JSON. Esse processamento monta a visualização, com as devidas informações, e a exibe para o usuário.
+\subsection{Grupo 2 - Aplicações usando apenas API's mais recentes}
+Aplicações do grupo 2 possuem um alto valor de API mínima mas não tem um histórico de suporte
+às versões anteriores. Para esse estudo, as versões iguais ou superiores à 16 foram consideradas
+como alta. Versões inferiores a esta representam 3.4\% do mercado mundial, conforme pode ser visto
+na figura \ref{fig:platform_versions}. E para caracterizar ausência de um histórico de suporte
+às versões anteriores,
+consideramos aquelas cuja API mínima inicial seja igual ou superior a 11. A nossa hipótese é que
+a aplicação foi criada sem a preocupação de oferecer suporte às versões antigas da API o que,
+possivelmente, a leva a perder uma fatia do mercado de aplicações. Tais aplicações foram utilizadas
+para responder à questão QP3 e estão listadas na tabela \ref{tab:grupo2}. São 10 aplicações nesse grupo.
 
-Os bancos de dados DAM e QAV mencionados anteriormente têm funções distintas. O DAM é utilizado pelo \textit{PerfMiner} para armazenar os dados coletados na análise dinâmica. Já o QAV é próprio da extensão à ferramenta e armazena os dados das visualizações, funcionando também como um \textit{cache}, minimizando o tempo de resposta do servidor para o usuário.
+\begin{table}[!htbp]
+  \centering
+  \caption{Aplicações usando apenas API's mais recentes}
+  \begin{tabular}{| l | l | r | r | r | r |}
+  	\hline
+  	% rótulo das columnas
+  	\multicolumn{1}{|c|}{\textbf{Aplicação}} &
+  	\multicolumn{1}{c|}{\textbf{Categoria}} &
+ 	\multicolumn{1}{c|}{\textbf{Downloads}} & 
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{API}\\ \textbf{Mínima} \\ \textbf{Inicial}
+ 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{API}\\ \textbf{Mínima}\\ \textbf{Atual}\end{tabular} &
+ 	\multicolumn{1}{c|}{\textbf{KLoc}} \\ \hline
+ 	% dados
+ 	AcDisplay 		& Personalização 		& 1.000.000   & 19 & 16 & 40 \\ \hline
+ 	Dash Clock		& Personalização		& 1.000.000   & 17 & 17 & 15 \\ \hline
+ 	Focal (Beta) 	& Fotografia 			& 500.000	  & 16 & 16 &  16 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 		Hangar - Smart \\ app shortcuts
+ 	\end{tabular}	& Ferramentas 		& 50.000 	  & 16 & 16 &  12 \\ \hline
+ 	Indic Keyboard  & Ferramentas 	& 100.000 	  & 14 & 16 &  81 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 	 	Numix Circle \\ icon pack
+ 	\end{tabular}   & Personalização    	& 100.000 	  & 11 & 16 &   8 \\ \hline
+ 	SnoopSnitch     & Ferramentas 			& 100.000     & 14 & 16 &  17 \\ \hline
+ 	Termux      	& Ferramentas 			& 100.000	  & 21 & 21 &  10 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 		WiFiAnalyzer \\ (open-source)
+ 	\end{tabular}   & Ferramentas 			& 100.000     & 22 & 21 &  12 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 		Yaac - \\ IRC Client
+ 	\end{tabular} 	& Ferramentas 			& 50.000 	  & 16 & 16 &  12  \\ \hline
+ 	\end{tabular}
+  \label{tab:grupo2}
+\end{table}
 
-Caso a visualização solicitada pelo usuário já tenha sido processada anteriormente, o passo 2 é desconsiderado e os dados da visualização são recuperados diretamente do banco de dados QAV no passo 3. Na sequência, os passos 4 e 5 são executados normalmente. Dessa forma, o banco de dados QAV evita que a mesma visualização, para o mesmo sistema e versões, seja processada novamente, uma vez que os dados resultantes serão os mesmos que já estão armazenados.
 
-Para evitar que o usuário tenha que lidar com o processamento necessário entre os passos 2 e 3, fazendo-o esperar certa quantidade de tempo até obter a resposta e a consequente renderização da visualização, a ferramenta oferece a possibilidade de realizar um processamento em lote de todas as visualizações para um determinado sistema, entre versões diferentes. Esse processamento executa os passos 2 e 3, exceto a atividade do envio da resposta com o arquivo JSON, salvando todos os dados necessários às visualizações no banco de dados QAV, aumentando o tempo de resposta da aplicação quando da requisição de alguma das suas visualizações pelo usuário.
+\subsection{Grupo 3 - Aplicações usando API's recentes com histórico de uso de API's antigas}
+Aplicações do grupo 3 possuem um alto valor de API mínima e também um histórico
+de suporte às versões anteriores. Para esse grupo de aplicações, consideramos
+aquelas cuja versão da API seja igual ou superior a 15 e a API mínima inicia
+menor ou igual a 8. Nossa hipótese é que as aplicações possuem código-morto,
+que só seriam executados na presença de API's antigas. Tais aplicações foram
+utilizadas para responder à questão QP4 e estão listadas na tabela \ref{tab:grupo3}.
+São 7 aplicações nesse grupo.
+
+\begin{table}[!htbp]
+  \centering
+  \caption{Aplicações usando API's recentes com histórico de uso de API's antigas}
+  \begin{tabular}{| l | l | r | r | r | r |}
+  	\hline
+  	% rótulo das columnas
+  	\multicolumn{1}{|c|}{\textbf{Aplicação}} &
+  	\multicolumn{1}{c|}{\textbf{Categoria}} &
+ 	\multicolumn{1}{c|}{\textbf{Downloads}} & 
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{API}\\ \textbf{Mínima} \\ \textbf{Inicial}
+ 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{API}\\ \textbf{Mínima}\\ \textbf{Atual}\end{tabular} &
+ 	\multicolumn{1}{c|}{\textbf{KLoc}} \\ \hline
+ 	% dados
+ 	AFWall+ 		& Ferramentas	 		& 500.000     & 7  & 15 & 32 \\ \hline
+ 	aMetro			& 
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 	Mapas e \\ Navegação \end{tabular}	& 100.000	  & 3 & 15 &  10 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 		Hangar - Smart \\ app shortcuts
+ 	\end{tabular}	& Ferramentas 		& 50.000 	  & 16 & 16 &   12 \\ \hline
+ 	K-9 Mail  		& Comunicação 		& 5.000.000	  &  3 & 15 &  117 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 	 	Orbot Proxy \\ com Tor
+ 	\end{tabular}   & Comunicação    	& 5.000.000 	  & 4 & 16 & 33 \\ \hline
+ 	Ringdroid     	&
+ 	\begin{tabular}[l]{@{}l@{}} Reproduzir e \\
+ 	 	 	Editar Vídeos \end{tabular}	& 50.000.000	  & 4 & 16 &   6 \\ \hline
+ 	Transdrone      & Ferramentas 		& 100.000	      & 4 & 15 &  36 \\ \hline
+ 	\begin{tabular}[l]{@{}l@{}}
+ 	 		Vanilla Music
+ 	\end{tabular}   & Música e Áudio 			& 500.000     &  3 & 15 & 25 \\ \hline
+ 	\end{tabular}
+  \label{tab:grupo3}
+\end{table}
 
 \section{Procedimentos} \label{sec:procedimentos}
 
