@@ -315,19 +315,683 @@ Para responder à questão de pesquisa QP4 os procedimentos adotados foram os se
 
 \section{Resultados do Estudo} \label{sec:resultados}
 
-Através da navegação da visualização de evolução do desempenho, o usuário poderá obter uma sumarização dos cenários de determinada versão do sistema, bem como o desvio de desempenho destes em relação à versão anterior. Nesta visualização, os cenários serão exibidos com propriedades visuais que proporcionem a identificação de quais degradaram e quais otimizaram o desempenho, seus tempos de execução e a porcentagem de desvio.
+Essa seção apresenta os resultados do estudo. As subseções estão organizadas em termos
+das questões de pesquisa (Seção \ref{sec:objetivos})
 
-Esta visualização também está em fase de concepção, assim como a anterior, e sua implementação seguirá igualmente o processo exibido na figura \ref{fig:funcionamento-geral-visualizacoes}. A partir da sumarização, o usuário poderá escolher um dos cenários mostrados e navegar para a visualização do grafo de chamadas.
+\subsection{Quais são as técnicas que aplicações atuais usam para manter
+compatibilidades com as diversas versões da API do Android?}
+
+Para permitir o uso de novos recursos da API em aplicações que ainda desejam
+oferecer suporte a dispositivos com vers da API mais antigas, foram
+identificadas 3 estratégias de implementação: (i) pacote de compatibilidade;
+(ii) re-implementação de recurso da API e (iii) uso explícito da nova API.
+Tais mecanismos podem ser utilizados em conjunto.
+
+No nosso estudo, das 25 aplicações analisadas: (i) apenas 2 utilizam uma única
+estratégia, (ii) 9 aplicações utilizam 2 estratégias; e (iii) 13 fazem uso das
+3 estratégias diferentes. Finalmente, apenas a aplicação \textit{Shattered Pixel
+Dungeon}, um jogo de RPG, não utilizou nenhuma dessas soluções. Portanto, é a
+única que exige uma baixa API para instalação (versão 8) sem se preocupar com
+o uso de recursos mais modernos. Seja através de uso explícito da nova API,
+quando estiverem disponíveis, seja adicionando a dependência ao pacote de
+compatibilidade ou da re-implementações de recursos, quando seria possível usar
+mesmo em versões mais antigas da API.
+
+A figura \ref{fig:forma_suporte} apresenta a quantidade total de aplicações de
+cada estratégia. Pacote de compatibilidade foi utilizada por 23 aplicações,
+re-implementação de recurso por 14, e uso explícito da nova API por 22.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.75]{imagens/forma_suporte}
+  	\textsf{\caption{Como as aplicações oferecem suporte a múltiplas versões da API}
+  	        \label{fig:forma_suporte}}
+\end{figure}
+
+A técnica de uso explícito da nova API pode causar um erro na aplicação caso seja
+executado em um dispositivo com versão da API inferior àquela em que o componente
+utilizado foi adicionado. Assim, é necessário algum mecanismo para evitar que isso
+aconteça. O mecanismo primário padrão é um comando condicional. No entanto, existem
+diversas maneiras de implementação de tal comando condicional, desde uma instrução
+\texttt{if} logo acima da linha de código, até a utilização de padrões de projeto,
+em que o \texttt{if} determina a criação de objetos baseado na versão da API Android
+do dispositivo, por exemplo.
+
+O gráfico apresentado na figura \ref{fig:alternativas_EC} mostra as diferentes
+alternativas de projeto encontradas nas aplicações analisadas para implementação
+de execução condicional em torno das linhas com ocorrências de Lint NewApi. Tais
+resultados foram obtidos a partir da análise do resultado da execução do Lint NewApi
+nas aplicações. Execução condicional \cite{Santos2012} indireta e uso de padrões
+de projeto foram as técnicas mais comum, estando presente em 16 aplicações analisadas.
+Execução condicional direta e suporte implícito foram utilizadas em 12 aplicações cada.
+6 aplicações deixaram de fazer o tratamento de algumas ocorrências, 5 aplicações possuem ocorrências dentro de métodos que nunca serão executados e, por fim, uma aplicação
+utilizou tratamento de exceção para evitar erro durante a execução.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.75]{imagens/alternativas_EC}
+  	\textsf{\caption{ Quantidade de aplicações que utilizaram cada técnica para
+  						tratamento de ocorrência de NewApi}
+  	        \label{fig:alternativas_EC}}
+\end{figure}
+
+Também foram detectadas ocorrências de falsos positivos em duas aplicações.
+Falso positivo acontece quando um determinado método \texttt{X()} qualquer foi
+adicionado em uma classe da API em versão superior da aplicação, posteriormente
+uma classe estende essa classe da API e implementa o método \texttt{X()}, mas
+o Lint NewApi não identifica essa implementação, reportando o falso problema.
+
+A figura \ref{fig:falso_positivo} exemplifica tal situação com um dos casos reais 
+encontrados. O método \texttt{invalidadeOptionsMenu()} foi adicionado à classe
+\texttt{Activity} na versão 11 da API, portanto ele não pode ser chamado em
+versões anteriores. Assim, foi disponibilizado através da re-implementação na classe 
+\texttt{AppCompatActivity} do pacote de compatibilidade e que herda de \texttt{Activity}.
+Na aplicação Telegram, cuja API mínima é 10, existe uma classe que estende de 
+\texttt{AppCompatActivity}, \texttt{CastEnableActivity}, que é então estendida por 
+\texttt{MediaPlayerActivity}. No método \texttt{onOptionsItemSelected()} é feita 
+uma chamada para \texttt{invalidadeOptionsMenu()}. Tal chamada é indevidamente
+indicada pelo Lint.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.6]{imagens/falso_positivo}
+  	\textsf{\caption{Diagrama de classe exemplificando situação de falso positivo do Lint}
+  	        \label{fig:falso_positivo}}
+\end{figure}
+
+A figura \ref{fig:percentuais_forma_tratamento} apresenta os percentuais das
+formas de tratamento para as ocorrências de NewAPI. Foram analisadas um total
+de 1556 ocorrências de NewAPI. Desse total, 40,6\% foi tratado com EC indireta,
+22,8\% com algum padrão de projeto, 18,9\% através de EC direta, 10,7\% utilizando
+suporte implícito da plataforma, 5,3\% das ocorrências não foram devidamente tratadas.
+Esses dois últimos casos são situações críticas, merecedoras de uma maior atenção.
+A primeira por depender de um conhecimento mais específico da API, para identificar
+que a chamada não será executada em versões antigas. A última por ser fonte de bugs
+nas aplicações. Continuando a análise, 1,2\% das ocorrências estão dentro de métodos
+que nunca serão executados e, por fim, duas pequenas frações de 0,3\% das ocorrências
+foi utilizada tratamento de exceção ou são falsos positivos. Essas ocorrências de NewAPI 
+estão distribuídas em 22 aplicações (3 aplicações não apresentaram ocorrências de alguma 
+NewAPI).
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.75]{imagens/percentuais_forma_tratamento}
+  	\textsf{\caption{Percentuais de formas de tratamento das ocorrências de NewAPI}
+  	        \label{fig:percentuais_forma_tratamento}}
+\end{figure}
+
+O figura \ref{fig:padroes_por_aplicacao} apresenta os padrões de projeto utilizados
+por quantidade de aplicações. O padrão \textit{Strategy} é o que mais foi utilizado
+em um total de 12 aplicações. \textit{Template Method} e \textit{Null Object} foram 
+utilizados por uma aplicação cada um. \textit{Proxy} foi utilizado por duas aplicações. Apenas uma aplicação utilizou dois padrões de projetos simultaneamente, \textit{Strategy}
+e \textit{Proxy}. 
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.75]{imagens/padroes_por_aplicacao}
+  	\textsf{\caption{Quantidade de aplicações que utilizaram padrões de projeto para
+  						tratar ocorrências de NewApi}
+  	        \label{fig:padroes_por_aplicacao}}
+\end{figure}
+
+O figura \ref{fig:percentuais_por_padrao} apresenta os percentuais dos padrões de
+projeto utilizados como forma de tratamento para as ocorrências de NewAPI. Do total
+de 1554 ocorrências de NewAPI analisadas, 355 (22,8\%) foram tratadas com algum
+padrão de projeto. Sendo o mais comum o padrão \textit{Strategy}, responsável por
+77,7\% (276) desse total. Os padrões \textit{Proxy} e \textit{Template Method}
+foram responsáveis por 19,4\% e 2,3\% dos casos, respectivamente. \textit{Null Object}
+foi utilizado por uma aplicação para tratar 2 (0,6\%) ocorrências.
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.75]{imagens/percentuais_por_padrao}
+  	\textsf{\caption{Percentuais de uso de padrões de projeto por ocorrências de NewAPI}
+  	        \label{fig:percentuais_por_padrao}}
+\end{figure}
+
+\subsection{Qual o subconjunto de novas funcionalidades da plataforma que são
+mais utilizados por aplicações compatíveis com versões antigas da API?}
+
+Analisamos as chamadas às novas APIs para determinar o subconjunto das
+novas funcionalidades que são utilizadas pelas aplicações com suporte à versões
+antigas da API. Os resultados foram contabilizados em função da taxonomia da API.
+E, então, para as taxonomias mais comuns, apresentamos as classes mais recorrentes. 
+
+\subsubsection{Pacote de Compatibilidade}
+
+Para computar os dados relativos à pacote de compatibilidade, realizamos uma análise
+estática sobre os projetos, identificando nos trechos de importação das classes Java
+os elementos advindos do pacote \texttt{android.support}, excetuando os subpacotes
+\texttt{annotations} e \texttt{tests}, pois estes além de não influenciarem na execução
+da aplicação, não são analisadas pelo Lint NewApi. Os resultados foram contabilizados
+em função da taxonomia da API. E então, para as taxonomias mais comuns, apresentamos
+as classes mais recorrentes.
+
+A tabela \ref{tab:elementos_pacote} apresenta os valores obtidos. Para cada taxonomia,
+temos o número de aplicações que fizeram \texttt{import}’s do pacote de compatibilidade,
+o total de \texttt{import}’s feitos, as importações únicas e a média de \texttt{import}’s 
+por aplicação. Importações únicas significa que se uma classe é importada mais de uma vez, 
+independente de aplicação, ela é contabilizado apenas uma vez. Em destaque os maiores 
+valores de cada coluna, além das duas taxonomias mais significativas, que possuem uma
+ maior média de \texttt{import}’s por aplicação.
+
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{Elementos mais utilizados do pacote de compatibilidade}
+  \begin{tabular}{| l | r | r | r | r |}
+  	\hline
+  	% rótulo das columnas
+  	\multicolumn{1}{|c|}{\textbf{Taxonomia}} &
+  	\multicolumn{1}{c|}{\textbf{Aplicações (A)}} &
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{Total de}\\ \textbf{import's (B)}
+ 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Importações}\\ \textbf{unicas}\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (A/B)}\end{tabular} \\ \hline
+ 	%dados
+ 	animation 		& 1 			& 5   			&   4 			& 5  \\ \hline
+ 	\textbf{app}	& \textbf{22} 	& \textbf{849}  &  49 			& \textbf{39}\\ \hline
+ 	content 		& 17 			& 236 			&  11 			& 14  \\ \hline
+ 	graphics  		& 4 			& 9 			&   5 			& 2  \\ \hline
+ 	hardware   		& 1 			& 2 			&   1 			& 2  \\ \hline
+ 	media    		& 3 			& 15 			&   7 			& 5  \\ \hline
+ 	net     		& 1 			& 3   			&   1 			& 3  \\ \hline
+ 	os      		& 3 			& 6   			&   4 			& 2  \\ \hline
+ 	preference  	& 5 			& 99   			&  17 			& 20  \\ \hline
+ 	provider    	& 1 			& 12 			&   1			& 12   \\ \hline
+ 	text        	& 1 			& 1 			&   1 			& 1   \\ \hline
+ 	util       	 	& 9 			& 46 			&   9 			& 5   \\ \hline
+ 	view        	& 18 			& 233 			&  37 			& 13   \\ \hline
+ 	\textbf{widget} & 18			& 410 			&  \textbf{65} 	& 23   \\ \hline
+  \end{tabular}
+  \label{tab:elementos_pacote}
+\end{table}
+
+As taxonomias \textit{app} e \textit{widget} são as mais comuns. A primeira contém
+classes de alto nível que encapsulam o modelo geral de aplicações Android. A última
+fornece elementos de interface com o usuário para serem utilizados na tela da aplicação.
+
+\textit{App} possui o maior número importações, 849, e também maior média por aplicação,
+39, distribuídos em 22 das 25 aplicações analisadas. Já \textit{widget} possui um número
+bem menor
+de importações, 410, embora bem mais alto que a terceira posição. Estando distribuídos em
+18 aplicações. Além de possuir o maior número de chamadas únicas, 65. Isso demonstra que
+os elementos de \textit{app} são mais restritos, enquanto \textit{widget} há uma
+granularidade maior, havendo um maior acoplamento da aplicação a esses elementos em
+relação aos elementos de \textit{app}.
+
+Da taxonomia \textit{app}, a classe mais comum é \texttt{Fragment}, conforme apresenta
+a tabela \ref{tab:elementos_app}. Além disso, outras três classes diretamente relacionadas
+a fragmentos estão entre as 10 mais utilizadas: \texttt{DialogFragment}, 
+\texttt{FragmentManager} e \texttt{FragmentActivity}.
+
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{10 classes da taxonomia \textit{app} mais importadas do pacote de compatibilidade}
+  \begin{tabular}{| l | r | r | r | }
+  	\hline
+  	% rótulo das columnas
+  	\multicolumn{1}{|c|}{\textbf{Classes}} &
+  	\multicolumn{1}{c|}{\textbf{Aplicações (A)}} &
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{Total de}\\ \textbf{importações (B)}
+ 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (B/A)}\end{tabular} \\ \hline
+ 	%dados
+ 	v4.app.Fragment 			& 15 			& 144   		&   10 			  \\ \hline
+ 	v4.app.NotificationCompat	& 16 			& 80 			&   5 			  \\ \hline
+ 	v4.app.DialogFragment  		& 12 			& 76   			&   6 			  \\ \hline
+ 	v7.app.AlertDialog     		& 11 			& 72   			&   7			  \\ \hline
+ 	v7.app.AppCompatActivity  	& 14 			& 67   			&  5 			  \\ \hline
+ 	v4.app.FragmentManager    	& 16 			& 65 			&   4			   \\ \hline
+ 	v4.app.FragmentActivity    	& 12 			& 58 			&   5 			   \\ \hline
+ 	v4.app.LoaderManager       	& 7 			& 50 			&   5 			   \\ \hline
+ 	v7.app.ActionBar        	& 13 			& 37 			&  3 			   \\ \hline
+ 	v4.app.ActivityCompat 		& 14			& 25 			&  2 	   \\ \hline
+  \end{tabular}
+  \label{tab:elementos_app}
+\end{table}
+
+Se na taxonomia \textit{app} as importações tendem a elementos relacionados a
+fragmentos, na taxonomia \textit{widget} houve uma maior dispersão. As classes
+mais comuns são \texttt{RecyclerView} e \textit{Toolbar}. A primeira teve o
+maior número de importações no total, enquanto a segunda, além de ter o segundo
+maior valor de importações, é a que está presente em mais aplicações, 12 contra
+9 para \textit{RecyclerView}. Os demais elementos aparecem em no máximo 9 aplicações,
+com não mais que 26 importações no total. A tabela \ref{tab:elementos_widget}
+apresenta as 10 classes da taxonomia \textit{widget} mais utilizadas.
+
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{10 classes da taxonomia \textit{widget} mais importadas do pacote de compatibilidade}
+  \begin{tabular}{| l | r | r | r | }
+  	\hline
+  	% rótulo das columnas
+  	\multicolumn{1}{|c|}{\textbf{Classes}} &
+  	\begin{tabular}[c]{@{}c@{}}
+  	 		\textbf{Aplicações}\\ \textbf{(A)}
+  	 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{Total de}\\ \textbf{importações (B)}
+ 	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (B/A)}\end{tabular} \\ \hline
+ 	%dados
+ 	v7.widget.RecyclerView 				& 9 	& 81 	  		&   9 			  \\ \hline
+ 	v7.widget.Toolbar					& 12 	& 52 			&   4 			  \\ \hline
+ 	v7.widget.LinearLayoutManager		& 9 	& 26   			&   3 			  \\ \hline
+ 	design.widget.Snackbar     			& 6 	& 23   			&   4			  \\ \hline
+ 	v7.widget.SearchView  				& 8		& 21   			&   3 			  \\ \hline
+ 	v4.widget.DrawerLayout    			& 9 	& 15 			&   2			   \\ \hline
+ 	design.widget.FloatingActionButton  & 4		& 13 			&   3 			   \\ \hline
+ 	v7.widget.PopupMenu       			& 5 	& 12 			&   2 			   \\ \hline
+ 	design.widget.TabLayout        		& 6		& 10 			&   3 			   \\ \hline
+ 	v4.widget.SwipeRefreshLayout 		& 5		& 10 			&   2 	   \\ \hline
+  \end{tabular}
+  \label{tab:elementos_widget}
+\end{table}
+
+
+\subsubsection{Re-implementação de Recursos}
+
+Re-implementação de um recurso existente na API padrão pode ser uma re-implementação
+completamente própria, quando não existe cópia de código de outros projetos, ou pode
+ser através da cópia do código-fonte do recurso na API padrão. Para este trabalho,
+consideramos apenas a re-implementação através de cópia do código-fonte da API padrão.
+O código-fonte do projeto Android é distribuído, preferencialmente, sob a licença Apache 
+Software License, Versão 2.0 ("Apache 2.0") \cite{License}, e os direitos autorais
+pertencem a \textit{Android Open Source Project}. Para indicar isso, todos os arquivos
+do projeto possuem o seguinte preâmbulo:
+\texttt{
+\newline
+/* \newline
+ * Copyright (C) <YEAR> The Android Open Source Project \newline
+ * \newline
+ * Licensed under the Apache License, Version 2.0 (the "License"); \newline
+ * you may not use this file except in compliance with the License. \newline
+ * You may obtain a copy of the License at \newline
+ * \\
+ *      http://www.apache.org/licenses/LICENSE-2.0 \\
+ * \\
+ * Unless required by applicable law or agreed to in writing, software \\
+ * distributed under the License is distributed on an "AS IS" BASIS, \\
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. \\
+ * See the License for the specific language governing permissions and \\
+ * limitations under the License. \\
+ */
+} 
+
+Assim, para verificarmos se o as aplicações re-implementaram algum recurso através
+da cópia de código da API padrão, realizamos uma busca textual nos arquivos Java
+das aplicações por "Android Open Source Project". Para cada ocorrência, era feita
+uma pesquisa na documentação da API pelo nome da classe. Se não fosse encontrado
+algo, era feita uma busca no Google, pela string "android <nome da classe>".
+Analisamos as ocorrências  para determinar se o código havia sido copiado realmente
+da API, de aplicações nativas do Android ou de projeto de exemplos oficiais,
+desenvolvidas pela mesma equipe da plataforma. Em algumas situações, os códigos
+tinham como origem o projeto Android, mas não faziam parte da API. Um exemplo disso
+é a classe \texttt{NetworkActivity} que, embora desenvolvida pelo projeto Android e
+possuir o preâmbulo citado acima, não faz parte da API. Ela é apresentada na
+documentação \cite{NetworkUsage} e o código-fonte está no subdiretório \texttt{samples}
+do repositório \cite{NetworkActivity}. Ocorrências como essa eram então descartadas.
+Embora um número considerável de aplicações (14 de 25) tenha utilizado tal técnica,
+foram usos bem pontuais e localizadas.
+
+O conjunto de classes mais significativo diz respeito à implementação do pacote 
+\texttt{android.animation} da API e ocorreu em 3 aplicações. O código presente
+nas aplicações é proveniente da biblioteca NineOldAndroids\footnote{http://nineoldandroids.com/},
+que disponibiliza seus arquivos para
+download através do código-fonte e não em arquivos JAR ou algum outro mecanismo
+para adição de dependência aos projetos, mas que isole o código da dependência
+do código principal do projeto. Por esse motivo, tal código foi considerado
+nessa análise. As classe \texttt{PreferenceFragment} e \texttt{PreferenceManager}
+foram também re-implementadas por 3 aplicações.
+
+A classe \texttt{android.util.Base64}, utilizada para codificação e decodificação
+da representação de dados binários em Base64 \cite{RFC4648}, foi a classe mais
+recorrente, detectada em 5 aplicações. Outras mais de 30 classes com propósitos 
+diversos também foram re-implementadas, no entanto, em não mais de uma aplicação.
+
+Tal cenário, aponta que re-implementação de recursos é utilizada quando se deseja
+poucos e pontuais recursos adicionais. Sendo mais vantajoso copiar o código-fonte
+da API, do que usar pacote de compatibilidade, caso o recurso também seja
+disponibilizado dessa forma. Além disso, só é possível tal mecanismo, pelo menos em
+relação ao código da API oficial, devido ao fato de ser \textit{open-source} e a
+licença permitir cópia, alteração e redistribuição do código-fonte.
+
+\subsubsection{Uso explícito da nova API}
+
+Para determinar o subconjunto das novas funcionalidades da API que são utilizadas
+pelas aplicações com suporte a versões antigas da API através de uso explícito da
+nova API, processamos os resultados da saída do Lint NewApi. Os resultados foram contabilizados em função da taxonomia da API. E então, para as taxonomias mais
+comuns, apresentamos as classes mais recorrentes.
+
+A tabela \ref{tab:elementos_nova_api} apresenta os valores obtidos. Para cada
+taxonomia, temos a quantidade total de ocorrências de NewApi, o número de
+ocorrências únicas, a quantidade de aplicações em que as ocorrências apareceram
+e a média de ocorrências por aplicação.
+
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{Ocorrências de NewApi por taxonomia}
+  \begin{tabular}{| l | r | r | r | r |}
+  	\hline
+  	% rótulo das colunas
+  	\multicolumn{1}{|c|}{\textbf{Taxonomia}} &
+  	\begin{tabular}[c]{@{}c@{}}
+  	 		\textbf{Ocorrências de}\\ \textbf{NewApi (A)}
+  	\end{tabular} &
+  	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{Ocorrências}\\ \textbf{Únicas}
+ 	\end{tabular} &
+ 	\textbf{Aplicações (B)} &
+ 	\begin{tabular}[c]{@{}c@{}}
+ 		\textbf{Média por}\\ \textbf{app (A/B)}
+ 	\end{tabular} \\ \hline
+ 	%dados
+ 	animation 		& 149 			& 29   			&   7 			& 21.29  \\ \hline
+ 	\textbf{app}	& \textbf{360} 	& 57   			&  16 			& 22.50 \\ \hline
+ 	appwidget 		& 5 			& 0!!!   		&   2 			& 2.50  \\ \hline
+ 	content 		& 44 			& 24 			&  11 			& 4.00  \\ \hline
+ 	database 		& 10 			& 8   			&  4  			& 2.50  \\ \hline
+ 	graphics  		& 26 			& 14 			&   6 			& 4.33  \\ \hline
+ 	hardware   		& 3 			& 3 			&   1 			& 3.00  \\ \hline
+ 	media    		& 190 			& 54 			&   3 			& \textbf{63.33}  \\ \hline
+ 	net     		& 31			& 12   			&   2 			& 15.50  \\ \hline
+ 	nfc      		& 14 			& 7   			&   2 			& 7.00  \\ \hline
+ 	opengl      	& 25 			& 17   			&   1 			& 25.00  \\ \hline
+ 	os      		& 82 			& 20   			&   9 			& 9.11  \\ \hline
+ 	preference  	& 56			& 4   			&   5 			& 11.20  \\ \hline
+ 	print    		& 10 			& 7 			&   1			& 10.00   \\ \hline
+ 	provider    	& 27			& 15 			&   7			& 3.86   \\ \hline
+ 	service        	& 4 			& 2 			&   1 			& 4.00   \\ \hline
+ 	speech        	& 3 			& 2 			&   1 			& 3.00   \\ \hline
+ 	telephony       & 29 			& 25 			&   2 			& 14.50   \\ \hline
+ 	text        	& 6 			& 5 			&   5 			& 1.20   \\ \hline
+ 	transition 	 	& 4 			& 1 			&   1 			& 4.00   \\ \hline
+ 	util       	 	& 8				& 3 			&   2 			& 4.00   \\ \hline
+ 	view        	& 353 			& \textbf{153} 	&  \textbf{20} 	& 17.65   \\ \hline
+ 	webkit        	& 11 			& 7 			&  4 			& 2.75   \\ \hline
+ 	widget 			& 92			& 41 			&  10 			& 9.20   \\ \hline
+ 	java.io 		& 3				& 2 			&  2 			& 1.50   \\ \hline
+ 	java.lang 		& 3				& 2 			&  2 			& 1.50   \\ \hline
+ 	java.net 		& 5				& 4 			&  1 			& 5.00   \\ \hline
+ 	java.util 		& 1				& 1 			&  1 			& 1.00   \\ \hline
+  \end{tabular}
+  \label{tab:elementos_nova_api}
+\end{table}
+
+As taxonomias \textit{app} e \textit{view} foram as mais comuns nas aplicações analisadas.
+A primeira contém classes de alto nível que encapsulam o modelo geral de aplicações Android.
+A última fornece classes básicas para interface com usuário, relacionadas a layout das telas
+e interação com usuário. \textit{App} e \textit{view} possuem os maiores número de ocorrências
+de NewApi, 360 e 353, respectivamente. Ocorrências em arquivos XML foram contabilizados também,
+tendo um total de 50 ocorrências. No entanto, a maior média por aplicação pertence a taxonomia
+\textit{media}, no valor de 63,33, distribuídos em 3 aplicações:  VLC, Firefox e Telegram.
+Enquanto \textit{app} e \textit{view} estão distribuídas em 16 e 20 aplicações, respectivamente.
+
+Tais valores refletem o objetivo das taxonomias e a categoria das aplicações.
+\textit{App} e \textit{view} contém classes utilizadas em qualquer aplicação, enquanto que a
+taxonomia \textit{media} mantém classes relacionadas a multimídia. Mais úteis para um reprodutor
+e editor de vídeos (VLC), um navegador web (Firefox) e um aplicativo de comunicação (Telegram)
+com recursos de reprodução de multimídia (imagem, som e vídeo) embutido.
+
+A tabela \ref{tab:newapi_app} apresenta os elementos da taxonomia app com maior
+números de ocorrência de NewApi agrupados pelo elemento de maior granularidade
+que surgiu na versão da API indicada por NewApi. Assim, todas as classes do pacote
+\texttt{android.app.backup} foram agrupadas pelo pacote porque o próprio pacote
+surgiu apenas na versão 5. A classe \texttt{android.app.Fragment} surgiu na versão
+11, então agrupamos aqui todos os seus métodos. Já a classe \texttt{android.app.Activity}
+existe desde a versão 1 e foram diversos métodos novos apontados por NewApi. Na
+classe \texttt{android.app.Notification}, que existe desde a versão 1, apenas o
+método \texttt{bigContentView} é apontado por NewApi.
+
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{Elementos da taxonomia app com ocorrências de NewApi}
+  \begin{tabular}{| l | r | r |}
+  	\hline
+  	% rótulo das colunas
+  	\multicolumn{1}{|c|}{\textbf{Descrição}} &
+  	\begin{tabular}[c]{@{}c@{}}
+  	 		\textbf{Ocorrências de}\\ \textbf{NewApi (A)}
+  	\end{tabular} &
+  	\textbf{Aplicações} \\ \hline
+ 	%dados
+ 	\textbf{Classe android.app.Fragment}			& 188 	& 2 \\ \hline
+ 	Pacote android.app.backup						& 36	& 4 \\ \hline
+ 	Métodos de android.app.Activity 				& 30 	& 8 \\ \hline
+ 	Classe android.app.Presentation 				& 28 	& 2  \\ \hline
+ 	Método android.app.Notification\#bigContentView	& 17 	& 1  \\ \hline
+ 	Classe android.app.ActionBar  					& 12 	& 3 \\ \hline
+ 	Classe android.app.Notification.Builder   		& 10 	& 1 \\ \hline
+ 	\textbf{Classe android.app.FragmentTransaction}	& 9 	& 2  \\ \hline
+ 	Classe android.app.DownloadManager     			& 9		& 1   \\ \hline
+ 	\textbf{Classe android.app.FragmentManager}    	& 7		& 2   \\ \hline
+  \end{tabular}
+  \label{tab:newapi_app}
+\end{table}
+
+Da taxonomia \textit{app}, a classe mais comum é \texttt{Fragment}, conforme
+apresentado na tabela \ref{tab:newapi_app}. Além disso, alguns métodos da classe
+\texttt{Activity} nessa relação são relacionadas aos fragmentos, assim como as
+classes \texttt{FragmentTransaction} e \texttt{FragmentManager}. Além dos elementos
+apresentados na tabela \ref{tab:newapi_app}, outros 7 elementos possuem um valor
+máximo de 4 ocorrências relacionadas.
+
+Se as ocorrências para a taxonomia \textit{app} ficaram concentradas em elementos
+relacionados a fragmentos, na taxonomia \textit{view} houve uma maior dispersão.
+A classe mais comum, tanto em aplicações (12) quanto em ocorrências de NewApi (108),
+é a classe \texttt{View}, classe base para todos os componentes de construção de
+interface gráfica. Atributos ou tags XML correspondem a 50 ocorrências, distribuídas
+em 7 aplicações. Os demais elementos, aparecem em no máximo 4 aplicações, o que
+demonstra serem específico do tipo de aplicação. Por exemplo, as classes
+\texttt{InputMethodSubtype} e \texttt{InputMethodManager} juntas somam 12 ocorrências
+de NewApi, mas todas elas em uma única aplicação, a AnySoftKeyboard, uma aplicação de
+teclado virtual. 
+
+A tabela \ref{tab:newapi_view} apresenta os 10 elementos da taxonomia \textit{view}
+com mais ocorrência de NewApi. Além desses, outros 20 elementos apresentam no máximo
+6 ocorrências.
+
+\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \centering
+  \caption{10 elementos da taxonomia view com mais ocorrência de NewApi}
+  \begin{tabular}{| l | r | r |}
+  	\hline
+  	% rótulo das colunas
+  	\multicolumn{1}{|c|}{\textbf{Descrição}} &
+  	\begin{tabular}[c]{@{}c@{}}
+  	 		\textbf{Ocorrências de}\\ \textbf{NewApi}
+  	\end{tabular} &
+ 	\textbf{Aplicações} \\ \hline
+ 	%dados
+ 	Métodos de android.view.View							& 108 	& 12 \\ \hline
+ 	Atributos ou tags XML									& 50	& 7 \\ \hline
+ 	Classe android.view.ViewPropertyAnimator 				& 43 	& 2 \\ \hline
+ 	Classe android.view.WindowInsets 						& 23 	& 1  \\ \hline
+ 	Classe android.view.TextureView							& 21 	& 2  \\ \hline
+ 	Classe android.view.ScaleGestureDetector  				& 12 	& 3 \\ \hline
+ 	Classe android.view.ActionMode   						& 11 	& 3 \\ \hline
+ 	Métodos de android.view.MotionEvent						& 10 	& 1  \\ \hline
+ 	Construtor de android.view.ViewOutlineProvider     		& 10	& 1   \\ \hline
+ 	Classe android.view.accessibility.AccessibilityNodeInfo & 9		& 1   \\ \hline
+  \end{tabular}
+  \label{tab:newapi_view}
+\end{table}
+
+Tanto os elementos relacionados a fragmentos, quanto a grande maioria dos métodos
+da classe \texttt{View} citados anteriormente surgiram na versão 11 da API, e foram
+uma importante melhoria na plataforma, o que reforça o alto índice de ocorrências de
+NewApi relacionado a esta versão, conforme apresentado no figura \ref{fig:newapi_por_versao}.
+Tais ocorrências estão distribuídas em 18 aplicações. 
+
+\begin{figure}[htb]
+	\centering 
+  	\includegraphics[scale=0.6]{imagens/newapi_por_versao}
+  	\textsf{\caption{Nº de ocorrências de NewApi por versão da API}
+  	        \label{fig:newapi_por_versao}}
+\end{figure}
+
+\subsection{Qual o esforço necessário para aumentar a compatibilidade com um
+maior número de API's de versões anteriores da plataforma?}
+
+Definir um valor de API mínima para execução da aplicação, significa deixar de
+atender todos os aparelhos com API inferior. Em algumas situações, isso pode
+representar uma perda do mercado potencial. Assim, analisamos qual seria o esforço
+para aumentar a compatibilidade com um maior número de API's. Para tal, editamos o
+código-fonte da aplicação (arquivos \texttt{build.gradle} ou \texttt{AndroidManifest.xml},
+conforme o caso) e re-executamos o Lint NewApi. Então comparamos o resultado aqui
+obtido com o resultado obtido na versão original.
+
+Inicialmente, identificamos a quantidade de novas ocorrências de NewApi que
+surgiam com a diminuição da versão da API. Isso fornece um valor quantitativo
+do trabalho necessário para aumento da compatibilidade, quanto maior este valor
+mais adequações seriam necessárias no código-fonte. A tabela \ref{tab:esforco}
+apresenta tais resultados. Para cada aplicação, indicamos situação atual, com
+a API mínima atual e a quantidade de ocorrências de NewApi, a situação após nova
+edição, com a nova API e a quantidade de ocorrências de NewApi, e a diferença de 
+ocorrência de NewApi, com a diferença total de novas ocorrências e dessas a quantidade
+de ocorrências únicas. Essas duas últimas colunas mensuram quantitativamente o esforço
+necessário para aumentar a compatibilidade.   
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[!htbp]
+\fontsize{9}{11}
+\centering
+\caption{Esforço quantitativo para aumentar compatibilidade com mais versões da API}
+\label{tab:esforco}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                & \multicolumn{2}{c|}{\textbf{Situação atual}}                                                                                                                                       & \multicolumn{2}{c|}{\textbf{Situação após edição}}                                                                                                                                 & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Diferenças de\\ ocorrências\\ de NewAPI\end{tabular}}}                                                                          \\ \cline{2-7} 
+\multicolumn{1}{|c|}{}                                                   & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}API\\ Mínima\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Ocorrências\\ de NewApi\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}API\\ Mínima\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Ocorrências\\ de NewApi\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Diferen\\ ça total\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Ocorrên\\ cias únicas\end{tabular}}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Numix Circle\\ icon pack\end{tabular}         & 16                                                                                 & 0                                                                                             & 15                                                                                 & 1                                                                                             & 1                                                                                        & 1                                                                                           \\ \hline
+SnoopSnitch                                                              & 16                                                                                 & 19                                                                                            & 15                                                                                 & 15                                                                                            & 2                                                                                        & 1                                                                                           \\ \hline
+\begin{tabular}[c]{@{}l@{}}Yaaic -\\ IRC Client\end{tabular}             & 21                                                                                 & 0                                                                                             & 15                                                                                 & 1                                                                                             & 1                                                                                        & 1                                                                                           \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hangar -\\ Smart app\\ shortcuts\end{tabular} & 16                                                                                 & 14                                                                                            & 15                                                                                 & 21                                                                                            & 7                                                                                        & 5                                                                                           \\ \hline
+\begin{tabular}[c]{@{}l@{}}WiFi\\ Analyzer\end{tabular}                  & 22                                                                                 & 0                                                                                             & 21                                                                                 & 1                                                                                             & 1                                                                                        & 1                                                                                           \\ \hline
+AcDisplay                                                                & 16                                                                                 & 167                                                                                           & 15                                                                                 & 193                                                                                           & 26                                                                                       & 10                                                                                          \\ \hline
+\begin{tabular}[c]{@{}l@{}}Indic\\ Keyboard\end{tabular}                 & 16                                                                                 & 7                                                                                             & 15                                                                                 & 14                                                                                            & 11                                                                                       & 5                                                                                           \\ \hline
+\begin{tabular}[c]{@{}l@{}}DashClock\\ Widget\end{tabular}               & 17                                                                                 & 5                                                                                             & 16                                                                                 & 46                                                                                            & 41                                                                                       & 9                                                                                           \\ \hline
+Termux                                                                   & 21                                                                                 & 2                                                                                             & 19                                                                                 & 59                                                                                            & 57                                                                                       & 9                                                                                           \\ \hline
+\end{tabular}
+\end{table}
+
+Posteriormente, analisamos cada uma dessas ocorrências para identificar como ela
+poderia ser tratada e qual o impacto para a aplicação. Das 10 aplicações analisadas,
+5 delas podem aumentar a compatibilidade com poucos e simples ajustes, fazendo uso
+de pacote de compatibilidade e/ou execução condicional, sem perda de funcionalidade.
+Quatro dessas aplicações, poderiam passar a exigir API 15, no lugar da atual 16. Mas
+uma delas, Yaaic, poderia substituir a API 21 pela API 15, com apenas 1 ocorrência de
+NewApi a mais. Tal ocorrência existe devido ao uso do tema Material\cite{Material}, que pode ser tratado através do mecanismos de recursos da plataforma, bastando definir estilos gerais, para versões inferiores a 21, e um estilo específico (style-v21) para versão 21 ou superior. Nesta aplicação, também é possível ir além, e prover compatibilidade com a versão 10 da API. Em que 8 novas ocorrências de NewApi surgiriam, mas poderiam ser resolvidas com pacote de compatibilidade.
+
+Outras 2 aplicações - Indic Keyboard e AcDisplay - precisam tratar, respectivamente,
+9 e 26 novas ocorrências de NewApi para alterar a API de 16 para 15. A primeira teria
+que apenas fazer uma re-implementação da classe \texttt{SentenceSuggestionsInfo},
+surgida na API 16. Todas as 9 ocorrências de NewApi são referências para essa classe.
+A segunda teria que tomar providências diversas, como pacote de compatibilidade, execução
+condicional e re-implementação de recursos. Mas todas elas possíveis de resolução sem perda
+de funcionalidade na aplicação.
+
+As três aplicações restantes usam funcionalidades mais críticas. Focal, uma
+aplicação de fotografia, apresenta um total de 11 ocorrências, sendo que uma
+delas parece não haver solução possível, pois depende de suporte do hardware
+do aparelho para auto focus da câmera. DashClock Widget apresentou 41 novas
+ocorrências ao reduzir a versão da API de 17 para 16. A maioria pode ser
+resolvida pelos métodos já citados, 17 delas são referências a classe
+\texttt{DreamService}, uma classe específica para realidade virtual.
+Portanto, a aplicação poderia fornecer as demais funções mas omitir esta
+específica. Por fim, a aplicação Termux, um emulador de terminal, é a que
+possui a maior quantidade de ocorrências de NewApi, ao reduzir a versão da
+API de 21 para 19: 57 ocorrências. A maioria facilmente tratada pelos métodos
+já citados. Porém, 9 delas fizerem referência a classe \texttt{android.system.Os},
+as quais são funcionalidades fundamentais para a aplicação, de acesso ao sistema.
+Distribuir a aplicação sem tais recursos seria uma perda considerável. Essa classe
+expõe para a API pública do Android uma classe pertencente ao pacote \texttt{libcore},
+o qual não pode ser importado pelas classes das aplicações da mesmo forma que classes
+do pacote \texttt{android}. No entanto, é possível através de uma re-implementação de
+recurso mais elaborada que as citadas anteriormente, usando reflexão, acessar tal pacote
+e classes internas \cite{Libcore}, e então fazer uma implementação própria da classe Os,
+ainda que fazer uso de APIs internas seja uma má prática de programação e existam
+recomendações contrárias à sua adoção \cite{Businge2015} \cite{Mastrangelo2015}.
+
+A tabela \ref{tab:esforco_resumo} resume o resultado qualitativo, agrupando as aplicações
+em três níveis de dificuldade e possíveis soluções para as novas ocorrências de NewApi.
+Os resultados encontrados, associado à tabela de distribuição das versões (figura 
+\ref{fig:platform_versions}), apresenta evidências de que as aplicações poderiam,
+com um esforço de baixo a médio, aumentar a compatibilidade com um maior número de
+versões da API.  
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[!htbp]
+\centering
+\caption{Nível de dificuldade para aumentar a compatibilidade e possíveis soluções para as novas ocorrências de NewApi}
+\label{tab:esforco_resumo}
+\begin{tabular}{|l|c|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                & \multicolumn{2}{c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Nível de\\ Dificuldade\end{tabular}}}} & \multicolumn{2}{c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Possíveis\\ Soluções\end{tabular}}}}                                                                                     \\
+\multicolumn{1}{|c|}{}                                                   & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{c|}{}                                                                                                                                                                           \\ \hline
+\begin{tabular}[c]{@{}l@{}}Numix Circle\\ icon pack\end{tabular}         & \multicolumn{2}{c|}{\multirow{5}{*}{Baixo}}                                                                   & \multicolumn{2}{l|}{\multirow{5}{*}{\begin{tabular}[c]{@{}l@{}}- Execução condicional\\ - Pacote de compatibilidade\\ - Uso de estilo especializado\end{tabular}}}                              \\ \cline{1-1}
+SnoopSnitch                                                              & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \cline{1-1}
+\begin{tabular}[c]{@{}l@{}}Yaaic -\\ IRC Client\end{tabular}             & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \cline{1-1}
+\begin{tabular}[c]{@{}l@{}}Hangar -\\ Smart app\\ shortcuts\end{tabular} & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \cline{1-1}
+\begin{tabular}[c]{@{}l@{}}WiFi\\ Analyzer\end{tabular}                  & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \hline
+AcDisplay                                                                & \multicolumn{2}{c|}{\multirow{2}{*}{Médio}}                                                                   & \multicolumn{2}{l|}{\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}- Algumas ocorrências são ignoradas (atributos XML) \\ - Pacote de Compatibilidade\\ - Reimplementação de recurso\end{tabular}}} \\ \cline{1-1}
+\begin{tabular}[c]{@{}l@{}}Indic\\ Keyboard\end{tabular}                 & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \hline
+Focal (Beta)                                                             & \multicolumn{2}{c|}{\multirow{3}{*}{Alto}}                                                                    & \multicolumn{2}{l|}{\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}- Pacote de compatibilidade\\ - Reimplementação de recurso\\ - Execução condicional\\ - Versão sem recurso\end{tabular}}}        \\ \cline{1-1}
+\begin{tabular}[c]{@{}l@{}}DashClock\\ Widget\end{tabular}               & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \cline{1-1}
+Termux                                                                   & \multicolumn{2}{c|}{}                                                                                         & \multicolumn{2}{l|}{}                                                                                                                                                                           \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Qual a incidência de código morto em função da versão da API do Android?}
+
+A técnica básica de prover suporte a multi-versões da API é o uso de execução
+condicional avaliando a versão da API do aparelho. Também faz parte da evolução
+natural das aplicações o fim de suporte a versões da API mais antigas. Dessa forma,
+é possível que os desenvolvedores alterem a configuração de API mínima no 
+\texttt{AndroidManifest.xml}, mas deixem ao longo do código-fonte da aplicação
+trechos de código que seriam executados em versões de API inferiores a esta. Nessa
+situação, tais trechos de códigos são caracterizados como código-morto.
+
+Para esta questão de pesquisa, foram analisadas 7 aplicações e foi encontrado
+código-morto em 4 delas. No entanto, em um valor proporcional muito pequeno em
+relação ao total de linhas de código da aplicação. Mesmo considerando apenas o
+código Java, identificamos uma média de apenas 0,09\% de linhas de código-morto.
+A tabela \ref{tab:codigo_morto} apresenta detalhes dessa análise. São exibidos
+as métricas de número de arquivos e total de linhas de código-fonte tanto com
+código-morto quanto com a remoção do código morto, assim como a diferença em
+valores absolutos e percentuais. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[!htbp]
+\fontsize{9}{11}
+\centering
+\caption{ocorrência de código morto por aplicação}
+\label{tab:codigo_morto}
+\begin{tabular}{lrrrrrrr|r|r|r|}
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                           & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Métricas\\ COM CM\end{tabular}}}                               & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Ocorrências\\ de CM\end{tabular}}}                            & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Métricas\\ SEM CM\end{tabular}}}                               & \multicolumn{2}{c|}{\textbf{Diferenças}}                                                                                & \multicolumn{2}{c|}{\textbf{Percentuais}}                                                                                \\ \cline{2-11} 
+\multicolumn{1}{|c|}{}                                                              & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}} & \multicolumn{1}{c|}{\textbf{\#}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}}   & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}}    \\ \hline
+\multicolumn{1}{|l|}{RingDroid}                                                     & \multicolumn{1}{r|}{12}                                                           & \multicolumn{1}{r|}{4189}         & \multicolumn{1}{r|}{}            & \multicolumn{1}{r|}{}                                                             & \multicolumn{1}{r|}{\textbf{}}                                                    & \multicolumn{1}{r|}{\textbf{}}    & \textbf{}                                                                         & \textbf{}                           & \textbf{}                                                                         & \textbf{}                            \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Orbot Proxy\\ com Tor\end{tabular}} & \multicolumn{1}{r|}{86}                                                           & \multicolumn{1}{r|}{11147}        & \multicolumn{1}{r|}{3}           & \multicolumn{1}{r|}{3}                                                            & \multicolumn{1}{r|}{86}                                                           & \multicolumn{1}{r|}{11132}        & 0                                                                                 & 15                                  & 0,00\%                                                                            & 0,13\%                               \\ \hline
+\multicolumn{1}{|l|}{Transdrone}                                                    & \multicolumn{1}{r|}{243}                                                          & \multicolumn{1}{r|}{23464}        & \multicolumn{1}{r|}{}            & \multicolumn{1}{r|}{}                                                             & \multicolumn{1}{r|}{}                                                             & \multicolumn{1}{r|}{}             &                                                                                   &                                     &                                                                                   &                                      \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Vanilla\\ Music\end{tabular}}       & \multicolumn{1}{r|}{90}                                                           & \multicolumn{1}{r|}{17404}        & \multicolumn{1}{r|}{3}           & \multicolumn{1}{r|}{1}                                                            & \multicolumn{1}{r|}{90}                                                           & \multicolumn{1}{r|}{17398}        & 0                                                                                 & 6                                   & 0,00\%                                                                            & 0,03\%                               \\ \hline
+\multicolumn{1}{|l|}{AFWall+}                                                       & \multicolumn{1}{r|}{84}                                                           & \multicolumn{1}{r|}{14560}        & \multicolumn{1}{r|}{4}           & \multicolumn{1}{r|}{4}                                                            & \multicolumn{1}{r|}{84}                                                           & \multicolumn{1}{r|}{14540}        & 0                                                                                 & 20                                  & 0,00\%                                                                            & 0,14\%                               \\ \hline
+\multicolumn{1}{|l|}{aMetro}                                                        & \multicolumn{1}{r|}{133}                                                          & \multicolumn{1}{r|}{8167}         & \multicolumn{1}{r|}{}            & \multicolumn{1}{r|}{}                                                             & \multicolumn{1}{r|}{}                                                             & \multicolumn{1}{r|}{}             &                                                                                   &                                     &                                                                                   &                                      \\ \hline
+\multicolumn{1}{|l|}{K-9 Mail}                                                      & \multicolumn{1}{r|}{484}                                                          & \multicolumn{1}{r|}{78984}        & \multicolumn{1}{r|}{8}           & \multicolumn{1}{r|}{8}                                                            & \multicolumn{1}{r|}{484}                                                          & \multicolumn{1}{r|}{78934}        & 0                                                                                 & 50                                  & 0,00\%                                                                            & 0,06\%                               \\ \hline
+                                                                                    & \multicolumn{1}{l}{}                                                              & \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}             & \multicolumn{1}{l}{}                                                              & \multicolumn{1}{l}{}                                                              & \multicolumn{1}{l}{}              & \multicolumn{1}{l|}{}                                                             & \multicolumn{1}{l|}{\textbf{Média}} & \textbf{0,00\%}                                                                   & \multicolumn{1}{l|}{\textbf{0,09\%}} \\ \cline{9-11} 
+\end{tabular}
+\end{table}
+
+Tais resultados apresentam indícios que é possível encontrar código-morto em aplicações
+Android existentes. No entanto, em comparação com a quantidade de linhas de código total
+da aplicação, a quantidade de linhas de código morto é irrelevante, conforme mostra a
+tabela \ref{tab:codigo_morto}.
 
 \section{Discussão} \label{sec:discussao}
-
-Uma das visualizações propostas tem o objetivo de mostrar, para dadas duas versões de um sistema, os métodos que potencialmente causaram o desvio de desempenho para um determinado cenário. Os métodos são exibidos em um grafo direcionado de chamadas com propriedades visuais que destacam quais dos métodos mostrados tiveram desvios de desempenho. É a visualização que possui granularidade mais fina dentre as três propostas como extensão ao \textit{PerfMiner}.
-
-Os grafos podem ser utilizados quando os dados a serem representados são estruturados, ou seja, quando existe uma relação inerente entre os elementos de dados a serem visualizados \cite{Herman2000}. Há uma vasta quantidade de áreas onde os grafos podem ser aplicados, por exemplo: hierarquia de arquivos em formato de árvore, mapas de sites, mapas moleculares e genéticos, diagramas de fluxos de dados, entre outros.
-
-Nesse sentido, em uma chamada de métodos é evidente a relação entre eles, uma vez que os objetos, em um sistema orientado a objetos, trocam mensagens entre si através da invocação dos métodos. O grafo é exibido utilizando o \textit{layout} em árvore, onde os nós filhos estão dispostos abaixo dos nós ancestrais, e a direção dos nós é \textit{bottom-top}. Nesta subseção são apresentadas as propriedades visuais do grafo, o seu funcionamento básico além de um exemplo para exemplificar os grafos.
-
-{\color{red}Adicionar um exemplo da visualização de grafos antes de começar a discorrer sobre as propriedades visuais}
 
 \subsection{Propriedades Visuais} \label{subsec:propriedades-visuais}
 
