@@ -316,7 +316,7 @@ Para responder à questão de pesquisa QP4 os procedimentos adotados foram os se
 \section{Resultados do Estudo} \label{sec:resultados}
 
 Essa seção apresenta os resultados do estudo. As subseções estão organizadas em termos
-das questões de pesquisa (Seção \ref{sec:objetivos})
+das questões de pesquisa (Seção \ref{sec:objetivos}).
 
 \subsection{Quais são as técnicas que aplicações atuais usam para manter
 compatibilidades com as diversas versões da API do Android?} \label{subsec:tecnicas_usadas}
@@ -341,7 +341,7 @@ A figura \ref{fig:forma_suporte} apresenta a quantidade total de aplicações de
 cada estratégia. Pacote de compatibilidade foi utilizada por 23 aplicações,
 re-implementação de recurso por 14, e uso explícito da nova API por 22.
 
-\begin{figure}[htb]
+\begin{figure}[!htbp]
 	\centering 
   	\includegraphics[scale=0.75]{imagens/forma_suporte}
   	\textsf{\caption{Como as aplicações oferecem suporte a múltiplas versões da API}
@@ -370,7 +370,7 @@ utilizou tratamento de exceção para evitar erro durante a execução.
 \begin{figure}[htb]
 	\centering 
   	\includegraphics[scale=0.75]{imagens/alternativas_EC}
-  	\textsf{\caption{ Quantidade de aplicações que utilizaram cada técnica para
+  	\textsf{\caption{Quantidade de aplicações que utilizaram cada técnica para
   						tratamento de ocorrência de NewApi}
   	        \label{fig:alternativas_EC}}
 \end{figure}
@@ -795,7 +795,7 @@ com mais ocorrência de NewApi. Além desses, outros 20 elementos apresentam no 
 
 \begin{table}[!htbp] % TODO posicionar melhor essa tabela
   \centering
-  \caption{10 elementos da taxonomia view com mais ocorrência de NewApi}
+  \caption{10 elementos da taxonomia view com mais ocorrências de NewApi}
   \begin{tabular}{| l | r | r |}
   	\hline
   	% rótulo das colunas
@@ -1092,7 +1092,7 @@ métodos nunca executadas. Além de situações em que a chamada não está prot
 a aplicação está suscetível a erros durante a execução.  A seguir, tais soluções de projeto
 são discutidas.
 
-\subsubsection*{Execução condicional}
+\paragraph{Execução condicional}
 
 Execução condicional, direta ou indireta, foi observado em 18 aplicações.
 A tabela \ref{tab:fw_EC} descreve essa técnica segundo o framework de
@@ -1157,7 +1157,7 @@ e o código efetivamente da variação da plataforma. Isso pode facilitar a incl
 novos acessos a essa linha de código sem passar pela condição, portanto, execução
 condicional indireta deve ser utilizado com cuidado e estar bem documentado.
 
-\subsubsection{Padrões de Projeto}
+\paragraph{Padrões de Projeto}
 Execução condicional é uma forma primitiva de modularização. Padrões de projeto
 podem ser utilizados para melhorar a modularização. Alguns deles foram identificados
 nas aplicações. A tabela \ref{tab:fw_padroes} sintetiza a análise de tais padrões de
@@ -1217,7 +1217,7 @@ usar polimorfismo, e a programação é específica para cada implementação, d
 assim ser uma solução difícil de manter. Atualmente, 3 versões foram suportadas:
 11, 13 e 19.
 
-\subsubsection{Suporte Implícito}
+\paragraph{Suporte Implícito}
 
 Algumas ocorrências de chamadas a nova API estão dentro de métodos da própria API
 adicionados também nas novas versões e que são executados de forma automática pela

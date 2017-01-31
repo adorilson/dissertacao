@@ -5,9 +5,10 @@
 Este capítulo apresenta uma visão geral das bases teóricas que fundamentam as
 proposições  e  discussões  contidas  nesta  dissertação,  tais  como  Plataforma
 Android (Seção \ref{sec:plataforma-android}), com ênfase no suporte a múltiplas
-versões da API; Padrões de Projeto (Seção  \ref{sec:padroes-de-projeto}), 
-destacando os que foram identificados nesta pesquisa; um Framework para Comparação
-de Técnicas de Implementação de Variabilidades (Seção \ref{sec:framework}); e,
+versões da API; um Framework para Comparação de Técnicas de Implementação de
+Variabilidades (Seção \ref{sec:framework}); Padrões de Projeto (Seção
+ \ref{sec:padroes-de-projeto}), 
+destacando os que foram identificados nesta pesquisa;  e,
 por fim, uma Taxonomia dos Componentes da API Android (Seção \ref{sec:taxonomia}). 
 
 \section{Plataforma Android} \label{sec:plataforma-android}
@@ -87,13 +88,14 @@ Uma aplicação Android consiste dos seguintes componentes \cite{Fundamental2016
         \item Destruída: quando parada ou pausada, o sistema encerra a atividade.
     \end{itemize}
     Para cada estado, o sistema chama uma série de métodos do ciclo de vida \cite{CicloVidaAtividade2016},
-    apresentada na figura \ref{fig:activity_lifecycle}. O método “onCreate” é
-    chamado quando a atividade é iniciada pela primeira vez, método “onStart” é
-    chamado quando a atividade torna-se visível para o usuário, “onRestart” é
-    chamado quando a atividade pausada mas não destruída é novamente iniciada,
-    “onResume” é  chamado quando a atividade inicia a interação com o usuário,
-    “onPause” é chamado quando o sistema inicia a atividade anterior, “onStop” é
-    chamado quando a atividade não é mais visível, “onDestroy” é o método final
+    apresentada na figura \ref{fig:activity_lifecycle}. O método \texttt{onCreate()} é
+    chamado quando a atividade é iniciada pela primeira vez, método \texttt{onStart()} é
+    chamado quando a atividade torna-se visível para o usuário, \texttt{onRestart()}
+    é chamado quando a atividade pausada mas não destruída é novamente iniciada,
+    \texttt{onResume()} é  chamado quando a atividade inicia a interação com o usuário,
+    \texttt{onPause()} é chamado quando o sistema inicia a atividade anterior, 
+    \texttt{onStop()} é
+    chamado quando a atividade não é mais visível, \texttt{onDestroy()} é o método final
     chamado antes da atividade ser destruída pelo sistema.
     \begin{figure}[htb]
     	\centering
@@ -127,7 +129,7 @@ cada 3 meses. Nesse momento, a última versão disponibilizada é a 24. Para est
 trabalho foram consideradas, por questões de padronização das análises, configuração
 do ambiente de desenvolvimento e mercado, aplicações que usaram até a versão 23.
 
-Apesar da rápida evolução do Android, a adoção das novas API’s é lenta e o mercado
+Apesar da rápida evolução do Android, a adoção das novas API's é lenta e o mercado
 consumidor é fragmentado em relação ao número de versões da API. O que obriga os
 desenvolvedores de aplicações a tomarem decisões de projeto como usar as versões
 mais recentes da API e deixar de lado um mercado consumidor que não usa determinada
@@ -165,7 +167,9 @@ recursos que foram disponibilizadas em versões mais novas. Por exemplo, uma apl
 instalada em um aparelho com API de nível 8 pode usar a API de fragmentos,
 disponibilizada apenas no nível 11.
 
-Esses pacotes são tradicionais arquivos JAR com classes, interfaces e outros
+Esses pacotes são tradicionais arquivos 
+\abrv[JAR -- \textit{Java ARchive}]
+{JAR}(\textit{Java ARchive}) com classes, interfaces e outros
 artefatos de recursos que poderão ser adicionados na aplicação. Assim, quando se
 deseja usar a classe \texttt{Fragment}, por exemplo, em vez da importação ser da
 API padrão do Android, como mostra a Figura \ref{fig:import_fragment_api},
@@ -313,7 +317,7 @@ ii) a outra composta por várias linhas e encapsulada no método
 Execução condicional é a forma indicada na documentação oficial
 \cite{SupportDifferentVersions} para o suporte a múltiplas versões. Pode ser
 utilizada em sua forma mais simples, como no exemplo acima, ou combinado com
-padrões de projeto, como apresentado na seção \ref{sec:tecnicas_mais_comuns}.
+padrões de projeto, como apresentado na seção \ref{subsec:tecnicas_usadas}.
 
 
 \subsection{Android Lint}
@@ -403,7 +407,7 @@ transversais, como apontado por diversas pesquisas \cite{Gacek2001} \cite{Batory
 \section{Padrões de Projeto}
 \label{sec:padroes-de-projeto}
 
-Padrões de projeto \cite{Gamma1994}  e técnicas
+Padrões de projeto \cite{Gamma}  e técnicas
 \abrv[OO -- \textit{Orientação a Objetos}]
 {orientação a objetos} (OO)
 -- polimorfismo, herança, composição, agregação/delegação -- são abordagens utilizadas
@@ -505,11 +509,11 @@ para tratar as diferenças entre as versões da API os seguintes passos:
 Assim, o algoritmo executa o passo \textbf{a} de forma fixa, implementado no
 \textit{"template method"}, enquanto o passo \textbf{b} é delegado para a classe
 concreta. A Figura \ref{fig:templatemethod_wififixer} mostra o código do método
-\textit{template method} \texttt{getFile}, onde a parte fixa do algoritmo faz a
+\textit{template method} \texttt{getFile()}, onde a parte fixa do algoritmo faz a
 seleção da classe concreta de acordo com a versão da API e logo depois o método
-abstrato \texttt{vgetLogFile} é chamado.
+abstrato \texttt{vgetLogFile()} é chamado.
 
-\begin{figure}[htb]
+\begin{figure}[!htbp]
 	\centering 
   	\includegraphics[scale=0.5]{imagens/templatemethod_wififixer}
   	\textsf{\caption{Exemplo de template method no aplicativo Wififixer}
@@ -526,7 +530,7 @@ A figura \ref{fig:null-object}  apresenta uma visão geral do padrão. \texttt{C
 (\texttt{AbstractObject}), que terá implementações reais (\texttt{RealObject}) e
 ao menos uma implementação de um objeto nulo (\texttt{NullObject}) que faz nada.
 
-\begin{figure}[htb]
+\begin{figure}[!htbp]
 	\centering 
   	\includegraphics[scale=0.5]{imagens/null-object-structure}
   	\textsf{\caption{Estrutura geral do padrão de projeto Null Object}
@@ -543,7 +547,7 @@ padrão para cada versão relevante, níveis 11, 13 e 19. Os serviços dessas in
 são disponibilizadas para os clientes através de uma fachada (\texttt{Compatibility}).
 A Figura \ref{fig:null_object_cgeo} mostra um diagrama de classes dessa estrutura.
 
-\begin{figure}[htb]
+\begin{figure}[!htbp]
 	\centering 
   	\includegraphics[scale=0.5]{imagens/null_object}
   	\textsf{\caption{Diagrama de classes do padrão de projeto Null Object aplicado no C:Geo}
@@ -562,7 +566,7 @@ o proxy (\texttt{Proxy}) e o objeto real (\texttt{RealSubject}). O proxy irá
 receber do cliente as chamadas de métodos e, mediante alguma condição, delegar a
 chamada para o objeto real.
 
-\begin{figure}[htb]
+\begin{figure}[!htbp]
 	\centering 
   	\includegraphics[scale=0.5]{imagens/proxy}
   	\textsf{\caption{Estrutura geral do padrão de projeto Proxy}
