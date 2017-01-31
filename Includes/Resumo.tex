@@ -22,26 +22,37 @@
 	\Large{\textsc{\textbf{Resumo}}}
 \end{center}
 
-\noindent Dispositivos móveis estão ficando cada vez mais populares e acessíveis para pessoas
-de diferentes poder aquisitivo ao redor do mundo. A plataforma Android é atualmente
-a mais popular para o desenvolvimento de aplicações móveis, ocupando mais de 80\%
-do mercado de sistemas operacionais para aplicações de dispositivos móveis. Tal
-realidade cria uma demanda por customizações de aplicações para lidar com diferentes
-dispositivos, tais como tamanho de tela disponibilidade de poder de processamento
-e memória disponível, idiomas e necessidades específicas dos usuários. Além disso,
-a bibliotecas de classes da plataforma (API - Application Programming Interface)
-evolui muito rapidamente. Já foram disponibilizadas 23 versões desde o lançamento. 
-Portanto, é fundamental para o sucesso das aplicações o suporte a múltiplas versões
-da API. Apesar da popularidade e ampla gama de aplicações Android já desenvolvida,
-existe uma carência de estudos que investiguem a forma como aplicações Android lidam
-com essa variabilidade.
+\noindent A plataforma Android é atualmente a mais popular para o desenvolvimento
+de aplicações móveis, ocupando mais de 80\% do mercado de sistemas operacionais para
+dispositivos móveis, criando uma demanda por customizações de aplicações para lidar
+com diferentes dispositivos, tais como, tamanho de tela, poder de processamento e
+memória disponível, idiomas e necessidades específicas dos usuários. Já foram
+disponibilizadas 23 novas versões da plataforma Android desde o seu lançamento. De
+forma a permitir a execução com sucesso das aplicações em diferentes dispositivos,
+é fundamental oferecer suporte à múltiplas versões da API (Application Programming
+Interface). Esta dissertação de mestrado tem como objetivo principal: analisar,
+caracterizar e comparar técnicas utilizadas por aplicações Android para oferecer
+suporte a múltiplas versões da API. Em especial, o trabalho busca: (i) identificar
+na literatura quais as técnicas indicadas para suporte à múltiplas versões da API
+Android; (ii) analisar aplicações reais para quantificar o uso dessas técnicas
+indicadas; e (iii) comparar as características e consequências do uso de tais
+técnicas. Um estudo empírico foi conduzido para atingir tal objetivo, no qual
+foram analisadas 25 aplicações Android populares. Os resultados do estudo mostram
+que existem três técnicas para prover suporte a múltiplas versões da API: i) pacote
+de compatibilidade, variabilidades de granularidade grossa da API que envolvam um
+conjunto de classes; ii) re-implementação de recurso, para situações pontuais e
+granularidade grossa em nível de classe ou quando o recurso não está disponível
+em pacote de compatibilidade; e iii) uso explícito da nova API, variabilidades de
+granularidade fina da API que envolva a chamada de métodos específicos. Através da
+análise de 25 aplicações identificamos que pacote de compatibilidade foi utilizada
+por 23 aplicações, re-implementação de recurso por 14 e uso explícito da nova API
+por 22. A API de fragmentos contêm os elementos mais comuns dentre os lançados em
+versões superiores da plataforma que são usados pelas aplicações durante sua evolução,
+sendo referenciados por 68\% delas. No geral, as aplicações poderiam aumentar o seu
+mercado em potencial com adaptações de, em média, 15 trechos de código, por outro
+lado, os desenvolvedores das aplicações têm se preocupado em evitar código-morto em
+função da API da plataforma. Na análise de 7 aplicações, 4 delas continham código-morto,
+mas os quais em geral não representam mais do que 0,1\% do seu código total.
 
-\noindent Esta dissertação de mestrado tem como objetivo principal analisar, caracterizar e
-comparar técnicas utilizadas por aplicações Android para suporte a múltiplas versões
-da API. Em especial, o trabalho busca:
-(i) Identificar na literatura quais as técnicas indicadas para suporte a múltiplas versões da API Android;
-(ii) Analisar aplicações reais para quantificar o uso dessas técnicas indicadas; e
-(ii) Comparar as características e consequências do uso de tais técnicas.
-
-\noindent\textit{Palavras-chave}: gerência de variabilidades, implementação de variabilidades, aplicações
+Palavras-chave: gerência de variabilidades, implementação de variabilidades, aplicações
 Android, plataforma de computação móvel, estudos empíricos, suporte multi-versão de API

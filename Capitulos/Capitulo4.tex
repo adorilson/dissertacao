@@ -1,2 +1,151 @@
 % Capíulo 4
 \chapter{Trabalhos Relacionados} \label{ch:trabalhos-relacionados}
+
+Trabalhos de pesquisa relacionados à evolução de API e suporte a múltiplas versões
+de API, sejam da plataforma Android ou outras tecnologias, e popularidade dos
+elementos da API Android são relevantes para este trabalho. Em especial, verificamos
+que não existem muitos trabalhos relacionados de suporte à múltiplas versões da API
+do Android. Assim, a principal contribuição deste trabalho é de caracterização das
+técnicas de implementação de suporte a múltiplas versões da API Android em aplicações
+reais. As seções seguintes detalham trabalhos de pesquisa relacionados, organizados
+por tópicos no qual oferecem contribuição relevante.
+
+\section{Evolução da API Android}
+
+McDonnell et al. \cite{McDonnell2013} conduziram um estudo sobre a co-evolução da API
+Android e suas aplicações usando o histórico de versões encontradas no Github, comparando
+a velocidade de evolução da API Android com a adoção pelas aplicações. No entanto, não
+considerou o suporte multi-versão da API. O nosso estudo foi focado nesse aspecto. Embora
+as aplicações permaneçam oferecendo suporte para API antigas, elas buscam usar recursos das
+mais novas quando estão disponíveis ou através do pacote de compatibilidade ou re-implementação
+de recurso.
+
+Diferentemente deste trabalho, que considerou a API como um todo, alguns trabalhos focaram
+em componentes específicos, como Wei et al.\cite{Wei2016} que abordaram a evolução do sistema
+de permissões para acessar recursos de \textit{hardware} e \textit{software} da plataforma.
+No início de 2009, a API 3 possuía 103 permissões, enquanto na versão 15 esse número já chegava
+à 165. As aplicações também precisam adaptar-se à essa evolução. 
+
+Neste trabalho, não abordamos elementos de API que foram depreciados, mas alguns trabalhos
+focam seus estudos nesta perspectiva.  Zhou e Walker \cite{Zhou2016} propuseram a ferramenta
+\textit{Deprecation Watcher} para identificar uso de API depreciadas em código-fonte de exemplos
+na web, assim desenvolvedores podem ser informados antes de investir tempo e esforço estudando-os.
+A ferramenta foi avaliada na detecção de API's Android depreciadas utilizadas em código-fonte de exemplo no Stack Overflow. Eles obtiveram uma precisão de 100\% e uma cobertura de 86\% em um
+conjunto aleatório de 200 questões.
+
+\section{Fragmentação da API Android}
+
+Mutchler et al. \cite{Mutchler2016} abordaram o problema da fragmentação da API alvo.
+Esse problema ocorre quando as aplicações não atualizam sua versão de API alvo para a
+mais recente da plataforma. Essa falta de atualização desabilita melhorias da plataforma
+mesmo quando as aplicações são executadas em dispositivos com a versão mais recente da API.
+Um exemplo é a vulnerabilidade que permite injeção de fragmentos. Aplicações maliciosas
+podem enviar mensagens para classes que herdam de \texttt{PreferenceActivity}, existente
+desde a primeira versão do Android. As mensagens são interpretadas como instâncias de
+fragmentos e carregadas dinamicamente, executando código arbitrário da aplicação
+mal-intencionada. A API nível 19 adicionou o método \texttt{isValidFragment} para resolver
+esse problema. Aplicativos que têm como alvo os níveis de API 19 ou superiores herdam uma implementação padrão de \texttt{isValidFragment} que sempre lança uma exceção e, portanto,
+são seguros por padrão, mas aqueles que têm como alvo os níveis 18 ou inferior herdam uma implementação que sempre retorna \texttt{true}, não oferecendo proteção contra esse ataque,
+ainda que em execução em um dispositivo com versão superior a 18.  Como API 19 é uma API
+alta, provavelmente a versão mínima das aplicações  será bem inferior, exigindo que seja
+utilizado um execução condicional na chamada à \texttt{isValidFragment}. O nosso trabalho
+complementa este apresentando soluções para oferecer suporte múltiplas versões da plataforma
+e indicando os usos mais comuns. Assim, as aplicações podem usar os melhores recursos de cada
+versão da plataforma. 
+
+Wei et al. \cite{Wei2016} identificaram tipos e causas para o problema de compatibilidade
+induzidos pela fragmentação (FIC issues - Fragmentation-Induced Compatibility issues), um
+dos tipos é não-específico de dispositivos, que pode ser causado devido a evolução da API da
+plataforma, impactando no suporte a múltiplas versões da API. Também apresentaram uma ferramenta, 
+FicFinder, para identificar tais problemas nas aplicações. O nosso trabalho utilizou uma ferramenta 
+nativa do ambiente de desenvolvimento oficial, o Android Lint (regra NewApi). Assim como o nosso 
+trabalho, eles também identificaram os usos de novas APIs em métodos executados pela plataforma. Nós 
+chamamos de suporte implícito (Seção \ref{subsec:tecnicas_usadas}), enquanto eles reportaram como 
+falsos positivos. Na verdade, tanto o FicFinder quanto o Android Lint poderiam ter um catálogo desses 
+métodos e não reportarem esses resultados para os desenvolvedores. Além disso, quantificamos as boas 
+práticas citadas por eles para corrigir ou prevenir os FIC \textit{issues} causadas pela evolução da API da plataforma.
+
+\section{Popularidade dos elementos da API Android}
+
+O estudo feito por Lamba et al. \cite{Lamba2015} considerou a popularidade dos
+elementos da API de forma absoluta, sem levar em consideração a versão da API
+exigida pela aplicação e a versão da API em que o elemento foi disponibilizado.
+Além disso, a quantificação foi feita por níveis diferentes de granularidade, do
+mais fino para o mais grosso: método, classe e pacote. Nosso trabalho considerou
+apenas os elementos que surgiram após a versão da aplicação e os resultados foram
+agrupados, primariamente, por uma taxonomia, e só após apresentamos métodos, classes
+e pacotes das taxonomias mais comuns. Os métodos mais comuns encontrados por eles são
+\texttt{getString()}, \texttt{get()} e \texttt{toString()}. O nosso estudo apresentou
+métodos da classe \texttt{Activity} relacionadas a API de fragmentos e o método
+\texttt{bigContentView()} da classe \texttt{Notification} como os mais comuns
+(contabilizado por uso explícito de nova API - Seção \ref{subsec:subjunto_api}). No
+nível de classe, eles apontaram \texttt{Context} e \texttt{View} como as mais comuns.
+Enquanto que encontramos \texttt{Fragment}, \texttt{NotificationCompat} e \texttt{RecyclerView}
+(um subtipo de \texttt{View}) como as mais comuns (contabilizado por número de
+\texttt{import}’s do pacote de compatibilidade - Seção \ref{subsec:subjunto_api}).
+Eles apontaram os pacotes \texttt{java.util} e \texttt{android.content} como os mais comuns.
+Não fizemos muitas sumarizações por pacotes, apenas o pacote \texttt{android.app.backup}
+apareceu durante a análise por uso explícito da nova API de aplicações que exigiam API nível
+4. O pacote surgiu na API nível 5. Por outro lado, os pacotes \texttt{java.util} e
+\texttt{android.content} correspondem às nossas taxonomias \texttt{java.util} e \texttt{content}.
+A \texttt{java.util} apareceu uma única vez em nossa análise. Os resultados combinados nos
+levam a conclusão que esse pacote é bastante utilizado e muito estável. Já a taxonomia
+\texttt{content} encontra-se em um posição intermediária em nossos resultados.
+
+\section{Compatibilidade ou suporte a múltiplas versões de API}
+
+A plataforma Android permite compatibilidade simultânea com múltiplas versões
+da API e uma política conservadora em relação à depreciação, de forma que os
+métodos e classes permanecem nas novas versões mesmo de depois anotados como
+depreciados. Alguns trabalhos buscaram entender a política de depreciação e
+suporte a múltiplas versões em outras plataformas. Espinha et al. \cite{Espinha2014}
+analisaram a política de evolução de quatro APIs web: Google Maps, Twitter, 
+Netflix e Facebook. Os três primeiros possuem um sistema de versionamento
+explícito, em que um identificador da versão é incluída na URL de acesso à API
+(ex.: \texttt{domain/<version>/method}), o que permite aos clientes escolherem qual
+versão da API irão utilizar. Essa abordagem facilita a migração dos clientes, bastando
+alterar o trecho da URL referente à versão  Porém, uma evolução de API pode ir além que
+somente adição ou remoção de métodos. Por exemplo, a evolução da Twitter API analisada
+no trabalho trata da versão 1 para 1.0. Além da mudança na URL (por exemplo, de
+\texttt{twitter.com/1/method} para \texttt{twitter.com/1.1/method}) outras elementos
+também foram modificados. Por exemplo, os clientes foram forçados a autenticar,
+o suporte para XML foi descontinuado em favor de JSON e mudanças foram feitas para limitar
+o acesso (que pode penalizar clientes com alta frequência de acesso). Para esses casos,
+é necessário uma intervenção mais profunda no código das aplicações clientes. O estudo
+foi complementado com um conjunto de recomendações para os provedores de API para
+facilitar a evolução dos clientes, entre elas: i) não mudar tão frequentemente, para
+que os cliente não se vejam também obrigados a alterar suas aplicações com frequência;
+e ii) não deixar as versões antigas por muito tempo, pois quando  isso ocorre os
+desenvolvedores das aplicações clientes relaxam e atrasam muito a atualização.
+Ficando muito distante da versão mais recente, a atualização pode tornar-se difícil.
+A disponibilidade da versão da API no Android, através de \texttt{Build.VERSION},
+permitindo execução condicional, é um mecanismo para versionamento. Já os pacotes
+de compatibilidade e a re-implementação de recursos são alternativas a ele.
+
+Sohan et al. \cite{Sohan2015} realizaram um estudo de caso de evolução da API
+web de 9 serviços e identificaram dois modos de atualização: versão única e
+múltiplas versões. No modo de versão única, as API's web forçam a migração dos
+clientes para a nova versão da API removendo a versão anterior após um período
+de tempo, que pode ser conhecido, como nos casos da Facebook REST API (90 dias)
+e Google Calendar (6 meses), ou desconhecido, como nos casos da Twitter REST API,
+Github API OpenStreetMap API e Google Maps. O modo de múltiplas mantém as APIs
+antigas por um longo período de tempo. Wordpress REST API, Salesforce API e Stripe
+API essa estratégia. Tal estratégia permite uma maior flexibilidade para os clientes,
+mas exige maior esforço dos fornecedores da API, como resultado nem todas as APIs são
+mantidas. Quando os clientes atrasam muito a atualizando, ficando muito distante da
+versão mais recente, a atualização pode tornar-se difícil. O mesmo pode acontecer
+com aplicações Android. Foram também analisados diferentes abordagens para identificar
+a versão da API: i) identificador numérico: números inteiros contínuos que comunicam
+claramente uma sequência entre as versões; ii) identificador com data: datas também
+pode ser usadas para identificar versões; e iii) identificadores com números de versões
+principal e secundário (ex: 2.3): a maioria das APIs web analisadas utilizam essa
+abordagem. Nenhuma dessas abordagem, por si só, garantem compatibilidade entre as versões.
+Inclusive, frequentemente as API’s são atualizadas com quebra de compatibilidade sem receber
+um novo identificador de versão. A abordagem de identificador número é a adotada pela
+plataforma Android, sendo a compatibilidade garantida por contrato \cite{ApiLevels},
+ou seja, as novas versões são projetadas de forma a manter a compatibilidade com suas
+versões anteriores.   Importante destacar que o acesso à API's web é remoto, o que permite
+seus clientes escolherem qual versão utilizarão, enquanto o acesso à API Android é local,
+exigindo outras estratégias para acesso à API. Nosso trabalho identificou, e quantificou,
+pacote de compatibilidade, execução condicional e re-implementação de recurso como estratégias
+de suporte a múltiplas versões da API Android.

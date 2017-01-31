@@ -1,2 +1,141 @@
 % Capíulo 5
-\chapter{Conclusao e Trabalhos Futuros} \label{ch:conclusao}
+\chapter{Conclusão e Trabalhos Futuros} \label{ch:conclusao}
+
+Este capítulo  apresenta  as  conclusões  desta  dissertação de  mestrado.
+A Seção \ref{sec:analise} apresenta  os  resultados  alcançados  para  cada 
+questão  de  pesquisa. A Seção  \ref{sec:limitacoes} discute as  principais 
+limitações  do  trabalho. A Seção \ref{sec:contribuicoes} ressalta suas contribuições. Finalmente, a Seção \ref{sec:trabalhos_futuros} apresenta proposições de
+trabalhos futuros que estendam e avancem os resultados desta pesquisa.
+
+\section{Análise dos Resultados da Dissertação}\label{sec:analise}
+
+O primeiro objetivo específico era identificar na literatura quais as
+técnicas indicadas para suporte a múltiplas versões da API Android. Tal
+objetivo foi contemplado ao identificarmos que são três as técnicas
+primárias indicadas, sobretudo pela documentação oficial para desenvolvedores
+de aplicações Android: (i) pacote de compatibilidade; (ii) re-implementação de
+recurso, e (iii) uso explícito da nova API.
+
+O uso dos pacotes de compatibilidade e re-implementação de recurso possuem formas
+mais uniformes de adoção. Para o primeiro, basta adicionar a dependência na aplicação,
+fazer a importação dos arquivos necessários e usar as classes conforme documentação.
+Para o segundo, é realizado um \textit{"copy-and-paste"} do código-fonte do recurso
+desejado. Já para fazer uso explícito da nova API é necessário garantir que a chamada
+à nova API somente será executada em dispositivos em que a nova API esteja presente,
+sob pena de travamentos da aplicação em dispositivos antigos. Tal proteção é feita com
+execução condicional. No entanto, a forma dessa execução condicional pode variar bastante. Desde uma simples execução condicional direta, o que pode acarretar em espalhamento do
+código, até o uso de padrões de projeto, que permite uma maior modularização.
+
+Pacote de compatibilidade é utilizado quando se deseja um conjunto de novos recursos,
+cujo implementação está distribuída em diversos arquivos. No entanto, deve-se analisar
+a relação entre a quantidade de recursos utilizados e o aumento no tamanho do instalador
+da aplicação. Se for desfavorável, pode-se fazer re-implementação de recurso do item específico. Re-implementação de recurso também pode ser utilizado quando o recurso desejado
+não está disponível por meio de pacote de compatibilidade. Porém, os desenvolvedores ficarão 
+responsável por manter mais um elemento, juntamente com o restante da aplicação. Essas duas 
+técnicas permitem o uso dos recursos em todos os dispositivos que a aplicação for instalada, 
+independente da versão da API, e são utilizadas para uso de recursos em granularidade grossa,
+a partir de classes. Para os casos de granularidade fina, chamadas a métodos de classes 
+pré-existentes, e quando o recurso pode deixar de ser utilizado em dispositivos com versões 
+antigas da API sem prejuízos para o funcionamento da aplicação são feitos acessos diretos a 
+nova API.
+
+No nosso estudo analisamos 25 aplicações para quantificar o uso desses mecanismos.
+Pacote de compatibilidade é utilizado por 92\% (23) das aplicações, re-implementação
+de recurso por 56\% (14) e 88\% (22) fazem uso explícito da nova API. 88\% (22) das
+aplicações utilizam mais de um mecanismo simultaneamente. 
+
+Nas 22 aplicações que fizeram uso explícito da nova API, totalizaram 1556 ocorrências
+de NewApi. Desse total, 40,6\% (632 ocorrências) foi tratado com EC indireta; 22,8\%
+(355) com algum padrão de projeto; 18,9\% (294) através de EC direta; 10,7\% (166)
+utilizando suporte implícito da plataforma; 5,3\% (82) das ocorrências não foram devidamente 
+tratadas; 1,2\% (19) das ocorrências estão dentro de métodos que nunca serão executados;
+e por fim, duas pequenas frações de 0,3\% (5) das ocorrências foi utilizada tratamento
+de exceção ou são falsos positivos. Os padrões de projeto utilizados para tratar as 355
+ocorrências foram \textit{Strategy}, com 77,7\% (276) desse total, \textit{Proxy}, 
+com 19,4\% (69), \textit{Template Method}, com 2,3\% (8), e \textit{Null Object},
+com 0,6\% (2) das ocorrências. 
+
+Também identificamos quais os elementos mais comuns lançados em versões superiores
+à versão das aplicações mas que são utilizados por elas. Os elementos mais comuns
+estão relacionados à classe \texttt{Fragment}, que surgiu no Android 3.0 API Level
+11, quando a plataforma foi otimizada para dispositivos de telas grandes, como os
+\textit{tablets}. Essa classe foi referenciada por 68\% (17) das aplicações, sendo
+15 por pacote de compatibilidade e 2 por execução condicional.
+
+Se por um lado detectamos que, no geral, as aplicações poderiam aumentar o seu mercado
+em potencial com adaptações de, em média, 15 novas ocorrências de NewApi,  por outro
+lado, identificamos que os desenvolvedores têm se preocupado em evitar código-morto
+em função da API da plataforma. Na análise de 7 aplicações, 4 delas contém código-morto.
+No entanto, em termos de linha de código, não passa de 0,1\% das linhas de código Java.
+
+\section{Limitações do Trabalho}\label{sec:limitacoes}
+
+Os resultados deste estudo forneceram evidências importantes para discutir e responder
+às questões de pesquisa desta dissertação. Contudo, existem limitações na pesquisa
+realizada que precisam ser destacadas para serem exploradas em trabalhos futuros.
+São elas:
+
+\begin{itemize}
+	\item Foi realizada uma revisão do estado da arte para investigar a existência de
+		outros trabalhos que lidem com suporte a múltiplas versões de APIs, seja restrita
+		a Android ou não, mas é importante a condução de uma revisão sistemática da
+		literatura que busque ampliar o escopo dos trabalhos identificados nesta dissertação;
+	\item A análise foi feita de forma semi-automática. Em especial, a categorização
+		das formas de implementação do acesso explícito às novas APIs foi manual, o que
+		pode trazer inconsistências nos resultados;
+	\item A quantificação dos elementos mais comuns foi feita baseada na importação dos
+		pacotes ou a partir dos resultados do Android Lint. Assim, não foi considerado
+		heranças em classes bases que seriam estendidas por outra ou encapsulamentos de
+		chamadas em classes das aplicações, o que reduz o número de referência diretas aos 
+		elementos.  Portanto, os elementos podem ser mais utilizados do que os resultados 
+		apresentados neste trabalho;
+	\item Analisamos apenas 41 aplicações únicas. O que é um número muito baixo em relação
+		ao universo de aplicações Android existentes.
+\end{itemize}
+
+\section{Principais Contribuições}\label{sec:contribuicoes}
+
+A seguir destacamos as principais contribuições desta dissertação:
+\begin{itemize}
+	\item Levantamento e identificação de técnicas para suporte a múltiplas versões
+		da API Android;
+	\item Condução de um estudo empírico para analisar como as aplicações atuais
+		adotam e implementam tais técnicas;
+	\item Identificação de quais elementos de novas API são mais utilizados por
+		aplicações que também oferecem suporte para os aparelhos com versões antigas
+		da API;
+	\item Identificação das situações mais comuns em que as técnicas de suporte
+		foram utilizadas;
+	\item Embora inicialmente citada por McDonnell et al. \cite{McDonnell2013},
+		a taxonomia da API apresentava algumas inconsistências em sua definição.
+		Neste trabalho, consolidamos tais conceitos, que podem vir a ser utilizados
+		por trabalhos futuros.
+\end{itemize}
+
+\section{Trabalhos Futuros}\label{sec:trabalhos_futuros}
+
+Como trabalhos futuros, planejamos estender os resultados desta pesquisa
+de modo a lidar com limitações existentes no trabalho, assim como ampliar 
+nossas contribuições. Os seguintes trabalhos de pesquisa podem ser desenvolvidos
+como desdobramento desta dissertação:
+
+\begin{itemize}
+	\item Realizar uma revisão sistemática da literatura para ampliar nosso
+		escopo de trabalho sobre suporte a múltiplas versões de API, restritos
+		ou não ao Android. Com isso, podemos realizar análises comparativas com
+		outros trabalhos e também refinar nossa metodologia de análise;
+	\item Ampliar a automação do processo de análise das aplicações. Com isso,
+		poderemos analisar mais aplicações de uma forma mais precisa;
+	\item Ampliar o número de aplicações analisadas. Tal trabalho pode ser facilitado
+		pela automação do processo, além disso, daremos mais confiabilidade para os
+		dados obtidos;
+	\item Análise do histórico do repositório de código-fonte das aplicações para
+		responder a outras questões, como "quando os padrões de projetos foram
+		implementados? O uso explícito às novas APIs foram protegidos sempre com
+		padrões de projeto ou inicialmente foi utilizada execução condicional simples?"; 
+	\item Estudo qualitativo com desenvolvedores de aplicações Android com o objetivo
+		de responder, entre outras questões, os motivos pelos quais escolheram uma ou
+		outra técnica.
+	\item Análise comparativa entre FicFinder e Android Lint (regra NewApi) e,
+		possivelmente, outros analisadores sintáticos.
+\end{itemize}

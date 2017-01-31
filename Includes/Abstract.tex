@@ -19,6 +19,33 @@
 	\Large{\textsc{\textbf{Abstract}}}
 \end{center}
 
-\noindent TODO...
+\noindent Android platform is currently the most popular platform for the development
+of mobile applications, representing more than 80\% of the operating systems market
+for mobile devices. This causes demands for application customizations to handle
+different devices such as screen size, processing power and available memory, languages
+​​and specific user needs. Twenty-three new versions of Android platform have been
+released since its first release. In order to enable the successful execution of
+applications on different devices, it is essential to support multiple versions of
+the Application Programming Interface (API). This dissertation aims mainly to analyze,
+characterize and compare techniques used by Android applications to support multiple
+versions of the API. In particular, the work seeks: (i) to identify the used techniques
+to support multiple versions of the Android API in the literature; (ii) to analyze real
+applications to quantify the use of these indicated techniques; and (iii) to compare the characteristics and consequences of using such techniques. An empirical study, in which
+25 popular Android apps were analyzed, was conducted to achieve this goal. The results
+of the study show that there are three techniques to support multiple versions of the
+API: i) compatibility package, API gross granularity variabilities involving a set of
+classes; ii) re-implementation of resource, for specific situations and gross granularity
+at class level or when resource is not available in compatibility package; and iii)
+explicit use of the new API, fine granularity variabilities of the API that involves
+calling of specific methods. Through the analysis of 25 applications, we have identified
+that compatibility package was used by 23 applications, re-implementation of resource was
+used by 14 applications and the explicit use of the new API was used by 22 applications.
+The API fragments contains the most common elements among those released in higher versions
+of the platform that are used by applications during their evolution, and it is referenced
+by 68\% of them. In general, applications could increase their potential market with adaptations
+of, on average, 15 code snippets. On the other hand, application developers have been worried
+about how avoiding dead code based on platform API. In the analysis of 7 applications, 4 of
+them contained dead code, but it did not represent more than 0.1\% of total code.
 
-\noindent\textit{Keywords}: 
+\noindent\textit{Keywords}:  Variability management, implementation of variabilities,
+Android applications, mobile computing platform, empirical studies, multi-version API support.
