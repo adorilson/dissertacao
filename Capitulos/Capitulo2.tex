@@ -367,19 +367,26 @@ e valores possíveis estão apresentados na Tabela \ref{tab:framework}.
 
 \begin{table}[h]
   \caption{Framework para comparação de técnicas de implementação de variabilidades}
+  \centering
   \begin{tabular}{ | l | l |}
     \hline
     \textbf{Critério de avaliação} & \textbf{Valores possíveis}  \\ \hline
-    Tipo de variabilidade & Positivo, negativo ou ambos  \\ \hline
-    Variabilidade na estrutura & Oferece suporte ou não oferece suporte \\ \hline
+    Tipo de variabilidade 		   & Positivo, negativo ou ambos  \\ \hline
+    Variabilidade na estrutura     & Oferece suporte ou não oferece suporte \\ \hline
     Variabilidade no comportamento & Oferece suporte ou não oferece suporte \\ \hline
-    Granularidade & Fina ou grossa \\ \hline
-    Tempo de ligação & Pré-processamento, compilação, implantação, execução \\ \hline
+    Granularidade                  & Fina ou grossa \\ \hline
+    Tempo de ligação 			   & \begin{tabular}[c]{@{}l@{}}
+						     			Pré-processamento, compilação,\\ 
+						     			implantação, execução
+						             \end{tabular} \\ \hline
     Reusabilidade & Alta, média, ou baixa \\ \hline
     Legibilidade & Alta, média, ou baixa \\ \hline
     Desempenho & Alta, média, ou baixa \\ \hline
     Tamanho da aplicação & Alto impacto ou baixo impacto \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  & Oferece suporte ou não oferece suporte \\ \hline
+    \begin{tabular}[c]{@{}l@{}}
+    	Suporte para implementação\\
+    	modular de requisitos transversais
+    \end{tabular}  & Oferece suporte ou não oferece suporte \\ \hline
   \end{tabular}
   \label{tab:framework}
 \end{table}
@@ -600,7 +607,7 @@ momento da chamada.
 McDonnell et al. \cite{McDonnell2013} definiu algumas palavras chaves para
 categorizar componentes da API. Por exemplo, o termo \texttt{text} engloba todos
 os pacotes relevantes para renderizar ou manipular texto em dispositivos Android:
-\texttt{android.text.format}, \texttt{android.text.method}, \texttt{android.text.style}
+\texttt{android.text.format}, \texttt{android.te- xt.method}, \texttt{android.text.style}
 e \texttt{android.text.util}.
 
 No entanto, identificamos alguns problemas de concordância com essa taxonomia.
@@ -615,7 +622,7 @@ casos como categorias muitos diferentes e por isso ficaram separados.
 Assim, neste trabalho, consolidamos a taxonomia da forma original e sem exceções
 ou casos especiais: \texttt{android.TAXONOMIA.PACOTE}. Os pacotes de compatibilidade
 também seguem esse padrão: \texttt{android.support.TAXONOMIA.PACOTE} ou
-\texttt{android.support.vX.TAXO- NOMIA.PACOTE}, % TODO gambiarra do espaço para 
+\texttt{android.sup- port.vX.TAXONOMIA.PACOTE}, % TODO gambiarra do espaço para 
                                                 % quebra de linha
 onde \texttt{X} é um número que compõe
 o nome do pacote. Além dos elementos específicos da plataforma Android, existem
@@ -625,7 +632,8 @@ segundo nível dos nomes dos pacotes.  A tabela \ref{tab:taxonomia} apresenta os
 termos relevantes para este trabalho, seu significado e a versão da API em que a
 taxonomia surgiu.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
+\small
 \centering
 \caption{Taxonomia dos componentes da API relevantes para este trabalho}
 \label{tab:taxonomia}
@@ -640,48 +648,60 @@ taxonomia surgiu.
 % dados
 animation & Funcionalidades para o sistema de animação de propriedades                  & 11 \\ \hline
 app       & \begin{tabular}[c]{@{}l@{}}
-                Classes de alto nível que encapsulam todo o modelo de aplicações 
-                                                            \\ Android \end{tabular}    & 1  \\ \hline
+                Classes de alto nível que encapsulam todo o modelo de \\ 
+                                                    aplicações Android \end{tabular}    & 1  \\ \hline
 appwidget & Componentes necessários para criação de "app widgets"                       & 3  \\ \hline
 content   & Permite acessar e publicar dados em um dispositivo                          & 1  \\ \hline
-database  & \begin{tabular}[c]{@{}l@{}}Manipulação de dados retornados através de
-                                      um provedor de \\ conteúdo \end{tabular}          & 1  \\ \hline
-graphics  & \begin{tabular}[c]{@{}l@{}}Ferramentas gráficas de baixo nível, como
-                canvas, filtros de cor, \\ pontos e retângulos que permitem desenhar
-                                                        a tela diretamente\end{tabular} & 1 \\ \hline
+database  & \begin{tabular}[c]{@{}l@{}}
+			Manipulação de dados retornados através de um provedor de\\ conteúdo  
+            \end{tabular}          														& 1  \\ \hline
+graphics  & \begin{tabular}[c]{@{}l@{}}
+			Ferramentas gráficas de baixo canvas, filtros de cor,\\
+			pontos e retângulos que permitem desenhar a tela \\
+			diretamente
+			\end{tabular} 																& 1 \\ \hline
 hardware  & Acesso a funções de hardware, como câmera e outros sensores                 & 1 \\ \hline
 media     & Gerência de diversas interface de mídia em áudio e vídeo                    & 1 \\ \hline
 net       & Funcionalidades para acesso a rede                                          & 1 \\ \hline
-nfc       & Funcionalidades para acesso a NFC (Near Field Communication)                & 9 \\ \hline
+nfc       & \begin{tabular}[c]{@{}l@{}}
+			Funcionalidades para acesso a NFC (Near Field\\
+			Communication)                												
+			\end{tabular}																& 9 \\ \hline
 opengl    & Utilitários e interface para OpenGL ES                                      & 1 \\ \hline 
-os        & \begin{tabular}[c]{@{}l@{}}Serviços básicos do sistema operacional,
-                passagem de mensagens, \\ e comunicação inter-processo no
-                                                               dispositivo\end{tabular} & 1 \\ \hline                                                             
+os        & \begin{tabular}[c]{@{}l@{}}
+			Serviços básicos do sistema operacional, passagem de\\
+			 mensagens, e comunicação inter-processo no dispositivo
+			\end{tabular} 																& 1 \\ \hline
 preference & Gerência de preferências da aplicação                                      & 1 \\ \hline
 print      & Funcionalidades para impressão                                             & 19 \\ \hline
 provider   & Acesso aos provedores de conteúdo fornecidos pela plataforma               & 1 \\ \hline
 service    & Serviços diversos, sem nenhuma relação entre eles.                         &   \\ \hline
 speech     & Funcionalidade de reconhecimento de voz                                    & 3 \\ \hline
 telephony  & \begin{tabular}[c]{@{}l@{}}
-                Monitoramento de informações básica do telefone, como tipo de 
-                \\ rede e estado da conexão, além de utilitários para manipulação 
-                \\ do número do telefone   \end{tabular}                                & 1 \\ \hline
+             Monitoramento de informações básica do telefone, como tipo\\
+             de rede e estado da conexão, além de utilitários para \\
+             manipulação do número do telefone   
+             \end{tabular}                                								& 1 \\ \hline
 text       & Renderização e manipulação de textos na tela                               & 1 \\ \hline
 transition & \begin{tabular}[c]{@{}l@{}}
-                Permite funcionalidade de "cenas e transições" para hierarquias 
-                    \\ de view \end{tabular}                                           & 19 \\ \hline
+             Permite funcionalidade de "cenas e transições" para \\
+             hierarquias de view 
+             \end{tabular}                                           					& 19 \\ \hline
 util       & \begin{tabular}[c]{@{}l@{}}
-                Utilidades diversas, como manipulação de data/hora, codificadores
-                \\ e decodificadores de base64, conversão de string e números,
-                \\ e utilitários para XML \end{tabular}                                & 1 \\ \hline
+             Utilidades diversas, como manipulação de data/hora,\\
+             codificadores e decodificadores de base64, conversão \\
+             de string e números, e utilitários para XML 
+             \end{tabular}                                							   & 1 \\ \hline
 view       & Manipulação básica layout de tela e interação com o usuário               & 1 \\ \hline
 webkit     & Ferramentas para navegação na web                                         & 1 \\ \hline
 widget     & \begin{tabular}[c]{@{}l@{}}
-                Elementos de interface com usuário (maioria visuais) para tela
-                \\ da aplicação           \end{tabular}                                & 1 \\ \hline
+                Elementos de interface com usuário (maioria visuais) \\
+                para tela da aplicação           
+             \end{tabular}                                							   & 1 \\ \hline
 java.io    & \begin{tabular}[c]{@{}l@{}} 
-                Funcionalidades de entrada e saída de fluxo de dados, serialização
-                \\ e sistemas de arquivos \end{tabular}                                & 1 \\ \hline
+             Funcionalidades de entrada e saída de fluxo de dados, \\
+             serialização e sistemas de arquivos 
+             \end{tabular}                                							   & 1 \\ \hline
 java.lang  & Fundamentos para o projeto da linguagem Java                              & 1 \\ \hline 
 java.net   & Funcionalidades para o acesso a rede                                      & 1 \\ \hline 
 java.util  & Utilitários diversos e variados                                           & 1 \\ \hline 

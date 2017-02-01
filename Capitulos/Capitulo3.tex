@@ -4,7 +4,7 @@
 
 Este capítulo apresenta o estudo realizado para análise do suporte de aplicações
 existentes à múltiplas versões da API da plataforma Android. Foram analisados o
-código-fonte de 41 aplicações únicas com o objetivo de identificar e caracterizar
+códi- go-fonte de 41 aplicações únicas com o objetivo de identificar e caracterizar
 as técnicas de implementação de variabilidades.
 
 O restante do capítulo está organizado da seguinte maneira: 
@@ -90,7 +90,7 @@ antigas também utiliza recursos das versões mais recentes da API quando dispon
 aplicações foram utilizadas para responder às questões QP1 e QP2 e são listadas na tabela
 \ref{tab:grupo1}. São 25 aplicações nesse grupo.
 
-\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+\begin{table}[!htb] % TODO posicionar melhor essa tabela
   \centering
   \caption{Aplicações usando API da plataforma com grande variação de versões}
   \begin{tabular}{| l | l | r | r | r | r |}
@@ -160,6 +160,7 @@ possivelmente, a leva a perder uma fatia do mercado de aplicações. Tais aplica
 para responder à questão QP3 e estão listadas na tabela \ref{tab:grupo2}. São 10 aplicações nesse grupo.
 
 \begin{table}[!htbp]
+  \small	
   \centering
   \caption{Aplicações usando apenas API's mais recentes}
   \begin{tabular}{| l | l | r | r | r | r |}
@@ -207,6 +208,7 @@ utilizadas para responder à questão QP4 e estão listadas na tabela \ref{tab:g
 São 7 aplicações nesse grupo.
 
 \begin{table}[!htbp]
+  \small
   \centering
   \caption{Aplicações usando API's recentes com histórico de uso de API's antigas}
   \begin{tabular}{| l | l | r | r | r | r |}
@@ -255,7 +257,7 @@ seguintes:
 
 \begin{enumerate}
 	\item Remoção das anotações \texttt{@TargetAPI}, \texttt{@SuppressWarnings},
-	 	\texttt{@SuppressLint} do código-fonte da aplicação. Essas remoções foram
+	 	\texttt{@SuppressLint} do có- digo-fonte da aplicação. Essas remoções foram
 	 	 necessárias porque tais anotações servem para silenciar o Lint, omitindo 
 	 	 ocorrências do relatório; 
 	\item Execução do Android Lint na aplicação;
@@ -281,7 +283,7 @@ seguintes:
 
 \begin{enumerate}
 	\item Remoção das anotações \texttt{@TargetAPI}, \texttt{@SuppressWarnings},
-		 	\texttt{@SuppressLint} do código-fonte da aplicação. Essas remoções foram
+		 	\texttt{@SuppressLint} do có- digo-fonte da aplicação. Essas remoções foram
 		 	 necessárias porque tais anotações servem para silenciar o Lint, omitindo 
 		 	 ocorrências do relatório; 
 	\item Execução do Android Lint na aplicação;
@@ -593,7 +595,7 @@ apresenta as 10 classes da taxonomia \textit{widget} mais utilizadas.
 
 \subsubsection{Re-implementação de Recursos}
 
-Re-implementação de um recurso existente na API padrão pode ser uma re-implementação
+Re-implementação de um recurso existente na API padrão pode ser uma re-imple- mentação
 completamente própria, quando não existe cópia de código de outros projetos, ou pode
 ser através da cópia do código-fonte do recurso na API padrão. Para este trabalho,
 consideramos apenas a re-implementação através de cópia do código-fonte da API padrão.
@@ -670,7 +672,7 @@ taxonomia, temos a quantidade total de ocorrências de NewApi, o número de
 ocorrências únicas, a quantidade de aplicações em que as ocorrências apareceram
 e a média de ocorrências por aplicação.
 
-\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+\begin{table}[!htb]
   \centering
   \caption{Ocorrências de NewApi por taxonomia}
   \begin{tabular}{| l | r | r | r | r |}
@@ -738,16 +740,16 @@ com recursos de reprodução de multimídia (imagem, som e vídeo) embutido.
 A tabela \ref{tab:newapi_app} apresenta os elementos da taxonomia app com maior
 números de ocorrência de NewApi agrupados pelo elemento de maior granularidade
 que surgiu na versão da API indicada por NewApi. Assim, todas as classes do pacote
-\texttt{android.app.backup} foram agrupadas pelo pacote porque o próprio pacote
+\texttt{android.app. backup} foram agrupadas pelo pacote porque o próprio pacote
 surgiu apenas na versão 5. A classe \texttt{android.app.Fragment} surgiu na versão
 11, então agrupamos aqui todos os seus métodos. Já a classe \texttt{android.app.Activity}
 existe desde a versão 1 e foram diversos métodos novos apontados por NewApi. Na
 classe \texttt{android.app.Notification}, que existe desde a versão 1, apenas o
 método \texttt{bigContentView} é apontado por NewApi.
 
-\begin{table}[!htbp] % TODO posicionar melhor essa tabela
+\begin{table}[!htbp]
   \centering
-  \caption{Elementos da taxonomia app com ocorrências de NewApi}
+  \caption{Elementos da taxonomia \textit{app} com ocorrências de NewApi}
   \begin{tabular}{| l | r | r |}
   	\hline
   	% rótulo das colunas
@@ -794,14 +796,15 @@ com mais ocorrência de NewApi. Além desses, outros 20 elementos apresentam no 
 6 ocorrências.
 
 \begin{table}[!htbp] % TODO posicionar melhor essa tabela
+  \small
   \centering
-  \caption{10 elementos da taxonomia view com mais ocorrências de NewApi}
+  \caption{10 elementos da taxonomia \textit{view} com mais ocorrências de NewApi}
   \begin{tabular}{| l | r | r |}
   	\hline
   	% rótulo das colunas
   	\multicolumn{1}{|c|}{\textbf{Descrição}} &
   	\begin{tabular}[c]{@{}c@{}}
-  	 		\textbf{Ocorrências de}\\ \textbf{NewApi}
+  	 		\textbf{Ocorrências}\\ \textbf{de NewApi}
   	\end{tabular} &
  	\textbf{Aplicações} \\ \hline
  	%dados
@@ -857,7 +860,7 @@ necessário para aumentar a compatibilidade.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[!htbp]
-\fontsize{9}{11}
+\small
 \centering
 \caption{Esforço quantitativo para aumentar compatibilidade com mais versões da API}
 \label{tab:esforco}
@@ -967,13 +970,13 @@ valores absolutos e percentuais.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[!htbp]
-\fontsize{9}{11}
+\caption{Ocorrência de código morto por aplicação}
+\footnotesize
 \centering
-\caption{ocorrência de código morto por aplicação}
 \label{tab:codigo_morto}
 \begin{tabular}{lrrrrrrr|r|r|r|}
 \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                           & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Métricas\\ COM CM\end{tabular}}}                               & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Ocorrências\\ de CM\end{tabular}}}                            & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Métricas\\ SEM CM\end{tabular}}}                               & \multicolumn{2}{c|}{\textbf{Diferenças}}                                                                                & \multicolumn{2}{c|}{\textbf{Percentuais}}                                                                                \\ \cline{2-11} 
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                           & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Métricas\\ COM CM\end{tabular}}}                               & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Ocorrências\\ de CM\end{tabular}}}                            & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Métricas\\ SEM CM\end{tabular}}}                               & \multicolumn{2}{c|}{\textbf{Diferenças}}                                                                                & \multicolumn{2}{c|}{\textbf{Percentuais}}                                                                                \\ \cline{2-11}
 \multicolumn{1}{|c|}{}                                                              & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}} & \multicolumn{1}{c|}{\textbf{\#}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}}   & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Arqui\\ vos\end{tabular}}} & \multicolumn{1}{c|}{\textbf{LoC}}    \\ \hline
 \multicolumn{1}{|l|}{RingDroid}                                                     & \multicolumn{1}{r|}{12}                                                           & \multicolumn{1}{r|}{4189}         & \multicolumn{1}{r|}{}            & \multicolumn{1}{r|}{}                                                             & \multicolumn{1}{r|}{\textbf{}}                                                    & \multicolumn{1}{r|}{\textbf{}}    & \textbf{}                                                                         & \textbf{}                           & \textbf{}                                                                         & \textbf{}                            \\ \hline
 \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Orbot Proxy\\ com Tor\end{tabular}} & \multicolumn{1}{r|}{86}                                                           & \multicolumn{1}{r|}{11147}        & \multicolumn{1}{r|}{3}           & \multicolumn{1}{r|}{3}                                                            & \multicolumn{1}{r|}{86}                                                           & \multicolumn{1}{r|}{11132}        & 0                                                                                 & 15                                  & 0,00\%                                                                            & 0,13\%                               \\ \hline
@@ -1004,7 +1007,7 @@ seção \ref{sec:framework}.
 
 \begin{table}[!htbp]
   \centering	
-  \caption{Descrição do pacote de compatibilidade  segundo o framework de comparação}
+  \caption{Descrição do pacote de compatibilidade segundo o framework de comparação}
   \label{tab:fw_pacote}
   \begin{tabular}{ | l | l |}
     \hline
@@ -1169,26 +1172,29 @@ projeto segundo o framework de comparação.
   \label{tab:fw_padroes}
   \begin{tabular}{ | l | l |}
     \hline
-    \textbf{Critério de avaliação} 	& \textbf{Valores obtido}  \\ \hline
-    Tipo de variabilidade 			& Ambos(Strategy, Null Object, Proxy)  \\ \hline
-    Variabilidade na estrutura 		& Não oferece suporte \\ \hline
-    Variabilidade no comportamento 	& Oferece suportada (Strategy, Null Object, Proxy) \\ \hline
-    Granularidade 					& Grossa (Strategy, Proxy), Fina (Null Object) \\ \hline
+    \textbf{Critério de avaliação} 	& \textbf{Valores obtido}  				\\ \hline
+    Tipo de variabilidade 			& Ambos(Strategy, Null Object, Proxy)   \\ \hline
+    Variabilidade na estrutura 		& Não oferece suporte 					\\ \hline
+    Variabilidade no comportamento 	& \begin{tabular}[c]{@{}l@{}}
+            						  Oferece suportada (Strategy, Null Object,\\
+            						  Proxy)
+            						  \end{tabular}									 \\ \hline
+    Granularidade 					& Grossa (Strategy, Proxy), Fina (Null Object)   \\ \hline
     Tempo de ligação 				& \begin{tabular}[c]{@{}l@{}}
         								Execução (Strategy, Null Object),\\
         								Compilação (Proxy)
-        							\end{tabular}								 \\ \hline
-    Reusabilidade 					& Alta (Strategy, Null Object) \\ \hline
+        							\end{tabular}								 	\\ \hline
+    Reusabilidade 					& Alta (Strategy, Null Object) 					\\ \hline
     Legibilidade 					&  \begin{tabular}[c]{@{}l@{}}
-    										Baixo impacto (Strategy), Médio impacto (Proxy),\\
-    										Alto impacto (Null Object)
+    										Baixo impacto (Strategy), Médio impacto\\
+    										(Proxy), Alto impacto (Null Object)
     									\end{tabular}								 \\ \hline
     Desempenho 						& \begin{tabular}[c]{@{}l@{}}
-        										Baixo impacto (Decorator, Strategy, Null Object),\\
-        										Médio Impacto (Proxy)
-        									\end{tabular}								 \\ \hline
-    Tamanho da aplicação 			& Médio impacto (Strategy, Null Object, Proxy) \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte \\ \hline
+        								Baixo impacto (Decorator, Strategy, Null \\
+        								Object), Médio Impacto (Proxy)
+        							  \end{tabular}								 	\\ \hline
+    Tamanho da aplicação 			& Médio impacto (Strategy, Null Object, Proxy)  \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte 							\\ \hline
   \end{tabular}
 \end{table}
 
@@ -1277,7 +1283,7 @@ a partir da técnica usada para facilitar portabilidade para novas plataformas: 
 de compatibilidade, re-implementação de recursos e uso explícito da nova API.
 
 Unificando os três resultados,  os elementos mais utilizados são do pacote
-\texttt{android.animation} e classes relacionadas a API de fragmentos, ambas
+\texttt{android. animation} e classes relacionadas a API de fragmentos, ambas
 da versão 11 da API. Isso comprova a importância dessa versão da API para a
 plataforma. 
 
@@ -1289,7 +1295,7 @@ o que é muito útil considerando a diversidade de aparelhos que oferecem suport
 Android, motivo pelo qual acreditamos este ser um dos elementos mais utilizados. 
 
 A forma inicial de uso do pacote \texttt{android.animation} foi através de
-re-implementaçãode recurso, fornecida pelo projeto NineOldAndroids\footnote{http://nineoldandroids.com/},
+re-implementa- ção de recurso, fornecida pelo projeto NineOldAndroids\footnote{http://nineoldandroids.com/},
 ou execução condicional. Já a API de fragmentos por pacote de compatibilidade.
 Essa distinção se dá pelo fato de que a API de fragmentos fornece classes bases,
 em particular \texttt{Fragment}, que deverão ser utilizadas por herança, o que não
