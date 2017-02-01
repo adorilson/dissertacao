@@ -197,5 +197,6 @@ TSWLatexianTemp*
 # General files
 *~
 .DS_Store
+*.ini
 
 README.html
