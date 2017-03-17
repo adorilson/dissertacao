@@ -258,7 +258,7 @@ seguintes:
 	 	 necessárias porque tais anotações servem para silenciar o Lint, omitindo 
 	 	 ocorrências do relatório; 
 	\item Execução do Android Lint na aplicação;
-	\item Para cada ocorrência de NewAPI, o contexto era analisado de forma manual
+	\item Para cada ocorrência de NewApi, o contexto era analisado de forma manual
 		para determinar se:
 		\begin{itemize}
 			\item Trata-se da implementação do padrão Execução Condicional
@@ -267,7 +267,7 @@ seguintes:
 			\item Ou algum outro mecanismo que evitasse a chamada em uma versão
 			da API cujo recurso está ausente;
 		\end{itemize}
-	\item Para cada ocorrência de NewAPI, de forma semiautomática, o elemento da API
+	\item Para cada ocorrência de NewApi, de forma semiautomática, o elemento da API
 		era classificado de acordo com a taxonomia apresentada na seção \ref{sec:taxonomia};
 	\item Nos aplicativos que utilizam pacote de compatibilidade, os elementos foram
 		 classificados na taxonomia com uma busca pelos \texttt{import}'s  presentes
@@ -296,7 +296,7 @@ seguintes:
 	\item Nova execução do Android Lint na aplicação;
 		\begin{itemize}
 			\item Esse resultado era comparado com o obtido em 2;
-			\item Se a quantidade de NewAPI fosse a mesma, voltávamos para 3, se não
+			\item Se a quantidade de NewApi fosse a mesma, voltávamos para 3, se não
 			o resultado é analisado em maiores detalhes, como a taxonomia, a dependência
 			do recurso pela aplicação e como a ocorrência poderia ser tratada.
 		\end{itemize}
@@ -399,8 +399,8 @@ indicada pelo Lint.
 \end{figure}
 
 A figura \ref{fig:percentuais_forma_tratamento} apresenta os percentuais das
-formas de tratamento para as ocorrências de NewAPI. Foram analisadas um total
-de 1556 ocorrências de NewAPI. Desse total, 40,6\% foi tratado com EC indireta,
+formas de tratamento para as ocorrências de NewApi. Foram analisadas um total
+de 1556 ocorrências de NewApi. Desse total, 40,6\% foi tratado com EC indireta,
 22,8\% com algum padrão de projeto, 18,9\% através de EC direta, 10,7\% utilizando
 suporte implícito da plataforma, 5,3\% das ocorrências não foram devidamente tratadas.
 Esses dois últimos casos são situações críticas, merecedoras de uma maior atenção.
@@ -408,14 +408,14 @@ A primeira por depender de um conhecimento mais específico da API, para identif
 que a chamada não será executada em versões antigas. A última por ser fonte de bugs
 nas aplicações. Continuando a análise, 1,2\% das ocorrências estão dentro de métodos
 que nunca serão executados e, por fim, duas pequenas frações de 0,3\% das ocorrências
-foi utilizada tratamento de exceção ou são falsos positivos. Essas ocorrências de NewAPI 
+foi utilizada tratamento de exceção ou são falsos positivos. Essas ocorrências de NewApi 
 estão distribuídas em 22 aplicações (3 aplicações não apresentaram ocorrências de alguma 
-NewAPI).
+NewApi).
 
 \begin{figure}[htb]
 	\centering 
   	\includegraphics[scale=0.75]{imagens/percentuais_forma_tratamento}
-  	\textsf{\caption{Percentuais de formas de tratamento das ocorrências de NewAPI}
+  	\textsf{\caption{Percentuais de formas de tratamento das ocorrências de NewApi}
   	        \label{fig:percentuais_forma_tratamento}}
 \end{figure}
 
@@ -434,8 +434,8 @@ e \textit{Proxy}.
 \end{figure}
 
 O figura \ref{fig:percentuais_por_padrao} apresenta os percentuais dos padrões de
-projeto utilizados como forma de tratamento para as ocorrências de NewAPI. Do total
-de 1554 ocorrências de NewAPI analisadas, 355 (22,8\%) foram tratadas com algum
+projeto utilizados como forma de tratamento para as ocorrências de NewApi. Do total
+de 1554 ocorrências de NewApi analisadas, 355 (22,8\%) foram tratadas com algum
 padrão de projeto. Sendo o mais comum o padrão \textit{Strategy}, responsável por
 77,7\% (276) desse total. Os padrões \textit{Proxy} e \textit{Template Method}
 foram responsáveis por 19,4\% e 2,3\% dos casos, respectivamente. \textit{Null Object}
@@ -444,7 +444,7 @@ foi utilizado por uma aplicação para tratar 2 (0,6\%) ocorrências.
 \begin{figure}[htb]
 	\centering 
   	\includegraphics[scale=0.75]{imagens/percentuais_por_padrao}
-  	\textsf{\caption{Percentuais de uso de padrões de projeto por ocorrências de NewAPI}
+  	\textsf{\caption{Percentuais de uso de padrões de projeto por ocorrências de NewApi}
   	        \label{fig:percentuais_por_padrao}}
 \end{figure}
 
@@ -863,7 +863,7 @@ necessário para aumentar a compatibilidade.
 \label{tab:esforco}
 \begin{tabular}{|l|r|r|r|r|r|r|}
 \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                & \multicolumn{2}{c|}{\textbf{Situação atual}}                                                                                                                                       & \multicolumn{2}{c|}{\textbf{Situação após edição}}                                                                                                                                 & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Diferenças de\\ ocorrências\\ de NewAPI\end{tabular}}}                                                                          \\ \cline{2-7} 
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Aplicação}}}                & \multicolumn{2}{c|}{\textbf{Situação atual}}                                                                                                                                       & \multicolumn{2}{c|}{\textbf{Situação após edição}}                                                                                                                                 & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Diferenças de\\ ocorrências\\ de NewApi\end{tabular}}}                                                                          \\ \cline{2-7} 
 \multicolumn{1}{|c|}{}                                                   & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}API\\ Mínima\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Ocorrências\\ de NewApi\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}API\\ Mínima\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Ocorrências\\ de NewApi\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Diferen\\ ça total\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Ocorrên\\ cias únicas\end{tabular}}} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Numix Circle\\ icon pack\end{tabular}         & 16                                                                                 & 0                                                                                             & 15                                                                                 & 1                                                                                             & 1                                                                                        & 1                                                                                           \\ \hline
 SnoopSnitch                                                              & 16                                                                                 & 19                                                                                            & 15                                                                                 & 15                                                                                            & 2                                                                                        & 1                                                                                           \\ \hline
@@ -1170,10 +1170,10 @@ projeto segundo o framework de comparação.
   \begin{tabular}{ | l | l |}
     \hline
     \textbf{Critério de avaliação} 	& \textbf{Valores obtido}  				\\ \hline
-    Tipo de variabilidade 			& Ambos(Strategy, Null Object, Proxy)   \\ \hline
+    Tipo de variabilidade 			& Ambos (Strategy, Null Object, Proxy)   \\ \hline
     Variabilidade na estrutura 		& Não oferece suporte 					\\ \hline
     Variabilidade no comportamento 	& \begin{tabular}[c]{@{}l@{}}
-            						  Oferece suportada (Strategy, Null Object,\\
+            						  Oferece suporte (Strategy, Null Object,\\
             						  Proxy)
             						  \end{tabular}									 \\ \hline
     Granularidade 					& Grossa (Strategy, Proxy), Fina (Null Object)   \\ \hline
@@ -1187,8 +1187,8 @@ projeto segundo o framework de comparação.
     										(Proxy), Alto impacto (Null Object)
     									\end{tabular}								 \\ \hline
     Desempenho 						& \begin{tabular}[c]{@{}l@{}}
-        								Baixo impacto (Decorator, Strategy, Null \\
-        								Object), Médio Impacto (Proxy)
+        								Baixo impacto (Strategy, Null \\ Object),
+        								 Médio Impacto (Proxy)
         							  \end{tabular}								 	\\ \hline
     Tamanho da aplicação 			& Médio impacto (Strategy, Null Object, Proxy)  \\ \hline
     \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte 							\\ \hline
@@ -1367,7 +1367,7 @@ ou superior a 9. Esses conjuntos não estão distribuídos de forma uniforme.
 
 \subsection{Ameaças à Validade Externa} \label{subsec:ameacas_externa}
 
-\textbf{Quantidade de aplicação analisadas.} Analisamos no total 41 aplicações únicas,
+\textbf{Quantidade de aplicações analisadas.} Analisamos no total 41 aplicações únicas,
 sendo que foram 25 para a QP1 e QP2, 10 para QP3 e 7 para QP 4. O que representa uma
 quantidade muito pequena dentro do universo de aplicações Android. Pretendemos ampliar
 o estudo com a análise de outras aplicações. 

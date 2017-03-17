@@ -21,7 +21,7 @@ mais novas quando estão disponíveis ou através do pacote de compatibilidade o
 de recurso.
 
 Diferentemente deste trabalho, que considerou a API como um todo, alguns trabalhos focaram
-em componentes específicos, como Wei et al.\cite{Wei2016} que abordaram a evolução do sistema
+em componentes específicos, como Wei et al.\cite{Wei2012} que abordaram a evolução do sistema
 de permissões para acessar recursos de \textit{hardware} e \textit{software} da plataforma.
 No início de 2009, a API 3 possuía 103 permissões, enquanto na versão 15 esse número já chegava
 à 165. As aplicações também precisam adaptar-se à essa evolução. 
@@ -40,7 +40,9 @@ Esse problema ocorre quando as aplicações não atualizam sua versão de API al
 mais recente da plataforma. Essa falta de atualização desabilita melhorias da plataforma
 mesmo quando as aplicações são executadas em dispositivos com a versão mais recente da API.
 Um exemplo é a vulnerabilidade que permite injeção de fragmentos. Aplicações maliciosas
-podem enviar mensagens para classes que herdam de \texttt{Preferen ceActivity}, existente
+podem enviar mensagens para classes que herdam de
+\texttt{Preferen ceActivity}, % esse espaço é gambiarra pra quebra de linha
+existente
 desde a primeira versão do Android. As mensagens são interpretadas como instâncias de
 fragmentos e carregadas dinamicamente, executando código arbitrário da aplicação
 mal-intencionada. A API nível 19 adicionou o método \texttt{isValidFragment} para resolver
@@ -59,7 +61,7 @@ dos tipos é não-específico de dispositivos, que pode ser causado devido a evo
 plataforma, impactando no suporte a múltiplas versões da API. Também apresentaram uma ferramenta, 
 FicFinder, para identificar tais problemas nas aplicações. O nosso trabalho utilizou uma ferramenta 
 nativa do ambiente de desenvolvimento oficial, o Android Lint (regra NewApi). Assim como o nosso 
-trabalho, eles também identificaram os usos de novas APIs em métodos executados pela plataforma. Nós 
+trabalho, eles também identificaram os usos de novas API's em métodos executados pela plataforma. Nós 
 chamamos de suporte implícito (Seção \ref{subsec:tecnicas_usadas}), enquanto eles reportaram como 
 falsos positivos. Na verdade, tanto o FicFinder quanto o Android Lint poderiam ter um catálogo desses 
 métodos e não reportarem esses resultados para os desenvolvedores. Além disso, quantificamos as boas 
@@ -99,7 +101,7 @@ da API e uma política conservadora em relação à depreciação, de forma que 
 métodos e classes permanecem nas novas versões mesmo de depois anotados como
 depreciados. Alguns trabalhos buscaram entender a política de depreciação e
 suporte a múltiplas versões em outras plataformas. Espinha et al. \cite{Espinha2014}
-analisaram a política de evolução de quatro APIs web: Google Maps, Twitter, 
+analisaram a política de evolução de quatro API's web: Google Maps, Twitter, 
 Netflix e Facebook. Os três primeiros possuem um sistema de versionamento
 explícito, em que um identificador da versão é incluída na URL de acesso à API
 (ex.: \texttt{domain/<version>/method}), o que permite aos clientes escolherem qual
@@ -128,19 +130,19 @@ múltiplas versões. No modo de versão única, as API's web forçam a migraçã
 clientes para a nova versão da API removendo a versão anterior após um período
 de tempo, que pode ser conhecido, como nos casos da Facebook REST API (90 dias)
 e Google Calendar (6 meses), ou desconhecido, como nos casos da Twitter REST API,
-Github API OpenStreetMap API e Google Maps. O modo de múltiplas mantém as APIs
+Github API OpenStreetMap API e Google Maps. O modo de múltiplas mantém as API's
 antigas por um longo período de tempo. Wordpress REST API, Salesforce API e Stripe
 API essa estratégia. Tal estratégia permite uma maior flexibilidade para os clientes,
-mas exige maior esforço dos fornecedores da API, como resultado nem todas as APIs são
+mas exige maior esforço dos fornecedores da API, como resultado nem todas as API's são
 mantidas. Quando os clientes atrasam muito a atualizando, ficando muito distante da
 versão mais recente, a atualização pode tornar-se difícil. O mesmo pode acontecer
 com aplicações Android. Foram também analisados diferentes abordagens para identificar
 a versão da API: i) identificador numérico: números inteiros contínuos que comunicam
 claramente uma sequência entre as versões; ii) identificador com data: datas também
 pode ser usadas para identificar versões; e iii) identificadores com números de versões
-principal e secundário (ex: 2.3): a maioria das APIs web analisadas utilizam essa
+principal e secundário (ex: 2.3): a maioria das API's web analisadas utilizam essa
 abordagem. Nenhuma dessas abordagem, por si só, garantem compatibilidade entre as versões.
-Inclusive, frequentemente as API’s são atualizadas com quebra de compatibilidade sem receber
+Inclusive, frequentemente as API's são atualizadas com quebra de compatibilidade sem receber
 um novo identificador de versão. A abordagem de identificador número é a adotada pela
 plataforma Android, sendo a compatibilidade garantida por contrato \cite{ApiLevels},
 ou seja, as novas versões são projetadas de forma a manter a compatibilidade com suas
