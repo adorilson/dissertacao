@@ -69,6 +69,51 @@ o estudo foi guiado pelas seguintes questões de pesquisa (QPs):
 		\end{itemize}
 \end{itemize}
 
+\section{Proposições e Hipóteses} \label{sec:hipoteses}
+
+A partir das questões de pesquisas apresentadas anteriormente, algumas proposições
+e hipóteses foram elaboradas para validação de que as respostas à tais questões podem
+de fato serem úteis para acadêmia e indústria de desenvolvimento de aplicações Android.
+A estrutura de proposições e hipóteses baseia-se nas orientações do guia proposto por 
+Runeson et al. \cite{Runeson2012} e seguem listadas abaixo.
+
+\subsection{Relacionada à QP1}
+	\begin{itemize}
+		\item \textbf{Proposição P1}: Se a plataforma oferece suporte para múltiplas versões
+		da API e tal suporte tem impacto no mercado em potencial então os desenvolvedores
+		utilizam tal recurso.
+		\item \textbf{Hipótese H1}: As aplicações utilizam pelo menos uma das técnicas disponíveis
+		para oferecer suporte a múltiplas versões da API.
+	\end{itemize}
+
+\subsection{Relacionada à QP2}
+	\begin{itemize}
+		\item \textbf{Proposição P2}: Se a cada nova versão da plataforma são disponibilizados
+		diversos novos recursos então deve existir um subconjunto que é mais utilizado no 
+		contexto de suporte a múltiplas versões da API.
+		\item \textbf{Hipótese H2}: Existe um subconjunto dos novos recursos da API que é
+		mais utilizado no contexto de suporte a múltiplas versões da API.
+	\end{itemize}
+
+\subsection{Relacionada à QP3}
+	\begin{itemize}
+		\item \textbf{Proposição P3}: Se as aplicações utilizam apenas API's mais recentes,
+		não possuindo um histórico de uso de API's antigas, então elas foram desenvolvidas
+		sem a preocupação de oferecer suporte às versões antigas da API o que, possivelmente,
+		a leva a perder uma fatia do mercado de aplicações.
+		\item \textbf{Hipótese H3}: As aplicações podem aumentar o seu mercado potencial com
+		baixo esforço em termos de desenvolvimento (alterações em seu código-fonte).
+	\end{itemize}
+
+\subsection{Relacionada à QP4}
+	\begin{itemize}
+		\item \textbf{Proposição P4}: Se as aplicações utilizam execução condicional para
+		execução de determinados trechos de códigos e a sua API mínima exigida é superior
+		à necessária para execução do trecho de código, então tal trecho de código é código-morto.   
+		\item \textbf{Hipótese H4}: As aplicações possuem código-morto, que só seriam executados
+		na presença de API's antigas.
+	\end{itemize}
+
 \section{Aplicações Alvo de estudo} \label{sec:aplicacoes-alvo}
 
 As aplicações utilizados no estudo são aplicações \textit{open-source} populares,
@@ -85,9 +130,8 @@ a seguir.
 
 \subsection{Grupo 1 - Aplicações usando API da plataforma com grande variação de versões}
 Aplicações do grupo 1 possuem uma diferença de pelo menos 7 versões entre a API mínima e
-a API alvo. A nossa hipótese é que além da aplicação oferecer suporte para versões de API's
-antigas também utiliza recursos das versões mais recentes da API quando disponíveis. Tais
-aplicações foram utilizadas para responder às questões QP1 e QP2 e são listadas na tabela
+a API alvo. Tais aplicações foram utilizadas para responder às questões QP1 e QP2 e são
+listadas na tabela
 \ref{tab:grupo1}. São 25 aplicações nesse grupo.
 
 \begin{table}[!htb] % TODO posicionar melhor essa tabela
@@ -154,10 +198,9 @@ Aplicações do grupo 2 possuem um alto valor de API mínima mas não tem um his
 como alta. Versões inferiores a esta representam 3.4\% do mercado mundial, conforme pode ser visto
 na figura \ref{fig:platform_versions}. E para caracterizar ausência de um histórico de suporte
 às versões anteriores,
-consideramos aquelas cuja API mínima inicial seja igual ou superior a 11. A nossa hipótese é que
-a aplicação foi criada sem a preocupação de oferecer suporte às versões antigas da API o que,
-possivelmente, a leva a perder uma fatia do mercado de aplicações. Tais aplicações foram utilizadas
-para responder à questão QP3 e estão listadas na tabela \ref{tab:grupo2}. São 10 aplicações nesse grupo.
+consideramos aquelas cuja API mínima inicial seja igual ou superior a 11. Tais aplicações foram
+utilizadas para responder à questão QP3 e estão listadas na tabela \ref{tab:grupo2}. São 10
+aplicações nesse grupo.
 
 \begin{table}[!htbp]
   \small	
@@ -202,9 +245,8 @@ para responder à questão QP3 e estão listadas na tabela \ref{tab:grupo2}. Sã
 Aplicações do grupo 3 possuem um alto valor de API mínima e também um histórico
 de suporte às versões anteriores. Para esse grupo de aplicações, consideramos
 aquelas cuja versão da API seja igual ou superior a 15 e a API mínima inicia
-menor ou igual a 8. Nossa hipótese é que as aplicações possuem código-morto,
-que só seriam executados na presença de API's antigas. Tais aplicações foram
-utilizadas para responder à questão QP4 e estão listadas na tabela \ref{tab:grupo3}.
+menor ou igual a 8. Tais aplicações foram utilizadas para responder à questão QP4 e
+estão listadas na tabela \ref{tab:grupo3}.
 São 7 aplicações nesse grupo.
 
 \begin{table}[!htbp]
