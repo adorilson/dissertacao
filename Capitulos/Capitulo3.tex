@@ -365,16 +365,6 @@ identificadas 3 estratégias de implementação: (i) pacote de compatibilidade;
 (ii) re-implementação de recurso da API e (iii) uso explícito da nova API.
 Tais mecanismos podem ser utilizados em conjunto.
 
-No nosso estudo, das 25 aplicações analisadas: (i) apenas 2 utilizam uma única
-estratégia, (ii) 9 aplicações utilizam 2 estratégias; e (iii) 13 fazem uso das
-3 estratégias diferentes. Finalmente, apenas a aplicação \textit{Shattered Pixel
-Dungeon}, um jogo de RPG, não utilizou nenhuma dessas soluções. Portanto, é a
-única que exige uma baixa API para instalação (versão 8) sem se preocupar com
-o uso de recursos mais modernos. Seja através de uso explícito da nova API,
-quando estiverem disponíveis, seja adicionando a dependência ao pacote de
-compatibilidade ou da re-implementações de recursos, quando seria possível usar
-mesmo em versões mais antigas da API.
-
 A figura \ref{fig:forma_suporte} apresenta a quantidade total de aplicações de
 cada estratégia. Pacote de compatibilidade foi utilizada por 23 aplicações,
 re-implementação de recurso por 14, e uso explícito da nova API por 22.
@@ -461,7 +451,8 @@ NewApi).
 O figura \ref{fig:padroes_por_aplicacao} apresenta os padrões de projeto utilizados
 por quantidade de aplicações. O padrão \textit{Strategy} é o que mais foi utilizado
 em um total de 12 aplicações. \textit{Template Method} e \textit{Null Object} foram 
-utilizados por uma aplicação cada um. \textit{Proxy} foi utilizado por duas aplicações. Apenas uma aplicação utilizou dois padrões de projetos simultaneamente, \textit{Strategy}
+utilizados por uma aplicação cada um. \textit{Proxy} foi utilizado por duas aplicações
+Apenas uma aplicação utilizou dois padrões de projetos simultaneamente, \textit{Strategy}
 e \textit{Proxy}. 
 
 \begin{figure}[htb]
@@ -700,7 +691,8 @@ licença permitir cópia, alteração e redistribuição do código-fonte.
 
 Para determinar o subconjunto das novas funcionalidades da API que são utilizadas
 pelas aplicações com suporte a versões antigas da API através de uso explícito da
-nova API, processamos os resultados da saída do Lint NewApi. Os resultados foram contabilizados em função da taxonomia da API. E então, para as taxonomias mais
+nova API, processamos os resultados da saída do Lint NewApi. Os resultados foram
+contabilizados em função da taxonomia da API. E então, para as taxonomias mais
 comuns, apresentamos as classes mais recorrentes.
 
 A tabela \ref{tab:elementos_nova_api} apresenta os valores obtidos. Para cada
@@ -922,7 +914,12 @@ poderia ser tratada e qual o impacto para a aplicação. Das 10 aplicações ana
 de pacote de compatibilidade e/ou execução condicional, sem perda de funcionalidade.
 Quatro dessas aplicações, poderiam passar a exigir API 15, no lugar da atual 16. Mas
 uma delas, Yaaic, poderia substituir a API 21 pela API 15, com apenas 1 ocorrência de
-NewApi a mais. Tal ocorrência existe devido ao uso do tema Material\cite{Material}, que pode ser tratado através do mecanismos de recursos da plataforma, bastando definir estilos gerais, para versões inferiores a 21, e um estilo específico (style-v21) para versão 21 ou superior. Nesta aplicação, também é possível ir além, e prover compatibilidade com a versão 10 da API. Em que 8 novas ocorrências de NewApi surgiriam, mas poderiam ser resolvidas com pacote de compatibilidade.
+NewApi a mais. Tal ocorrência existe devido ao uso do tema Material\cite{Material},
+que pode ser tratado através do mecanismos de recursos da plataforma, bastando definir
+estilos gerais, para versões inferiores a 21, e um estilo específico (style-v21) para
+versão 21 ou superior. Nesta aplicação, também é possível ir além, e prover
+compatibilidade com a versão 10 da API. Em que 8 novas ocorrências de NewApi surgiriam,
+mas poderiam ser resolvidas com pacote de compatibilidade.
 
 Outras 2 aplicações - Indic Keyboard e AcDisplay - precisam tratar, respectivamente,
 9 e 26 novas ocorrências de NewApi para alterar a API de 16 para 15. A primeira teria
@@ -965,7 +962,8 @@ versões da API.
 % \usepackage{multirow}
 \begin{table}[!htbp]
 \centering
-\caption{Nível de dificuldade para aumentar a compatibilidade e possíveis soluções para as novas ocorrências de NewApi}
+\caption{Nível de dificuldade para aumentar a compatibilidade e possíveis soluções
+para as novas ocorrências de NewApi}
 \label{tab:esforco_resumo}
 \begin{tabular}{|l|c|l|l|l|}
 \hline
@@ -1032,7 +1030,32 @@ tabela \ref{tab:codigo_morto}.
 
 \section{Discussão} \label{sec:discussao}
 
-\subsection{Técnicas de Implementação de Variabilidades na API} \label{subsec:tecnicas}
+Os dados coletados no estudo de caso e as análises realizadas nas seções anteriores
+são fonte de evidências para a constatação das hipóteses. Cada questão de pesquisa
+será abordada separadamente a seguir, juntamente com sua hipótese relacionada.
+
+\subsection{Quais são as técnicas que aplicações atuais usam para manter compatibilidades
+com as diversas versões da API do Android?} \label{subsec:tecnicas}
+
+\begin{itemize}
+	\item \textbf{Proposição P1}: Se a plataforma oferece suporte para múltiplas versões
+	da API e tal suporte tem impacto no mercado em potencial então os desenvolvedores
+	utilizam tal recurso.
+	\item \textbf{Hipótese H1}: As aplicações utilizam pelo menos uma das técnicas disponíveis
+	para oferecer suporte a múltiplas versões da API.
+\end{itemize}
+
+No nosso estudo, das 25 aplicações analisadas: (i) apenas 2 utilizam uma única
+estratégia, (ii) 9 aplicações utilizam 2 estratégias; e (iii) 13 fazem uso das
+3 estratégias diferentes. Finalmente, apenas a aplicação \textit{Shattered Pixel
+Dungeon}, um jogo de RPG, não utilizou nenhuma dessas soluções. Portanto, é a
+única que exige uma baixa API para instalação (versão 8) sem se preocupar com
+o uso de recursos mais modernos. Seja através de uso explícito da nova API,
+quando estiverem disponíveis, seja adicionando a dependência ao pacote de
+compatibilidade ou da re-implementações de recursos, quando seria possível usar
+mesmo em versões mais antigas da API. Portanto, tais resultado oferecem elementos
+para validar a hipótese \textbf{H1}. A seguir, discutiremos características de cada
+uma dessas formas de implementação de suporte a múltiplas versões da API.
 
 \subsubsection{Pacote de compatibilidade}
 O uso do pacote de compatibilidade oficial foi a forma mais comum para prover
@@ -1069,7 +1092,8 @@ substituição equivale tanto a adicionar quanto a remover métodos e atributos 
 classes, ou sobrescrever os existentes, portanto, essa técnica oferece suporte para
 variabilidade na estrutura e no comportamento. Essa técnica também exerce um baixo
 impacto na legibilidade do código e no desempenho da aplicação. Uma vez que, na maioria
-dos casos, basta alterar a importação das classes, como mostramos  na Seção \ref{subsec:pacote-compatibilidade}. No entanto, pode resultar em um aumento no tamanho
+dos casos, basta alterar a importação das classes, como mostramos  na Seção \ref{subsec:pacote-compatibilidade}.
+No entanto, pode resultar em um aumento no tamanho
 da aplicação, ou no caso particular do Android, um estouro no limite de métodos das
 aplicações \cite{Estouro}, já que o tempo de ligação dessa técnica é durante a compilação
 e mais elementos serão empacotados juntamente com a aplicação. Não oferece suporte para
@@ -1308,10 +1332,20 @@ os pacotes. Por essa razão, os pacotes support-v4 e support-v7 exigem API míni
 9 para versões do pacote iguals ou superiores a 24.2.0}. Este será um pré-requisito a
 ser considerado pelos desenvolvedores no uso dos mecanismos. Neste caso, deverão avaliar
 entre aumentar a versão da aplicação, e deixar de atender uma parcela do mercado, utilizar
-execução condicional, ou re-implementar os recursos. Nessa última opção, possivelmente será necessária também a re-implementação do recurso da API utilizada pelo pacote, o que pode
+execução condicional, ou re-implementar os recursos. Nessa última opção, possivelmente será
+necessária também a re-implementação do recurso da API utilizada pelo pacote, o que pode
 impactar negativamente no esforço necessário.   
 
-\subsection{Mudanças na API com Maior Impacto no Desenvolvimento} \label{subsec:mudancas}
+\subsection{Qual o subconjunto de novas funcionalidades da plataforma que são mais
+utilizados por aplicações compatíveis com versões antigas da API?} \label{subsec:mudancas}
+
+\begin{itemize}
+	\item \textbf{Proposição P2}: Se a cada nova versão da plataforma são disponibilizados
+	diversos novos recursos então deve existir um subconjunto que é mais utilizado no 
+	contexto de suporte a múltiplas versões da API.
+	\item \textbf{Hipótese H2}: Existe um subconjunto dos novos recursos da API que é
+	mais utilizado no contexto de suporte a múltiplas versões da API.
+\end{itemize}
 
 Para determinar o subconjunto de novas funcionalidades da plataforma que são mais
 utilizados por aplicações compatíveis com versões antigas da API fizemos a análise
@@ -1339,8 +1373,19 @@ permite a composição em tempo de execução. Enquanto os elementos de animaç�
 ser instanciados dinamicamente, o que permite utilizar execução condicional.
 Atualmente, os elementos de animação são disponibilizados no pacote de compatibilidade,
 permitindo que a re-implementação de recurso seja substituída por esse mecanismo.
+Tais resultados apresentam evidências suficientes para validarmos a hipótese \textbf{H2}.
 
-\subsection{Esforço para Aumentar a Compatibilidade com Mais Versões da API} \label{subsec:esforco}
+\subsection{Qual o esforço necessário para aumentar a compatibilidade com um maior
+número de API's de versões anteriores da plataforma?} \label{subsec:esforco}
+
+\begin{itemize}
+	\item \textbf{Proposição P3}: Se as aplicações utilizam apenas API's mais recentes,
+	não possuindo um histórico de uso de API's antigas, então elas foram desenvolvidas
+	sem a preocupação de oferecer suporte às versões antigas da API o que, possivelmente,
+	a leva a perder uma fatia do mercado de aplicações.
+	\item \textbf{Hipótese H3}: As aplicações podem aumentar o seu mercado potencial com
+	baixo esforço em termos de desenvolvimento (alterações em seu código-fonte).
+\end{itemize}
 
 A falta de compatibilidade com múltiplas versões da API acarreta uma perda de uma
 parcela do mercado potencial. Para aumentar esse mercado é necessário editar a API
@@ -1354,13 +1399,24 @@ poderia reduzir sua API mínima de 21 para 15 com o ajuste de apenas uma ocorrê
 Indo mais além, poderia reduzir para API 10, com outras 8 ocorrências de NewApi a serem tratadas.
 
 Em termos qualitativos, mesmo nas aplicações mais dependentes de novas API's, o suporte
-poderia ser ampliado usando uma das técnicas discutidas neste trabalho.
+poderia ser ampliado usando uma das técnicas discutidas neste trabalho. Tais resultados
+apresentam evidências suficientes para validarmos a hipótese \textbf{H3}. 
 
-\subsection{Incidência de Código-Morto} \label{subsec:codigo_morto}
+\subsection{Qual a incidência de código morto em função da versão da API do Android?} 
+\label{subsec:codigo_morto}
 
-A nossa hipótese de uma alta incidência de código-morto devido ao suporte a múltiplas
-versão da API não foi confirmada. Embora tenhamos encontrado código-morto em 4 de 7
-aplicações analisadas, a quantidade percentual de linhas de código é muito baixa,
+\begin{itemize}
+	\item \textbf{Proposição P4}: Se as aplicações utilizam execução condicional para
+	execução de determinados trechos de códigos e a sua API mínima exigida é superior
+	à necessária para execução do trecho de código, então tal trecho de código é código-morto.   
+	\item \textbf{Hipótese H4}: As aplicações possuem código-morto, que só seriam executados
+	na presença de API's antigas.
+\end{itemize}
+
+A hipótese de uma alta incidência de código-morto devido ao suporte a
+múltiplas versão da API (\textbf{H4}) não foi confirmada. Embora tenhamos encontrado
+código-morto em 4 de 7 aplicações analisadas, a quantidade percentual de linhas de
+código é muito baixa,
 menos de 0,1\%. Estudos mais detalhados seriam necessários para determinar a causa
 disso. No entanto, acreditamos que o uso de padrões de projeto, que permitem uma melhor
 coesão do código, favoreçam tal cenário, fazendo com o que o desenvolvedor tenha uma melhor
