@@ -30,44 +30,19 @@ o estudo foi guiado pelas seguintes questões de pesquisa (QPs):
 	compatibilidades com as diversas versões da API do Android? O objetivo dessa questão
 	é indicar quais as técnicas vem sendo utilizadas e suas características, auxiliando
 	desenvolvedores a decidirem o que e quando utilizar em suas aplicações.
-		\begin{itemize}
-			\item Essa questão foi respondida analisando no código-fonte das aplicações o
-			uso de técnicas como: (i) pacotes de compatibilidade, (ii) re-implementação de
-			recursos e (iii) acesso explícito às novas API's. Para este último caso,
-			aprofundamos a análise para determinar como as aplicações evitam que chamadas
-			a novas API's sejam feitas de forma indevida, o que causará uma interrupção na
-			execução da aplicação.
-		\end{itemize}
 	\item \textbf{QP2}: Qual o subconjunto de novas funcionalidades da plataforma que são
 	mais utilizadas por aplicações compatíveis com versões antigas da API? Esse levantamento
 	auxilia desenvolvedores de aplicações Android a identificar os elementos que eles, provavelmente,
 	precisarão utilizar em suas aplicações, permitindo a concentração de esforços nesses componentes.
-		\begin{itemize}
-			\item Para responder essa questão, contabilizamos os elementos de API's utilizados
-			pela aplicação e que são superiores a versão mínima especificado pela mesma. Seja
-			através dos pacotes de compatibilidade, da re-implementação de recursos ou do acesso
-			explícito às novas API's. Esse elementos foram agrupados pela taxonomia apresentada
-			na seção \ref{sec:taxonomia}.
-		\end{itemize}
 	\item \textbf{QP3}: Qual o esforço necessário para aumentar a compatibilidade da aplicação 
 	com um maior número de API's de versões anteriores da plataforma? Estabelecer uma versão
 	elevada de API para execução do aplicativo pode significar deixar de atender um grande
 	mercado potencial. Assim, a resposta para essa questão dará aos desenvolvedores um
 	indicativo estimado do trabalho que terão para aumentar seu mercado potencial.
-		\begin{itemize}
-			\item Para responder essa questão, modificamos a versão mínima da API e verificamos quais
-			novas ocorrências de NewApi são apresentadas pelo Android Lint, de forma a entender o
-			esforço em termos de mudanças de código fonte para atender a mesma.
-		\end{itemize}
 	\item \textbf{QP4}: Qual a incidência de código morto em função da versão da API do Android? 
 	A evolução da API mínima exigida pelas aplicações, aqui no sentido de edição da configuração
 	no arquivo de manifesto, associada à execução condicional pode resultar em código-morto.
 	Analisamos as aplicações para determinar se isso tem ocorrido com frequência e em qual volume.
-		\begin{itemize}
-			\item Essa questão foi respondida a partir da edição do código-fonte das aplicações.
-			Localizamos e removemos todo o código relacionado à qualquer API inferior à mínima
-			exigida pela aplicação.
-		\end{itemize}
 \end{itemize}
 
 \section{Proposições e Hipóteses} \label{sec:hipoteses}
