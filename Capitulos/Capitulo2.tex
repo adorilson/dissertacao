@@ -411,6 +411,35 @@ Esse suporte é importante porque muitas variabilidades de LPS podem ser requisi
 transversais, como apontado por diversas pesquisas \cite{Gacek2001} \cite{Batory2004}
 \cite{Liu2006} \cite{Lopez2005} \cite{mezini2004}.
 
+No entanto, para esse trabalho usaremos um subconjunto do framework apresentado na
+tabela \ref{tab:framework}. Tal subconjunto é apresentado na tabela \ref{tab:criterios}.
+Para mensurar o desempenho seriam necessárias análises dinâmicas, porém, o nosso trabalho
+está restrito a análises estáticas. E nenhuma das técnicas analisadas oferece suporte
+para implementação modular de requisitos transversais.
+
+\begin{table}[h]
+  \caption{Critérios de comparação de técnicas de implementação de variabilidades utilizadas
+  neste trabalho}
+  \centering
+  \begin{tabular}{ | l | l |}
+    \hline
+    \textbf{Critério de avaliação} & \textbf{Valores possíveis}  \\ \hline
+    Tipo de variabilidade 		   & Positivo, negativo ou ambos  \\ \hline
+    Variabilidade na estrutura     & Oferece suporte ou não oferece suporte \\ \hline
+    Variabilidade no comportamento & Oferece suporte ou não oferece suporte \\ \hline
+    Granularidade                  & Fina ou grossa \\ \hline
+    Tempo de ligação 			   & \begin{tabular}[c]{@{}l@{}}
+						     			Pré-processamento, compilação,\\ 
+						     			implantação, execução
+						             \end{tabular} \\ \hline
+    Reusabilidade & Alta, média, ou baixa \\ \hline
+    Legibilidade & Alta, média, ou baixa \\ \hline
+    Tamanho da aplicação & Alto impacto ou baixo impacto \\ \hline
+  \end{tabular}
+  \label{tab:criterios}
+\end{table}
+
+
 \section{Padrões de Projeto}
 \label{sec:padroes-de-projeto}
 

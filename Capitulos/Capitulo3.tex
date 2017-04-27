@@ -1051,9 +1051,7 @@ seção \ref{sec:framework}.
     Tempo de ligação 				& Compilação \\ \hline
     Reusabilidade 					& Alta \\ \hline
     Legibilidade 					& Baixo impacto \\ \hline
-    Desempenho 						& Baixo impacto \\ \hline
     Tamanho da aplicação 			& Médio impacto \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte \\ \hline
   \end{tabular}
 \end{table}
 
@@ -1069,8 +1067,7 @@ dos casos, basta alterar a importação das classes, como mostramos  na Seção 
 No entanto, pode resultar em um aumento no tamanho
 da aplicação, ou no caso particular do Android, um estouro no limite de métodos das
 aplicações \cite{Estouro}, já que o tempo de ligação dessa técnica é durante a compilação
-e mais elementos serão empacotados juntamente com a aplicação. Não oferece suporte para
-implementação modular de requisitos transversais.
+e mais elementos serão empacotados juntamente com a aplicação.
 
 \subsubsection{Re-implementação de Recursos}
 Os resultados do critérios de avaliação dessa técnica, apresentados na tabela
@@ -1098,9 +1095,7 @@ da aplicação é menor, em relação ao pacote de compatibilidade.
     Tempo de ligação 				& Compilação \\ \hline
     Reusabilidade 					& Médio \\ \hline
     Legibilidade 					& Médio impacto \\ \hline
-    Desempenho 						& Baixo impacto \\ \hline
     Tamanho da aplicação 			& Baixo impacto \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte \\ \hline
   \end{tabular}
 \end{table}
 
@@ -1148,9 +1143,7 @@ comparação apresentado na seção \ref{sec:framework}.
     Tempo de ligação 				& Execução \\ \hline
     Reusabilidade 					& Baixa \\ \hline
     Legibilidade 					& Alto impacto \\ \hline
-    Desempenho 						& Baixo impacto \\ \hline
     Tamanho da aplicação 			& Baixo impacto \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte \\ \hline
   \end{tabular}
 \end{table}
 
@@ -1168,17 +1161,19 @@ granularidade fina. No último caso, que é mais comum,  reusabilidade e legibil
 são prejudicadas. 
 
 Para verificar o impacto no tamanho da aplicação, realizamos uma grande refatoração
-em uma das aplicações, o Telegram. Eliminamos todas as EC condicionadas a versão da
-API, deixando o mesmo com suporte apenas para a versão 23 da plataforma, além de outros
-artefatos como imagens e arquivos de layout. Um total de 145 arquivos foram editados ou
+em uma das aplicações, o Telegram. Eliminamos todas as EC parametrizadas com a versão
+da API, deixando o mesmo com suporte apenas para a versão 23 da plataforma, além de
+outros artefatos como imagens e arquivos de layout. Um total de 145 arquivos foram 
+editados ou
 apagados. Comparando os tamanhos dos arquivos APK's dessa versão e da versão com suporte
 a partir da API 9 não foi verificada diferença alguma. Portanto, essa técnica tem baixo
 impacto no tamanho das aplicações.
 
-EC não oferece suporte para implementação modular de requisitos transversais.
 Apesar de execução condicional trazer uma baixa legibilidade no código, seu uso
 é bastante simples e comum, não exigindo conhecimentos avançados e nem uso de
-ferramentas externas, como exige a técnica de compilação condicional (CC) % TODO lista de abrev
+ferramentas externas, como exige a técnica de 
+\abrv[CC -- \textit{Compilação Condicional}]
+{compilação condicional}(CC)
 \cite{Medeiros2015}. A técnica de CC é bastante utilizada em outras plataformas
 para gerência de variabilidades \cite{Liebig2010}, entretanto não foi observado
 seu uso em nenhuma das aplicações analisadas no nosso estudo. Dois fatores podem
@@ -1222,13 +1217,8 @@ projeto segundo o framework de comparação.
     										Baixo impacto (Strategy), Médio impacto\\
     										(Proxy), Alto impacto (Null Object)
     									\end{tabular}								 \\ \hline
-    Desempenho 						& \begin{tabular}[c]{@{}l@{}}
-        								Baixo impacto (Strategy, Null \\ Object),
-        								 Médio Impacto (Proxy)
-        							  \end{tabular}								 	\\ \hline
     Tamanho da aplicação 			& Médio impacto (Strategy, Null Object, Proxy)  \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Suporte para implementação\\ modular de requisitos transversais\end{tabular}  		& Não oferece suporte 							\\ \hline
-  \end{tabular}
+   \end{tabular}
 \end{table}
 
 Como alguns padrões de projeto foram identificados, é necessário que a avaliação
