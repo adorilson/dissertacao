@@ -629,9 +629,9 @@ do projeto possuem o seguinte preâmbulo:
  */
 } 
 
-Assim, para verificarmos se o as aplicações re-implementaram algum recurso através
+Assim, para verificarmos se as aplicações re-implementaram algum recurso através
 da cópia de código da API padrão, realizamos uma busca textual nos arquivos Java
-das aplicações por "Android Open Source Project". Para cada ocorrência, era feita
+das aplicações por "Android Open Source Project". Para cada ocorrência, foi feita
 uma pesquisa na documentação da API pelo nome da classe. Se não fosse encontrado
 algo, era feita uma busca no Google, pela string "android <nome da classe>".
 Analisamos as ocorrências  para determinar se o código havia sido copiado realmente
@@ -723,14 +723,23 @@ e a média de ocorrências por aplicação.
   \label{tab:elementos_nova_api}
 \end{table}
 
-As taxonomias \textit{app} e \textit{view} foram as mais comuns nas aplicações analisadas.
-A primeira contém classes de alto nível que encapsulam o modelo geral de aplicações Android.
-A última fornece classes básicas para interface com usuário, relacionadas a layout das telas
-e interação com usuário. \textit{App} e \textit{view} possuem os maiores número de ocorrências
-de NewApi, 360 e 353, respectivamente. Ocorrências em arquivos XML foram contabilizados também,
+As taxonomias \textit{app} e \textit{view} foram as mais comuns nas aplicações analisadas,
+com 360 e 353, respectivamente, ocorrências de NewApi.
+Ocorrências em arquivos XML também foram contabilizados,
 tendo um total de 50 ocorrências. No entanto, a maior média por aplicação pertence a taxonomia
 \textit{media}, no valor de 63,33, distribuídos em 3 aplicações:  VLC, Firefox e Telegram.
 Enquanto \textit{app} e \textit{view} estão distribuídas em 16 e 20 aplicações, respectivamente.
+
+A figura \ref{fig:bloxplot_newapi} apresenta diagramas de boxplot para as
+distribuições de ocorrências de NewApi nas aplicações para essas duas taxonomias.
+
+ \begin{figure}[htb]
+ 	\centering 
+   	\includegraphics[scale=0.7]{imagens/bloxplot_newapi}
+   	\textsf{\caption{Distribuição de ocorrências de NewApi para as taxonomias \textit{app} e \textit{view}}
+   	        \label{fig:bloxplot_newapi}}
+ \end{figure}
+
 
 Tais valores refletem o objetivo das taxonomias e a categoria das aplicações.
 \textit{App} e \textit{view} contém classes utilizadas em qualquer aplicação, enquanto que a
@@ -738,7 +747,7 @@ taxonomia \textit{media} mantém classes relacionadas a multimídia. Mais úteis
 e editor de vídeos (VLC), um navegador web (Firefox) e um aplicativo de comunicação (Telegram)
 com recursos de reprodução de multimídia (imagem, som e vídeo) embutido.
 
-A tabela \ref{tab:newapi_app} apresenta os elementos da taxonomia app com maior
+A tabela \ref{tab:newapi_app} apresenta os elementos da taxonomia \textit{app} com maior
 números de ocorrência de NewApi agrupados pelo elemento de maior granularidade
 que surgiu na versão da API indicada por NewApi. Assim, todas as classes do pacote
 \texttt{android.app. backup} foram agrupadas pelo pacote porque o próprio pacote
@@ -875,7 +884,8 @@ SnoopSnitch                                                              & 16   
 \begin{tabular}[c]{@{}l@{}}Hangar -\\ Smart app\\ shortcuts\end{tabular} & 16                                                                                 & 14                                                                                            & 15                                                                                 & 21                                                                                            & 7                                                                                        & 5                                                                                           \\ \hline
 \begin{tabular}[c]{@{}l@{}}WiFi\\ Analyzer\end{tabular}                  & 22                                                                                 & 0                                                                                             & 21                                                                                 & 1                                                                                             & 1                                                                                        & 1                                                                                           \\ \hline
 AcDisplay                                                                & 16                                                                                 & 167                                                                                           & 15                                                                                 & 193                                                                                           & 26                                                                                       & 10                                                                                          \\ \hline
-\begin{tabular}[c]{@{}l@{}}Indic\\ Keyboard\end{tabular}                 & 16                                                                                 & 7                                                                                             & 15                                                                                 & 14                                                                                            & 11                                                                                       & 5                                                                                           \\ \hline
+\begin{tabular}[c]{@{}l@{}}Indic\\ Keyboard\end{tabular}                 & 16                                                                                 & 7                                                                                             & 15                                                                                 & 16                                                                                            & 9                                                                                       & 1                                                                                           \\ \hline
+Focal                 													 & 16        & 3                                                                     & 15                    & 14                                                                      & 11                                                                                       & 5                                                                                           \\ \hline
 \begin{tabular}[c]{@{}l@{}}DashClock\\ Widget\end{tabular}               & 17                                                                                 & 5                                                                                             & 16                                                                                 & 46                                                                                            & 41                                                                                       & 9                                                                                           \\ \hline
 Termux                                                                   & 21                                                                                 & 2                                                                                             & 19                                                                                 & 59                                                                                            & 57                                                                                       & 9                                                                                           \\ \hline
 \end{tabular}
@@ -962,7 +972,7 @@ condicional avaliando a versão da API do aparelho. Também faz parte da evoluç
 natural das aplicações o fim de suporte a versões da API mais antigas. Dessa forma,
 é possível que os desenvolvedores alterem a configuração de API mínima no 
 \texttt{AndroidManifest.xml}, mas deixem ao longo do código-fonte da aplicação
-trechos de código que seriam executados em versões de API inferiores a esta. Nessa
+trechos de código que seriam executados apenas em versões de API inferiores a esta. Nessa
 situação, tais trechos de códigos são caracterizados como código-morto.
 
 Para esta questão de pesquisa, foram analisadas 7 aplicações e foi encontrado
@@ -977,7 +987,7 @@ valores absolutos e percentuais.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[!htbp]
-\caption{Ocorrência de código morto por aplicação}
+\caption{Ocorrências de código morto (CM) por aplicação}
 \footnotesize
 \centering
 \label{tab:codigo_morto}
@@ -1025,8 +1035,10 @@ Dungeon}, um jogo de RPG, não utilizou nenhuma dessas soluções. Portanto, é 
 única que exige uma baixa API para instalação (versão 8) sem se preocupar com
 o uso de recursos mais modernos. Seja através de uso explícito da nova API,
 quando estiverem disponíveis, seja adicionando a dependência ao pacote de
-compatibilidade ou da re-implementações de recursos, quando seria possível usar
-mesmo em versões mais antigas da API. Portanto, tais resultado oferecem elementos
+compatibilidade ou da re-implementações de recursos, quando seria possível
+usar novos recursos mesmo em versões mais antigas da API, 96\% das aplicações
+analisadas utilizam pelo menos uma técnica para oferecer suporte a múltiplas
+versões da API. Portanto, tais resultado oferecem elementos
 para validar a hipótese \textbf{H1}. A seguir, discutiremos características de cada
 uma dessas formas de implementação de suporte a múltiplas versões da API.
 
@@ -1322,20 +1334,20 @@ plataforma.
 
 O pacote \texttt{android.animation} fornece mecanismo para animação de propriedades
 de qualquer objeto. Com isso, é possível criar efeitos visuais, úteis para uma boa
-experiência do usuários, assim como fundamentais em aplicações de jogos. A API de
+experiência do usuário, assim como fundamentais em aplicações de jogos. A API de
 fragmentos permite o reaproveitamento de pedaços de telas na composição das atividades,
 o que é muito útil considerando a diversidade de aparelhos que oferecem suporte para
-Android, motivo pelo qual acreditamos este ser um dos elementos mais utilizados. 
+Android, motivo pelo qual acreditamos ser este um dos elementos mais utilizados. 
 
-A forma inicial de uso do pacote \texttt{android.animation} foi através de
-re-implementa- ção de recurso, fornecida pelo projeto NineOldAndroids\footnote{http://nineoldandroids.com/},
+A forma principal de uso do pacote \texttt{android.animation} foi através de
+re-implemen- tação de recurso, fornecida pelo projeto NineOldAndroids\footnote{http://nineoldandroids.com/},
 ou execução condicional. Já a API de fragmentos por pacote de compatibilidade.
 Essa distinção se dá pelo fato de que a API de fragmentos fornece classes bases,
 em particular \texttt{Fragment}, que deverão ser utilizadas por herança, o que não
 permite a composição em tempo de execução. Enquanto os elementos de animação pode
 ser instanciados dinamicamente, o que permite utilizar execução condicional.
 Atualmente, os elementos de animação são disponibilizados no pacote de compatibilidade,
-permitindo que a re-implementação de recurso seja substituída por esse mecanismo.
+permitindo que a re-implementa- ção de recurso seja substituída por esse mecanismo.
 Tais resultados apresentam evidências suficientes para validarmos a hipótese \textbf{H2}.
 
 \subsection{Qual o esforço necessário para aumentar a compatibilidade com um maior
