@@ -406,10 +406,7 @@ formas de tratamento para as ocorrências de NewApi. Foram analisadas um total
 de 1556 ocorrências de NewApi. Desse total, 40,6\% foi tratado com EC indireta,
 22,8\% com algum padrão de projeto, 18,9\% através de EC direta, 10,7\% utilizando
 suporte implícito da plataforma, 5,3\% das ocorrências não foram devidamente tratadas.
-Esses dois últimos casos são situações críticas, merecedoras de uma maior atenção.
-A primeira por depender de um conhecimento mais específico da API, para identificar
-que a chamada não será executada em versões antigas. A última por ser fonte de bugs
-nas aplicações. Continuando a análise, 1,2\% das ocorrências estão dentro de métodos
+Continuando a análise, 1,2\% das ocorrências estão dentro de métodos
 que nunca serão executados e, por fim, duas pequenas frações de 0,3\% das ocorrências
 foi utilizada tratamento de exceção ou são falsos positivos. Essas ocorrências de NewApi 
 estão distribuídas em 22 aplicações (3 aplicações não apresentaram ocorrências de alguma 
@@ -653,13 +650,6 @@ A classe \texttt{android.util.Base64}, utilizada para codificação e decodifica
 da representação de dados binários em Base64 \cite{RFC4648}, foi a classe mais
 recorrente, detectada em 5 aplicações. Outras mais de 30 classes com propósitos 
 diversos também foram re-implementadas, no entanto, em não mais de uma aplicação.
-
-Tal cenário, aponta que re-implementação de recursos é utilizada quando se deseja
-poucos e pontuais recursos adicionais. Sendo mais vantajoso copiar o código-fonte
-da API, do que usar pacote de compatibilidade, caso o recurso também seja
-disponibilizado dessa forma. Além disso, só é possível tal mecanismo, pelo menos em
-relação ao código da API oficial, devido ao fato de ser \textit{open-source} e a
-licença permitir cópia, alteração e redistribuição do código-fonte.
 
 \subsubsection{Uso explícito da nova API}
 
