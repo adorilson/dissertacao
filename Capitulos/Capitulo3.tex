@@ -936,6 +936,16 @@ recomendações contrárias à sua adoção \cite{Businge2015} \cite{Mastrangelo
 
 A tabela \ref{tab:esforco_resumo} resume o resultado qualitativo, agrupando as aplicações
 em três níveis de dificuldade e possíveis soluções para as novas ocorrências de NewApi.
+Os níveis de dificuldade foram definidos da seguinte forma:
+\begin{enumerate}
+	\item Baixo: necessário apenas uso de pacote de compatibilidade, execução condicional ou
+	uso de estilo especializado;
+	\item Médio: necessário re-implementação simples de recurso. Pode-se por exemplo, copiar
+	classes do código-fonte da API;
+	\item Alto: necessário alguma implementação de recurso mais elaborada ou ausência do
+	recurso em aparelhos com API mais antiga. Deve-se, por exemplo, usar reflexão para
+	ter acesso à API interna.
+\end{enumerate}
 Os resultados encontrados, associado à tabela de distribuição das versões (figura 
 \ref{fig:platform_versions}), apresenta evidências de que as aplicações poderiam,
 com um esforço de baixo a médio, aumentar a compatibilidade com um maior número de
