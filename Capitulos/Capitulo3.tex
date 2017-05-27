@@ -930,7 +930,7 @@ expõe para a API pública do Android uma classe pertencente ao pacote \texttt{l
 o qual não pode ser importado pelas classes das aplicações da mesmo forma que classes
 do pacote \texttt{android}. No entanto, é possível através de uma re-implementação de
 recurso mais elaborada que as citadas anteriormente, usando reflexão, acessar tal pacote
-e classes internas \cite{Libcore}, e então fazer uma implementação própria da classe Os,
+e classes internas \cite{Libcore}, e então fazer uma implementação própria da classe \texttt{Os},
 ainda que fazer uso de APIs internas seja uma má prática de programação e existam
 recomendações contrárias à sua adoção \cite{Businge2015} \cite{Mastrangelo2015}.
 
@@ -940,7 +940,7 @@ Os níveis de dificuldade foram definidos da seguinte forma:
 \begin{enumerate}
 	\item Baixo: necessário apenas uso de pacote de compatibilidade, execução condicional ou
 	uso de estilo especializado;
-	\item Médio: necessário re-implementação simples de recurso. Pode-se por exemplo, copiar
+	\item Médio: necessário re-implementação simples de recurso. Pode-se, por exemplo, copiar
 	classes do código-fonte da API;
 	\item Alto: necessário alguma implementação de recurso mais elaborada ou ausência do
 	recurso em aparelhos com API mais antiga. Deve-se, por exemplo, usar reflexão para
