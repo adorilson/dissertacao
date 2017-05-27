@@ -92,17 +92,17 @@ clientes não segue na mesma velocidade. Cerca de 28\% das referências à API n
 aplicações clientes estão desatualizadas com uma mediana de tempo de 16 meses.
 22\% das referências desatualizadas são eventualmente atualizadas para versões
 mais novas da API, mas com um tempo de propagação de cerca de 14 meses, que é mais
-lento que o tempo médio entre novas versões da API (3 meses). API's de rápida
-evolução são mais usadas por clientes que API's de evolução lenta, mas o tempo
+lento que o tempo médio entre novas versões da API (3 meses). APIs de rápida
+evolução são mais usadas por clientes que APIs de evolução lenta, mas o tempo
 médio necessário para adoção de novas versões é mais longo para APIs de rápida
-evolução. Além disso, código adaptado para uso de novas API's são mais sujeitos a
-erros que aqueles sem adaptação para novas API's. Segundo os autores do trabalho,
-os resultados sugerem que os desenvolvedores não adotam novas API's com rapidez,
-mantendo referências para API's desatualizadas. Assim evitam a instabilidade de
-novas API's e o trabalho de atualização propriamente dito. Porém, outras possibilidades
-devem ser consideradas: os desenvolvedores atualizam para as mais recentes API's,
-mas mantém tais códigos para garantir a compatibilidade com API's mais antigas;
-ou atualizam para API's recentes e as referências às API's antigas representam
+evolução. Além disso, código adaptado para uso de novas APIs são mais sujeitos a
+erros que aqueles sem adaptação para novas APIs. Segundo os autores do trabalho,
+os resultados sugerem que os desenvolvedores não adotam novas APIs com rapidez,
+mantendo referências para APIs desatualizadas. Assim evitam a instabilidade de
+novas APIs e o trabalho de atualização propriamente dito. Porém, outras possibilidades
+devem ser consideradas: os desenvolvedores atualizam para as mais recentes APIs,
+mas mantém tais códigos para garantir a compatibilidade com APIs mais antigas;
+ou atualizam para APIs recentes e as referências às APIs antigas representam
 código-morto.
 
 Aplicações Android declaram uma versão alvo da API. Quando estão em execução em
@@ -135,7 +135,7 @@ na performance e na experiência de uso. Os sintomas podem ser específicos da a
 o que dificulta a criação de testes de compatibilidade. Localizar a causa dos FIC
 \textit{issues} é difícil na prática. Por outro lado, as correções são usualmente
 simples e apresentam padrões comuns: checar informações do dispositivo e disponibilidade
-de componentes de software/hardware antes de chamar API's/métodos causadores de
+de componentes de software/hardware antes de chamar APIs/métodos causadores de
 problemas. Este é o padrão mais comum, presente em 137 das 191 correções analisadas.
 Uma forma típica de evitar os erros é pular a chamada da API ou substituí-la por
 uma implementação alternativa. Também desenvolveram uma ferramenta, FicFinder, que
@@ -153,7 +153,7 @@ McDonnell et al. \cite{McDonnell2013} e Mutchler et al. \cite{Mutchler2016}
 não abordam o tema de suporte a múltiplas versões da API
 por aplicações Android existentes. Todas as análises dos estudos foram
 realizadas sem considerar questões como a adaptação e organização do código para
-lidar com as múltiplas API's disponíveis.
+lidar com as múltiplas APIs disponíveis.
 
 No experimento realizado por Wei et al. \cite{Wei2016}, o FicFinder foi
 alterado para reportar situações em que os FIC \textit{issues} já estavam protegidos
@@ -196,7 +196,7 @@ metodologia de trabalho composta das seguintes etapas:
 	\item Estudo empírico: a partir dos resultados da fase anterior, foi realizado
 	um estudo empírico com o objetivo de identificar e caracterizar a adoção dessas
 	técnicas por aplicações reais. Ele foi composto das seguintes atividades principais:
-	seleção das aplicações, análise das aplicaçõesa e análise dos resultados.
+	seleção das aplicações, análise das aplicações e análise dos resultados.
 \end{itemize}
 
 
