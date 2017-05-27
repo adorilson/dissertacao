@@ -35,7 +35,7 @@ o estudo foi guiado pelas seguintes questões de pesquisa (QPs):
 	auxilia desenvolvedores de aplicações Android a identificar os elementos que eles, provavelmente,
 	precisarão utilizar em suas aplicações, permitindo a concentração de esforços nesses componentes.
 	\item \textbf{QP3}: Qual o esforço necessário para aumentar a compatibilidade da aplicação 
-	com um maior número de API's de versões anteriores da plataforma? Estabelecer uma versão
+	com um maior número de APIs de versões anteriores da plataforma? Estabelecer uma versão
 	elevada de API para execução do aplicativo pode significar deixar de atender um grande
 	mercado potencial. Assim, a resposta para essa questão dará aos desenvolvedores um
 	indicativo estimado do trabalho que terão para aumentar seu mercado potencial.
@@ -49,7 +49,7 @@ o estudo foi guiado pelas seguintes questões de pesquisa (QPs):
 
 A partir das questões de pesquisas apresentadas anteriormente, algumas proposições
 e hipóteses foram elaboradas para validação de que as respostas à tais questões podem
-de fato serem úteis para acadêmia e indústria de desenvolvimento de aplicações Android.
+de fato serem úteis para academia e indústria de desenvolvimento de aplicações Android.
 A estrutura de proposições e hipóteses baseia-se nas orientações do guia proposto por 
 Runeson et al. \cite{Runeson2012} e seguem listadas abaixo.
 
@@ -73,8 +73,8 @@ Runeson et al. \cite{Runeson2012} e seguem listadas abaixo.
 
 \subsection{Relacionada à QP3}
 	\begin{itemize}
-		\item \textbf{Proposição P3}: Se as aplicações utilizam apenas API's mais recentes,
-		não possuindo um histórico de uso de API's antigas, então elas foram desenvolvidas
+		\item \textbf{Proposição P3}: Se as aplicações utilizam apenas APIs mais recentes,
+		não possuindo um histórico de uso de APIs antigas, então elas foram desenvolvidas
 		sem a preocupação de oferecer suporte às versões antigas da API o que, possivelmente,
 		a leva a perder uma fatia do mercado de aplicações.
 		\item \textbf{Hipótese H3}: As aplicações podem aumentar o seu mercado potencial com
@@ -87,7 +87,7 @@ Runeson et al. \cite{Runeson2012} e seguem listadas abaixo.
 		execução de determinados trechos de códigos e a sua API mínima exigida é superior
 		à necessária para execução do trecho de código, então tal trecho de código é código-morto.   
 		\item \textbf{Hipótese H4}: As aplicações possuem código-morto, que só seriam executados
-		na presença de API's antigas.
+		na presença de APIs antigas.
 	\end{itemize}
 
 \section{Aplicações Alvo do Estudo} \label{sec:aplicacoes-alvo}
@@ -165,7 +165,7 @@ listadas na tabela
   \label{tab:grupo1}
 \end{table}
 
-\subsection{Grupo 2 - Aplicações usando apenas API's mais recentes}
+\subsection{Grupo 2 - Aplicações usando apenas APIs mais recentes}
 Aplicações do grupo 2 possuem um alto valor de API mínima mas não tem um histórico de suporte
 às versões anteriores. Para esse estudo, as versões iguais ou superiores à 16 foram consideradas
 como alta. Versões inferiores a esta representam 3.4\% do mercado mundial, conforme pode ser visto
@@ -178,7 +178,7 @@ aplicações nesse grupo.
 \begin{table}[!htbp]
   \small	
   \centering
-  \caption{Aplicações usando apenas API's mais recentes}
+  \caption{Aplicações usando apenas APIs mais recentes}
   \begin{tabular}{| l | l | r | r | r | r |}
   	\hline
   	% rótulo das columnas
@@ -214,7 +214,7 @@ aplicações nesse grupo.
 \end{table}
 
 
-\subsection{Grupo 3 - Aplicações usando API's recentes com histórico de uso de API's antigas}
+\subsection{Grupo 3 - Aplicações usando APIs recentes com histórico de uso de APIs antigas}
 Aplicações do grupo 3 possuem um alto valor de API mínima e também um histórico
 de suporte às versões anteriores. Para esse grupo de aplicações, consideramos
 aquelas cuja versão da API seja igual ou superior a 15 e a API mínima inicia
@@ -225,7 +225,7 @@ São 7 aplicações nesse grupo.
 \begin{table}[!htbp]
   \small
   \centering
-  \caption{Aplicações usando API's recentes com histórico de uso de API's antigas}
+  \caption{Aplicações usando APIs recentes com histórico de uso de APIs antigas}
   \begin{tabular}{| l | l | r | r | r | r |}
   	\hline
   	% rótulo das columnas
@@ -303,7 +303,7 @@ seguintes:
 	\item Edição da API mínima da aplicação para a versão imediatamente inferior à atual
 		e presente na tabela \ref{fig:platform_versions};
 		\begin{itemize}
-			\item API's ausentes dessa tabela foram descartadas por não representarem
+			\item APIs ausentes dessa tabela foram descartadas por não representarem
 			um mercado minimamente significativo;
 		\end{itemize}
 	\item Nova execução do Android Lint na aplicação;
@@ -846,12 +846,12 @@ Tais ocorrências estão distribuídas em 18 aplicações.
 \end{figure}
 
 \subsection{Qual o esforço necessário para aumentar a compatibilidade com um
-maior número de API's de versões anteriores da plataforma?}
+maior número de APIs de versões anteriores da plataforma?}
 
 Definir um valor de API mínima para execução da aplicação, significa deixar de
 atender todos os aparelhos com API inferior. Em algumas situações, isso pode
 representar uma perda do mercado potencial. Assim, analisamos qual seria o esforço
-para aumentar a compatibilidade com um maior número de API's. Para tal, editamos o
+para aumentar a compatibilidade com um maior número de APIs. Para tal, editamos o
 código-fonte da aplicação (arquivos \texttt{build.gradle} ou \texttt{AndroidManifest.xml},
 conforme o caso) e re-executamos o Lint NewApi. Então comparamos o resultado aqui
 obtido com o resultado obtido na versão original.
@@ -1286,7 +1286,7 @@ ter o conhecimento de quais versões da API permitirá a execução de determina
 Foram detectados alguns padrões de uso dos mecanismos para manter compatibilidades com
 as diversas versões da API do Android. Pacote de compatibilidade é utilizado quando se
 deseja um conjunto de novos recursos, cujo implementação está distribuída em diversos
-arquivos, como as API's de fragmentos e barra de ação.
+arquivos, como as APIs de fragmentos e barra de ação.
 
 Re-implementação de recursos é utilizado para situações pontuais. Quando o código do
 recurso desejado está localizado em uma classe apenas, como a \texttt{Base64},  ou
@@ -1361,11 +1361,11 @@ permitindo que a re-implementa- ção de recurso seja substituída por esse meca
 Tais resultados apresentam evidências suficientes para validarmos a hipótese \textbf{H2}.
 
 \subsection{Qual o esforço necessário para aumentar a compatibilidade com um maior
-número de API's de versões anteriores da plataforma?} \label{subsec:esforco}
+número de APIs de versões anteriores da plataforma?} \label{subsec:esforco}
 
 \begin{itemize}
-	\item \textbf{Proposição P3}: Se as aplicações utilizam apenas API's mais recentes,
-	não possuindo um histórico de uso de API's antigas, então elas foram desenvolvidas
+	\item \textbf{Proposição P3}: Se as aplicações utilizam apenas APIs mais recentes,
+	não possuindo um histórico de uso de APIs antigas, então elas foram desenvolvidas
 	sem a preocupação de oferecer suporte às versões antigas da API o que, possivelmente,
 	a leva a perder uma fatia do mercado de aplicações.
 	\item \textbf{Hipótese H3}: As aplicações podem aumentar o seu mercado potencial com
@@ -1383,7 +1383,7 @@ extremo, que mais se beneficiaria com um menor esforço, é o aplicativo Yaac. E
 poderia reduzir sua API mínima de 21 para 15 com o ajuste de apenas uma ocorrência de NewApi.
 Indo mais além, poderia reduzir para API 10, com outras 8 ocorrências de NewApi a serem tratadas.
 
-Em termos qualitativos, mesmo nas aplicações mais dependentes de novas API's, o suporte
+Em termos qualitativos, mesmo nas aplicações mais dependentes de novas APIs, o suporte
 poderia ser ampliado usando uma das técnicas discutidas neste trabalho. Tais resultados
 apresentam evidências suficientes para validarmos a hipótese \textbf{H3}. 
 
@@ -1395,7 +1395,7 @@ apresentam evidências suficientes para validarmos a hipótese \textbf{H3}.
 	execução de determinados trechos de códigos e a sua API mínima exigida é superior
 	à necessária para execução do trecho de código, então tal trecho de código é código-morto.   
 	\item \textbf{Hipótese H4}: As aplicações possuem código-morto, que só seriam executados
-	na presença de API's antigas.
+	na presença de APIs antigas.
 \end{itemize}
 
 A hipótese de uma alta incidência de código-morto devido ao suporte a

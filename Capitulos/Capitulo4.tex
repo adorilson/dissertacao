@@ -30,7 +30,7 @@ Neste trabalho, não abordamos elementos de API que foram depreciados, mas algun
 focam seus estudos nesta perspectiva.  Zhou e Walker \cite{Zhou2016} propuseram a ferramenta
 \textit{Deprecation Watcher} para identificar uso de API depreciadas em código-fonte de exemplos
 na web, assim desenvolvedores podem ser informados antes de investir tempo e esforço estudando-os.
-A ferramenta foi avaliada na detecção de API's Android depreciadas utilizadas em código-fonte de exemplo no Stack Overflow. Eles obtiveram uma precisão de 100\% e uma cobertura de 86\% em um
+A ferramenta foi avaliada na detecção de APIs Android depreciadas utilizadas em código-fonte de exemplo no Stack Overflow. Eles obtiveram uma precisão de 100\% e uma cobertura de 86\% em um
 conjunto aleatório de 200 questões.
 
 \section{Fragmentação da API Android}
@@ -61,7 +61,7 @@ dos tipos é não-específico de dispositivos, que pode ser causado devido a evo
 plataforma, impactando no suporte a múltiplas versões da API. Também apresentaram uma ferramenta, 
 FicFinder, para identificar tais problemas nas aplicações. O nosso trabalho utilizou uma ferramenta 
 nativa do ambiente de desenvolvimento oficial, o Android Lint (regra NewApi). Assim como o nosso 
-trabalho, eles também identificaram os usos de novas API's em métodos executados pela plataforma. Nós 
+trabalho, eles também identificaram os usos de novas APIs em métodos executados pela plataforma. Nós 
 chamamos de suporte implícito (Seção \ref{subsec:tecnicas_usadas}), enquanto eles reportaram como 
 falsos positivos. Na verdade, tanto o FicFinder quanto o Android Lint poderiam ter um catálogo desses 
 métodos e não reportarem esses resultados para os desenvolvedores. Além disso, quantificamos as boas 
@@ -101,7 +101,7 @@ da API e uma política conservadora em relação à depreciação, de forma que 
 métodos e classes permanecem nas novas versões mesmo de depois anotados como
 depreciados. Alguns trabalhos buscaram entender a política de depreciação e
 suporte a múltiplas versões em outras plataformas. Espinha et al. \cite{Espinha2014}
-analisaram a política de evolução de quatro API's web: Google Maps, Twitter, 
+analisaram a política de evolução de quatro APIs web: Google Maps, Twitter, 
 Netflix e Facebook. Os três primeiros possuem um sistema de versionamento
 explícito, em que um identificador da versão é incluída na URL de acesso à API
 (ex.: \texttt{domain/<version>/method}), o que permite aos clientes escolherem qual
@@ -126,27 +126,27 @@ de compatibilidade e a re-implementação de recursos são alternativas a ele.
 
 Sohan et al. \cite{Sohan2015} realizaram um estudo de caso de evolução da API
 web de 9 serviços e identificaram dois modos de atualização: versão única e
-múltiplas versões. No modo de versão única, as API's web forçam a migração dos
+múltiplas versões. No modo de versão única, as APIs web forçam a migração dos
 clientes para a nova versão da API removendo a versão anterior após um período
 de tempo, que pode ser conhecido, como nos casos da Facebook REST API (90 dias)
 e Google Calendar (6 meses), ou desconhecido, como nos casos da Twitter REST API,
-Github API OpenStreetMap API e Google Maps. O modo de múltiplas mantém as API's
+Github API OpenStreetMap API e Google Maps. O modo de múltiplas mantém as APIs
 antigas por um longo período de tempo. Wordpress REST API, Salesforce API e Stripe
 API essa estratégia. Tal estratégia permite uma maior flexibilidade para os clientes,
-mas exige maior esforço dos fornecedores da API, como resultado nem todas as API's são
+mas exige maior esforço dos fornecedores da API, como resultado nem todas as APIs são
 mantidas. Quando os clientes atrasam muito a atualizando, ficando muito distante da
 versão mais recente, a atualização pode tornar-se difícil. O mesmo pode acontecer
 com aplicações Android. Foram também analisados diferentes abordagens para identificar
 a versão da API: i) identificador numérico: números inteiros contínuos que comunicam
 claramente uma sequência entre as versões; ii) identificador com data: datas também
 pode ser usadas para identificar versões; e iii) identificadores com números de versões
-principal e secundário (ex: 2.3): a maioria das API's web analisadas utilizam essa
+principal e secundário (ex: 2.3): a maioria das APIs web analisadas utilizam essa
 abordagem. Nenhuma dessas abordagem, por si só, garantem compatibilidade entre as versões.
-Inclusive, frequentemente as API's são atualizadas com quebra de compatibilidade sem receber
+Inclusive, frequentemente as APIs são atualizadas com quebra de compatibilidade sem receber
 um novo identificador de versão. A abordagem de identificador número é a adotada pela
 plataforma Android, sendo a compatibilidade garantida por contrato \cite{ApiLevels},
 ou seja, as novas versões são projetadas de forma a manter a compatibilidade com suas
-versões anteriores.   Importante destacar que o acesso à API's web é remoto, o que permite
+versões anteriores.   Importante destacar que o acesso à APIs web é remoto, o que permite
 seus clientes escolherem qual versão utilizarão, enquanto o acesso à API Android é local,
 exigindo outras estratégias para acesso à API. Nosso trabalho identificou, e quantificou,
 pacote de compatibilidade, execução condicional e re-implementação de recurso como estratégias
