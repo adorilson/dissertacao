@@ -48,7 +48,7 @@ o estudo foi guiado pelas seguintes questões de pesquisa (QPs):
 \section{Proposições e Hipóteses} \label{sec:hipoteses}
 
 A partir das questões de pesquisas apresentadas anteriormente, algumas proposições
-e hipóteses foram elaboradas para validação de que as respostas à tais questões podem
+e hipóteses foram elaboradas para validação de que as respostas a tais questões podem
 de fato serem úteis para academia e indústria de desenvolvimento de aplicações Android.
 A estrutura de proposições e hipóteses baseia-se nas orientações do guia proposto por 
 Runeson et al. \cite{Runeson2012} e seguem listadas abaixo.
@@ -92,7 +92,7 @@ Runeson et al. \cite{Runeson2012} e seguem listadas abaixo.
 
 \section{Aplicações Alvo do Estudo} \label{sec:aplicacoes-alvo}
 
-As aplicações utilizados no estudo são aplicações \textit{open-source} populares,
+As aplicações utilizadas no estudo são aplicações \textit{open-source} populares,
 com um mínimo de 6 mil linhas de código, contabilizados arquivos Java e XML, e de
 categorias diversas. Uma das aplicações possui 10 mil \textit{downloads} na Google
 Play, outra possui 50 mil \textit{downloads} e as demais mais de 100 mil.
@@ -130,7 +130,7 @@ listadas na tabela
  	Firefox    		& Comunicação 			& 100.000.000 & 15 & 22 & 233 \\ \hline
  	AnkiDroid     	& Educação 				& 1.000.000   & 10 & 22 &  89 \\ \hline
  	K-9 Mail      	& Comunicação 			& 5.000.000   & 15 & 22 & 117 \\ \hline
- 	C:Geo       	& Entretenimento 		& 1.000.000   &  9 & 21 & 123 \\ \hline
+ 	C:geo       	& Entretenimento 		& 1.000.000   &  9 & 21 & 123 \\ \hline
  	Zmanim        	& Estilo de Vida 		& 10.000 	  & 10 & 22 &  25  \\ \hline
  	\begin{tabular}[l]{@{}l@{}}
  		Simon Tatham's \\ Puzzles
@@ -217,7 +217,7 @@ aplicações nesse grupo.
 \subsection{Grupo 3 - Aplicações usando APIs recentes com histórico de uso de APIs antigas}
 Aplicações do grupo 3 possuem um alto valor de API mínima e também um histórico
 de suporte às versões anteriores. Para esse grupo de aplicações, consideramos
-aquelas cuja versão da API seja igual ou superior a 15 e a API mínima inicia
+aquelas cuja versão da API seja igual ou superior a 15 e a API mínima inicial
 menor ou igual a 8. Tais aplicações foram utilizadas para responder à questão QP4 e
 estão listadas na tabela \ref{tab:grupo3}.
 São 7 aplicações nesse grupo.
@@ -310,7 +310,7 @@ seguintes:
 		\begin{itemize}
 			\item Esse resultado era comparado com o obtido em 2;
 			\item Se a quantidade de NewApi fosse a mesma, voltávamos para 3, se não
-			o resultado é analisado em maiores detalhes, como a taxonomia, a dependência
+			o resultado era analisado em maiores detalhes, como a taxonomia, a dependência
 			do recurso pela aplicação e como a ocorrência poderia ser tratada.
 		\end{itemize}
 \end{enumerate}
@@ -321,7 +321,7 @@ Para responder à questão de pesquisa QP4 os procedimentos adotados foram os se
 \begin{enumerate}
 	\item Pesquisa textual por \texttt{VERSION.SDK\_INT} em todos os arquivos da
 		aplicação;
-	\item Quando \texttt{VERSION.SDK\_INT} fazia parte de um execução condicional, ou equivalente, relacionada a uma versão da API inferior a API mínima da aplicação, o código da aplicação era refatorado de forma a remover todo o código-morto.
+	\item Quando \texttt{VERSION.SDK\_INT} fazia parte de um execução condicional, ou equivalente, relacionada a uma versão da API inferior à API mínima da aplicação, o código da aplicação era refatorado de forma a remover todo o código-morto.
 	\item Contabilização e sumarização das linhas de código e arquivos removidos.
 \end{enumerate}
 
@@ -334,13 +334,13 @@ das questões de pesquisa (Seção \ref{sec:objetivos}).
 compatibilidades com as diversas versões da API do Android?} \label{subsec:tecnicas_usadas}
 
 Para permitir o uso de novos recursos da API em aplicações que ainda desejam
-oferecer suporte a dispositivos com vers da API mais antigas, foram
+oferecer suporte a dispositivos com versões mais antigas da API, foram
 identificadas 3 estratégias de implementação: (i) pacote de compatibilidade;
 (ii) re-implementação de recurso da API e (iii) uso explícito da nova API.
 Tais mecanismos podem ser utilizados em conjunto.
 
-A figura \ref{fig:forma_suporte} apresenta a quantidade total de aplicações de
-cada estratégia. Pacote de compatibilidade foi utilizada por 23 aplicações,
+A figura \ref{fig:forma_suporte} apresenta a quantidade total de aplicações que
+utilizam cada estratégia. Pacote de compatibilidade foi utilizada por 23 aplicações,
 re-implementação de recurso por 14, e uso explícito da nova API por 22.
 
 \begin{figure}[!htbp]
@@ -403,14 +403,13 @@ indicada pelo Lint.
 
 A figura \ref{fig:percentuais_forma_tratamento} apresenta os percentuais das
 formas de tratamento para as ocorrências de NewApi. Foram analisadas um total
-de 1556 ocorrências de NewApi. Desse total, 40,6\% foi tratado com EC indireta,
+de 1556 ocorrências de NewApi. Desse total, 40,6\% foram tratados com EC indireta,
 22,8\% com algum padrão de projeto, 18,9\% através de EC direta, 10,7\% utilizando
 suporte implícito da plataforma, 5,3\% das ocorrências não foram devidamente tratadas.
 Continuando a análise, 1,2\% das ocorrências estão dentro de métodos
-que nunca serão executados e, por fim, duas pequenas frações de 0,3\% das ocorrências
-foi utilizada tratamento de exceção ou são falsos positivos. Essas ocorrências de NewApi 
-estão distribuídas em 22 aplicações (3 aplicações não apresentaram ocorrências de alguma 
-NewApi).
+que nunca serão executados e, por fim, em duas pequenas frações de 0,3\% das ocorrências
+foram utilizados tratamento de exceção ou são falsos positivos. Essas ocorrências de NewApi 
+estão distribuídas em 22 aplicações (3 aplicações não apresentaram ocorrências de NewApi).
 
 \begin{figure}[htb]
 	\centering 
@@ -422,10 +421,12 @@ NewApi).
 O figura \ref{fig:padroes_por_aplicacao} apresenta os padrões de projeto utilizados
 por quantidade de aplicações. O padrão \textit{Strategy} é o que mais foi utilizado
 em um total de 12 aplicações. \textit{Template Method} e \textit{Null Object} foram 
-utilizados por uma aplicação cada um. \textit{Proxy} foi utilizado por duas aplicações
+utilizados por uma aplicação cada um. \textit{Proxy} foi utilizado por duas aplicações.
 Apenas uma aplicação utilizou dois padrões de projetos simultaneamente, \textit{Strategy}
 e \textit{Proxy}. 
-
+ Os resultados foram
+contabilizados em função da taxonomia da API. E então, para as taxonomias mais
+comuns, apresentamos as classes mais recorrentes.
 \begin{figure}[htb]
 	\centering 
   	\includegraphics[scale=0.75]{imagens/padroes_por_aplicacao}
@@ -463,9 +464,7 @@ Para computar os dados relativos à pacote de compatibilidade, realizamos uma an
 estática sobre os projetos, identificando nos trechos de importação das classes Java
 os elementos advindos do pacote \texttt{android.support}, excetuando os subpacotes
 \texttt{annotations} e \texttt{tests}, pois estes além de não influenciarem na execução
-da aplicação, não são analisadas pelo Lint NewApi. Os resultados foram contabilizados
-em função da taxonomia da API. E então, para as taxonomias mais comuns, apresentamos
-as classes mais recorrentes.
+da aplicação, não são analisadas pelo Lint NewApi.
 
 A tabela \ref{tab:elementos_pacote} apresenta os valores obtidos. Para cada taxonomia,
 temos o número de aplicações que fizeram \texttt{import}’s do pacote de compatibilidade,
@@ -486,23 +485,23 @@ valores de cada coluna, além das duas taxonomias mais significativas, que possu
  	\begin{tabular}[c]{@{}c@{}}
  		\textbf{Total de}\\ \textbf{import's (B)}
  	\end{tabular} &
- 	\begin{tabular}[c]{@{}c@{}}\textbf{Importações}\\ \textbf{unicas}\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Importações}\\ \textbf{únicas}\end{tabular} &
  	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (A/B)}\end{tabular} \\ \hline
  	%dados
- 	animation 		& 1 			& 5   			&   4 			& 5  \\ \hline
- 	\textbf{app}	& \textbf{22} 	& \textbf{849}  &  49 			& \textbf{39}\\ \hline
- 	content 		& 17 			& 236 			&  11 			& 14  \\ \hline
- 	graphics  		& 4 			& 9 			&   5 			& 2  \\ \hline
- 	hardware   		& 1 			& 2 			&   1 			& 2  \\ \hline
- 	media    		& 3 			& 15 			&   7 			& 5  \\ \hline
- 	net     		& 1 			& 3   			&   1 			& 3  \\ \hline
- 	os      		& 3 			& 6   			&   4 			& 2  \\ \hline
- 	preference  	& 5 			& 99   			&  17 			& 20  \\ \hline
- 	provider    	& 1 			& 12 			&   1			& 12   \\ \hline
- 	text        	& 1 			& 1 			&   1 			& 1   \\ \hline
- 	util       	 	& 9 			& 46 			&   9 			& 5   \\ \hline
- 	view        	& 18 			& 233 			&  37 			& 13   \\ \hline
- 	\textbf{widget} & 18			& 410 			&  \textbf{65} 	& 23   \\ \hline
+ 	animation 		& 1 			& 5   			&   4 			& 5,00  \\ \hline
+ 	\textbf{app}	& \textbf{22} 	& \textbf{849}  &  49 			& \textbf{38,59}\\ \hline
+ 	content 		& 17 			& 236 			&  11 			& 13,88  \\ \hline
+ 	graphics  		& 4 			& 9 			&   5 			& 2,25  \\ \hline
+ 	hardware   		& 1 			& 2 			&   1 			& 2,00  \\ \hline
+ 	media    		& 3 			& 15 			&   7 			& 5,00  \\ \hline
+ 	net     		& 1 			& 3   			&   1 			& 3,00  \\ \hline
+ 	os      		& 3 			& 6   			&   4 			& 2,00  \\ \hline
+ 	preference  	& 5 			& 99   			&  17 			& 19,80  \\ \hline
+ 	provider    	& 1 			& 12 			&   1			& 12,00   \\ \hline
+ 	text        	& 1 			& 1 			&   1 			& 1,00   \\ \hline
+ 	util       	 	& 9 			& 46 			&   9 			& 5,11   \\ \hline
+ 	view        	& 18 			& 233 			&  37 			& 12,94   \\ \hline
+ 	\textbf{widget} & 18			& 410 			&  \textbf{65} 	& 22,78   \\ \hline
   \end{tabular}
   \label{tab:elementos_pacote}
 \end{table}
@@ -541,29 +540,29 @@ a fragmentos estão entre as 10 mais utilizadas: \texttt{DialogFragment},
   	\hline
   	% rótulo das columnas
   	\multicolumn{1}{|c|}{\textbf{Classes}} &
-  	\multicolumn{1}{c|}{\textbf{Aplicações (A)}} &
- 	\begin{tabular}[c]{@{}c@{}}
- 		\textbf{Total de}\\ \textbf{importações (B)}
- 	\end{tabular} &
- 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (B/A)}\end{tabular} \\ \hline
+  	\begin{tabular}[c]{@{}c@{}}
+  	 		\textbf{Total de}\\ \textbf{importações (A)}
+  	 	\end{tabular} &
+  	\multicolumn{1}{c|}{\textbf{Aplicações (B)}} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (A/B)}\end{tabular} \\ \hline
  	%dados
- 	v4.app.Fragment 			& 15 			& 144   		&   10 			  \\ \hline
- 	v4.app.NotificationCompat	& 16 			& 80 			&   5 			  \\ \hline
- 	v4.app.DialogFragment  		& 12 			& 76   			&   6 			  \\ \hline
- 	v7.app.AlertDialog     		& 11 			& 72   			&   7			  \\ \hline
- 	v7.app.AppCompatActivity  	& 14 			& 67   			&  5 			  \\ \hline
- 	v4.app.FragmentManager    	& 16 			& 65 			&   4			   \\ \hline
- 	v4.app.FragmentActivity    	& 12 			& 58 			&   5 			   \\ \hline
- 	v4.app.LoaderManager       	& 7 			& 50 			&   5 			   \\ \hline
- 	v7.app.ActionBar        	& 13 			& 37 			&  3 			   \\ \hline
- 	v4.app.ActivityCompat 		& 14			& 25 			&  2 	   \\ \hline
+ 	v4.app.Fragment 			& 144			& 15	 			   		&   9,60 		\\ \hline
+ 	v4.app.NotificationCompat	& 80			& 16 			 			&   5,00 		\\ \hline
+ 	v4.app.DialogFragment  		& 76			& 12 			   			&   6,33 		 \\ \hline
+ 	v7.app.AlertDialog     		& 72			& 11 			   			&   6,55		  \\ \hline
+ 	v7.app.AppCompatActivity  	& 67			& 14 			   			&   4,79 		  \\ \hline
+ 	v4.app.FragmentManager    	& 65			& 16 			 			&   4,06		   \\ \hline
+ 	v4.app.FragmentActivity    	& 58			& 12 			 			&   4,83 		\\ \hline
+ 	v4.app.LoaderManager       	& 50			& 7 			 			&   7,14 		\\ \hline
+ 	v7.app.ActionBar        	& 37			& 13 			 			&   2,85 		\\ \hline
+ 	v4.app.ActivityCompat 		& 25			& 14			 			&   1,79 	   \\ \hline
   \end{tabular}
   \label{tab:elementos_app}
 \end{table}
 
 Se na taxonomia \textit{app} as importações tendem a elementos relacionados a
 fragmentos, na taxonomia \textit{widget} houve uma maior dispersão. As classes
-mais comuns são \texttt{RecyclerView} e \textit{Toolbar}. A primeira teve o
+mais comuns são \texttt{RecyclerView} e \texttt{Toolbar}. A primeira possui o
 maior número de importações no total, enquanto a segunda, além de ter o segundo
 maior valor de importações, é a que está presente em mais aplicações, 12 contra
 9 para \textit{RecyclerView}. Os demais elementos aparecem em no máximo 9 aplicações,
@@ -577,24 +576,24 @@ apresenta as 10 classes da taxonomia \textit{widget} mais utilizadas.
   	\hline
   	% rótulo das columnas
   	\multicolumn{1}{|c|}{\textbf{Classes}} &
-  	\begin{tabular}[c]{@{}c@{}}
-  	 		\textbf{Aplicações}\\ \textbf{(A)}
-  	 	\end{tabular} &
  	\begin{tabular}[c]{@{}c@{}}
- 		\textbf{Total de}\\ \textbf{importações (B)}
+ 		\textbf{Total de}\\ \textbf{importações (A)}
  	\end{tabular} &
- 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (B/A)}\end{tabular} \\ \hline
+ 	\begin{tabular}[c]{@{}c@{}}
+ 	  	 		\textbf{Aplicações}\\ \textbf{(B)}
+ 	  	\end{tabular} &
+ 	\begin{tabular}[c]{@{}c@{}}\textbf{Média por}\\ \textbf{app (A/B)}\end{tabular} \\ \hline
  	%dados
- 	v7.widget.RecyclerView 				& 9 	& 81 	  		&   9 			  \\ \hline
- 	v7.widget.Toolbar					& 12 	& 52 			&   4 			  \\ \hline
- 	v7.widget.LinearLayoutManager		& 9 	& 26   			&   3 			  \\ \hline
- 	design.widget.Snackbar     			& 6 	& 23   			&   4			  \\ \hline
- 	v7.widget.SearchView  				& 8		& 21   			&   3 			  \\ \hline
- 	v4.widget.DrawerLayout    			& 9 	& 15 			&   2			   \\ \hline
- 	design.widget.FloatingActionButton  & 4		& 13 			&   3 			   \\ \hline
- 	v7.widget.PopupMenu       			& 5 	& 12 			&   2 			   \\ \hline
- 	design.widget.TabLayout        		& 6		& 10 			&   3 			   \\ \hline
- 	v4.widget.SwipeRefreshLayout 		& 5		& 10 			&   2 	   \\ \hline
+ 	v7.widget.RecyclerView 				& 81	& 9 	 	  		&   9,00 	\\ \hline
+ 	v7.widget.Toolbar					& 52	& 12 	 			&   4,33 	\\ \hline
+ 	v7.widget.LinearLayoutManager		& 26	& 9 	   			&   2,89 	\\ \hline
+ 	design.widget.Snackbar     			& 23	& 6 	   			&   3,83	\\ \hline
+ 	v7.widget.SearchView  				& 21	& 8		   			&   2,63 	\\ \hline
+ 	v4.widget.DrawerLayout    			& 15	& 9 	 			&   1,67	\\ \hline
+ 	design.widget.FloatingActionButton  & 13	& 4		 			&   3,25 	\\ \hline
+ 	v7.widget.PopupMenu       			& 12	& 5 	 			&   2,40 	\\ \hline
+ 	design.widget.TabLayout        		& 10	& 6		 			&   1,67 	\\ \hline
+ 	v4.widget.SwipeRefreshLayout 		& 10	& 5		 			&   2,00 	\\ \hline
   \end{tabular}
   \label{tab:elementos_widget}
 \end{table}
@@ -643,13 +642,13 @@ possuir o preâmbulo citado acima, não faz parte da API. Ela é apresentada na
 documentação \cite{NetworkUsage} e o código-fonte está no subdiretório \texttt{samples}
 do repositório \cite{NetworkActivity}. Ocorrências como essa eram então descartadas.
 Embora um número considerável de aplicações (14 de 25) tenha utilizado tal técnica,
-foram usos bem pontuais e localizadas.
+foram usos bem pontuais e localizados.
 
 O conjunto de classes mais significativo diz respeito à implementação do pacote 
 \texttt{android.animation} da API e ocorreu em 3 aplicações. O código presente
 nas aplicações é proveniente da biblioteca NineOldAndroids\footnote{http://nineoldandroids.com/},
 que disponibiliza seus arquivos para
-download através do código-fonte e não em arquivos JAR ou algum outro mecanismo
+\textit{download} através do código-fonte e não em arquivos JAR ou algum outro mecanismo
 para adição de dependência aos projetos, mas que isole o código da dependência
 do código principal do projeto. Por esse motivo, tal código foi considerado
 nessa análise. As classe \texttt{PreferenceFragment} e \texttt{PreferenceManager}
@@ -664,9 +663,7 @@ diversos também foram re-implementadas, no entanto, em não mais de uma aplica�
 
 Para determinar o subconjunto das novas funcionalidades da API que são utilizadas
 pelas aplicações com suporte a versões antigas da API através de uso explícito da
-nova API, processamos os resultados da saída do Lint NewApi. Os resultados foram
-contabilizados em função da taxonomia da API. E então, para as taxonomias mais
-comuns, apresentamos as classes mais recorrentes.
+nova API, processamos os resultados da saída do Lint NewApi.
 
 A tabela \ref{tab:elementos_nova_api} apresenta os valores obtidos. Para cada
 taxonomia, temos a quantidade total de ocorrências de NewApi, o número de
@@ -691,34 +688,34 @@ e a média de ocorrências por aplicação.
  		\textbf{Média por}\\ \textbf{app (A/B)}
  	\end{tabular} \\ \hline
  	%dados
- 	animation 		& 149 			& 29   			&   7 			& 21.29  \\ \hline
- 	\textbf{app}	& \textbf{360} 	& 57   			&  16 			& 22.50 \\ \hline
- 	appwidget 		& 5 			&  3    		&   2 			& 2.50  \\ \hline
- 	content 		& 44 			& 24 			&  11 			& 4.00  \\ \hline
- 	database 		& 10 			& 8   			&  4  			& 2.50  \\ \hline
- 	graphics  		& 26 			& 14 			&   6 			& 4.33  \\ \hline
- 	hardware   		& 3 			& 3 			&   1 			& 3.00  \\ \hline
- 	media    		& 190 			& 54 			&   3 			& \textbf{63.33}  \\ \hline
- 	net     		& 31			& 12   			&   2 			& 15.50  \\ \hline
- 	nfc      		& 14 			& 7   			&   2 			& 7.00  \\ \hline
- 	opengl      	& 25 			& 17   			&   1 			& 25.00  \\ \hline
- 	os      		& 82 			& 20   			&   9 			& 9.11  \\ \hline
- 	preference  	& 56			& 4   			&   5 			& 11.20  \\ \hline
- 	print    		& 10 			& 7 			&   1			& 10.00   \\ \hline
- 	provider    	& 27			& 15 			&   7			& 3.86   \\ \hline
- 	service        	& 4 			& 2 			&   1 			& 4.00   \\ \hline
- 	speech        	& 3 			& 2 			&   1 			& 3.00   \\ \hline
- 	telephony       & 29 			& 25 			&   2 			& 14.50   \\ \hline
- 	text        	& 6 			& 5 			&   5 			& 1.20   \\ \hline
- 	transition 	 	& 4 			& 1 			&   1 			& 4.00   \\ \hline
- 	util       	 	& 8				& 3 			&   2 			& 4.00   \\ \hline
- 	\textbf{view}  	& 353 			& \textbf{153} 	&  \textbf{20} 	& 17.65   \\ \hline
- 	webkit        	& 11 			& 7 			&  4 			& 2.75   \\ \hline
- 	widget 			& 92			& 41 			&  10 			& 9.20   \\ \hline
- 	java.io 		& 3				& 2 			&  2 			& 1.50   \\ \hline
- 	java.lang 		& 3				& 2 			&  2 			& 1.50   \\ \hline
- 	java.net 		& 5				& 4 			&  1 			& 5.00   \\ \hline
- 	java.util 		& 1				& 1 			&  1 			& 1.00   \\ \hline
+ 	animation 		& 149 			& 29   			&   7 			& 21,29  \\ \hline
+ 	\textbf{app}	& \textbf{360} 	& 57   			&  16 			& 22,50 \\ \hline
+ 	appwidget 		& 5 			&  3    		&   2 			& 2,50  \\ \hline
+ 	content 		& 44 			& 24 			&  11 			& 4,00  \\ \hline
+ 	database 		& 10 			& 8   			&  4  			& 2,50  \\ \hline
+ 	graphics  		& 26 			& 14 			&   6 			& 4,33  \\ \hline
+ 	hardware   		& 3 			& 3 			&   1 			& 3,00  \\ \hline
+ 	media    		& 190 			& 54 			&   3 			& \textbf{63,33}  \\ \hline
+ 	net     		& 31			& 12   			&   2 			& 15,50  \\ \hline
+ 	nfc      		& 14 			& 7   			&   2 			& 7,00  \\ \hline
+ 	opengl      	& 25 			& 17   			&   1 			& 25,00  \\ \hline
+ 	os      		& 82 			& 20   			&   9 			& 9,11  \\ \hline
+ 	preference  	& 56			& 4   			&   5 			& 11,20  \\ \hline
+ 	print    		& 10 			& 7 			&   1			& 10,00   \\ \hline
+ 	provider    	& 27			& 15 			&   7			& 3,86   \\ \hline
+ 	service        	& 4 			& 2 			&   1 			& 4,00   \\ \hline
+ 	speech        	& 3 			& 2 			&   1 			& 3,00   \\ \hline
+ 	telephony       & 29 			& 25 			&   2 			& 14,50   \\ \hline
+ 	text        	& 6 			& 5 			&   5 			& 1,20   \\ \hline
+ 	transition 	 	& 4 			& 1 			&   1 			& 4,00   \\ \hline
+ 	util       	 	& 8				& 3 			&   2 			& 4,00   \\ \hline
+ 	\textbf{view}  	& 353 			& \textbf{153} 	&  \textbf{20} 	& 17,65   \\ \hline
+ 	webkit        	& 11 			& 7 			&  4 			& 2,75   \\ \hline
+ 	widget 			& 92			& 41 			&  10 			& 9,20   \\ \hline
+ 	java.io 		& 3				& 2 			&  2 			& 1,50   \\ \hline
+ 	java.lang 		& 3				& 2 			&  2 			& 1,50   \\ \hline
+ 	java.net 		& 5				& 4 			&  1 			& 5,00   \\ \hline
+ 	java.util 		& 1				& 1 			&  1 			& 1,00   \\ \hline
   \end{tabular}
   \label{tab:elementos_nova_api}
 \end{table}
@@ -765,7 +762,7 @@ método \texttt{bigContentView} é apontado por NewApi.
   	% rótulo das colunas
   	\multicolumn{1}{|c|}{\textbf{Descrição}} &
   	\begin{tabular}[c]{@{}c@{}}
-  	 		\textbf{Ocorrências de}\\ \textbf{NewApi (A)}
+  	 		\textbf{Ocorrências de}\\ \textbf{NewApi}
   	\end{tabular} &
   	\textbf{Aplicações} \\ \hline
  	%dados
@@ -848,7 +845,7 @@ Tais ocorrências estão distribuídas em 18 aplicações.
 \subsection{Qual o esforço necessário para aumentar a compatibilidade com um
 maior número de APIs de versões anteriores da plataforma?}
 
-Definir um valor de API mínima para execução da aplicação, significa deixar de
+Definir um valor de API mínima para execução da aplicação significa deixar de
 atender todos os aparelhos com API inferior. Em algumas situações, isso pode
 representar uma perda do mercado potencial. Assim, analisamos qual seria o esforço
 para aumentar a compatibilidade com um maior número de APIs. Para tal, editamos o
@@ -914,7 +911,7 @@ de funcionalidade na aplicação.
 
 As três aplicações restantes usam funcionalidades mais críticas. Focal, uma
 aplicação de fotografia, apresenta um total de 11 ocorrências, sendo que uma
-delas parece não haver solução possível, pois depende de suporte do hardware
+delas parece não haver solução possível, pois depende de suporte do \textit{hardware}
 do aparelho para auto focus da câmera. DashClock Widget apresentou 41 novas
 ocorrências ao reduzir a versão da API de 17 para 16. A maioria pode ser
 resolvida pelos métodos já citados, 17 delas são referências a classe
@@ -927,7 +924,7 @@ já citados. Porém, 9 delas fizerem referência a classe \texttt{android.system
 as quais são funcionalidades fundamentais para a aplicação, de acesso ao sistema.
 Distribuir a aplicação sem tais recursos seria uma perda considerável. Essa classe
 expõe para a API pública do Android uma classe pertencente ao pacote \texttt{libcore},
-o qual não pode ser importado pelas classes das aplicações da mesmo forma que classes
+o qual não pode ser importado pelas classes das aplicações da mesma forma que classes
 do pacote \texttt{android}. No entanto, é possível através de uma re-implementação de
 recurso mais elaborada que as citadas anteriormente, usando reflexão, acessar tal pacote
 e classes internas \cite{Libcore}, e então fazer uma implementação própria da classe \texttt{Os},
@@ -979,7 +976,7 @@ Termux                                                                   & \mult
 
 A técnica básica de prover suporte a multi-versões da API é o uso de execução
 condicional avaliando a versão da API do aparelho. Também faz parte da evolução
-natural das aplicações o fim de suporte a versões da API mais antigas. Dessa forma,
+natural das aplicações o fim de suporte a versões mais antigas da API. Dessa forma,
 é possível que os desenvolvedores alterem a configuração de API mínima no 
 \texttt{AndroidManifest.xml}, mas deixem ao longo do código-fonte da aplicação
 trechos de código que seriam executados apenas em versões de API inferiores a esta. Nessa
