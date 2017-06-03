@@ -1061,7 +1061,7 @@ várias mas organizadas em um único pacote da API, como \texttt{android.animati
 Também é utilizada para situações em que o recurso não está disponível nos pacotes
 de compatibilidade.
 
-Pacote de compatibilidade e re-implementação de recursos são utilizadas para uso de
+Pacote de compatibilidade e re-implementação de recursos são utilizados para uso de
 recursos de granularidade grossa, a partir de classes. Para casos de granularidade
 fina, quando o recurso desejado são métodos de classes já existentes em versões
 anteriores, usa-se execução condicional direta ou indireta.
@@ -1070,7 +1070,7 @@ Com o objetivo de concentrar as ocorrências às chamadas da nova API, evitando 
 espalhamento de instruções condicionais ao longo do código, pode-se utilizar algum
 padrão de projeto. No entanto, com exceção do padrão de projeto \textit{Proxy},
 não foram determinados os motivos de uso de um ou outro padrão, ficando a cargo da
-escolha de individual de cada desenvolvedor. O padrão de projeto \textit{Proxy} foi
+escolha individual de cada desenvolvedor. O padrão de projeto \textit{Proxy} foi
 utilizado em situações em que a instanciação do objeto é feito pela própria plataforma,
 como objetos da classe \texttt{View}.
 
@@ -1143,9 +1143,9 @@ A falta de compatibilidade com múltiplas versões da API acarreta uma perda de 
 parcela do mercado potencial. Para aumentar esse mercado é necessário editar a API
 mínima exigida para a aplicação e proteger eventuais ocorrências de NewApi que surjam.
 
-Em termos quantitativos, 5 aplicações (50\%) apresentararm menos de 10 novas ocorrências 
+Em termos quantitativos, 5 aplicações (50\%) apresentaram menos de 10 novas ocorrências 
 de NewApi ao reduzir a versão mínima da API. No geral, surgem, em média, 15,60 novas
-ocorrências, considerando a redução para a imediatamente inferior à atual. O caso mais
+ocorrências, considerando a redução para a API imediatamente inferior à atual. O caso mais
 extremo, que mais se beneficiaria com um menor esforço, é o aplicativo Yaac. Este aplicativo
 poderia reduzir sua API mínima de 21 para 15 com o ajuste de apenas uma ocorrência de NewApi.
 Indo mais além, poderia reduzir para API 10, com outras 8 ocorrências de NewApi a serem tratadas.
@@ -1171,7 +1171,7 @@ código-morto em 4 de 7 aplicações analisadas, a quantidade percentual de linh
 código é muito baixa,
 menos de 0,1\%. Estudos mais detalhados seriam necessários para determinar a causa
 disso. No entanto, acreditamos que o uso de padrões de projeto, que permitem uma melhor
-coesão do código, favoreçam tal cenário, fazendo com o que o desenvolvedor tenha uma melhor
+coesão do código, favoreçam tal cenário, fazendo com que o desenvolvedor tenha uma melhor
 percepção do código legado que ele deve remover já que não pretende mais atender versões
 antigas ou mesmo depender da ajuda de analisadores estáticos como o Lint. Enquanto que
 execução condicional pode dificultar a remoção desses códigos durante a evolução da
