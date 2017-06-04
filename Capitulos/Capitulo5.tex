@@ -4,7 +4,8 @@
 Este capítulo  apresenta  as  conclusões  desta  dissertação de  mestrado.
 A Seção \ref{sec:analise} apresenta  os  resultados  alcançados  para  cada 
 questão  de  pesquisa. A Seção  \ref{sec:limitacoes} discute as  principais 
-limitações  do  trabalho. A Seção \ref{sec:contribuicoes} ressalta suas contribuições. Finalmente, a Seção \ref{sec:trabalhos_futuros} apresenta proposições de
+limitações  do  trabalho. A Seção \ref{sec:contribuicoes} ressalta suas contribuições.
+Finalmente, a Seção \ref{sec:trabalhos_futuros} apresenta proposições de
 trabalhos futuros que estendam e avancem os resultados desta pesquisa.
 
 \section{Análise dos Resultados da Dissertação}\label{sec:analise}
@@ -27,8 +28,8 @@ execução condicional. No entanto, a forma dessa execução condicional pode va
 Desde uma simples execução condicional direta, o que pode acarretar em espalhamento do
 código, até o uso de padrões de projeto, que permite uma maior modularização.
 
-Pacote de compatibilidade é utilizado quando se deseja um conjunto de novos recursos,
-cujo implementação está distribuída em diversos arquivos. No entanto, deve-se analisar
+Pacote de compatibilidade é utilizado quando se deseja um conjunto de novos recursos
+cuja implementação está distribuída em diversos arquivos. No entanto, deve-se analisar
 a relação entre a quantidade de recursos utilizados e o aumento no tamanho do instalador
 da aplicação. Se for desfavorável, pode-se fazer re-implementação de recurso do item específico. Re-implementação de recurso também pode ser utilizado quando o recurso desejado
 não está disponível por meio de pacote de compatibilidade. Porém, os desenvolvedores ficarão 
@@ -37,7 +38,7 @@ técnicas permitem o uso dos recursos em todos os dispositivos que a aplicação
 independente da versão da API, e são utilizadas para uso de recursos em granularidade grossa,
 a partir de classes. Para os casos de granularidade fina, chamadas a métodos de classes 
 pré-existentes, e quando o recurso pode deixar de ser utilizado em dispositivos com versões 
-antigas da API sem prejuízos para o funcionamento da aplicação são feitos acessos diretos a 
+antigas da API sem prejuízos para o funcionamento da aplicação, são feitos acessos diretos a 
 nova API.
 
 No nosso estudo analisamos 25 aplicações para quantificar o uso desses mecanismos.
@@ -67,7 +68,7 @@ Se por um lado detectamos que, no geral, as aplicações poderiam aumentar o seu
 em potencial com adaptações de, em média, 15 novas ocorrências de NewApi,  por outro
 lado, identificamos que os desenvolvedores têm se preocupado em evitar código-morto
 em função da API da plataforma. Na análise de 7 aplicações, 4 delas contém código-morto.
-No entanto, em termos de linha de código, não passa de 0,1\% das linhas de código Java.
+No entanto, em termos de linha de código, não passam de 0,1\% das linhas de código Java.
 
 \section{Limitações do Trabalho}\label{sec:limitacoes}
 
@@ -136,7 +137,7 @@ como desdobramento desta dissertação:
 		padrões de projeto ou inicialmente foi utilizada execução condicional simples?"; 
 	\item Estudo qualitativo com desenvolvedores de aplicações Android com o objetivo
 		de responder, entre outras questões, os motivos pelos quais escolheram uma ou
-		outra técnica.
+		outra técnica;
 	\item Análise comparativa entre FicFinder e Android Lint (regra NewApi) e,
 		possivelmente, outros analisadores sintáticos.
 \end{itemize}
