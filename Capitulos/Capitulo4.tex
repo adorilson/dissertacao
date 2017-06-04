@@ -4,7 +4,7 @@
 Trabalhos de pesquisa relacionados à evolução de API e suporte a múltiplas versões
 de API, sejam da plataforma Android ou outras tecnologias, e popularidade dos
 elementos da API Android são relevantes para este trabalho. Em especial, verificamos
-que não existem muitos trabalhos relacionados de suporte à múltiplas versões da API
+que não existem muitos trabalhos relacionados ao suporte à múltiplas versões da API
 do Android. Assim, a principal contribuição deste trabalho é de caracterização das
 técnicas de implementação de suporte a múltiplas versões da API Android em aplicações
 reais. As seções seguintes detalham trabalhos de pesquisa relacionados, organizados
@@ -24,7 +24,7 @@ Diferentemente deste trabalho, que considerou a API como um todo, alguns trabalh
 em componentes específicos, como Wei et al.\cite{Wei2012} que abordaram a evolução do sistema
 de permissões para acessar recursos de \textit{hardware} e \textit{software} da plataforma.
 No início de 2009, a API 3 possuía 103 permissões, enquanto na versão 15 esse número já chegava
-à 165. As aplicações também precisam adaptar-se à essa evolução. 
+as 165. As aplicações também precisam adaptar-se a essa evolução. 
 
 Neste trabalho, não abordamos elementos de API que foram depreciados, mas alguns trabalhos
 focam seus estudos nesta perspectiva.  Zhou e Walker \cite{Zhou2016} propuseram a ferramenta
@@ -50,13 +50,14 @@ esse problema. Aplicativos que têm como alvo os níveis de API 19 ou superiores
 são seguros por padrão, mas aqueles que têm como alvo os níveis 18 ou inferior herdam uma implementação que sempre retorna \texttt{true}, não oferecendo proteção contra esse ataque,
 ainda que em execução em um dispositivo com versão superior a 18.  Como API 19 é uma API
 alta, provavelmente a versão mínima das aplicações  será bem inferior, exigindo que seja
-utilizado um execução condicional na chamada à \texttt{isValidFragment}. O nosso trabalho
-complementa este apresentando soluções para oferecer suporte múltiplas versões da plataforma
+utilizado uma execução condicional na chamada a \texttt{isValidFragment}. O nosso trabalho
+complementa este apresentando soluções para oferecer suporte a múltiplas versões da plataforma
 e indicando os usos mais comuns. Assim, as aplicações podem usar os melhores recursos de cada
 versão da plataforma. 
 
 Wei et al. \cite{Wei2016} identificaram tipos e causas para o problema de compatibilidade
-induzidos pela fragmentação (FIC issues - Fragmentation-Induced Compatibility issues), um
+induzidos pela fragmentação \abrv[FIC -- \textit{Fragmentation-Induced Compatibility}]
+{(FIC \textit{issues} - \textit{Fragmentation-Induced Compatibility issues}).} Um
 dos tipos é não-específico de dispositivos, que pode ser causado devido a evolução da API da
 plataforma, impactando no suporte a múltiplas versões da API. Também apresentaram uma ferramenta, 
 FicFinder, para identificar tais problemas nas aplicações. O nosso trabalho utilizou uma ferramenta 
@@ -98,7 +99,7 @@ levam a conclusão que esse pacote é bastante utilizado e muito estável. Já a
 
 A plataforma Android permite compatibilidade simultânea com múltiplas versões
 da API e uma política conservadora em relação à depreciação, de forma que os
-métodos e classes permanecem nas novas versões mesmo de depois anotados como
+métodos e classes permanecem nas novas versões mesmo depois de anotados como
 depreciados. Alguns trabalhos buscaram entender a política de depreciação e
 suporte a múltiplas versões em outras plataformas. Espinha et al. \cite{Espinha2014}
 analisaram a política de evolução de quatro APIs web: Google Maps, Twitter, 
@@ -106,7 +107,7 @@ Netflix e Facebook. Os três primeiros possuem um sistema de versionamento
 explícito, em que um identificador da versão é incluída na URL de acesso à API
 (ex.: \texttt{domain/<version>/method}), o que permite aos clientes escolherem qual
 versão da API irão utilizar. Essa abordagem facilita a migração dos clientes, bastando
-alterar o trecho da URL referente à versão  Porém, uma evolução de API pode ir além que
+alterar o trecho da URL referente à versão. Porém, uma evolução de API pode ir além que
 somente adição ou remoção de métodos. Por exemplo, a evolução da Twitter API analisada
 no trabalho trata da versão 1 para 1.0. Além da mudança na URL (por exemplo, de
 \texttt{twitter.com/1/method} para \texttt{twitter.com/1.1/method}) outras elementos
@@ -116,7 +117,7 @@ o acesso (que pode penalizar clientes com alta frequência de acesso). Para esse
 é necessário uma intervenção mais profunda no código das aplicações clientes. O estudo
 foi complementado com um conjunto de recomendações para os provedores de API para
 facilitar a evolução dos clientes, entre elas: i) não mudar tão frequentemente, para
-que os cliente não se vejam também obrigados a alterar suas aplicações com frequência;
+que os clientes não se vejam também obrigados a alterar suas aplicações com frequência;
 e ii) não deixar as versões antigas por muito tempo, pois quando  isso ocorre os
 desenvolvedores das aplicações clientes relaxam e atrasam muito a atualização.
 Ficando muito distante da versão mais recente, a atualização pode tornar-se difícil.
@@ -130,12 +131,12 @@ múltiplas versões. No modo de versão única, as APIs web forçam a migração
 clientes para a nova versão da API removendo a versão anterior após um período
 de tempo, que pode ser conhecido, como nos casos da Facebook REST API (90 dias)
 e Google Calendar (6 meses), ou desconhecido, como nos casos da Twitter REST API,
-Github API OpenStreetMap API e Google Maps. O modo de múltiplas mantém as APIs
+Github API, OpenStreetMap API e Google Maps. O modo de múltiplas versões mantém as APIs
 antigas por um longo período de tempo. Wordpress REST API, Salesforce API e Stripe
-API essa estratégia. Tal estratégia permite uma maior flexibilidade para os clientes,
-mas exige maior esforço dos fornecedores da API, como resultado nem todas as APIs são
-mantidas. Quando os clientes atrasam muito a atualizando, ficando muito distante da
-versão mais recente, a atualização pode tornar-se difícil. O mesmo pode acontecer
+API utilizam essa estratégia. Tal estratégia permite uma maior flexibilidade para os
+clientes, mas exige maior esforço dos fornecedores da API, como resultado nem todas
+as APIs são mantidas. Quando os clientes atrasam muito a atualização, ficando muito
+distante da versão mais recente, a evolução pode tornar-se difícil. O mesmo pode acontecer
 com aplicações Android. Foram também analisados diferentes abordagens para identificar
 a versão da API: i) identificador numérico: números inteiros contínuos que comunicam
 claramente uma sequência entre as versões; ii) identificador com data: datas também
