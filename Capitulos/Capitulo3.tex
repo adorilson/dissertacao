@@ -322,9 +322,14 @@ Para responder à questão de pesquisa QP4 os procedimentos adotados foram os se
 \begin{enumerate}
 	\item Pesquisa textual por \texttt{VERSION.SDK\_INT} em todos os arquivos da
 		aplicação;
-	\item Quando \texttt{VERSION.SDK\_INT} fazia parte de um execução condicional, ou equivalente, relacionada a uma versão da API inferior à API mínima da aplicação, o código da aplicação era refatorado de forma a remover todo o código-morto.
+	\item Quando \texttt{VERSION.SDK\_INT} fazia parte de um execução condicional,
+	ou equivalente, relacionada a uma versão da API inferior à API mínima da aplicação,
+	o código da aplicação era refatorado de forma a remover todo o código-morto.
 	\item Contabilização e sumarização das linhas de código e arquivos removidos.
 \end{enumerate}
+
+O apêndice \ref{sec:apendice} apresenta informações adicionais sobre as aplicações analisadas e 
+como acessar dados brutos obtidos durante o estudo.
 
 \section{Resultados do Estudo} \label{sec:resultados}
 
