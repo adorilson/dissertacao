@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="4" by="lint 25.1.7">
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="            .setText(String.format(&quot;%.1fm&quot;, wiFiSignal.getDistance()));"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="81"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getBSSID().toUpperCase(), rhs.getBSSID().toUpperCase())"
+        errorLine2="                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/ChannelRating.java"
+            line="124"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/ChannelRating.java"
+            line="127"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="            result.append(String.format(&quot;%s|%s|%ddBm|%d|%d%s|%d|%d%s|%d%s (%d - %d)|%.1fm|%s%s&quot;,"
+        errorLine2="                          ^">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/navigation/ExportItem.java"
+            line="69"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/GroupBy.java"
+            line="66"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getBSSID().toUpperCase(), rhs.getBSSID().toUpperCase())"
+        errorLine2="                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/GroupBy.java"
+            line="68"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/GroupBy.java"
+            line="77"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/GroupBy.java"
+            line="88"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getBSSID().toUpperCase(), rhs.getBSSID().toUpperCase())"
+        errorLine2="                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/GroupBy.java"
+            line="89"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="        return result.substring(0, Math.min(result.length(), MAX_LEN)).toUpperCase();"
+        errorLine2="                                                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/vendor/model/MacAddress.java"
+            line="31"
+            column="72"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="            String[] values = capabilities.toUpperCase()"
+        errorLine2="                                           ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/Security.java"
+            line="45"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/SortBy.java"
+            line="55"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getBSSID().toUpperCase(), rhs.getBSSID().toUpperCase())"
+        errorLine2="                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/SortBy.java"
+            line="56"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/SortBy.java"
+            line="66"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getBSSID().toUpperCase(), rhs.getBSSID().toUpperCase())"
+        errorLine2="                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/SortBy.java"
+            line="68"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getSSID().toUpperCase(), rhs.getSSID().toUpperCase())"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/SortBy.java"
+            line="79"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="                .append(lhs.getBSSID().toUpperCase(), rhs.getBSSID().toUpperCase())"
+        errorLine2="                                       ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/model/SortBy.java"
+            line="80"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        severity="Warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead"
+        category="Correctness"
+        priority="6"
+        summary="Implied default locale in case conversion"
+        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` *without specifying an explicit locale* is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is *not* `I`.
+
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.US)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
+        url="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        urls="http://developer.android.com/reference/java/util/Locale.html#default_locale"
+        errorLine1="            .toUpperCase();"
+        errorLine2="             ~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/vendor/model/VendorNameUtils.java"
+            line="34"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="InflateParams"
+        severity="Warning"
+        message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)"
+        category="Correctness"
+        priority="5"
+        summary="Layout Inflation without a Parent"
+        explanation="When inflating a layout, avoid passing in null as the parent view, since otherwise any layout parameters on the root of the inflated layout will be ignored."
+        url="http://www.doubleencore.com/2013/05/layout-inflation-as-intended"
+        urls="http://www.doubleencore.com/2013/05/layout-inflation-as-intended"
+        errorLine1="        View view = inflater.inflate(R.layout.access_points_details_popup, null);"
+        errorLine2="                                                                           ~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="108"
+            column="76"/>
+    </issue>
+
+    <issue
+        id="PluralsCandidate"
+        severity="Warning"
+        message="Formatting %d followed by words (&quot;seconds&quot;): This should probably be a plural rather than a string"
+        category="Correctness:Messages"
+        priority="5"
+        summary="Potential Plurals"
+        explanation="This lint check looks for potential errors in internationalization where you have translated a message which involves a quantity and it looks like other parts of the string may need grammatical changes.
+
+For example, rather than something like this:
+  &lt;string name=&quot;try_again&quot;>Try again in %d seconds.&lt;/string>
+you should be using a plural:
+   &lt;plurals name=&quot;try_again&quot;>
+        &lt;item quantity=&quot;one&quot;>Try again in %d second&lt;/item>
+        &lt;item quantity=&quot;other&quot;>Try again in %d seconds&lt;/item>
+    &lt;/plurals>
+This will ensure that in other languages the right set of translations are provided for the different quantity classes.
+
+(This check depends on some heuristics, so it may not accurately determine whether a string really should be a quantity. You can use tools:ignore to filter out false positives."
+        url="http://developer.android.com/guide/topics/resources/string-resource.html#Plurals"
+        urls="http://developer.android.com/guide/topics/resources/string-resource.html#Plurals"
+        errorLine1="    &lt;string name=&quot;scan_interval_summary&quot;>%d seconds between each scan&lt;/string>"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/values/strings.xml"
+            line="76"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseCompoundDrawables"
+        severity="Warning"
+        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
+        category="Performance"
+        priority="6"
+        summary="Node can be replaced by a `TextView` with compound drawables"
+        explanation="A `LinearLayout` which contains an `ImageView` and a `TextView` can be more efficiently handled as a compound drawable (a single TextView, using the `drawableTop`, `drawableLeft`, `drawableRight` and/or `drawableBottom` attributes to draw one or more images adjacent to the text).
+
+If the two widgets are offset from each other with margins, this can be replaced with a `drawablePadding` attribute.
+
+There&apos;s a lint quickfix to perform this conversion in the Eclipse plugin."
+        errorLine1="            &lt;LinearLayout"
+        errorLine2="            ^"
+        quickfix="adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details.xml"
+            line="72"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseCompoundDrawables"
+        severity="Warning"
+        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
+        category="Performance"
+        priority="6"
+        summary="Node can be replaced by a `TextView` with compound drawables"
+        explanation="A `LinearLayout` which contains an `ImageView` and a `TextView` can be more efficiently handled as a compound drawable (a single TextView, using the `drawableTop`, `drawableLeft`, `drawableRight` and/or `drawableBottom` attributes to draw one or more images adjacent to the text).
+
+If the two widgets are offset from each other with margins, this can be replaced with a `drawablePadding` attribute.
+
+There&apos;s a lint quickfix to perform this conversion in the Eclipse plugin."
+        errorLine1="                &lt;LinearLayout"
+        errorLine2="                ^"
+        quickfix="adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details.xml"
+            line="162"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        severity="Warning"
+        message="Possible overdraw: Root element paints background `@color/connected_background` with a theme that also paints a background (inferred theme is `@style/ThemeAppCompatDark`)"
+        category="Performance"
+        priority="3"
+        summary="Overdraw: Painting regions more than once"
+        explanation="If you set a background drawable on a root view, then you should use a custom theme where the theme background is null. Otherwise, the theme background will be painted first, only to have your custom background completely cover it; this is called &quot;overdraw&quot;.
+
+NOTE: This detector relies on figuring out which layouts are associated with which activities based on scanning the Java code, and it&apos;s currently doing that using an inexact pattern matching algorithm. Therefore, it can incorrectly conclude which activity the layout is associated with and then wrongly complain that a background-theme is hidden.
+
+If you want your custom background on multiple pages, then you should consider making a custom theme with your custom background and just using that theme instead of a root element background.
+
+Of course it&apos;s possible that your custom drawable is translucent and you want it to be mixed with the background. However, you will get better performance if you pre-mix the background with your drawable and use that resulting image or color as a custom theme background instead.
+"
+        errorLine1="              android:background=&quot;@color/connected_background&quot;"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/main_navigation.xml"
+            line="23"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="IconDipSize"
+        severity="Warning"
+        message="Suspicious file name `ic_show_chart_grey_500_48dp.png`: The implied 48 `dp` size does not match the actual `dp` size (pixel size 144×144 in a `drawable-xxxhdpi` folder computes to 36×36 `dp`)"
+        category="Usability:Icons"
+        priority="5"
+        summary="Icon density-independent size validation"
+        explanation="Checks the all icons which are provided in multiple densities, all compute to roughly the same density-independent pixel (`dip`) size. This catches errors where images are either placed in the wrong folder, or icons are changed to new sizes but some folders are forgotten.">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/drawable-xxxhdpi/ic_show_chart_grey_500_48dp.png"/>
+    </issue>
+
+    <issue
+        id="IconDipSize"
+        severity="Warning"
+        message="The image `ic_show_chart_grey_500_48dp.png` varies significantly in its density-independent (dip) size across the various density versions: drawable-mdpi/ic_show_chart_grey_500_48dp.png: 48x48 dp (48x48 px), drawable-hdpi/ic_show_chart_grey_500_48dp.png: 48x48 dp (72x72 px), drawable-xxhdpi/ic_show_chart_grey_500_48dp.png: 48x48 dp (144x144 px), drawable-xhdpi/ic_show_chart_grey_500_48dp.png: 48x48 dp (96x96 px), drawable-xxxhdpi/ic_show_chart_grey_500_48dp.png: 36x36 dp (144x144 px)"
+        category="Usability:Icons"
+        priority="5"
+        summary="Icon density-independent size validation"
+        explanation="Checks the all icons which are provided in multiple densities, all compute to roughly the same density-independent pixel (`dip`) size. This catches errors where images are either placed in the wrong folder, or icons are changed to new sizes but some folders are forgotten.">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/drawable-xxxhdpi/ic_show_chart_grey_500_48dp.png"/>
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/drawable-xhdpi/ic_show_chart_grey_500_48dp.png"/>
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/drawable-xxhdpi/ic_show_chart_grey_500_48dp.png"/>
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/drawable-hdpi/ic_show_chart_grey_500_48dp.png"/>
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/drawable-mdpi/ic_show_chart_grey_500_48dp.png"/>
+    </issue>
+
+    <issue
+        id="GoogleAppIndexingWarning"
+        severity="Warning"
+        message="App is not indexable by Google Search; consider adding at least one Activity with an ACTION-VIEW intent filter. See issue explanation for more details."
+        category="Usability"
+        priority="5"
+        summary="Missing support for Firebase App Indexing"
+        explanation="Adds URLs to get your app into the Google index, to get installs and traffic to your app from Google Search."
+        url="https://g.co/AppIndexing/AndroidStudio"
+        urls="https://g.co/AppIndexing/AndroidStudio"
+        errorLine1="    &lt;application"
+        errorLine2="    ^"
+        quickfix="studio">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/AndroidManifest.xml"
+            line="27"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="[Accessibility] Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.
+
+Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=&quot;ContentDescription&quot; attribute.
+
+Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`. See http://developer.android.com/guide/topics/ui/accessibility/checklist.html#special-cases."
+        errorLine1="            &lt;ImageView"
+        errorLine2="            ^"
+        quickfix="studio,adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="[Accessibility] Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.
+
+Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=&quot;ContentDescription&quot; attribute.
+
+Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`. See http://developer.android.com/guide/topics/ui/accessibility/checklist.html#special-cases."
+        errorLine1="            &lt;ImageView"
+        errorLine2="            ^"
+        quickfix="studio,adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details.xml"
+            line="50"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="[Accessibility] Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.
+
+Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=&quot;ContentDescription&quot; attribute.
+
+Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`. See http://developer.android.com/guide/topics/ui/accessibility/checklist.html#special-cases."
+        errorLine1="                &lt;ImageView"
+        errorLine2="                ^"
+        quickfix="studio,adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details.xml"
+            line="83"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="[Accessibility] Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.
+
+Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=&quot;ContentDescription&quot; attribute.
+
+Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`. See http://developer.android.com/guide/topics/ui/accessibility/checklist.html#special-cases."
+        errorLine1="                    &lt;ImageView"
+        errorLine2="                    ^"
+        quickfix="studio,adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details.xml"
+            line="167"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="[Accessibility] Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.
+
+Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, just suppress the lint warning with a tools:ignore=&quot;ContentDescription&quot; attribute.
+
+Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`. See http://developer.android.com/guide/topics/ui/accessibility/checklist.html#special-cases."
+        errorLine1="    &lt;ImageView"
+        errorLine2="    ^"
+        quickfix="studio,adt">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/main_navigation.xml"
+            line="31"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            textView.setText(textView.getText() + &quot; &quot; + MainActivity.WI_FI_ANALYZER_BETA);"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/about/AboutActivity.java"
+            line="101"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        textLevel.setText(wiFiSignal.getLevel() + &quot;dBm&quot;);"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="73"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        textLevel.setText(wiFiSignal.getLevel() + &quot;dBm&quot;);"
+        errorLine2="                                                  ~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="73"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            .setText(wiFiSignal.getPrimaryFrequency() + WifiInfo.FREQUENCY_UNITS);"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="79"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            .setText(wiFiSignal.getFrequencyStart() + &quot; - &quot; + wiFiSignal.getFrequencyEnd());"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="83"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            .setText(&quot;(&quot; + wiFiSignal.getWiFiWidth().getFrequencyWidth() + WifiInfo.FREQUENCY_UNITS + &quot;)&quot;);"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/AccessPointsDetail.java"
+            line="85"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            .setText(wiFiChannelCountry.getCountryCode() + &quot; - &quot; + wiFiChannelCountry.getCountryName());"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/ChannelAvailableAdapter.java"
+            line="53"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            .setText(WiFiBand.GHZ2.getBand() + &quot; : &quot;);"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/ChannelAvailableAdapter.java"
+            line="55"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            .setText(WiFiBand.GHZ5.getBand() + &quot; : &quot;);"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/ChannelAvailableAdapter.java"
+            line="59"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        ((TextView) view.findViewById(R.id.channelNumber)).setText(&quot;&quot; + wiFiChannel.getChannel());"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/ChannelRatingAdapter.java"
+            line="95"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        ((TextView) view.findViewById(R.id.accessPointCount)).setText(&quot;&quot; + count);"
+        errorLine2="                                                                      ~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/ChannelRatingAdapter.java"
+            line="96"
+            column="71"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`
+* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.
+* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.
+* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="http://developer.android.com/guide/topics/resources/localization.html"
+        urls="http://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                textLinkSpeed.setText(linkSpeed + WifiInfo.LINK_SPEED_UNITS);"
+        errorLine2="                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/java/com/vrem/wifianalyzer/wifi/ConnectionView.java"
+            line="90"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="RtlHardcoded"
+        severity="Warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales"
+        category="Internationalization:Bidirectional Text"
+        priority="5"
+        summary="Using left/right instead of start/end attributes"
+        explanation="Using `Gravity#LEFT` and `Gravity#RIGHT` can lead to problems when a layout is rendered in locales where text flows from right to left. Use `Gravity#START` and `Gravity#END` instead. Similarly, in XML `gravity` and `layout_gravity` attributes, use `start` rather than `left`.
+
+For XML attributes such as paddingLeft and `layout_marginLeft`, use `paddingStart` and `layout_marginStart`. *NOTE*: If your `minSdkVersion` is less than 17, you should add *both* the older left/right attributes *as well as* the new start/right attributes. On older platforms, where RTL is not supported and the start/right attributes are unknown and therefore ignored, you need the older left/right attributes. There is a separate lint check which catches that type of error.
+
+(Note: For `Gravity#LEFT` and `Gravity#START`, you can use these constants even when targeting older platforms, because the `start` bitmask is a superset of the `left` bitmask. Therefore, you can use `gravity=&quot;start&quot;` rather than `gravity=&quot;left|start&quot;`.)"
+        errorLine1="            android:layout_gravity=&quot;bottom|right&quot;"
+        errorLine2="                                    ~~~~~~~~~~~~">
+        <location
+            file="/home/adorilson/workspace/mestrado/apps_analisadas/com.vrem.wifianalyzer/app/src/main/res/layout/access_points_details_popup.xml"
+            line="37"
+            column="37"/>
+    </issue>
+
+</issues>

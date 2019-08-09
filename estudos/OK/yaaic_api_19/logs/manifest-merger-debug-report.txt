@@ -1,0 +1,164 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:22:1
+	package
+		ADDED from AndroidManifest.xml:23:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:22:11
+	android:versionCode
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:installLocation
+		ADDED from AndroidManifest.xml:24:5
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:26:5
+	android:name
+		ADDED from AndroidManifest.xml:26:22
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:27:5
+	android:name
+		ADDED from AndroidManifest.xml:27:22
+application
+ADDED from AndroidManifest.xml:29:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+	android:label
+		ADDED from AndroidManifest.xml:31:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:33:9
+	android:icon
+		ADDED from AndroidManifest.xml:30:9
+	android:theme
+		ADDED from AndroidManifest.xml:32:9
+activity#org.yaaic.activity.ServersActivity
+ADDED from AndroidManifest.xml:34:9
+	android:label
+		ADDED from AndroidManifest.xml:36:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:37:13
+	android:name
+		ADDED from AndroidManifest.xml:35:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:38:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:39:17
+	android:name
+		ADDED from AndroidManifest.xml:39:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:41:17
+	android:name
+		ADDED from AndroidManifest.xml:41:27
+activity#org.yaaic.activity.AddServerActivity
+ADDED from AndroidManifest.xml:44:9
+	android:label
+		ADDED from AndroidManifest.xml:46:13
+	android:name
+		ADDED from AndroidManifest.xml:45:13
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from AndroidManifest.xml:47:13
+action#android.intent.action.VIEW
+ADDED from AndroidManifest.xml:48:17
+	android:name
+		ADDED from AndroidManifest.xml:48:25
+category#android.intent.category.DEFAULT
+ADDED from AndroidManifest.xml:50:17
+	android:name
+		ADDED from AndroidManifest.xml:50:27
+category#android.intent.category.BROWSABLE
+ADDED from AndroidManifest.xml:51:17
+	android:name
+		ADDED from AndroidManifest.xml:51:27
+data
+ADDED from AndroidManifest.xml:53:17
+	android:scheme
+		ADDED from AndroidManifest.xml:53:23
+activity#org.yaaic.activity.ConversationActivity
+ADDED from AndroidManifest.xml:56:9
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:58:13
+	android:name
+		ADDED from AndroidManifest.xml:57:13
+activity#org.yaaic.activity.AboutActivity
+ADDED from AndroidManifest.xml:60:9
+	android:label
+		ADDED from AndroidManifest.xml:62:13
+	android:theme
+		ADDED from AndroidManifest.xml:63:13
+	android:name
+		ADDED from AndroidManifest.xml:61:13
+activity#org.yaaic.activity.SettingsActivity
+ADDED from AndroidManifest.xml:65:9
+	android:label
+		ADDED from AndroidManifest.xml:67:13
+	android:name
+		ADDED from AndroidManifest.xml:66:13
+activity#org.yaaic.activity.JoinActivity
+ADDED from AndroidManifest.xml:69:9
+	android:label
+		ADDED from AndroidManifest.xml:71:13
+	android:theme
+		ADDED from AndroidManifest.xml:72:13
+	android:name
+		ADDED from AndroidManifest.xml:70:13
+activity#org.yaaic.activity.UsersActivity
+ADDED from AndroidManifest.xml:74:9
+	android:label
+		ADDED from AndroidManifest.xml:76:13
+	android:theme
+		ADDED from AndroidManifest.xml:77:13
+	android:name
+		ADDED from AndroidManifest.xml:75:13
+activity#org.yaaic.activity.AddAliasActivity
+ADDED from AndroidManifest.xml:79:9
+	android:theme
+		ADDED from AndroidManifest.xml:81:13
+	android:name
+		ADDED from AndroidManifest.xml:80:13
+activity#org.yaaic.activity.AddChannelActivity
+ADDED from AndroidManifest.xml:83:9
+	android:theme
+		ADDED from AndroidManifest.xml:85:13
+	android:name
+		ADDED from AndroidManifest.xml:84:13
+activity#org.yaaic.activity.AddCommandsActivity
+ADDED from AndroidManifest.xml:87:9
+	android:theme
+		ADDED from AndroidManifest.xml:89:13
+	android:name
+		ADDED from AndroidManifest.xml:88:13
+activity#org.yaaic.activity.MessageActivity
+ADDED from AndroidManifest.xml:91:9
+	android:theme
+		ADDED from AndroidManifest.xml:93:13
+	android:name
+		ADDED from AndroidManifest.xml:92:13
+activity#org.yaaic.activity.UserActivity
+ADDED from AndroidManifest.xml:95:9
+	android:theme
+		ADDED from AndroidManifest.xml:97:13
+	android:name
+		ADDED from AndroidManifest.xml:96:13
+activity#org.yaaic.activity.AuthenticationActivity
+ADDED from AndroidManifest.xml:99:9
+	android:theme
+		ADDED from AndroidManifest.xml:101:13
+	android:name
+		ADDED from AndroidManifest.xml:100:13
+service#org.yaaic.irc.IRCService
+ADDED from AndroidManifest.xml:104:9
+	android:name
+		ADDED from AndroidManifest.xml:104:18
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.viewpagerindicator:library:2.4.1:3:5
+	android:targetSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
